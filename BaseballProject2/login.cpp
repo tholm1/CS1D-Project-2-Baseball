@@ -20,7 +20,7 @@ void login::on_login_pushButton_clicked()
     QString username = ui->username_LineEdit->text();
        QString password = ui->password_LineEdit->text();
 
-       if(username == "Admin" && password == "password")
+       if(username == "Admin" && password == "1234")
        {
            QMessageBox::information(this, "Login", "Logged in");
            maintenance maintenance;
