@@ -1,0 +1,15 @@
+debug/dbmanager.o
+debug/displayinfo.o
+debug/displayteam.o
+debug/login.o
+debug/main.o
+debug/maintenance.o
+debug/mainwindow.o
+debug/planvacation.o
+debug/qrc_Resources.o
+debug/moc_displayinfo.o
+debug/moc_displayteam.o
+debug/moc_login.o
+debug/moc_maintenance.o
+debug/moc_mainwindow.o
+debug/moc_planvacation.o

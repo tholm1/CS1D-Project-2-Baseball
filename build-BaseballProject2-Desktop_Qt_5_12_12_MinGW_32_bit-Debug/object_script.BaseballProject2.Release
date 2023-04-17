@@ -1,0 +1,15 @@
+release/dbmanager.o
+release/displayinfo.o
+release/displayteam.o
+release/login.o
+release/main.o
+release/maintenance.o
+release/mainwindow.o
+release/planvacation.o
+release/qrc_Resources.o
+release/moc_displayinfo.o
+release/moc_displayteam.o
+release/moc_login.o
+release/moc_maintenance.o
+release/moc_mainwindow.o
+release/moc_planvacation.o

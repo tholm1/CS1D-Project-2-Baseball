@@ -15,6 +15,13 @@ public:
     explicit maintenance(QWidget *parent = nullptr);
     ~maintenance();
 
+private slots:
+    void on_modifyInfo_pushButton_clicked();
+
+    void on_Add_Delete_Info_pushButton_clicked();
+
+    void on_back_pushButton_clicked();
+
 private:
     Ui::maintenance *ui;
 };

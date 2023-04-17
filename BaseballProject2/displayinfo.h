@@ -15,6 +15,13 @@ public:
     explicit displayInfo(QWidget *parent = nullptr);
     ~displayInfo();
 
+private slots:
+    void on_displayTeams_pushButton_clicked();
+
+    void on_back_pushButton_clicked();
+
+    void on_planVacation_pushButton_clicked();
+
 private:
     Ui::displayInfo *ui;
 };
