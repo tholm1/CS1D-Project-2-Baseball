@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "dbmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,5 +24,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    dbManager m_database;
 };
 #endif // MAINWINDOW_H

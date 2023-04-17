@@ -2,13 +2,19 @@
 
 dbManager::dbManager()
 {
-    //Connects the database to the project
-        m_database = QSqlDatabase::addDatabase("QSQLITE");
-        m_database.setDatabaseName("C:/Users/Yaqub/OneDrive/Desktop/CS1D/CS1D-Project-2-Baseball/MLBDB2.db");
-        if(!m_database.open())
-        {
-            qDebug() << "\nError Opening Database\n";
-        }
+
+    QSqlDatabase m_database = QSqlDatabase::addDatabase("QSQLITE");
+    m_database.setDatabaseName("../MLBDB2.db");
+
+    if(m_database.open())
+    {
+        qDebug() << "Database: connection ok";
+    }
+    else
+    {
+       qDebug() << "Error: DBManager connection with database failed";
+    }
+
 }
 
 dbManager::~dbManager()

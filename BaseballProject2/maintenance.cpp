@@ -1,6 +1,6 @@
 #include "maintenance.h"
 #include "ui_maintenance.h"
-#include "displayinfo.h"
+#include "mainwindow.h"
 
 
 maintenance::maintenance(QWidget *parent) :
@@ -30,9 +30,17 @@ void maintenance::on_modifyInfo_pushButton_clicked()
 
 void maintenance::on_back_pushButton_clicked()
 {
-    displayInfo display;
-    display.setModal(true);
+    QList<QWidget*> topLevelWidgets = qApp->topLevelWidgets();
+        foreach(QWidget *widget, topLevelWidgets) {
+            QMainWindow *mainWindow = qobject_cast<QMainWindow*>(widget);
+            if (mainWindow) {
+                // Show the main window if it was previously hidden
+                if (!mainWindow->isVisible()) {
+                    mainWindow->show();
+                }
+                break;
+            }
+        }
     hide();
-    display.exec();
 }
 
