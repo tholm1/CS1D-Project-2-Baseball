@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1310</width>
-    <height>819</height>
+    <width>1899</width>
+    <height>755</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>0</y>
-     <width>1141</width>
-     <height>451</height>
+     <x>550</x>
+     <y>80</y>
+     <width>1311</width>
+     <height>631</height>
     </rect>
    </property>
   </widget>
@@ -40,21 +40,11 @@ text-decoration: underline;</string>
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>600</x>
-     <y>460</y>
-     <width>181</width>
-     <height>32</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="accumulatorLabel">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>730</y>
+     <x>660</x>
+     <y>30</y>
      <width>571</width>
      <height>41</height>
     </rect>
@@ -66,78 +56,17 @@ text-decoration: underline;</string>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>500</y>
-     <width>551</width>
-     <height>201</height>
+     <x>10</x>
+     <y>80</y>
+     <width>541</width>
+     <height>631</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QRadioButton" name="filterByTypology_radioButton">
-      <property name="text">
-       <string>Display Stadium Sorted by Park Typology</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="filterByOpenRoof_radioButton">
-      <property name="text">
-       <string>Display Stadiums with Open Roof</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="filterByDateOpen_radioButton">
-      <property name="text">
-       <string>Display Stadiums in Chronological Order</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="filterBySeatingCapacity_radioButton">
-      <property name="text">
-       <string>Display Stadiums Sorted by Seating Capacity</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="filterByDistancetoCF_radioButton">
-      <property name="text">
-       <string>Display Stadiums Sorted by Distance to Center</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>93</x>
-     <y>500</y>
-     <width>571</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
      <widget class="QRadioButton" name="noFilter_radioButton">
       <property name="text">
        <string>Display with no filter</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="filterByTeam_radioButton">
-      <property name="text">
-       <string>Display Teams Stadium Sorted by Team Name</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="filterByStadium_radioButton">
-      <property name="text">
-       <string>Display Teams Stadium Sorted by Stadium Name</string>
       </property>
      </widget>
     </item>
@@ -152,6 +81,41 @@ text-decoration: underline;</string>
      <widget class="QRadioButton" name="filterByNationalLeague_radioButton">
       <property name="text">
        <string>Display National League</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="filterByTypology_radioButton">
+      <property name="text">
+       <string>Display Stadium sorted by park typology</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="filterByOpenRoof_radioButton">
+      <property name="text">
+       <string>Display Stadiums with open roof types</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="filterByDateOpen_radioButton">
+      <property name="text">
+       <string>Display Stadiums by date opened</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="filterBySeatingCapacity_radioButton">
+      <property name="text">
+       <string>Display Stadiums sorted by seating capacity</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="filterByDistancetoCF_radioButton">
+      <property name="text">
+       <string>Display stadiums sorted by distance to center field</string>
       </property>
      </widget>
     </item>

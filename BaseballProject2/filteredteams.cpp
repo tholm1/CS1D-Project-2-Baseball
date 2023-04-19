@@ -44,6 +44,7 @@ void filteredTeams::on_noFilter_radioButton_clicked()
 
 void filteredTeams::on_filterByAmericanLeague_radioButton_clicked()
 {
+    // rest table
     populateTableView();
        for (int i = 0; i < Team::COLUMN_COUNT; i++) {
            if (i != 5 && i != 1 && i != 0) {
@@ -62,6 +63,7 @@ void filteredTeams::on_filterByAmericanLeague_radioButton_clicked()
 
 void filteredTeams::on_filterByNationalLeague_radioButton_clicked()
 {
+    // rest table
     populateTableView();
         for (int i = 0; i < Team::COLUMN_COUNT; i++) {
             if (i != 5 && i != 1 && i != 0) {
@@ -87,6 +89,7 @@ void filteredTeams::on_back_pushButton_clicked()
 
 void filteredTeams::on_filterByTypology_radioButton_clicked()
 {
+    // rest table
     populateTableView();
 
         for (int i = 0; i < Team::COLUMN_COUNT; i++) {
@@ -103,6 +106,7 @@ void filteredTeams::on_filterByTypology_radioButton_clicked()
 
 void filteredTeams::on_filterByOpenRoof_radioButton_clicked()
 {
+    // rest table
     populateTableView();
 
     for (int i = 0; i < Team::COLUMN_COUNT; i++) {
@@ -130,6 +134,7 @@ void filteredTeams::on_filterByOpenRoof_radioButton_clicked()
 
 void filteredTeams::on_filterByDateOpen_radioButton_clicked()
 {
+    // rest table
     populateTableView();
 
     for (int i = 0; i < Team::COLUMN_COUNT; i++) {

@@ -43,7 +43,7 @@ QList<Team> dbManager::getAllTeams()
 {
     QSqlQuery query;
     QList<Team> teamList;
-    if (query.exec("SELECT \"Team Name\", \"Stadium Name\", \"Seating Capacity\", \" Location\", \"Playing Surface\", \"League\", \"Date Opened\","
+    if (query.exec("SELECT \"Team Name\", \"Stadium Name\", \"Seating Capacity\", \"Location\", \"Playing Surface\", \"League\", \"Date Opened\","
                    "\"Distance to Center Field\", \"Ballpark Typology\", \"Roof Type\" from \"MLB Teams\"")) {
         if (query.first()) {
             while (query.isValid()) {

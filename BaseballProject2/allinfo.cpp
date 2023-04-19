@@ -44,7 +44,7 @@ void Allinfo::on_search_button_clicked()
     QString ballPark;
     QString roof;
 
-    ui->name_label->setText(ui->teams_combo->currentText());
+    ui->label->setText(ui->teams_combo->currentText());
 
     QString searchValue = ui->teams_combo->currentText(); // the value you want to search for in the first column
 

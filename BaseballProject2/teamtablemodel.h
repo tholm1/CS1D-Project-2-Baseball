@@ -27,16 +27,16 @@ struct Team {
         this->roofType = roofType;
     }
     // data
-    QString teamName;
-    QString stadiumName;
-    int seatingCapacity;
-    QString location;
-    QString playingSurface;
-    QString league;
-    int dateOpened;
-    int distanceToCenterField;
-    QString ballparkTopology;
-    QString roofType;
+    QString teamName; /** Name of the team **/
+    QString stadiumName; /** Name of the stadium **/
+    int seatingCapacity; /** The seating capacity of the stadium **/
+    QString location; /** The location of the team **/
+    QString playingSurface; /** The playing surface of the stadium **/
+    QString league; /** League in which the team play in **/
+    int dateOpened; /** The date the stadium was opened **/
+    int distanceToCenterField; /** The distance to the center field **/
+    QString ballparkTopology; /** The style of the stadium **/
+    QString roofType; /** THe roof type of the stadium  **/
 };
 
 class TeamTableModel : public QAbstractTableModel {
