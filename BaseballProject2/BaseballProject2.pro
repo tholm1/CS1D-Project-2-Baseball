@@ -12,6 +12,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    allinfo.cpp \
     dbmanager.cpp \
     displayinfo.cpp \
     displayteam.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
     planvacation.cpp
 
 HEADERS += \
+    allinfo.h \
     dbmanager.h \
     displayinfo.h \
     displayteam.h \
@@ -31,6 +33,7 @@ HEADERS += \
     planvacation.h
 
 FORMS += \
+    allinfo.ui \
     displayinfo.ui \
     displayteam.ui \
     login.ui \

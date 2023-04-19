@@ -18,6 +18,7 @@ public:
 private slots:
 
     void on_back_pushButton_clicked();
+    void on_displayAllInfo_clicked();
 
 private:
     Ui::displayTeam *ui;

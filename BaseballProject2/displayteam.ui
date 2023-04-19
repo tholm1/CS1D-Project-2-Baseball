@@ -30,7 +30,7 @@ text-decoration: underline;</string>
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -41,7 +41,7 @@ text-decoration: underline;</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="displayAllInfo">
       <property name="text">
        <string>Display all information</string>
       </property>
