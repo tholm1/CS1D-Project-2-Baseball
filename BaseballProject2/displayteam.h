@@ -18,7 +18,10 @@ public:
 private slots:
 
     void on_back_pushButton_clicked();
-    void on_displayAllInfo_clicked();
+
+    void on_displaySingleTeam_pushButton_clicked();
+
+    void on_displayWithFilter_pushButton_clicked();
 
 private:
     Ui::displayTeam *ui;

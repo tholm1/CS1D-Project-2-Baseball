@@ -15,26 +15,31 @@ SOURCES += \
     dbmanager.cpp \
     displayinfo.cpp \
     displayteam.cpp \
+    filteredteams.cpp \
     login.cpp \
     main.cpp \
     maintenance.cpp \
     mainwindow.cpp \
-    planvacation.cpp
+    planvacation.cpp \
+    teamtablemodel.cpp
 
 HEADERS += \
     allinfo.h \
     dbmanager.h \
     displayinfo.h \
     displayteam.h \
+    filteredteams.h \
     login.h \
     maintenance.h \
     mainwindow.h \
-    planvacation.h
+    planvacation.h \
+    teamtablemodel.h
 
 FORMS += \
     allinfo.ui \
     displayinfo.ui \
     displayteam.ui \
+    filteredteams.ui \
     login.ui \
     maintenance.ui \
     mainwindow.ui \

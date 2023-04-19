@@ -2,6 +2,7 @@
 #include "ui_displayteam.h"
 #include "displayinfo.h"
 #include "allinfo.h"
+#include "filteredteams.h"
 displayTeam::displayTeam(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::displayTeam)
@@ -22,10 +23,20 @@ void displayTeam::on_back_pushButton_clicked()
     display.exec();
 }
 
-void displayTeam::on_displayAllInfo_clicked()
+void displayTeam::on_displaySingleTeam_pushButton_clicked()
 {
     Allinfo display;
     display.setModal(true);
 
     display.exec();
 }
+
+
+void displayTeam::on_displayWithFilter_pushButton_clicked()
+{
+    filteredTeams filter;
+    filter.setModal(true);
+
+    filter.exec();
+}
+

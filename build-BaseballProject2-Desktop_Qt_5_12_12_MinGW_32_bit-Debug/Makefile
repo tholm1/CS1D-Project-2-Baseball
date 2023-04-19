@@ -225,7 +225,6 @@ Makefile: ../BaseballProject2/BaseballProject2.pro C:/Qt/Qt5.12.12/5.12.12/mingw
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/moc.prf \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/win32/opengl.prf \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/uic.prf \
-		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/win32/dumpcpp.prf \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/qmake_use.prf \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/file_copies.prf \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/win32/windows.prf \
@@ -234,8 +233,6 @@ Makefile: ../BaseballProject2/BaseballProject2.pro C:/Qt/Qt5.12.12/5.12.12/mingw
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/yacc.prf \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/lex.prf \
 		../BaseballProject2/BaseballProject2.pro \
-		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5AxContainer.prl \
-		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5AxBase.prl \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5Sql.prl \
@@ -404,7 +401,6 @@ C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/resources.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/moc.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/win32/opengl.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/uic.prf:
-C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/win32/dumpcpp.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/qmake_use.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/file_copies.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/win32/windows.prf:
@@ -413,8 +409,6 @@ C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/exceptions.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/mkspecs/features/lex.prf:
 ../BaseballProject2/BaseballProject2.pro:
-C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5AxContainer.prl:
-C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5AxBase.prl:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.12.12/5.12.12/mingw73_32/lib/Qt5Sql.prl:
