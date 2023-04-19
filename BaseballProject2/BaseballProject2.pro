@@ -1,5 +1,4 @@
 QT       += core gui
-QT       += axcontainer
 
 QT       += core gui sql
 
