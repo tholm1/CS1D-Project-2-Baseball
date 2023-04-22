@@ -2,7 +2,7 @@
 #define FILTEREDTEAMS_H
 
 #include <QDialog>
-#include <QRegExp>
+//#include <QRegExp>
 #include "dbmanager.h"
 #include "teamtablemodel.h"
 #include "mainwindow.h"
@@ -34,6 +34,10 @@ private slots:
      void on_filterByOpenRoof_radioButton_clicked();
 
      void on_filterByDateOpen_radioButton_clicked();
+
+     void on_filterBySeatingCapacity_radioButton_clicked();
+
+     void on_filterByDistancetoCF_radioButton_clicked();
 
 private:
     Ui::filteredTeams *ui;

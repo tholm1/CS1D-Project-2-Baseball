@@ -54,7 +54,7 @@ public:
 "text-decoration: underline;"));
         accumulatorLabel = new QLabel(filteredTeams);
         accumulatorLabel->setObjectName(QString::fromUtf8("accumulatorLabel"));
-        accumulatorLabel->setGeometry(QRect(660, 30, 571, 41));
+        accumulatorLabel->setGeometry(QRect(550, 30, 1301, 41));
         widget = new QWidget(filteredTeams);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(10, 80, 541, 631));

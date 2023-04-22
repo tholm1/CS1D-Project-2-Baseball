@@ -35,10 +35,10 @@ QVariant TeamTableModel::data (const QModelIndex & index,
 
     if (role == Qt::DisplayRole) {
         const Team& team = teamList.at(index.row());
-        QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
-        QLocale aEnglish;
+//        QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
+//        QLocale aEnglish;
 
-        QString formattedCapacity = aEnglish.toString(team.seatingCapacity);
+//        QString formattedCapacity = aEnglish.toString(team.seatingCapacity);
 
         switch (index.column()) {
         case 0:
@@ -46,7 +46,7 @@ QVariant TeamTableModel::data (const QModelIndex & index,
         case 1:
             return team.stadiumName;
         case 2:
-            return formattedCapacity;
+            return team.seatingCapacity;
         case 3:
             return team.location;
         case 4:

@@ -149,3 +149,48 @@ void filteredTeams::on_filterByDateOpen_radioButton_clicked()
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 }
 
+
+void filteredTeams::on_filterBySeatingCapacity_radioButton_clicked()
+{
+    populateTableView();
+
+        for (int i = 0; i < Team::COLUMN_COUNT; i++) {
+            if (i != 2 && i != 1 && i != 0) {
+                ui->tableView->setColumnHidden(i, true);
+
+            }
+        }
+        proxyModel->setFilterKeyColumn(2);
+        ui->tableView->setColumnWidth(1, ui->tableView->width()/3);
+        ui->tableView->setColumnWidth(0, ui->tableView->width()/3);
+        ui->tableView->horizontalHeader()->setStretchLastSection(true);
+
+        // update the accumulator label
+        int totalCapacityAccumulator = 0;
+        for (int i = 0; i < this->teamList.size(); i++) {
+            totalCapacityAccumulator += teamList[i].seatingCapacity;
+        }
+
+        // Adds commas to separate digits in (ten)thousands place.
+//        QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
+//        QLocale aEnglish;
+//        QString formattedNumber = aEnglish.toString(totalCapacityAccumulator);
+        ui->accumulatorLabel->setText("There is a total capacity of " + QString::number(totalCapacityAccumulator) + " seats among all MLB teams!");
+}
+
+
+void filteredTeams::on_filterByDistancetoCF_radioButton_clicked()
+{
+    populateTableView();
+
+    for (int i = 0; i < Team::COLUMN_COUNT; i++) {
+        if (i != 7 && i != 1 && i != 0) {
+            ui->tableView->setColumnHidden(i, true);
+        }
+    }
+    proxyModel->setFilterKeyColumn(7);
+    ui->tableView->setColumnWidth(1, ui->tableView->width()/3);
+    ui->tableView->setColumnWidth(0, ui->tableView->width()/3);
+    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+}
+

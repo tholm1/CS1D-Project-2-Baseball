@@ -43,9 +43,9 @@ text-decoration: underline;</string>
   <widget class="QLabel" name="accumulatorLabel">
    <property name="geometry">
     <rect>
-     <x>660</x>
+     <x>550</x>
      <y>30</y>
-     <width>571</width>
+     <width>1301</width>
      <height>41</height>
     </rect>
    </property>
