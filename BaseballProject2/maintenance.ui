@@ -26,7 +26,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 0, 0)</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
    </property>
    <property name="text">
     <string>Add/Delete Information</string>
@@ -42,7 +43,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 0, 0)</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
    </property>
    <property name="text">
     <string>Modify Information</string>
@@ -60,7 +62,8 @@
    <property name="styleSheet">
     <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
 text-decoration: underline;
-background-color: rgb(0, 0, 0)</string>
+color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
    </property>
    <property name="text">
     <string>Back</string>

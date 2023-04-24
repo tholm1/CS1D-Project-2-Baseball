@@ -47,7 +47,8 @@ background-color: rgb(0, 0, 0)</string>
     <item>
      <widget class="QPushButton" name="pushButton">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
        <string>Plan trip starting from Dodger Stadium</string>
@@ -57,7 +58,8 @@ background-color: rgb(0, 0, 0)</string>
     <item>
      <widget class="QPushButton" name="pushButton_2">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
        <string>Plan trip and choose your route</string>
@@ -67,7 +69,8 @@ background-color: rgb(0, 0, 0)</string>
     <item>
      <widget class="QPushButton" name="pushButton_3">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
        <string>Plan trip starting from Marlins Park</string>
@@ -77,7 +80,8 @@ background-color: rgb(0, 0, 0)</string>
     <item>
      <widget class="QPushButton" name="pushButton_4">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
        <string>Plan trip starting from Marlins Park</string>
@@ -87,7 +91,8 @@ background-color: rgb(0, 0, 0)</string>
     <item>
      <widget class="QPushButton" name="pushButton_5">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
        <string>Plan trip......</string>
@@ -97,7 +102,8 @@ background-color: rgb(0, 0, 0)</string>
     <item>
      <widget class="QPushButton" name="pushButton_6">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
        <string>Plan trip starting from Oracle Park</string>
@@ -107,7 +113,8 @@ background-color: rgb(0, 0, 0)</string>
     <item>
      <widget class="QPushButton" name="pushButton_7">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
        <string>Plan trip starting from Target Field</string>
