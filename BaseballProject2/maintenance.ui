@@ -30,7 +30,7 @@
 background-color: rgb(167, 167, 167);</string>
    </property>
    <property name="text">
-    <string>Add/Delete Information</string>
+    <string>Modify Stadiums</string>
    </property>
   </widget>
   <widget class="QPushButton" name="modifyInfo_pushButton">
@@ -47,7 +47,7 @@ background-color: rgb(167, 167, 167);</string>
 background-color: rgb(167, 167, 167);</string>
    </property>
    <property name="text">
-    <string>Modify Information</string>
+    <string>Modify Souvenirs</string>
    </property>
   </widget>
   <widget class="QPushButton" name="back_pushButton">
