@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(4, 51, 255)</string>
+   <string notr="true"/>
   </property>
   <widget class="QPushButton" name="Add_Delete_Info_pushButton">
    <property name="geometry">
@@ -69,6 +69,26 @@ background-color: rgb(167, 167, 167);</string>
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>521</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/image/brown_back.jpg);</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>Add_Delete_Info_pushButton</zorder>
+  <zorder>modifyInfo_pushButton</zorder>
+  <zorder>back_pushButton</zorder>
  </widget>
  <resources/>
  <connections/>

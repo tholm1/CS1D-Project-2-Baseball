@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(4, 51, 255)</string>
+   <string notr="true"/>
   </property>
   <widget class="QPushButton" name="displaySingleTeam_pushButton">
    <property name="geometry">
@@ -69,6 +69,26 @@ background-color: rgb(167, 167, 167);</string>
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>747</width>
+     <height>540</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/image/brown_back.jpg);</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>displaySingleTeam_pushButton</zorder>
+  <zorder>displayWithFilter_pushButton</zorder>
+  <zorder>back_pushButton</zorder>
  </widget>
  <resources/>
  <connections/>

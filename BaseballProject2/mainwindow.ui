@@ -7,28 +7,32 @@
     <x>0</x>
     <y>0</y>
     <width>738</width>
-    <height>556</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(4, 51, 255)</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QPushButton" name="display_pushButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>360</y>
+      <x>170</x>
+      <y>410</y>
       <width>401</width>
       <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(167, 167, 167);</string>
+     <string notr="true">
+font: 22pt &quot;Ravie&quot;;
+color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.05 rgba(14, 8, 73, 255), stop:0.36 rgba(28, 17, 145, 255), stop:0.6 rgba(126, 14, 81, 255), stop:0.75 rgba(234, 11, 11, 255), stop:0.79 rgba(244, 70, 5, 255), stop:0.86 rgba(255, 136, 0, 255), stop:0.935 rgba(239, 236, 55, 255));</string>
     </property>
     <property name="text">
      <string>Start</string>
@@ -44,8 +48,9 @@ background-color: rgb(167, 167, 167);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(167, 167, 167);</string>
+     <string notr="true">background-color: rgb(0, 170, 255);
+color: rgb(255, 255, 255);
+font: 700 12pt &quot;Segoe Script&quot;;</string>
     </property>
     <property name="text">
      <string>Maintenance</string>
@@ -54,16 +59,40 @@ background-color: rgb(167, 167, 167);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>60</y>
-      <width>521</width>
+      <x>150</x>
+      <y>80</y>
+      <width>451</width>
       <height>271</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">
+border-image: url(:/image/take_me_out.png);</string>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:64pt; font-weight:600; text-decoration: underline;&quot;&gt;CS1D Project 2&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:64pt; font-weight:600; text-decoration: underline;&quot;&gt;Take Me Home &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:64pt; font-weight:600; text-decoration: underline;&quot;&gt;to the Ballgame!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="background">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>738</width>
+      <height>550</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/baseball_stadium.jpg);</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <zorder>background</zorder>
+   <zorder>display_pushButton</zorder>
+   <zorder>maintenance_pushButton</zorder>
+   <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -71,7 +100,7 @@ background-color: rgb(167, 167, 167);</string>
      <x>0</x>
      <y>0</y>
      <width>738</width>
-     <height>37</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
