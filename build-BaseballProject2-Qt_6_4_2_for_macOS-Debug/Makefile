@@ -1723,7 +1723,7 @@ mainwindow.o: ../BaseballProject2/mainwindow.cpp ../BaseballProject2/mainwindow.
 modifysouvenirs.o: ../BaseballProject2/modifysouvenirs.cpp ../BaseballProject2/modifysouvenirs.h \
 		../../../Applications/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../Applications/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_modifysouvenirs.h
+		../BaseballProject2/ui_modifysouvenirs.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modifysouvenirs.o ../BaseballProject2/modifysouvenirs.cpp
 
 modifystadiums.o: ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/modifystadiums.h \
@@ -1766,7 +1766,7 @@ modifystadiums.o: ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/mod
 		../BaseballProject2/teamtablemodel.h \
 		../../../Applications/Qt/6.4.2/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		../../../Applications/Qt/6.4.2/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
-		ui_modifystadiums.h \
+		../BaseballProject2/ui_modifystadiums.h \
 		../BaseballProject2/maintenance.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modifystadiums.o ../BaseballProject2/modifystadiums.cpp
 

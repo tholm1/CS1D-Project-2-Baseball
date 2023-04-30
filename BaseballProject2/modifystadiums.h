@@ -17,19 +17,14 @@ public:
     explicit ModifyStadiums(QWidget *parent = nullptr);
     ~ModifyStadiums();
     void populateTableView();
+    void updateDataView();
 
 private slots:
-    void on_pushButton_clicked();
 
-    void on_addBtn_clicked();
-
-    void on_modBtn_clicked();
 
     void on_delBtn_clicked();
 
-    void on_addBack_clicked();
-
-    void on_modBack_clicked();
+    void on_backBtn_clicked();
 
 private:
     Ui::ModifyStadiums *ui;

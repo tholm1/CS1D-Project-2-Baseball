@@ -13,7 +13,7 @@ ModifyStadiums::ModifyStadiums(QWidget *parent) :
 
     ui->tableView->verticalHeader()->setVisible(false);
 
-    ui->comboBox->setModel(m_database.loadTeamNamesOnly());
+    ui->stadiumDelComboBox->setModel(m_database.loadTeamNamesOnly());
 }
 
 ModifyStadiums::~ModifyStadiums()
@@ -39,43 +39,31 @@ void ModifyStadiums::populateTableView()
     ui->accumulatorLabel->clear();
 }
 
-void ModifyStadiums::on_pushButton_clicked()
-{
-    maintenance maintenancePage;
-    maintenancePage.setModal(true);
-    hide();
-    maintenancePage.exec();
-}
-
-
-
-
-void ModifyStadiums::on_addBtn_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-
-void ModifyStadiums::on_modBtn_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
+void ModifyStadiums::updateDataView() {
+    this->populateTableView();
+    ui->stadiumDelComboBox->setModel(m_database.loadTeamNamesOnly());
 }
 
 
 void ModifyStadiums::on_delBtn_clicked()
 {
+    QSqlQuery* delQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+    QString editStadiumName = ui->stadiumDelComboBox->currentText();
 
+    delQuery->prepare("DELETE FROM \"MLB Teams\" WHERE \"Team Name\" = :team_name");
+    delQuery->bindValue(":team_name", editStadiumName);
+    delQuery->exec();
+
+    updateDataView();
 }
 
 
-void ModifyStadiums::on_addBack_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
 
-
-void ModifyStadiums::on_modBack_clicked()
+void ModifyStadiums::on_backBtn_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    maintenance maintenancePage;
+    maintenancePage.setModal(true);
+    hide();
+    maintenancePage.exec();
 }
 

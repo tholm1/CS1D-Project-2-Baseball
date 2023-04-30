@@ -54,7 +54,7 @@ public:
 
     void retranslateUi(QDialog *maintenance)
     {
-        maintenance->setWindowTitle(QCoreApplication::translate("maintenance", "Dialog", nullptr));
+        maintenance->setWindowTitle(QCoreApplication::translate("maintenance", "Maintenance", nullptr));
         Add_Delete_Info_pushButton->setText(QCoreApplication::translate("maintenance", "Modify Stadiums", nullptr));
         modifyInfo_pushButton->setText(QCoreApplication::translate("maintenance", "Modify Souvenirs", nullptr));
         back_pushButton->setText(QCoreApplication::translate("maintenance", "Back", nullptr));
