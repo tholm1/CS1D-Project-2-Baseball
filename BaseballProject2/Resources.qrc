@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/image">
         <file>baselogo.png</file>
+        <file>baseball_stadium.jpg</file>
+        <file>brown_back.jpg</file>
+        <file>take_me_out.png</file>
+        <file>brown2.png</file>
     </qresource>
 </RCC>

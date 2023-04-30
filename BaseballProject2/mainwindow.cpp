@@ -29,7 +29,6 @@ void MainWindow::on_maintenance_pushButton_clicked()
 {
     login login;
     login.setModal(true);
-    hide();
     login.exec();
 }
 
