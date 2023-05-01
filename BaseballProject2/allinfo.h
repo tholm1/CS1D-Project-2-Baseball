@@ -19,6 +19,8 @@ public:
 
 private slots:
     void on_search_button_clicked();
+    void on_back_pushButton_clicked();
+
 private:
     Ui::Allinfo *ui;
     dbManager m_database;   /**< database manager variable*/

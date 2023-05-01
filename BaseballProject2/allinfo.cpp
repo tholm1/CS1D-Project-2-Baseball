@@ -1,6 +1,7 @@
 #include "allinfo.h"
 #include "ui_allinfo.h"
 #include "dbmanager.h"
+#include "displayteam.h"
 
 Allinfo::Allinfo(QWidget *parent) :
     QDialog(parent),
@@ -84,3 +85,12 @@ void Allinfo::on_search_button_clicked()
     ui->roof->setText(roof);
 
 }
+
+void Allinfo::on_back_pushButton_clicked()
+{
+    displayTeam display;
+    display.setModal(true);
+    hide();
+    display.exec();
+}
+
