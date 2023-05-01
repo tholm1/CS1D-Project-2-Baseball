@@ -17,6 +17,7 @@ SOURCES += \
     displayinfo.cpp \
     displayteam.cpp \
     filteredteams.cpp \
+    graph.cpp \
     login.cpp \
     main.cpp \
     maintenance.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     displayinfo.h \
     displayteam.h \
     filteredteams.h \
+    graph.h \
     login.h \
     maintenance.h \
     mainwindow.h \
