@@ -26,6 +26,8 @@ private slots:
 
     void on_backBtn_clicked();
 
+    void on_confirmAddBtn_clicked();
+
 private:
     Ui::ModifyStadiums *ui;
     QSortFilterProxyModel* proxyModel;

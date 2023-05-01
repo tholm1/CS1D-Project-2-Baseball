@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1563</width>
-    <height>861</height>
+    <width>812</width>
+    <height>640</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,7 +73,11 @@
             </spacer>
            </item>
            <item>
-            <widget class="QLineEdit" name="teamNameAddLine"/>
+            <widget class="QLineEdit" name="teamNameAddLine">
+             <property name="placeholderText">
+              <string>Team name</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -100,7 +104,11 @@
             </spacer>
            </item>
            <item>
-            <widget class="QLineEdit" name="stadiumNameAddLine"/>
+            <widget class="QLineEdit" name="stadiumNameAddLine">
+             <property name="placeholderText">
+              <string>Stadium name</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -363,13 +371,6 @@
               </size>
              </property>
             </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="resetAddForm">
-             <property name="text">
-              <string>Reset Form</string>
-             </property>
-            </widget>
            </item>
            <item>
             <widget class="QPushButton" name="confirmAddBtn">
