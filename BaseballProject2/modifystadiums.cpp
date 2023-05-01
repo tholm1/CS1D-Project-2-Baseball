@@ -20,6 +20,8 @@ ModifyStadiums::ModifyStadiums(QWidget *parent) :
     ui->leagueAddBox->addItems({"National", "American"});
     ui->parkTypologyAddBox->addItems({"Retro Modern", "Retro Classic", "Jewel Box", "Modern", "Contemporary", "Multipurpose"});
     ui->roofTypeAddBox->addItems({"Retractable", "Open", "Fixed"});
+
+    ui->errorLabel->setVisible(false);
 }
 
 ModifyStadiums::~ModifyStadiums()
@@ -42,7 +44,6 @@ void ModifyStadiums::populateTableView()
         ui->tableView->setColumnHidden(i, false);
     }
     ui->tableView->horizontalHeader()->restoreState(this->defaultTableState);
-    ui->accumulatorLabel->clear();
 }
 
 void ModifyStadiums::updateDataView() {
@@ -93,16 +94,28 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
 
     try
         {
-            QSqlQuery* checkQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-            checkQuery->prepare("SELECT \"Team Name\" FROM \"MLB Teams\" WHERE \"Team Name\" = :checkTeamName");
-            checkQuery->bindValue(":checkTeamName", addTeamName);
-            checkQuery->exec();
-            checkQuery->next();
+            QSqlQuery* checkTeamQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+            checkTeamQuery->prepare("SELECT \"Team Name\" FROM \"MLB Teams\" WHERE \"Team Name\" = :checkTeamName");
+            checkTeamQuery->bindValue(":checkTeamName", addTeamName);
+            checkTeamQuery->exec();
+            checkTeamQuery->next();
 
-            QString teamSearched = checkQuery->value(0).toString();
-            if(teamSearched == addTeamName)
+            QString teamSearched = checkTeamQuery->value(0).toString();
+            if(teamSearched == addTeamName) // checks for duplicate team name
             {
                throw 0;
+            }
+
+            QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+            checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
+            checkStadiumQuery->bindValue(":checkStadiumName", addStadiumName);
+            checkStadiumQuery->exec();
+            checkStadiumQuery->next();
+
+            QString stadiumSearched = checkStadiumQuery->value(0).toString();
+            if(stadiumSearched == addStadiumName) // checks for duplicate stadium name
+            {
+               throw 1;
             }
 
             QSqlQuery* addQuery = new QSqlQuery(dbManager::managerInstance->m_database);
@@ -147,11 +160,32 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
         }
         catch(int addUpdateError)
         {
+            ui->errorLabel->setVisible(true);
 
             if(addUpdateError == 0)
             {
-               qDebug() << "DUPLICATE TEAM NAME"; // insert error message
+                ui->errorLabel->setText("You cannot enter a duplicate team name.");
+                qDebug() << "DUPLICATE TEAM NAME" << Qt::endl; // insert error message
+            }
+            if(addUpdateError == 1)
+            {
+                ui->errorLabel->setText("You cannot enter a duplicate stadium name.");
+                qDebug() << "DUPLICATE STADIUM NAME" << Qt::endl; // insert error message
             }
         }
+}
+
+
+void ModifyStadiums::on_teamNameAddLine_textEdited(const QString &arg1)
+{
+    ui->errorLabel->setVisible(false);
+    ui->errorLabel->setText("");
+}
+
+
+void ModifyStadiums::on_stadiumNameAddLine_textEdited(const QString &arg1)
+{
+    ui->errorLabel->setVisible(false);
+    ui->errorLabel->setText("");
 }
 
