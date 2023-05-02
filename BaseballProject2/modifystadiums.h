@@ -43,6 +43,8 @@ private slots:
 
     void on_stadiumNameAddLine_textEdited(const QString &arg1);
 
+    void on_teamNameUpdateBox_currentTextChanged(const QString &updatedTeamName);
+
 private:
     Ui::ModifyStadiums *ui;
     QSortFilterProxyModel* proxyModel;

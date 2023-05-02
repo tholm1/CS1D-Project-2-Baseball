@@ -8,18 +8,23 @@ ModifyStadiums::ModifyStadiums(QWidget *parent) :
     ui(new Ui::ModifyStadiums)
 {
     ui->setupUi(this);
-    this->populateTableView();
+
+    updateDataView();
     this->defaultTableState = ui->tableView->horizontalHeader()->saveState();
 
     ui->tableView->verticalHeader()->setVisible(false);
 
-    ui->stadiumDelComboBox->setModel(m_database.loadTeamNamesOnly());
-
     // combo box initializations
+    // add combo boxes
     ui->playingSurfaceAddBox->addItems({"Grass", "AstroTurf GameDay Grass", "AstroTurf GameDay Grass 3D"});
     ui->leagueAddBox->addItems({"National", "American"});
-    ui->parkTypologyAddBox->addItems({"Retro Modern", "Retro Classic", "Jewel Box", "Modern", "Contemporary", "Multipurpose"});
+    ui->ballparkTypologyAddBox->addItems({"Retro Modern", "Retro Classic", "Jewel Box", "Modern", "Contemporary", "Multipurpose"});
     ui->roofTypeAddBox->addItems({"Retractable", "Open", "Fixed"});
+    // modify combo boxes
+    ui->playingSurfaceUpdateBox->addItems({"Grass", "AstroTurf GameDay Grass", "AstroTurf GameDay Grass 3D"});
+    ui->leagueUpdateBox->addItems({"National", "American"});
+    ui->ballparkTypologyUpdateBox->addItems({"Retro Modern", "Retro Classic", "Jewel Box", "Modern", "Contemporary", "Multipurpose"});
+    ui->roofTypeUpdateBox->addItems({"Retractable", "Open", "Fixed"});
 
     ui->errorLabel->setVisible(false);
 }
@@ -49,6 +54,7 @@ void ModifyStadiums::populateTableView()
 void ModifyStadiums::updateDataView() {
     this->populateTableView();
     ui->stadiumDelComboBox->setModel(m_database.loadTeamNamesOnly());
+    ui->teamNameUpdateBox->setModel(m_database.loadTeamNamesOnly());
 }
 
 
@@ -88,7 +94,7 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
     QString addLeague                   = ui->leagueAddBox->currentText();
     int     addDateOpened               = ui->dateOpenedAddBox->value();
     int     addDistanceToCenterField    = ui->distanceToCenterFieldAddBox->value();
-    QString addParkTypology             = ui->parkTypologyAddBox->currentText();
+    QString addParkTypology             = ui->ballparkTypologyAddBox->currentText();
     QString addRoofType                 = ui->roofTypeAddBox->currentText();
 
 
@@ -187,5 +193,137 @@ void ModifyStadiums::on_stadiumNameAddLine_textEdited(const QString &arg1)
 {
     ui->errorLabel->setVisible(false);
     ui->errorLabel->setText("");
+}
+
+
+void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &updatedTeamName)
+{
+    qDebug() << "Changed to " << updatedTeamName << Qt::endl;
+    QSqlQuery* fetchQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+    fetchQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    QString updatedStadiumName = fetchQuery->value(0).toString();
+
+    ui->stadiumNameUpdateLine->setText(updatedStadiumName);
+
+    // Seating capacity data fetch
+
+    fetchQuery->prepare("SELECT \"Seating Capacity\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    int updatedSeatingCapacity = fetchQuery->value(0).toInt();
+
+    ui->seatingCapacityUpdateBox->setValue(updatedSeatingCapacity);
+
+    fetchQuery->prepare("SELECT \"Location\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    QString updatedLocation = fetchQuery->value(0).toString();
+
+    QStringList parts = updatedLocation.split(", ");
+
+    QString updatedCityName;
+    QString updatedStateName;
+
+    // Splits the location string into a city and state variable
+    updatedCityName = parts[0];
+    updatedStateName = parts[1];
+
+    ui->locationCityUpdateLine->setText(updatedCityName);
+    ui->locationStateUpdateLine->setText(updatedStateName);
+
+    fetchQuery->prepare("SELECT \"Playing Surface\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    /*
+     * This code is used to set the combo box of the playing
+     * surface to match the playing surface of the stadium selected.
+     */
+    QString updatedPlayingSurface = fetchQuery->value(0).toString();
+    int playingSurfaceIndex = ui->playingSurfaceUpdateBox->findText(updatedPlayingSurface);
+
+    if ( playingSurfaceIndex != -1 ) { // -1 for not found
+       ui->playingSurfaceUpdateBox->setCurrentIndex(playingSurfaceIndex);
+    }
+
+    // League data fetch
+    fetchQuery->prepare("SELECT \"League\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    /*
+     * This code is used to set the combo box of the league
+     * to match the league of the stadium selected.
+     */
+    QString updatedLeague = fetchQuery->value(0).toString();
+    int leagueIndex = ui->leagueUpdateBox->findText(updatedLeague);
+
+    if ( leagueIndex != -1 ) { // -1 for not found
+       ui->leagueUpdateBox->setCurrentIndex(leagueIndex);
+    }
+
+    // Date opened data fetch
+    fetchQuery->prepare("SELECT \"Date Opened\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    int updatedDateOpened = fetchQuery->value(0).toInt();
+
+    ui->dateOpenedUpdateBox->setValue(updatedDateOpened);
+
+    // Distance to Center Field data fetch
+    fetchQuery->prepare("SELECT \"Distance to Center Field\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    int updatedDistanceToCenterField = fetchQuery->value(0).toInt();
+
+    ui->distanceToCenterFieldUpdateBox->setValue(updatedDistanceToCenterField);
+
+    // Ballpark Typology data fetch
+    fetchQuery->prepare("SELECT \"Ballpark Typology\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    /*
+     * This code is used to set the combo box of the ballpark typology
+     * to match the league of the stadium selected.
+     */
+    QString updatedBallparkTypology = fetchQuery->value(0).toString();
+    int ballparkTypologyIndex = ui->ballparkTypologyUpdateBox->findText(updatedBallparkTypology);
+
+    if ( ballparkTypologyIndex != -1 ) { // -1 for not found
+       ui->ballparkTypologyUpdateBox->setCurrentIndex(ballparkTypologyIndex);
+    }
+
+    // Roof type data fetch
+    fetchQuery->prepare("SELECT \"Roof Type\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
+    fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
+    fetchQuery->exec();
+    fetchQuery->next();
+
+    /*
+     * This code is used to set the combo box of the roof type
+     * to match the league of the stadium selected.
+     */
+    QString updatedRoofType = fetchQuery->value(0).toString();
+    int roofTypeIndex = ui->roofTypeUpdateBox->findText(updatedRoofType);
+
+    if ( ballparkTypologyIndex != -1 ) { // -1 for not found
+       ui->roofTypeUpdateBox->setCurrentIndex(roofTypeIndex);
+    }
 }
 
