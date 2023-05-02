@@ -52,7 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../BaseballProject2/allinfo.cpp \
+SOURCES       = ../BaseballProject2/Souvenir.cpp \
+		../BaseballProject2/allinfo.cpp \
 		../BaseballProject2/dbmanager.cpp \
 		../BaseballProject2/displayinfo.cpp \
 		../BaseballProject2/displayteam.cpp \
@@ -65,6 +66,7 @@ SOURCES       = ../BaseballProject2/allinfo.cpp \
 		../BaseballProject2/modifystadiums.cpp \
 		../BaseballProject2/planvacation.cpp \
 		../BaseballProject2/teamtablemodel.cpp qrc_Resources.cpp \
+		moc_Souvenir.cpp \
 		moc_allinfo.cpp \
 		moc_displayinfo.cpp \
 		moc_displayteam.cpp \
@@ -75,7 +77,8 @@ SOURCES       = ../BaseballProject2/allinfo.cpp \
 		moc_modifysouvenirs.cpp \
 		moc_modifystadiums.cpp \
 		moc_planvacation.cpp
-OBJECTS       = allinfo.o \
+OBJECTS       = Souvenir.o \
+		allinfo.o \
 		dbmanager.o \
 		displayinfo.o \
 		displayteam.o \
@@ -89,6 +92,7 @@ OBJECTS       = allinfo.o \
 		planvacation.o \
 		teamtablemodel.o \
 		qrc_Resources.o \
+		moc_Souvenir.o \
 		moc_allinfo.o \
 		moc_displayinfo.o \
 		moc_displayteam.o \
@@ -370,6 +374,7 @@ DIST          = /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_pre.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/qt_config.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_post.prf \
+		../BaseballProject2/.qmake.stash \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/mac/sdk.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/toolchain.prf \
@@ -399,7 +404,8 @@ DIST          = /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_pre.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/exceptions.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/yacc.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/lex.prf \
-		../BaseballProject2/BaseballProject2.pro ../BaseballProject2/allinfo.h \
+		../BaseballProject2/BaseballProject2.pro ../BaseballProject2/Souvenir.h \
+		../BaseballProject2/allinfo.h \
 		../BaseballProject2/dbmanager.h \
 		../BaseballProject2/displayinfo.h \
 		../BaseballProject2/displayteam.h \
@@ -410,7 +416,8 @@ DIST          = /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_pre.prf \
 		../BaseballProject2/modifysouvenirs.h \
 		../BaseballProject2/modifystadiums.h \
 		../BaseballProject2/planvacation.h \
-		../BaseballProject2/teamtablemodel.h ../BaseballProject2/allinfo.cpp \
+		../BaseballProject2/teamtablemodel.h ../BaseballProject2/Souvenir.cpp \
+		../BaseballProject2/allinfo.cpp \
 		../BaseballProject2/dbmanager.cpp \
 		../BaseballProject2/displayinfo.cpp \
 		../BaseballProject2/displayteam.cpp \
@@ -431,7 +438,7 @@ TARGET        = BaseballProject2.app/Contents/MacOS/BaseballProject2
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 13.3
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-EXPORT__QMAKE_STASH_ = 
+EXPORT__QMAKE_STASH_ = /Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/build-BaseballProject2-Qt_6_5_0_for_macOS-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -718,6 +725,7 @@ Makefile: ../BaseballProject2/BaseballProject2.pro /Users/trevorholm/Qt/6.5.0/ma
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/qt_config.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/mac/sdk.prf \
 		/Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/toolchain.prf \
@@ -1025,6 +1033,7 @@ Makefile: ../BaseballProject2/BaseballProject2.pro /Users/trevorholm/Qt/6.5.0/ma
 /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/qt_config.prf:
 /Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang/qmake.conf:
 /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/exclusive_builds.prf:
 /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/mac/sdk.prf:
 /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/toolchain.prf:
@@ -1090,8 +1099,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../BaseballProject2/Resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../BaseballProject2/allinfo.h ../BaseballProject2/dbmanager.h ../BaseballProject2/displayinfo.h ../BaseballProject2/displayteam.h ../BaseballProject2/filteredteams.h ../BaseballProject2/login.h ../BaseballProject2/maintenance.h ../BaseballProject2/mainwindow.h ../BaseballProject2/modifysouvenirs.h ../BaseballProject2/modifystadiums.h ../BaseballProject2/planvacation.h ../BaseballProject2/teamtablemodel.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../BaseballProject2/allinfo.cpp ../BaseballProject2/dbmanager.cpp ../BaseballProject2/displayinfo.cpp ../BaseballProject2/displayteam.cpp ../BaseballProject2/filteredteams.cpp ../BaseballProject2/login.cpp ../BaseballProject2/main.cpp ../BaseballProject2/maintenance.cpp ../BaseballProject2/mainwindow.cpp ../BaseballProject2/modifysouvenirs.cpp ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/planvacation.cpp ../BaseballProject2/teamtablemodel.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../BaseballProject2/Souvenir.h ../BaseballProject2/allinfo.h ../BaseballProject2/dbmanager.h ../BaseballProject2/displayinfo.h ../BaseballProject2/displayteam.h ../BaseballProject2/filteredteams.h ../BaseballProject2/login.h ../BaseballProject2/maintenance.h ../BaseballProject2/mainwindow.h ../BaseballProject2/modifysouvenirs.h ../BaseballProject2/modifystadiums.h ../BaseballProject2/planvacation.h ../BaseballProject2/teamtablemodel.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../BaseballProject2/Souvenir.cpp ../BaseballProject2/allinfo.cpp ../BaseballProject2/dbmanager.cpp ../BaseballProject2/displayinfo.cpp ../BaseballProject2/displayteam.cpp ../BaseballProject2/filteredteams.cpp ../BaseballProject2/login.cpp ../BaseballProject2/main.cpp ../BaseballProject2/maintenance.cpp ../BaseballProject2/mainwindow.cpp ../BaseballProject2/modifysouvenirs.cpp ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/planvacation.cpp ../BaseballProject2/teamtablemodel.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../BaseballProject2/allinfo.ui ../BaseballProject2/displayinfo.ui ../BaseballProject2/displayteam.ui ../BaseballProject2/filteredteams.ui ../BaseballProject2/login.ui ../BaseballProject2/maintenance.ui ../BaseballProject2/mainwindow.ui ../BaseballProject2/modifysouvenirs.ui ../BaseballProject2/modifystadiums.ui ../BaseballProject2/planvacation.ui $(DISTDIR)/
 
 
@@ -1102,6 +1111,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r BaseballProject2.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -1130,9 +1140,17 @@ qrc_Resources.cpp: ../BaseballProject2/Resources.qrc \
 		../BaseballProject2/baselogo.png
 	/Users/trevorholm/Qt/6.5.0/macos/libexec/rcc -name Resources --no-zstd ../BaseballProject2/Resources.qrc -o qrc_Resources.cpp
 
-compiler_moc_header_make_all: moc_allinfo.cpp moc_displayinfo.cpp moc_displayteam.cpp moc_filteredteams.cpp moc_login.cpp moc_maintenance.cpp moc_mainwindow.cpp moc_modifysouvenirs.cpp moc_modifystadiums.cpp moc_planvacation.cpp
+compiler_moc_header_make_all: moc_Souvenir.cpp moc_allinfo.cpp moc_displayinfo.cpp moc_displayteam.cpp moc_filteredteams.cpp moc_login.cpp moc_maintenance.cpp moc_mainwindow.cpp moc_modifysouvenirs.cpp moc_modifystadiums.cpp moc_planvacation.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_allinfo.cpp moc_displayinfo.cpp moc_displayteam.cpp moc_filteredteams.cpp moc_login.cpp moc_maintenance.cpp moc_mainwindow.cpp moc_modifysouvenirs.cpp moc_modifystadiums.cpp moc_planvacation.cpp
+	-$(DEL_FILE) moc_Souvenir.cpp moc_allinfo.cpp moc_displayinfo.cpp moc_displayteam.cpp moc_filteredteams.cpp moc_login.cpp moc_maintenance.cpp moc_mainwindow.cpp moc_modifysouvenirs.cpp moc_modifystadiums.cpp moc_planvacation.cpp
+moc_Souvenir.cpp: ../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/trevorholm/Qt/6.5.0/macos/libexec/moc
+	/Users/trevorholm/Qt/6.5.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang -I/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/BaseballProject2 -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trevorholm/Qt/6.5.0/macos/lib ../BaseballProject2/Souvenir.h -o moc_Souvenir.cpp
+
 moc_allinfo.cpp: ../BaseballProject2/allinfo.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -1402,6 +1420,13 @@ compiler_lex_clean:
 compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+Souvenir.o: ../BaseballProject2/Souvenir.cpp ../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Souvenir.o ../BaseballProject2/Souvenir.cpp
 
 allinfo.o: ../BaseballProject2/allinfo.cpp ../BaseballProject2/allinfo.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QDialog \
@@ -1851,6 +1876,9 @@ teamtablemodel.o: ../BaseballProject2/teamtablemodel.cpp ../BaseballProject2/tea
 
 qrc_Resources.o: qrc_Resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
+
+moc_Souvenir.o: moc_Souvenir.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Souvenir.o moc_Souvenir.cpp
 
 moc_allinfo.o: moc_allinfo.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_allinfo.o moc_allinfo.cpp

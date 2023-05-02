@@ -40,14 +40,24 @@ struct qt_meta_stringdata_CLASSplanVacationENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSplanVacationENDCLASS = QtMocHelpers::stringData(
     "planVacation",
     "on_back_pushButton_clicked",
-    ""
+    "",
+    "on_calculatesouvbtn_clicked",
+    "on_backtotrip_clicked",
+    "on_clearsouvbtn_clicked",
+    "resetDataMembers",
+    "on_pushButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSplanVacationENDCLASS_t {
-    uint offsetsAndSizes[6];
+    uint offsetsAndSizes[16];
     char stringdata0[13];
     char stringdata1[27];
     char stringdata2[1];
+    char stringdata3[28];
+    char stringdata4[22];
+    char stringdata5[24];
+    char stringdata6[17];
+    char stringdata7[22];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSplanVacationENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -55,11 +65,21 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSplanVacationENDCLASS_t qt_meta_
     {
         QT_MOC_LITERAL(0, 12),  // "planVacation"
         QT_MOC_LITERAL(13, 26),  // "on_back_pushButton_clicked"
-        QT_MOC_LITERAL(40, 0)   // ""
+        QT_MOC_LITERAL(40, 0),  // ""
+        QT_MOC_LITERAL(41, 27),  // "on_calculatesouvbtn_clicked"
+        QT_MOC_LITERAL(69, 21),  // "on_backtotrip_clicked"
+        QT_MOC_LITERAL(91, 23),  // "on_clearsouvbtn_clicked"
+        QT_MOC_LITERAL(115, 16),  // "resetDataMembers"
+        QT_MOC_LITERAL(132, 21)   // "on_pushButton_clicked"
     },
     "planVacation",
     "on_back_pushButton_clicked",
-    ""
+    "",
+    "on_calculatesouvbtn_clicked",
+    "on_backtotrip_clicked",
+    "on_clearsouvbtn_clicked",
+    "resetDataMembers",
+    "on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -71,7 +91,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplanVacationENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,9 +99,19 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplanVacationENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x08,    1 /* Private */,
+       1,    0,   50,    2, 0x08,    1 /* Private */,
+       3,    0,   51,    2, 0x08,    2 /* Private */,
+       4,    0,   52,    2, 0x08,    3 /* Private */,
+       5,    0,   53,    2, 0x08,    4 /* Private */,
+       6,    0,   54,    2, 0x08,    5 /* Private */,
+       7,    0,   55,    2, 0x08,    6 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -97,6 +127,16 @@ Q_CONSTINIT const QMetaObject planVacation::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<planVacation, std::true_type>,
         // method 'on_back_pushButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_calculatesouvbtn_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_backtotrip_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_clearsouvbtn_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'resetDataMembers'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_pushButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -109,6 +149,11 @@ void planVacation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         (void)_t;
         switch (_id) {
         case 0: _t->on_back_pushButton_clicked(); break;
+        case 1: _t->on_calculatesouvbtn_clicked(); break;
+        case 2: _t->on_backtotrip_clicked(); break;
+        case 3: _t->on_clearsouvbtn_clicked(); break;
+        case 4: _t->resetDataMembers(); break;
+        case 5: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
@@ -134,13 +179,13 @@ int planVacation::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 6;
     }
     return _id;
 }

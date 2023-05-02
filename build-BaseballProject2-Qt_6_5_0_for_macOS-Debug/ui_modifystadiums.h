@@ -100,7 +100,7 @@ public:
     {
         if (ModifyStadiums->objectName().isEmpty())
             ModifyStadiums->setObjectName("ModifyStadiums");
-        ModifyStadiums->resize(812, 640);
+        ModifyStadiums->resize(812, 643);
         verticalLayout_2 = new QVBoxLayout(ModifyStadiums);
         verticalLayout_2->setObjectName("verticalLayout_2");
         horizontalLayout = new QHBoxLayout();

@@ -12,7 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -21,7 +25,8 @@ QT_BEGIN_NAMESPACE
 class Ui_planVacation
 {
 public:
-    QPushButton *back_pushButton;
+    QStackedWidget *stackedWidget;
+    QWidget *page;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QPushButton *pushButton;
@@ -31,22 +36,29 @@ public:
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
     QPushButton *pushButton_7;
+    QPushButton *back_pushButton;
+    QWidget *page_2;
+    QTableWidget *souvenirtable;
+    QPushButton *calculatesouvbtn;
+    QPushButton *clearsouvbtn;
+    QPushButton *backtotrip;
+    QLabel *label;
+    QLabel *grandtotal;
 
     void setupUi(QDialog *planVacation)
     {
         if (planVacation->objectName().isEmpty())
             planVacation->setObjectName("planVacation");
-        planVacation->resize(689, 440);
-        planVacation->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 51, 255)"));
-        back_pushButton = new QPushButton(planVacation);
-        back_pushButton->setObjectName("back_pushButton");
-        back_pushButton->setGeometry(QRect(10, 20, 80, 22));
-        back_pushButton->setStyleSheet(QString::fromUtf8("font: 8pt \"MS Shell Dlg 2\";\n"
-"text-decoration: underline;\n"
-"background-color: rgb(0, 0, 0)"));
-        layoutWidget = new QWidget(planVacation);
+        planVacation->resize(899, 526);
+        planVacation->setStyleSheet(QString::fromUtf8(""));
+        stackedWidget = new QStackedWidget(planVacation);
+        stackedWidget->setObjectName("stackedWidget");
+        stackedWidget->setGeometry(QRect(10, 10, 821, 481));
+        page = new QWidget();
+        page->setObjectName("page");
+        layoutWidget = new QWidget(page);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(120, 10, 511, 421));
+        layoutWidget->setGeometry(QRect(160, 50, 511, 421));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -99,8 +111,40 @@ public:
 
         verticalLayout->addWidget(pushButton_7);
 
+        back_pushButton = new QPushButton(page);
+        back_pushButton->setObjectName("back_pushButton");
+        back_pushButton->setGeometry(QRect(30, 10, 80, 22));
+        back_pushButton->setStyleSheet(QString::fromUtf8("font: 8pt \"MS Shell Dlg 2\";\n"
+"text-decoration: underline;\n"
+"background-color: rgb(0, 0, 0)"));
+        stackedWidget->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName("page_2");
+        souvenirtable = new QTableWidget(page_2);
+        souvenirtable->setObjectName("souvenirtable");
+        souvenirtable->setGeometry(QRect(80, 40, 651, 251));
+        souvenirtable->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0)"));
+        calculatesouvbtn = new QPushButton(page_2);
+        calculatesouvbtn->setObjectName("calculatesouvbtn");
+        calculatesouvbtn->setGeometry(QRect(110, 330, 131, 32));
+        clearsouvbtn = new QPushButton(page_2);
+        clearsouvbtn->setObjectName("clearsouvbtn");
+        clearsouvbtn->setGeometry(QRect(560, 330, 151, 32));
+        backtotrip = new QPushButton(page_2);
+        backtotrip->setObjectName("backtotrip");
+        backtotrip->setGeometry(QRect(350, 400, 151, 32));
+        label = new QLabel(page_2);
+        label->setObjectName("label");
+        label->setGeometry(QRect(320, 340, 81, 20));
+        grandtotal = new QLabel(page_2);
+        grandtotal->setObjectName("grandtotal");
+        grandtotal->setGeometry(QRect(430, 340, 91, 16));
+        stackedWidget->addWidget(page_2);
 
         retranslateUi(planVacation);
+
+        stackedWidget->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(planVacation);
     } // setupUi
@@ -108,7 +152,6 @@ public:
     void retranslateUi(QDialog *planVacation)
     {
         planVacation->setWindowTitle(QCoreApplication::translate("planVacation", "Dialog", nullptr));
-        back_pushButton->setText(QCoreApplication::translate("planVacation", "Back", nullptr));
         pushButton->setText(QCoreApplication::translate("planVacation", "Plan trip starting from Dodger Stadium", nullptr));
         pushButton_2->setText(QCoreApplication::translate("planVacation", "Plan trip and choose your route", nullptr));
         pushButton_3->setText(QCoreApplication::translate("planVacation", "Plan trip starting from Marlins Park", nullptr));
@@ -116,6 +159,12 @@ public:
         pushButton_5->setText(QCoreApplication::translate("planVacation", "Plan trip......", nullptr));
         pushButton_6->setText(QCoreApplication::translate("planVacation", "Plan trip starting from Oracle Park", nullptr));
         pushButton_7->setText(QCoreApplication::translate("planVacation", "Plan trip starting from Target Field", nullptr));
+        back_pushButton->setText(QCoreApplication::translate("planVacation", "Back", nullptr));
+        calculatesouvbtn->setText(QCoreApplication::translate("planVacation", "Calculate", nullptr));
+        clearsouvbtn->setText(QCoreApplication::translate("planVacation", "Clear", nullptr));
+        backtotrip->setText(QCoreApplication::translate("planVacation", "Done", nullptr));
+        label->setText(QCoreApplication::translate("planVacation", "Grand Total:", nullptr));
+        grandtotal->setText(QCoreApplication::translate("planVacation", "TextLabel", nullptr));
     } // retranslateUi
 
 };
