@@ -176,12 +176,14 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
             if(addUpdateError == 0)
             {
                 ui->errorLabel->setText("You cannot enter a duplicate team name.");
-                qDebug() << "DUPLICATE TEAM NAME" << Qt::endl; // insert error message
+                qDebug() << "DUPLICATE TEAM NAME";
+                         //<< Qt::endl; // insert error message
             }
             if(addUpdateError == 1)
             {
                 ui->errorLabel->setText("You cannot enter a duplicate stadium name.");
-                qDebug() << "DUPLICATE STADIUM NAME" << Qt::endl; // insert error message
+                qDebug() << "DUPLICATE STADIUM NAME";
+                         //<< Qt::endl; // insert error message
             }
         }
 }
@@ -422,7 +424,8 @@ void ModifyStadiums::on_confirmUpdateBtn_clicked()
             if(addUpdateError == 1)
             {
                 ui->errorLabel_2->setText("You cannot enter a duplicate stadium name.");
-                qDebug() << "DUPLICATE STADIUM NAME" << Qt::endl; // insert error message
+                qDebug() << "DUPLICATE STADIUM NAME";
+                        // << Qt::endl; // insert error message
             }
         }
 }
