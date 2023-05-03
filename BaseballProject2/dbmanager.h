@@ -13,6 +13,14 @@
 #include <QFile>
 #include <QRegularExpression>
 #include "teamtablemodel.h"
+#include <vector>
+using namespace std;
+
+struct stadium{
+    string starting;
+    string ending;
+    int distance;
+};
 
 class dbManager
 {
@@ -37,6 +45,9 @@ public:
      * @return teams
      */
     QList<Team> getAllTeams();
+    int rowCount();
+    vector<string> loadStadiumNames();
+    vector<stadium> loadDistance();
 };
 
 #endif // DBMANAGER_H

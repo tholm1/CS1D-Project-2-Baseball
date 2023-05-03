@@ -100,13 +100,13 @@ background-color: rgb(167, 167, 167);</string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="push_DFS">
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(167, 167, 167);</string>
       </property>
       <property name="text">
-       <string>Plan trip starting from Oracle Park</string>
+       <string>Perform a DFS starting at Oracle Park </string>
       </property>
      </widget>
     </item>

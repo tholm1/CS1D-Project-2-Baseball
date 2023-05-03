@@ -13,7 +13,7 @@ dbManager::dbManager()
 {
 
     QSqlDatabase m_database = QSqlDatabase::addDatabase("QSQLITE");
-    m_database.setDatabaseName("/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/MLBDB2.db");
+    m_database.setDatabaseName("../MLBDB2.db");
 
     if(m_database.open())
     {
@@ -94,4 +94,62 @@ QSqlQueryModel* dbManager::loadTeamNamesOnly()
 
     model->setQuery(qry);
     return model;
+}
+
+int dbManager::rowCount()
+{
+    QSqlQuery query("SELECT COUNT(*) FROM \"MLB Teams\"", m_database);
+        if (!query.exec()) {
+            qCritical() << "Failed to execute query:" << query.lastError().text();
+            return -1;
+        }
+
+        // Get the result of the query
+        int result = 0;
+        if (query.next()) {
+            result = query.value(0).toInt();
+        }
+        return result;
+}
+
+vector<string> dbManager::loadStadiumNames()
+{
+    QSqlQuery query("SELECT \"Stadium Name\" FROM \"MLB Teams\"", m_database);
+        if (!query.exec()) {
+            qCritical() << "Failed to execute query:" << query.lastError().text();
+
+        }
+
+        // Populate the string array with the data in the column
+        QStringList stadiumNames;
+        while (query.next()) {
+            stadiumNames.append(query.value(0).toString());
+        }
+
+        // Convert the QStringList to a std::vector<std::string>
+        std::vector<std::string> stadiumNamesVector;
+        for (const QString& name : stadiumNames) {
+            stadiumNamesVector.push_back(name.toStdString());
+        }
+        return stadiumNamesVector;
+}
+
+vector<stadium> dbManager::loadDistance()
+{
+    QSqlQuery query("SELECT * FROM \"MLB Distances Between Stadiums\"", m_database);
+    if (!query.exec()) {
+        qCritical() << "Failed to execute query:" << query.lastError().text();
+        return {};
+    }
+
+    // Populate the vector of tuples with the data in the table
+    vector<stadium> data;
+    while (query.next()) {
+        std::string str1 = query.value(0).toString().toStdString();
+        std::string str2 = query.value(1).toString().toStdString();
+        int value = query.value(2).toInt();
+        stadium tmp = {str1, str2, value};
+        data.push_back(tmp);
+    }
+    return data;
 }
