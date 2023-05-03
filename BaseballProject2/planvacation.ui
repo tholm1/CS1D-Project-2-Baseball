@@ -26,7 +26,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QWidget" name="layoutWidget">
@@ -156,7 +156,7 @@ background-color: rgb(0, 0, 0)</string>
       <rect>
        <x>470</x>
        <y>490</y>
-       <width>211</width>
+       <width>251</width>
        <height>32</height>
       </rect>
      </property>
@@ -167,7 +167,7 @@ background-color: rgb(0, 0, 0)</string>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>470</x>
+       <x>490</x>
        <y>450</y>
        <width>92</width>
        <height>22</height>
@@ -180,7 +180,7 @@ background-color: rgb(0, 0, 0)</string>
     <widget class="QLabel" name="grandtotal">
      <property name="geometry">
       <rect>
-       <x>590</x>
+       <x>610</x>
        <y>450</y>
        <width>81</width>
        <height>22</height>
@@ -259,7 +259,7 @@ background-color: rgb(0, 0, 0)</string>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>450</x>
+       <x>470</x>
        <y>70</y>
        <width>221</width>
        <height>31</height>
@@ -272,7 +272,7 @@ background-color: rgb(0, 0, 0)</string>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>570</x>
+       <x>590</x>
        <y>450</y>
        <width>16</width>
        <height>21</height>
@@ -285,9 +285,9 @@ background-color: rgb(0, 0, 0)</string>
     <widget class="QTableView" name="souvCart_tableView">
      <property name="geometry">
       <rect>
-       <x>440</x>
+       <x>375</x>
        <y>110</y>
-       <width>256</width>
+       <width>421</width>
        <height>321</height>
       </rect>
      </property>

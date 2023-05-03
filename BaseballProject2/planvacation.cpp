@@ -90,13 +90,13 @@ void planVacation::on_addSouv_button_clicked()
     //displays cart in table
     if(sQry == "")
     {
-        sQry += "select Team as 'Team', Souvenir as 'Souvenirs', Price as 'Cost', quantity as 'Quantity' "
-                "from Cart where Team = '" +team+ "' and Souvenir = '" +name+ "'";
+        sQry += "select souvCollege as 'College', souvTrad as 'Souvenirs', souvCost as 'Cost', quantity as 'Quantity' "
+                "from Cart where souvCollege = '" +team+ "' and souvTrad = '" +name+ "'";
     }
     else
     {
         sQry += " union select Team as 'Team', Souvenir as 'Souvenirs', Price as 'Cost', quantity as 'Quantity'"
-                "from Cart where Team = '" +team+ "' and Souvenir = '" +name+ "'";
+                "from Souvenirs where Team = '" +team+ "' and Souvenir = '" +name+ "'";
     }
 
     showSouvCartTableView(m_database.loadSouvCart(sQry));
@@ -138,5 +138,11 @@ void planVacation::on_checkout_button_clicked()
     QMessageBox::information(this, "Souvenir Shop", "Your grand total was displayed during checkout." "\nThank you for going on this trip!" , QMessageBox::Ok, QMessageBox::NoButton);
 
     ui->stackedWidget->setCurrentWidget(ui->page);
+}
+
+
+void planVacation::on_pushButton_2_clicked()
+{
+
 }
 

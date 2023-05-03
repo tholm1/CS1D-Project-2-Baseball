@@ -175,3 +175,32 @@ QSqlQueryModel* dbManager::loadSouvCart(QString sQry)
     model->setQuery(qry);
     return model;
 }
+
+void dbManager::createCart()
+{
+    //cartQry - temporary table
+    QSqlQuery cartQry;
+    cartQry.prepare("create table Cart as SELECT * from Souvenirs;");
+
+    if(!cartQry.exec())
+    {
+        qDebug() << "\nError Creating Cart\n";
+    }
+    cartQry.prepare("ALTER table Cart add quantity real default 0;");
+    if(!cartQry.exec())
+    {
+        qDebug() << "\nError Creating Quanitity Column\n";
+    }
+}
+
+void dbManager::deleteCart()
+{
+    //cartQry - temporary table
+    QSqlQuery cartQry;
+    cartQry.prepare("drop table Cart;");
+
+    if(!cartQry.exec())
+    {
+        qDebug() << "\nError dropping Cart\n";
+    }
+}

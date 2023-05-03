@@ -46,11 +46,12 @@ static constexpr auto qt_meta_stringdata_CLASSplanVacationENDCLASS = QtMocHelper
     "on_pushButton_clicked",
     "on_selectTeamName_currentIndexChanged",
     "index",
-    "on_checkout_button_clicked"
+    "on_checkout_button_clicked",
+    "on_pushButton_2_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSplanVacationENDCLASS_t {
-    uint offsetsAndSizes[18];
+    uint offsetsAndSizes[20];
     char stringdata0[13];
     char stringdata1[27];
     char stringdata2[1];
@@ -60,6 +61,7 @@ struct qt_meta_stringdata_CLASSplanVacationENDCLASS_t {
     char stringdata6[38];
     char stringdata7[6];
     char stringdata8[27];
+    char stringdata9[24];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSplanVacationENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -73,7 +75,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSplanVacationENDCLASS_t qt_meta_
         QT_MOC_LITERAL(89, 21),  // "on_pushButton_clicked"
         QT_MOC_LITERAL(111, 37),  // "on_selectTeamName_currentInde..."
         QT_MOC_LITERAL(149, 5),  // "index"
-        QT_MOC_LITERAL(155, 26)   // "on_checkout_button_clicked"
+        QT_MOC_LITERAL(155, 26),  // "on_checkout_button_clicked"
+        QT_MOC_LITERAL(182, 23)   // "on_pushButton_2_clicked"
     },
     "planVacation",
     "on_back_pushButton_clicked",
@@ -83,7 +86,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSplanVacationENDCLASS_t qt_meta_
     "on_pushButton_clicked",
     "on_selectTeamName_currentIndexChanged",
     "index",
-    "on_checkout_button_clicked"
+    "on_checkout_button_clicked",
+    "on_pushButton_2_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -95,7 +99,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplanVacationENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -103,12 +107,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplanVacationENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   50,    2, 0x08,    1 /* Private */,
-       3,    0,   51,    2, 0x08,    2 /* Private */,
-       4,    0,   52,    2, 0x08,    3 /* Private */,
-       5,    0,   53,    2, 0x08,    4 /* Private */,
-       6,    1,   54,    2, 0x08,    5 /* Private */,
-       8,    0,   57,    2, 0x08,    7 /* Private */,
+       1,    0,   56,    2, 0x08,    1 /* Private */,
+       3,    0,   57,    2, 0x08,    2 /* Private */,
+       4,    0,   58,    2, 0x08,    3 /* Private */,
+       5,    0,   59,    2, 0x08,    4 /* Private */,
+       6,    1,   60,    2, 0x08,    5 /* Private */,
+       8,    0,   63,    2, 0x08,    7 /* Private */,
+       9,    0,   64,    2, 0x08,    8 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -116,6 +121,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplanVacationENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -142,6 +148,8 @@ Q_CONSTINIT const QMetaObject planVacation::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'on_checkout_button_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_pushButton_2_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -159,6 +167,7 @@ void planVacation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 3: _t->on_pushButton_clicked(); break;
         case 4: _t->on_selectTeamName_currentIndexChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 5: _t->on_checkout_button_clicked(); break;
+        case 6: _t->on_pushButton_2_clicked(); break;
         default: ;
         }
     }
@@ -183,13 +192,13 @@ int planVacation::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

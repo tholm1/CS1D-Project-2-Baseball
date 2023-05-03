@@ -43,6 +43,8 @@ public:
     QSqlQueryModel* loadSouvCart(QString sQry);
     void updateCartQuantity(QString team, QString souv, int quantity);
     double GetTotalCost(QString teamIn, QString souvIn);
+    void createCart();
+    void deleteCart();
 
 };
 

@@ -134,13 +134,13 @@ public:
         addSouv_button->setGeometry(QRect(80, 490, 221, 32));
         checkout_button = new QPushButton(page_2);
         checkout_button->setObjectName("checkout_button");
-        checkout_button->setGeometry(QRect(470, 490, 211, 32));
+        checkout_button->setGeometry(QRect(470, 490, 251, 32));
         label = new QLabel(page_2);
         label->setObjectName("label");
-        label->setGeometry(QRect(470, 450, 92, 22));
+        label->setGeometry(QRect(490, 450, 92, 22));
         grandtotal = new QLabel(page_2);
         grandtotal->setObjectName("grandtotal");
-        grandtotal->setGeometry(QRect(590, 450, 81, 22));
+        grandtotal->setGeometry(QRect(610, 450, 81, 22));
         backButton = new QPushButton(page_2);
         backButton->setObjectName("backButton");
         backButton->setGeometry(QRect(10, 30, 60, 32));
@@ -161,18 +161,18 @@ public:
         souv_tableView->setGeometry(QRect(60, 150, 256, 281));
         label_3 = new QLabel(page_2);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(450, 70, 221, 31));
+        label_3->setGeometry(QRect(470, 70, 221, 31));
         label_4 = new QLabel(page_2);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(570, 450, 16, 21));
+        label_4->setGeometry(QRect(590, 450, 16, 21));
         souvCart_tableView = new QTableView(page_2);
         souvCart_tableView->setObjectName("souvCart_tableView");
-        souvCart_tableView->setGeometry(QRect(440, 110, 256, 321));
+        souvCart_tableView->setGeometry(QRect(375, 110, 421, 321));
         stackedWidget->addWidget(page_2);
 
         retranslateUi(planVacation);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(planVacation);
