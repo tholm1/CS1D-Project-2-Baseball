@@ -37,6 +37,13 @@ public:
      * @return teams
      */
     QList<Team> getAllTeams();
+
+    QSqlQueryModel *loadSouvenirNamesOnly();
+    QSqlQueryModel* loadStadiumSouvenirs(QString campus);
+    QSqlQueryModel* loadSouvCart(QString sQry);
+    void updateCartQuantity(QString team, QString souv, int quantity);
+    double GetTotalCost(QString teamIn, QString souvIn);
+
 };
 
 #endif // DBMANAGER_H

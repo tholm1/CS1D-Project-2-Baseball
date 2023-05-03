@@ -15,12 +15,12 @@ void Souvenir::setItem(const QString &item)
     m_item = item;
 }
 
-QString Souvenir::price() const
+double Souvenir::price() const
 {
     return m_price;
 }
 
-void Souvenir::setPrice(QString price)
+void Souvenir::setPrice(double price)
 {
     m_price = price;
 }
@@ -33,3 +33,15 @@ QString Souvenir :: team() const
 {
     return TeamName;
 }
+
+void Souvenir::setQuantity(int quantity)
+{
+    m_quantity = quantity;
+}
+
+int Souvenir::quantity()
+{
+    return m_quantity;
+}
+
+

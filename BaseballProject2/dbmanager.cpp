@@ -95,3 +95,83 @@ QSqlQueryModel* dbManager::loadTeamNamesOnly()
     model->setQuery(qry);
     return model;
 }
+
+QSqlQueryModel* dbManager::loadSouvenirNamesOnly()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QString sQry = "select \"Souvenir\" as \"Souvenir Names\" from \"Souvenirs\" group by \"Souvenir\";";
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Teams\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}
+
+QSqlQueryModel* dbManager::loadStadiumSouvenirs(QString stadium)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Souvenirs where Team = '" +stadium+ "';";
+    qDebug() << sQry;
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Stadiums\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}
+
+void dbManager::updateCartQuantity(QString team, QString souv, int quant)
+{
+    //Update quantity
+    QSqlQuery updateQry;
+    QString uQry = "UPDATE Cart SET quantity = quantity+" +QString::number(quant)+ " WHERE Team = '" +team+ "' and Souvenir = '" +souv+ "';";
+    updateQry.prepare(uQry);
+
+    if(!updateQry.exec())
+    {
+        qDebug() << "\nError updating Cart\n";
+    }
+}
+
+double dbManager::GetTotalCost(QString teamIn, QString souvIn)
+{
+    double total = 0.0;
+
+    QString sQry = "select Price as 'Cost' "
+                   "from Souvenirs where Team = '" +teamIn+ "' and Souvenir = '" +souvIn+ "'";
+    QSqlQuery qry;
+    qry.prepare(sQry);
+    qry.exec();
+
+    if(qry.next())
+    {
+        total = qry.value(0).toDouble();
+    }
+    return total;
+}
+
+QSqlQueryModel* dbManager::loadSouvCart(QString sQry)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Souvenirs\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}

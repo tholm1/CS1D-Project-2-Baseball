@@ -10,6 +10,15 @@ class Souvenir : public QObject
 {
     Q_OBJECT
 public:
+
+    struct souvenir
+    {
+        QString souvName;
+        QString stadium;
+        double cost;
+        int quantity;
+    };
+
     /** \fn Constructor()
      * @param QWidget *parent
      */
@@ -34,14 +43,14 @@ public:
      * @param no formal parameters
      * @return QString m_price
      */
-    QString price() const;
+    double price() const;
 
     /** \fn setPrice()
      * This function initializes the private m_price to the QString price variable
      * @param QString price
      * @return nothing returned
      */
-    void setPrice(QString price);
+    void setPrice(double price);
 
     /** \fn team()
      * This function will return the baseball team determined in the function setTeam()
@@ -57,13 +66,18 @@ public:
      */
     void setTeam(QString Team);
 
+    int quantity();
+
+    void setQuantity(int quantity);
+
 signals:
 
 public slots:
 private:
     QString m_item;
-    QString m_price;
+    double m_price;
     QString TeamName;
+    int m_quantity;
 };
 
 #endif // SOUVENIR_H

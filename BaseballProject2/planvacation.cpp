@@ -1,21 +1,21 @@
 #include "planvacation.h"
 #include "ui_planvacation.h"
 #include "displayinfo.h"
-#include "Souvenir.h"
+//#include "Souvenir.h"
+#include "dbmanager.h"
 
 #include <QMessageBox>
 #include <QSpinBox>
-
-static QVector <QString> outputNodes;
-static QVector <Souvenir*> souvenirs;
-static QVector <QString> teams;
-static double totalSouvenirprice;
+#include <QSqlQueryModel>
 
 planVacation::planVacation(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::planVacation)
 {
     ui->setupUi(this);
+    showTeamDBCombo2(m_database.loadTeamNamesOnly());
+    showSouvenirDBCombo(m_database.loadSouvenirNamesOnly());
+    showSouvenirTable(m_database.loadSouvenirNamesOnly());
 }
 
 planVacation::~planVacation()
@@ -23,6 +23,30 @@ planVacation::~planVacation()
     delete ui;
 }
 
+void planVacation::showTeamDBCombo2(QSqlQueryModel *model)
+{
+    ui->selectTeamName->setModel(model);
+}
+
+void planVacation::showSouvenirDBCombo(QSqlQueryModel *model)
+{
+    ui->souv_comboBox->setModel(model);
+}
+
+void planVacation::showSouvenirTable(QSqlQueryModel *model)
+{
+    ui->souv_tableView->setModel(model);
+}
+
+void planVacation::showSouvenirCart(QSqlQueryModel *model)
+{
+    ui->souvCart_tableView->setModel(model);
+}
+
+void planVacation::showSouvCartTableView(QSqlQueryModel *model)
+{
+    ui->souvCart_tableView->setModel(model);
+}
 
 void planVacation::on_back_pushButton_clicked()
 {
@@ -32,70 +56,87 @@ void planVacation::on_back_pushButton_clicked()
     display.exec();
 }
 
-
-void planVacation::on_calculatesouvbtn_clicked()
+void planVacation::on_backButton_clicked()
 {
-    for(int i = 0; i< souvenirs.count(); i++)
-    {
-        int val = static_cast<QSpinBox*>(ui->souvenirtable->cellWidget(i,3))->value();
-        QTableWidgetItem *price = ui->souvenirtable->item(i,2);
-        totalSouvenirprice = totalSouvenirprice + (price->text().toDouble()*val);
-    }
-    ui->grandtotal->setNum(totalSouvenirprice);
-    totalSouvenirprice = 0;
-}
+    QMessageBox::information(this, "Souvenir Shop", "Going back to the trip..."  , QMessageBox::Ok, QMessageBox::NoButton);
 
-
-void planVacation::on_backtotrip_clicked()
-{
-    for(int i = 0; i< souvenirs.count(); i++)
-    {
-        int val = static_cast<QSpinBox*>(ui->souvenirtable->cellWidget(i,3))->value();
-        QTableWidgetItem *price = ui->souvenirtable->item(i,2);
-        totalSouvenirprice = totalSouvenirprice + (price->text().toDouble()*val);
-    }
-    ui->grandtotal->setNum(totalSouvenirprice);
-    totalSouvenirprice = 0;
-
-    QMessageBox::information(this, "Receipt", "You Spent $" + ui->grandtotal->text() + ". Returning to all Trip Options..."  , QMessageBox::Ok, QMessageBox::NoButton);
     ui->stackedWidget->setCurrentWidget(ui->page);
-    resetDataMembers();
-    teams.clear();
-    souvenirs.clear();
-    ui->grandtotal->clear();
 }
 
-
-void planVacation::on_clearsouvbtn_clicked()
+void planVacation::on_addSouv_button_clicked()
 {
-    for(int i = 0;i< souvenirs.count();i++)
+    Souvenir souv;
+    //name and campus
+    QString name, team;
+    name = ui->souv_comboBox->currentText();
+
+    souv.souvName = name;
+    team = ui->selectTeamName->currentText();
+    souv.team = team;
+
+
+    //quantity and item cost
+    int quantity = ui-> quanitity_spinBox -> cleanText().toInt();
+    souv.quantity = quantity;
+    double itemCost = m_database.GetTotalCost(team, name);
+    itemCost = itemCost * quantity;
+    souv.cost = itemCost;
+
+    souvenirCart.push(souv);
+
+    //update Cart table
+    m_database.updateCartQuantity(team, name, quantity);
+
+    //displays cart in table
+    if(sQry == "")
     {
-        QSpinBox *box = static_cast<QSpinBox*>(ui->souvenirtable->cellWidget(i,3));
-        box->setValue(0);
+        sQry += "select Team as 'Team', Souvenir as 'Souvenirs', Price as 'Cost', quantity as 'Quantity' "
+                "from Cart where Team = '" +team+ "' and Souvenir = '" +name+ "'";
     }
-    ui->grandtotal->clear();
+    else
+    {
+        sQry += " union select Team as 'Team', Souvenir as 'Souvenirs', Price as 'Cost', quantity as 'Quantity'"
+                "from Cart where Team = '" +team+ "' and Souvenir = '" +name+ "'";
+    }
+
+    showSouvCartTableView(m_database.loadSouvCart(sQry));
+
+    showTotalCost(itemCost);
 }
 
-void planVacation::resetDataMembers()
+void planVacation::showTotalCost(double itemCost)
 {
-    while(!selectedStadiums.empty())
-    {
-        selectedStadiums.pop_front();
-    }
-
-    while(!sortedStadiums.empty())
-    {
-        sortedStadiums.pop_front();
-    }
-
-    totalDistance = 0;
-
-    //trip = None;
+    totalCost += itemCost;
+    QString totalCostStr = QString::number(totalCost, 'f', 2);
+    ui->grandtotal->setText(totalCostStr);
 }
 
 
 void planVacation::on_pushButton_clicked()
 {
+    QMessageBox::information(this, "Souvenir Shop", "Visiting the Souvenir Shop..."  , QMessageBox::Ok, QMessageBox::NoButton);
+
     ui->stackedWidget->setCurrentWidget(ui->page_2);
+}
+
+
+void planVacation::on_selectTeamName_currentIndexChanged(int index)
+{
+    QString stadium = ui->selectTeamName->currentText();
+    showSouvTableView(m_database.loadStadiumSouvenirs(stadium));
+}
+
+void planVacation::showSouvTableView(QSqlQueryModel *model)
+{
+    ui->souv_tableView->setModel(model);
+    ui->souv_comboBox->setModel(model);
+}
+
+
+void planVacation::on_checkout_button_clicked()
+{
+    QMessageBox::information(this, "Souvenir Shop", "Your grand total was displayed during checkout." "\nThank you for going on this trip!" , QMessageBox::Ok, QMessageBox::NoButton);
+
+    ui->stackedWidget->setCurrentWidget(ui->page);
 }
 

@@ -41,23 +41,25 @@ static constexpr auto qt_meta_stringdata_CLASSplanVacationENDCLASS = QtMocHelper
     "planVacation",
     "on_back_pushButton_clicked",
     "",
-    "on_calculatesouvbtn_clicked",
-    "on_backtotrip_clicked",
-    "on_clearsouvbtn_clicked",
-    "resetDataMembers",
-    "on_pushButton_clicked"
+    "on_backButton_clicked",
+    "on_addSouv_button_clicked",
+    "on_pushButton_clicked",
+    "on_selectTeamName_currentIndexChanged",
+    "index",
+    "on_checkout_button_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSplanVacationENDCLASS_t {
-    uint offsetsAndSizes[16];
+    uint offsetsAndSizes[18];
     char stringdata0[13];
     char stringdata1[27];
     char stringdata2[1];
-    char stringdata3[28];
-    char stringdata4[22];
-    char stringdata5[24];
-    char stringdata6[17];
-    char stringdata7[22];
+    char stringdata3[22];
+    char stringdata4[26];
+    char stringdata5[22];
+    char stringdata6[38];
+    char stringdata7[6];
+    char stringdata8[27];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSplanVacationENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -66,20 +68,22 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSplanVacationENDCLASS_t qt_meta_
         QT_MOC_LITERAL(0, 12),  // "planVacation"
         QT_MOC_LITERAL(13, 26),  // "on_back_pushButton_clicked"
         QT_MOC_LITERAL(40, 0),  // ""
-        QT_MOC_LITERAL(41, 27),  // "on_calculatesouvbtn_clicked"
-        QT_MOC_LITERAL(69, 21),  // "on_backtotrip_clicked"
-        QT_MOC_LITERAL(91, 23),  // "on_clearsouvbtn_clicked"
-        QT_MOC_LITERAL(115, 16),  // "resetDataMembers"
-        QT_MOC_LITERAL(132, 21)   // "on_pushButton_clicked"
+        QT_MOC_LITERAL(41, 21),  // "on_backButton_clicked"
+        QT_MOC_LITERAL(63, 25),  // "on_addSouv_button_clicked"
+        QT_MOC_LITERAL(89, 21),  // "on_pushButton_clicked"
+        QT_MOC_LITERAL(111, 37),  // "on_selectTeamName_currentInde..."
+        QT_MOC_LITERAL(149, 5),  // "index"
+        QT_MOC_LITERAL(155, 26)   // "on_checkout_button_clicked"
     },
     "planVacation",
     "on_back_pushButton_clicked",
     "",
-    "on_calculatesouvbtn_clicked",
-    "on_backtotrip_clicked",
-    "on_clearsouvbtn_clicked",
-    "resetDataMembers",
-    "on_pushButton_clicked"
+    "on_backButton_clicked",
+    "on_addSouv_button_clicked",
+    "on_pushButton_clicked",
+    "on_selectTeamName_currentIndexChanged",
+    "index",
+    "on_checkout_button_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -103,15 +107,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplanVacationENDCLASS[] = {
        3,    0,   51,    2, 0x08,    2 /* Private */,
        4,    0,   52,    2, 0x08,    3 /* Private */,
        5,    0,   53,    2, 0x08,    4 /* Private */,
-       6,    0,   54,    2, 0x08,    5 /* Private */,
-       7,    0,   55,    2, 0x08,    6 /* Private */,
+       6,    1,   54,    2, 0x08,    5 /* Private */,
+       8,    0,   57,    2, 0x08,    7 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    7,
     QMetaType::Void,
 
        0        // eod
@@ -128,15 +132,16 @@ Q_CONSTINIT const QMetaObject planVacation::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<planVacation, std::true_type>,
         // method 'on_back_pushButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_calculatesouvbtn_clicked'
+        // method 'on_backButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_backtotrip_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_clearsouvbtn_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'resetDataMembers'
+        // method 'on_addSouv_button_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_pushButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_selectTeamName_currentIndexChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_checkout_button_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -149,15 +154,14 @@ void planVacation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         (void)_t;
         switch (_id) {
         case 0: _t->on_back_pushButton_clicked(); break;
-        case 1: _t->on_calculatesouvbtn_clicked(); break;
-        case 2: _t->on_backtotrip_clicked(); break;
-        case 3: _t->on_clearsouvbtn_clicked(); break;
-        case 4: _t->resetDataMembers(); break;
-        case 5: _t->on_pushButton_clicked(); break;
+        case 1: _t->on_backButton_clicked(); break;
+        case 2: _t->on_addSouv_button_clicked(); break;
+        case 3: _t->on_pushButton_clicked(); break;
+        case 4: _t->on_selectTeamName_currentIndexChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 5: _t->on_checkout_button_clicked(); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *planVacation::metaObject() const
