@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
@@ -22,13 +23,14 @@ public:
     QPushButton *displaySingleTeam_pushButton;
     QPushButton *displayWithFilter_pushButton;
     QPushButton *back_pushButton;
+    QLabel *background;
 
     void setupUi(QDialog *displayTeam)
     {
         if (displayTeam->objectName().isEmpty())
             displayTeam->setObjectName("displayTeam");
         displayTeam->resize(747, 540);
-        displayTeam->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 51, 255)"));
+        displayTeam->setStyleSheet(QString::fromUtf8(""));
         displaySingleTeam_pushButton = new QPushButton(displayTeam);
         displaySingleTeam_pushButton->setObjectName("displaySingleTeam_pushButton");
         displaySingleTeam_pushButton->setGeometry(QRect(190, 130, 371, 121));
@@ -46,6 +48,14 @@ public:
 "text-decoration: underline;\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(167, 167, 167);"));
+        background = new QLabel(displayTeam);
+        background->setObjectName("background");
+        background->setGeometry(QRect(10, 0, 747, 540));
+        background->setStyleSheet(QString::fromUtf8("border-image: url(:/image/brown_back.jpg);"));
+        background->raise();
+        displaySingleTeam_pushButton->raise();
+        displayWithFilter_pushButton->raise();
+        back_pushButton->raise();
 
         retranslateUi(displayTeam);
 
@@ -58,6 +68,7 @@ public:
         displaySingleTeam_pushButton->setText(QCoreApplication::translate("displayTeam", "Display a Single Team", nullptr));
         displayWithFilter_pushButton->setText(QCoreApplication::translate("displayTeam", "Display Teams with Filters", nullptr));
         back_pushButton->setText(QCoreApplication::translate("displayTeam", "Back", nullptr));
+        background->setText(QCoreApplication::translate("displayTeam", "TextLabel", nullptr));
     } // retranslateUi
 
 };

@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
@@ -22,13 +23,14 @@ public:
     QPushButton *Add_Delete_Info_pushButton;
     QPushButton *modifyInfo_pushButton;
     QPushButton *back_pushButton;
+    QLabel *background;
 
     void setupUi(QDialog *maintenance)
     {
         if (maintenance->objectName().isEmpty())
             maintenance->setObjectName("maintenance");
         maintenance->resize(518, 320);
-        maintenance->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 51, 255)"));
+        maintenance->setStyleSheet(QString::fromUtf8(""));
         Add_Delete_Info_pushButton = new QPushButton(maintenance);
         Add_Delete_Info_pushButton->setObjectName("Add_Delete_Info_pushButton");
         Add_Delete_Info_pushButton->setGeometry(QRect(120, 110, 271, 51));
@@ -46,6 +48,14 @@ public:
 "text-decoration: underline;\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(167, 167, 167);"));
+        background = new QLabel(maintenance);
+        background->setObjectName("background");
+        background->setGeometry(QRect(0, 10, 521, 311));
+        background->setStyleSheet(QString::fromUtf8("border-image: url(:/image/brown_back.jpg);"));
+        background->raise();
+        Add_Delete_Info_pushButton->raise();
+        modifyInfo_pushButton->raise();
+        back_pushButton->raise();
 
         retranslateUi(maintenance);
 
@@ -58,6 +68,7 @@ public:
         Add_Delete_Info_pushButton->setText(QCoreApplication::translate("maintenance", "Modify Stadiums", nullptr));
         modifyInfo_pushButton->setText(QCoreApplication::translate("maintenance", "Modify Souvenirs", nullptr));
         back_pushButton->setText(QCoreApplication::translate("maintenance", "Back", nullptr));
+        background->setText(QCoreApplication::translate("maintenance", "TextLabel", nullptr));
     } // retranslateUi
 
 };

@@ -27,6 +27,7 @@ public:
     QPushButton *display_pushButton;
     QPushButton *maintenance_pushButton;
     QLabel *label;
+    QLabel *background;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -34,27 +35,40 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(738, 556);
-        MainWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 51, 255)"));
+        MainWindow->resize(738, 550);
+        MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        centralwidget->setStyleSheet(QString::fromUtf8(""));
         display_pushButton = new QPushButton(centralwidget);
         display_pushButton->setObjectName("display_pushButton");
-        display_pushButton->setGeometry(QRect(180, 360, 401, 61));
-        display_pushButton->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgb(167, 167, 167);"));
+        display_pushButton->setGeometry(QRect(170, 410, 401, 61));
+        display_pushButton->setStyleSheet(QString::fromUtf8("\n"
+"font: 22pt \"Ravie\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.05 rgba(14, 8, 73, 255), stop:0.36 rgba(28, 17, 145, 255), stop:0.6 rgba(126, 14, 81, 255), stop:0.75 rgba(234, 11, 11, 255), stop:0.79 rgba(244, 70, 5, 255), stop:0.86 rgba(255, 136, 0, 255), stop:0.935 rgba(239, 236, 55, 255));"));
         maintenance_pushButton = new QPushButton(centralwidget);
         maintenance_pushButton->setObjectName("maintenance_pushButton");
         maintenance_pushButton->setGeometry(QRect(30, 10, 141, 31));
-        maintenance_pushButton->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgb(167, 167, 167);"));
+        maintenance_pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 255);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 700 12pt \"Segoe Script\";"));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(120, 60, 521, 271));
+        label->setGeometry(QRect(150, 80, 451, 271));
+        label->setStyleSheet(QString::fromUtf8("\n"
+"border-image: url(:/image/take_me_out.png);"));
+        background = new QLabel(centralwidget);
+        background->setObjectName("background");
+        background->setGeometry(QRect(0, 20, 738, 550));
+        background->setStyleSheet(QString::fromUtf8("border-image: url(:/image/baseball_stadium.jpg);"));
         MainWindow->setCentralWidget(centralwidget);
+        background->raise();
+        display_pushButton->raise();
+        maintenance_pushButton->raise();
+        label->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 738, 37));
+        menubar->setGeometry(QRect(0, 0, 738, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -70,7 +84,8 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         display_pushButton->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
         maintenance_pushButton->setText(QCoreApplication::translate("MainWindow", "Maintenance", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:64pt; font-weight:600; text-decoration: underline;\">CS1D Project 2</span></p><p align=\"center\"><span style=\" font-size:64pt; font-weight:600; text-decoration: underline;\">Take Me Home </span></p><p align=\"center\"><span style=\" font-size:64pt; font-weight:600; text-decoration: underline;\">to the Ballgame!</span></p></body></html>", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
+        background->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

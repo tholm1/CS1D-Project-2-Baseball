@@ -45,6 +45,8 @@ private slots:
 
     void on_teamNameUpdateBox_currentTextChanged(const QString &updatedTeamName);
 
+    void on_confirmUpdateBtn_clicked();
+
 private:
     Ui::ModifyStadiums *ui;
     QSortFilterProxyModel* proxyModel;

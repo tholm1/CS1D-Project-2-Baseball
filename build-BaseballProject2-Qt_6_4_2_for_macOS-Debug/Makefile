@@ -1064,6 +1064,10 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_Resources.cpp
 qrc_Resources.cpp: ../BaseballProject2/Resources.qrc \
 		../../../Applications/Qt/6.4.2/macos/libexec/rcc \
+		../BaseballProject2/brown_back.jpg \
+		../BaseballProject2/baseball_stadium.jpg \
+		../BaseballProject2/take_me_out.png \
+		../BaseballProject2/brown2.png \
 		../BaseballProject2/baselogo.png
 	/Users/pal/Applications/Qt/6.4.2/macos/libexec/rcc -name Resources --no-zstd ../BaseballProject2/Resources.qrc -o qrc_Resources.cpp
 

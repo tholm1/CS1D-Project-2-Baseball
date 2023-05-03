@@ -66,6 +66,7 @@ void ModifyStadiums::on_delBtn_clicked()
     delQuery->prepare("DELETE FROM \"MLB Teams\" WHERE \"Team Name\" = :team_name");
     delQuery->bindValue(":team_name", editStadiumName);
     delQuery->exec();
+    delQuery->finish();
 
     updateDataView();
 }
@@ -107,6 +108,7 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
             checkTeamQuery->next();
 
             QString teamSearched = checkTeamQuery->value(0).toString();
+            checkTeamQuery->finish();
             if(teamSearched == addTeamName) // checks for duplicate team name
             {
                throw 0;
@@ -119,6 +121,9 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
             checkStadiumQuery->next();
 
             QString stadiumSearched = checkStadiumQuery->value(0).toString();
+
+            checkStadiumQuery->finish();
+
             if(stadiumSearched == addStadiumName) // checks for duplicate stadium name
             {
                throw 1;
@@ -198,7 +203,7 @@ void ModifyStadiums::on_stadiumNameAddLine_textEdited(const QString &arg1)
 
 void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &updatedTeamName)
 {
-    qDebug() << "Changed to " << updatedTeamName << Qt::endl;
+    // Stadium name data fetch
     QSqlQuery* fetchQuery = new QSqlQuery(dbManager::managerInstance->m_database);
     fetchQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
     fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
@@ -206,6 +211,7 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
     fetchQuery->next();
 
     QString updatedStadiumName = fetchQuery->value(0).toString();
+    fetchQuery->clear();
 
     ui->stadiumNameUpdateLine->setText(updatedStadiumName);
 
@@ -217,15 +223,18 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
     fetchQuery->next();
 
     int updatedSeatingCapacity = fetchQuery->value(0).toInt();
+    fetchQuery->clear();
 
     ui->seatingCapacityUpdateBox->setValue(updatedSeatingCapacity);
 
+    // Location data fetch
     fetchQuery->prepare("SELECT \"Location\" FROM \"MLB Teams\" WHERE \"Team Name\" = :updatedTeamName");
     fetchQuery->bindValue(":updatedTeamName", updatedTeamName);
     fetchQuery->exec();
     fetchQuery->next();
 
     QString updatedLocation = fetchQuery->value(0).toString();
+    fetchQuery->clear();
 
     QStringList parts = updatedLocation.split(", ");
 
@@ -249,6 +258,7 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
      * surface to match the playing surface of the stadium selected.
      */
     QString updatedPlayingSurface = fetchQuery->value(0).toString();
+    fetchQuery->clear();
     int playingSurfaceIndex = ui->playingSurfaceUpdateBox->findText(updatedPlayingSurface);
 
     if ( playingSurfaceIndex != -1 ) { // -1 for not found
@@ -266,6 +276,7 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
      * to match the league of the stadium selected.
      */
     QString updatedLeague = fetchQuery->value(0).toString();
+    fetchQuery->clear();
     int leagueIndex = ui->leagueUpdateBox->findText(updatedLeague);
 
     if ( leagueIndex != -1 ) { // -1 for not found
@@ -279,6 +290,7 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
     fetchQuery->next();
 
     int updatedDateOpened = fetchQuery->value(0).toInt();
+    fetchQuery->clear();
 
     ui->dateOpenedUpdateBox->setValue(updatedDateOpened);
 
@@ -289,6 +301,7 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
     fetchQuery->next();
 
     int updatedDistanceToCenterField = fetchQuery->value(0).toInt();
+    fetchQuery->clear();
 
     ui->distanceToCenterFieldUpdateBox->setValue(updatedDistanceToCenterField);
 
@@ -303,6 +316,7 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
      * to match the league of the stadium selected.
      */
     QString updatedBallparkTypology = fetchQuery->value(0).toString();
+    fetchQuery->clear();
     int ballparkTypologyIndex = ui->ballparkTypologyUpdateBox->findText(updatedBallparkTypology);
 
     if ( ballparkTypologyIndex != -1 ) { // -1 for not found
@@ -320,10 +334,96 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
      * to match the league of the stadium selected.
      */
     QString updatedRoofType = fetchQuery->value(0).toString();
+    fetchQuery->clear();
     int roofTypeIndex = ui->roofTypeUpdateBox->findText(updatedRoofType);
 
     if ( ballparkTypologyIndex != -1 ) { // -1 for not found
        ui->roofTypeUpdateBox->setCurrentIndex(roofTypeIndex);
     }
+
+    fetchQuery->finish();
+}
+
+
+void ModifyStadiums::on_confirmUpdateBtn_clicked()
+{
+    QString updateTeamName                 = ui->teamNameUpdateBox->currentText();
+    QString updateStadiumName              = ui->stadiumNameUpdateLine->text();
+    int     updateSeatingCapacity          = ui->seatingCapacityUpdateBox->value();
+    QString updateCity                     = ui->locationCityUpdateLine->text();
+    QString updateState                    = ui->locationStateUpdateLine->text();
+    QString updateLocation                 = updateCity + ", " + updateState;
+    QString updatePlayingSurface           = ui->playingSurfaceUpdateBox->currentText();
+    QString updateLeague                   = ui->leagueUpdateBox->currentText();
+    int     updateDateOpened               = ui->dateOpenedUpdateBox->value();
+    int     updateDistanceToCenterField    = ui->distanceToCenterFieldUpdateBox->value();
+    QString updateParkTypology             = ui->ballparkTypologyUpdateBox->currentText();
+    QString updateRoofType                 = ui->roofTypeUpdateBox->currentText();
+
+    try
+        {
+
+
+            QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+            checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
+            checkStadiumQuery->bindValue(":checkStadiumName", updateStadiumName);
+            checkStadiumQuery->exec();
+            checkStadiumQuery->next();
+
+            QString stadiumSearched = checkStadiumQuery->value(0).toString();
+            checkStadiumQuery->finish();
+            if(stadiumSearched == updateStadiumName) // checks for duplicate stadium name
+            {
+               throw 1;
+            }
+
+            QSqlQuery* updateQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+            updateQuery->prepare(   "UPDATE \"MLB Teams\" "
+                                    "SET "
+                                        "\"Stadium Name\" = :stadiumName, "
+                                        "\"Seating Capacity\" = :seatingCapacity, "
+                                        "\"Location\" = :location, "
+                                        "\"Playing Surface\" = :playingSurface, "
+                                        "\"League\" = :league, "
+                                        "\"Date Opened\" = :dateOpened, "
+                                        "\"Distance to Center Field\" = :distanceToCenterField, "
+                                        "\"Ballpark Typology\" = :ballParkTypology, "
+                                        "\"Roof Type\" = :roofType "
+                                    "WHERE \"Team Name\" = :teamName"
+                                );
+
+            updateQuery->bindValue(":stadiumName",             updateStadiumName);
+            updateQuery->bindValue(":seatingCapacity",         updateSeatingCapacity);
+            updateQuery->bindValue(":location",                updateLocation);
+            updateQuery->bindValue(":playingSurface",          updatePlayingSurface);
+            updateQuery->bindValue(":league",                  updateLeague);
+            updateQuery->bindValue(":dateOpened",              updateDateOpened);
+            updateQuery->bindValue(":distanceToCenterField",   updateDistanceToCenterField);
+            updateQuery->bindValue(":ballParkTypology",        updateParkTypology);
+            updateQuery->bindValue(":roofType",                updateRoofType);
+            updateQuery->bindValue(":teamName",                updateTeamName);
+
+            if (updateQuery->exec()) {
+                // The query executed successfully
+                updateDataView();
+            } else {
+                // An error occurred during execution
+                QSqlError error = updateQuery->lastError();
+                qDebug() << "Error executing query: " << error.text();
+                // Display error message to user
+                ui->errorLabel_2->setVisible(true);
+                ui->errorLabel_2->setText("Error executing query: " + error.text());
+            }
+        }
+        catch(int addUpdateError)
+        {
+            ui->errorLabel_2->setVisible(true);
+
+            if(addUpdateError == 1)
+            {
+                ui->errorLabel_2->setText("You cannot enter a duplicate stadium name.");
+                qDebug() << "DUPLICATE STADIUM NAME" << Qt::endl; // insert error message
+            }
+        }
 }
 

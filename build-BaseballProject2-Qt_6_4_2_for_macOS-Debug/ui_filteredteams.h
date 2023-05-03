@@ -44,11 +44,14 @@ public:
         if (filteredTeams->objectName().isEmpty())
             filteredTeams->setObjectName("filteredTeams");
         filteredTeams->resize(1618, 755);
-        filteredTeams->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 51, 255)"));
+        filteredTeams->setStyleSheet(QString::fromUtf8(""));
         tableView = new QTableView(filteredTeams);
         tableView->setObjectName("tableView");
         tableView->setGeometry(QRect(400, 80, 1101, 631));
-        tableView->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0)"));
+        tableView->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";\n"
+"color: rgb(0, 101, 101);\n"
+"\n"
+""));
         back_pushButton = new QPushButton(filteredTeams);
         back_pushButton->setObjectName("back_pushButton");
         back_pushButton->setGeometry(QRect(0, 0, 80, 22));

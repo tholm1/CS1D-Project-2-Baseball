@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
@@ -22,13 +23,14 @@ public:
     QPushButton *displayTeams_pushButton;
     QPushButton *planVacation_pushButton;
     QPushButton *back_pushButton;
+    QLabel *background;
 
     void setupUi(QDialog *displayInfo)
     {
         if (displayInfo->objectName().isEmpty())
             displayInfo->setObjectName("displayInfo");
         displayInfo->resize(553, 343);
-        displayInfo->setStyleSheet(QString::fromUtf8("background-color: rgb(129, 187, 255)"));
+        displayInfo->setStyleSheet(QString::fromUtf8(""));
         displayTeams_pushButton = new QPushButton(displayInfo);
         displayTeams_pushButton->setObjectName("displayTeams_pushButton");
         displayTeams_pushButton->setGeometry(QRect(150, 80, 241, 61));
@@ -46,6 +48,14 @@ public:
 "text-decoration: underline;\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(167, 167, 167);"));
+        background = new QLabel(displayInfo);
+        background->setObjectName("background");
+        background->setGeometry(QRect(0, 0, 553, 343));
+        background->setStyleSheet(QString::fromUtf8("border-image: url(:/image/brown_back.jpg);"));
+        background->raise();
+        displayTeams_pushButton->raise();
+        planVacation_pushButton->raise();
+        back_pushButton->raise();
 
         retranslateUi(displayInfo);
 
@@ -58,6 +68,7 @@ public:
         displayTeams_pushButton->setText(QCoreApplication::translate("displayInfo", "Display Teams", nullptr));
         planVacation_pushButton->setText(QCoreApplication::translate("displayInfo", "Plan a Vacation!", nullptr));
         back_pushButton->setText(QCoreApplication::translate("displayInfo", "Back", nullptr));
+        background->setText(QCoreApplication::translate("displayInfo", "TextLabel", nullptr));
     } // retranslateUi
 
 };
