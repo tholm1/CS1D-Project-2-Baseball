@@ -7,6 +7,8 @@ release/login.o
 release/main.o
 release/maintenance.o
 release/mainwindow.o
+release/modifysouvenirs.o
+release/modifystadiums.o
 release/planvacation.o
 release/teamtablemodel.o
 release/qrc_Resources.o
@@ -17,4 +19,6 @@ release/moc_filteredteams.o
 release/moc_login.o
 release/moc_maintenance.o
 release/moc_mainwindow.o
+release/moc_modifysouvenirs.o
+release/moc_modifystadiums.o
 release/moc_planvacation.o
