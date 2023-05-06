@@ -21,6 +21,8 @@ private slots:
     void on_back_pushButton_clicked();
     void on_push_DFS_clicked();
 
+    void on_push_BFS_clicked();
+
 private:
     Ui::planVacation *ui;
     dbManager m_database;
