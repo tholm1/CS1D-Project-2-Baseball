@@ -2,7 +2,9 @@
 #include "ui_planvacation.h"
 #include "displayinfo.h"
 //#include "Souvenir.h"
+//#include "souvenir2.h"
 #include "dbmanager.h"
+#include "teamtablemodel.h"
 
 #include <QMessageBox>
 #include <QSpinBox>

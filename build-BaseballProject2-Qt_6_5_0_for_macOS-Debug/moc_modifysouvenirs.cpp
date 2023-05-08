@@ -38,20 +38,36 @@ namespace {
 #ifdef QT_MOC_HAS_STRINGDATA
 struct qt_meta_stringdata_CLASSModifySouvenirsENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSModifySouvenirsENDCLASS = QtMocHelpers::stringData(
-    "ModifySouvenirs"
+    "ModifySouvenirs",
+    "on_confirmAddBtn_clicked",
+    "",
+    "on_delBtn_2_clicked",
+    "on_backBtn_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSModifySouvenirsENDCLASS_t {
-    uint offsetsAndSizes[2];
+    uint offsetsAndSizes[10];
     char stringdata0[16];
+    char stringdata1[25];
+    char stringdata2[1];
+    char stringdata3[20];
+    char stringdata4[19];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSModifySouvenirsENDCLASS_t::offsetsAndSizes) + ofs), len 
 Q_CONSTINIT static const qt_meta_stringdata_CLASSModifySouvenirsENDCLASS_t qt_meta_stringdata_CLASSModifySouvenirsENDCLASS = {
     {
-        QT_MOC_LITERAL(0, 15)   // "ModifySouvenirs"
+        QT_MOC_LITERAL(0, 15),  // "ModifySouvenirs"
+        QT_MOC_LITERAL(16, 24),  // "on_confirmAddBtn_clicked"
+        QT_MOC_LITERAL(41, 0),  // ""
+        QT_MOC_LITERAL(42, 19),  // "on_delBtn_2_clicked"
+        QT_MOC_LITERAL(62, 18)   // "on_backBtn_clicked"
     },
-    "ModifySouvenirs"
+    "ModifySouvenirs",
+    "on_confirmAddBtn_clicked",
+    "",
+    "on_delBtn_2_clicked",
+    "on_backBtn_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -63,12 +79,22 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSModifySouvenirsENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
+
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    0,   32,    2, 0x08,    1 /* Private */,
+       3,    0,   33,    2, 0x08,    2 /* Private */,
+       4,    0,   34,    2, 0x08,    3 /* Private */,
+
+ // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -81,16 +107,29 @@ Q_CONSTINIT const QMetaObject ModifySouvenirs::staticMetaObject = { {
     nullptr,
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSModifySouvenirsENDCLASS_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<ModifySouvenirs, std::true_type>
+        QtPrivate::TypeAndForceComplete<ModifySouvenirs, std::true_type>,
+        // method 'on_confirmAddBtn_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_delBtn_2_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_backBtn_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
 
 void ModifySouvenirs::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    (void)_o;
-    (void)_id;
-    (void)_c;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        auto *_t = static_cast<ModifySouvenirs *>(_o);
+        (void)_t;
+        switch (_id) {
+        case 0: _t->on_confirmAddBtn_clicked(); break;
+        case 1: _t->on_delBtn_2_clicked(); break;
+        case 2: _t->on_backBtn_clicked(); break;
+        default: ;
+        }
+    }
     (void)_a;
 }
 
@@ -110,6 +149,17 @@ void *ModifySouvenirs::qt_metacast(const char *_clname)
 int ModifySouvenirs::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 3)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 3;
+    }
     return _id;
 }
 QT_WARNING_POP

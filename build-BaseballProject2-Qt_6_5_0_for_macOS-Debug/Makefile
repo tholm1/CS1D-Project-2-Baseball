@@ -65,6 +65,7 @@ SOURCES       = ../BaseballProject2/Souvenir.cpp \
 		../BaseballProject2/modifysouvenirs.cpp \
 		../BaseballProject2/modifystadiums.cpp \
 		../BaseballProject2/planvacation.cpp \
+		../BaseballProject2/souvenir2.cpp \
 		../BaseballProject2/teamtablemodel.cpp qrc_Resources.cpp \
 		moc_Souvenir.cpp \
 		moc_allinfo.cpp \
@@ -90,6 +91,7 @@ OBJECTS       = Souvenir.o \
 		modifysouvenirs.o \
 		modifystadiums.o \
 		planvacation.o \
+		souvenir2.o \
 		teamtablemodel.o \
 		qrc_Resources.o \
 		moc_Souvenir.o \
@@ -416,6 +418,7 @@ DIST          = /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_pre.prf \
 		../BaseballProject2/modifysouvenirs.h \
 		../BaseballProject2/modifystadiums.h \
 		../BaseballProject2/planvacation.h \
+		../BaseballProject2/souvenir2.h \
 		../BaseballProject2/teamtablemodel.h ../BaseballProject2/Souvenir.cpp \
 		../BaseballProject2/allinfo.cpp \
 		../BaseballProject2/dbmanager.cpp \
@@ -429,6 +432,7 @@ DIST          = /Users/trevorholm/Qt/6.5.0/macos/mkspecs/features/spec_pre.prf \
 		../BaseballProject2/modifysouvenirs.cpp \
 		../BaseballProject2/modifystadiums.cpp \
 		../BaseballProject2/planvacation.cpp \
+		../BaseballProject2/souvenir2.cpp \
 		../BaseballProject2/teamtablemodel.cpp
 QMAKE_TARGET  = BaseballProject2
 DESTDIR       = 
@@ -1099,8 +1103,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../BaseballProject2/Resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../BaseballProject2/Souvenir.h ../BaseballProject2/allinfo.h ../BaseballProject2/dbmanager.h ../BaseballProject2/displayinfo.h ../BaseballProject2/displayteam.h ../BaseballProject2/filteredteams.h ../BaseballProject2/login.h ../BaseballProject2/maintenance.h ../BaseballProject2/mainwindow.h ../BaseballProject2/modifysouvenirs.h ../BaseballProject2/modifystadiums.h ../BaseballProject2/planvacation.h ../BaseballProject2/teamtablemodel.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../BaseballProject2/Souvenir.cpp ../BaseballProject2/allinfo.cpp ../BaseballProject2/dbmanager.cpp ../BaseballProject2/displayinfo.cpp ../BaseballProject2/displayteam.cpp ../BaseballProject2/filteredteams.cpp ../BaseballProject2/login.cpp ../BaseballProject2/main.cpp ../BaseballProject2/maintenance.cpp ../BaseballProject2/mainwindow.cpp ../BaseballProject2/modifysouvenirs.cpp ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/planvacation.cpp ../BaseballProject2/teamtablemodel.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../BaseballProject2/Souvenir.h ../BaseballProject2/allinfo.h ../BaseballProject2/dbmanager.h ../BaseballProject2/displayinfo.h ../BaseballProject2/displayteam.h ../BaseballProject2/filteredteams.h ../BaseballProject2/login.h ../BaseballProject2/maintenance.h ../BaseballProject2/mainwindow.h ../BaseballProject2/modifysouvenirs.h ../BaseballProject2/modifystadiums.h ../BaseballProject2/planvacation.h ../BaseballProject2/souvenir2.h ../BaseballProject2/teamtablemodel.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../BaseballProject2/Souvenir.cpp ../BaseballProject2/allinfo.cpp ../BaseballProject2/dbmanager.cpp ../BaseballProject2/displayinfo.cpp ../BaseballProject2/displayteam.cpp ../BaseballProject2/filteredteams.cpp ../BaseballProject2/login.cpp ../BaseballProject2/main.cpp ../BaseballProject2/maintenance.cpp ../BaseballProject2/mainwindow.cpp ../BaseballProject2/modifysouvenirs.cpp ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/planvacation.cpp ../BaseballProject2/souvenir2.cpp ../BaseballProject2/teamtablemodel.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../BaseballProject2/allinfo.ui ../BaseballProject2/displayinfo.ui ../BaseballProject2/displayteam.ui ../BaseballProject2/filteredteams.ui ../BaseballProject2/login.ui ../BaseballProject2/maintenance.ui ../BaseballProject2/mainwindow.ui ../BaseballProject2/modifysouvenirs.ui ../BaseballProject2/modifystadiums.ui ../BaseballProject2/planvacation.ui $(DISTDIR)/
 
 
@@ -1191,6 +1195,12 @@ moc_allinfo.cpp: ../BaseballProject2/allinfo.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/libexec/moc
 	/Users/trevorholm/Qt/6.5.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang -I/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/BaseballProject2 -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trevorholm/Qt/6.5.0/macos/lib ../BaseballProject2/allinfo.h -o moc_allinfo.cpp
 
@@ -1246,6 +1256,12 @@ moc_filteredteams.cpp: ../BaseballProject2/filteredteams.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		../BaseballProject2/mainwindow.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1304,10 +1320,59 @@ moc_mainwindow.cpp: ../BaseballProject2/mainwindow.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/libexec/moc
 	/Users/trevorholm/Qt/6.5.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang -I/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/BaseballProject2 -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trevorholm/Qt/6.5.0/macos/lib ../BaseballProject2/mainwindow.h -o moc_mainwindow.cpp
 
 moc_modifysouvenirs.cpp: ../BaseballProject2/modifysouvenirs.h \
+		../BaseballProject2/dbmanager.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QtSql \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDebug \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QSortFilterProxyModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/QStandardItemModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QRegularExpression \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		../BaseballProject2/teamtablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		/Users/trevorholm/Qt/6.5.0/macos/libexec/moc
@@ -1353,12 +1418,62 @@ moc_modifystadiums.cpp: ../BaseballProject2/modifystadiums.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/libexec/moc
 	/Users/trevorholm/Qt/6.5.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang -I/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/BaseballProject2 -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trevorholm/Qt/6.5.0/macos/lib ../BaseballProject2/modifystadiums.h -o moc_modifystadiums.cpp
 
 moc_planvacation.cpp: ../BaseballProject2/planvacation.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlQueryModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../BaseballProject2/dbmanager.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QtSql \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDebug \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QSortFilterProxyModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/QStandardItemModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QRegularExpression \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		../BaseballProject2/teamtablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/libexec/moc
 	/Users/trevorholm/Qt/6.5.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trevorholm/Qt/6.5.0/macos/mkspecs/macx-clang -I/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/BaseballProject2 -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers -I/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trevorholm/Qt/6.5.0/macos/lib ../BaseballProject2/planvacation.h -o moc_planvacation.cpp
 
@@ -1468,6 +1583,12 @@ allinfo.o: ../BaseballProject2/allinfo.cpp ../BaseballProject2/allinfo.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		ui_allinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o allinfo.o ../BaseballProject2/allinfo.cpp
 
@@ -1508,6 +1629,12 @@ dbmanager.o: ../BaseballProject2/dbmanager.cpp ../BaseballProject2/dbmanager.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QQueue \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qqueue.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
@@ -1522,9 +1649,8 @@ displayinfo.o: ../BaseballProject2/displayinfo.cpp ../BaseballProject2/displayin
 		ui_displayinfo.h \
 		../BaseballProject2/displayteam.h \
 		../BaseballProject2/planvacation.h \
-		../BaseballProject2/mainwindow.h \
-		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
-		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlQueryModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
 		../BaseballProject2/dbmanager.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QtSql \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
@@ -1535,7 +1661,6 @@ displayinfo.o: ../BaseballProject2/displayinfo.cpp ../BaseballProject2/displayin
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
-		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
@@ -1561,7 +1686,16 @@ displayinfo.o: ../BaseballProject2/displayinfo.cpp ../BaseballProject2/displayin
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
-		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
+		../BaseballProject2/mainwindow.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o displayinfo.o ../BaseballProject2/displayinfo.cpp
 
 displayteam.o: ../BaseballProject2/displayteam.cpp ../BaseballProject2/displayteam.h \
@@ -1607,6 +1741,12 @@ displayteam.o: ../BaseballProject2/displayteam.cpp ../BaseballProject2/displayte
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		../BaseballProject2/filteredteams.h \
 		../BaseballProject2/mainwindow.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1653,6 +1793,12 @@ filteredteams.o: ../BaseballProject2/filteredteams.cpp ../BaseballProject2/filte
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		../BaseballProject2/mainwindow.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1709,6 +1855,12 @@ main.o: ../BaseballProject2/main.cpp ../BaseballProject2/mainwindow.h \
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../BaseballProject2/main.cpp
@@ -1757,6 +1909,12 @@ maintenance.o: ../BaseballProject2/maintenance.cpp ../BaseballProject2/maintenan
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		../BaseballProject2/modifystadiums.h \
 		../BaseballProject2/modifysouvenirs.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maintenance.o ../BaseballProject2/maintenance.cpp
@@ -1801,6 +1959,12 @@ mainwindow.o: ../BaseballProject2/mainwindow.cpp ../BaseballProject2/mainwindow.
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		ui_mainwindow.h \
 		../BaseballProject2/login.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QDialog \
@@ -1809,9 +1973,53 @@ mainwindow.o: ../BaseballProject2/mainwindow.cpp ../BaseballProject2/mainwindow.
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../BaseballProject2/mainwindow.cpp
 
 modifysouvenirs.o: ../BaseballProject2/modifysouvenirs.cpp ../BaseballProject2/modifysouvenirs.h \
+		../BaseballProject2/dbmanager.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QtSql \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDebug \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QSortFilterProxyModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/QStandardItemModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QRegularExpression \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		../BaseballProject2/teamtablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_modifysouvenirs.h
+		ui_modifysouvenirs.h \
+		../BaseballProject2/maintenance.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modifysouvenirs.o ../BaseballProject2/modifysouvenirs.cpp
 
 modifystadiums.o: ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/modifystadiums.h \
@@ -1854,6 +2062,12 @@ modifystadiums.o: ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/mod
 		../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		ui_modifystadiums.h \
 		../BaseballProject2/maintenance.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modifystadiums.o ../BaseballProject2/modifystadiums.cpp
@@ -1861,9 +2075,66 @@ modifystadiums.o: ../BaseballProject2/modifystadiums.cpp ../BaseballProject2/mod
 planvacation.o: ../BaseballProject2/planvacation.cpp ../BaseballProject2/planvacation.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlQueryModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../BaseballProject2/dbmanager.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QtSql \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlQuery \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtSql.framework/Headers/QSqlError \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDebug \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QSortFilterProxyModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/QStandardItemModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QRegularExpression \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		../BaseballProject2/teamtablemodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../BaseballProject2/Souvenir.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QObject \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../BaseballProject2/souvenir2.h \
 		ui_planvacation.h \
-		../BaseballProject2/displayinfo.h
+		../BaseballProject2/displayinfo.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/QSpinBox \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtWidgets.framework/Headers/qspinbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o planvacation.o ../BaseballProject2/planvacation.cpp
+
+souvenir2.o: ../BaseballProject2/souvenir2.cpp ../BaseballProject2/souvenir2.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QSortFilterProxyModel \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QDebug \
+		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o souvenir2.o ../BaseballProject2/souvenir2.cpp
 
 teamtablemodel.o: ../BaseballProject2/teamtablemodel.cpp ../BaseballProject2/teamtablemodel.h \
 		/Users/trevorholm/Qt/6.5.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \

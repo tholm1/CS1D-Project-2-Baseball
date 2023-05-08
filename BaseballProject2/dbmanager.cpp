@@ -6,6 +6,7 @@
 #include <QFile>
 #include <iostream>
 #include <QInputDialog>
+#include "souvenir2.h"
 
 dbManager* dbManager::managerInstance = NULL;
 
@@ -69,6 +70,29 @@ QList<Team> dbManager::getAllTeams()
         qDebug() << "SQL Error: " << query.lastError().text();
     }
     return teamList;
+}
+
+QList<Souvenir3> dbManager::getAllSouvenirs()
+{
+    QSqlQuery query;
+    QList<Souvenir3> souvenirList;
+    if (query.exec("SELECT \"Team\", \"Souvenir\", \"Price\" from \"Souvenirs\"")) {
+        if (query.first()) {
+            while (query.isValid()) {
+                QString teamName          = query.value(0).toString();
+                QString souvenirName      = query.value(1).toString();
+                double  souvenirPrice     = query.value(2).toDouble();
+
+                // initialize the souvenir to be added to the souvenirList (QList)
+                Souvenir3 tempSouvenir = Souvenir3(teamName, souvenirName, souvenirPrice);
+                souvenirList.append(tempSouvenir);
+                query.next();
+            }
+        }
+    } else {
+        qDebug() << "SQL Error: " << query.lastError().text();
+    }
+    return souvenirList;
 }
 
 

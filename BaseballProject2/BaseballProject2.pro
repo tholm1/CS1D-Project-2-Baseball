@@ -24,6 +24,7 @@ SOURCES += \
     modifysouvenirs.cpp \
     modifystadiums.cpp \
     planvacation.cpp \
+    souvenir2.cpp \
     teamtablemodel.cpp
 
 HEADERS += \
@@ -39,6 +40,7 @@ HEADERS += \
     modifysouvenirs.h \
     modifystadiums.h \
     planvacation.h \
+    souvenir2.h \
     teamtablemodel.h
 
 FORMS += \

@@ -172,7 +172,7 @@ public:
 
         retranslateUi(planVacation);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(planVacation);

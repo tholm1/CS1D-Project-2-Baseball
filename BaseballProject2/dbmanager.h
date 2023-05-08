@@ -13,6 +13,8 @@
 #include <QFile>
 #include <QRegularExpression>
 #include "teamtablemodel.h"
+#include "Souvenir.h"
+#include "souvenir2.h"
 
 class dbManager
 {
@@ -37,6 +39,8 @@ public:
      * @return teams
      */
     QList<Team> getAllTeams();
+
+    QList<Souvenir3> getAllSouvenirs();
 
     QSqlQueryModel *loadSouvenirNamesOnly();
     QSqlQueryModel* loadStadiumSouvenirs(QString campus);
