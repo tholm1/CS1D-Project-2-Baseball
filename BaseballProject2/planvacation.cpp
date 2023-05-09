@@ -54,7 +54,7 @@ void planVacation::on_push_DFS_clicked()
     int total = graph.DFS(NUM,23);
 
     //int total = 10295;
-    //actual total = 9370
+    //actual total = 9370// 9420
     QString message = "Total distance for DFS starting at Oracle Park:\n "+QString::number(total) + "\t mileage";
     QMessageBox::information(this, "DFS mileage", message);
 }
@@ -92,7 +92,7 @@ void planVacation::on_push_BFS_clicked()
     int total = graph.BFS(16,graph);
 
     //int total = 10295;
-    //actual total = 12625
+    //actual total = 12625 //12810
     QString message = "Total distance for BFS starting at Target Field:\n "+QString::number(total) + "\t mileage";
     QMessageBox::information(this, "BFS mileage", message);
 

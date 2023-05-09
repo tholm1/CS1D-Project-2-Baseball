@@ -28,10 +28,10 @@ typedef pair<int, int> Pair;
 
 // City names
 
-const string originNames[] = {"Chase Field", "SunTrust Park", "Oriole Parkat Camden Yards","Fenway Park","Wrigley Field"
+const string originNames[] = {"Chase Field", "SunTrust Park", "Oriole Park at Camden Yards","Fenway Park","Wrigley Field"
                              ,"Guaranteed Rate Field","Great American Ball Park","Progressive Field","Coors Field","Comerica Park"
                              ,"Minute Maid Park","Kauffman Stadium","Angel Stadium","Dodger Stadium","Marlins Park","Miller Park"
-                             ,"Target Field","Citi Field","Yankee Stadium","Oakland-Alameda County Coliseum","Citizens Bank Park"
+                             ,"Target Field","Citi Field","Yankee Stadium","Oakland–Alameda County Coliseum","Citizens Bank Park"
                              ,"PNC Park","Petco Park","Oracle Park","Safeco Field","Busch Stadium","Tropicana Field","Globe Life Park in Arlington"
                              ,"Rogers Centre","Nationals Park"};
 
