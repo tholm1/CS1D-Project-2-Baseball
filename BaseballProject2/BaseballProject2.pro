@@ -18,12 +18,14 @@ SOURCES += \
     displayteam.cpp \
     filteredteams.cpp \
     graph.cpp \
+    graphtraversals.cpp \
     login.cpp \
     main.cpp \
     maintenance.cpp \
     mainwindow.cpp \
     planvacation.cpp \
-    teamtablemodel.cpp
+    teamtablemodel.cpp \
+    tripplanner.cpp
 
 HEADERS += \
     Souvenir.h \
@@ -33,21 +35,25 @@ HEADERS += \
     displayteam.h \
     filteredteams.h \
     graph.h \
+    graphtraversals.h \
     login.h \
     maintenance.h \
     mainwindow.h \
     planvacation.h \
-    teamtablemodel.h
+    teamtablemodel.h \
+    tripplanner.h
 
 FORMS += \
     allinfo.ui \
     displayinfo.ui \
     displayteam.ui \
     filteredteams.ui \
+    graphtraversals.ui \
     login.ui \
     maintenance.ui \
     mainwindow.ui \
-    planvacation.ui
+    planvacation.ui \
+    tripplanner.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

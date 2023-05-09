@@ -13,6 +13,18 @@
 #include <QFile>
 #include <QRegularExpression>
 #include "teamtablemodel.h"
+#include <set>
+#include <unordered_map>
+#include <vector>
+#include <tuple>
+
+using namespace std;
+
+struct stadium{
+    string starting;
+    string ending;
+    int distance;
+};
 
 class dbManager
 {
@@ -37,6 +49,13 @@ public:
      * @return teams
      */
     QList<Team> getAllTeams();
+
+     void loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, std::vector<std::tuple<std::string, std::string, int>> &edges);
+    QSqlDatabase db;
+
+    int rowCount();
+    vector<string> loadStadiumNames();
+    vector<stadium> loadDistance();
 };
 
 #endif // DBMANAGER_H
