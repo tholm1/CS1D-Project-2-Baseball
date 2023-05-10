@@ -18,7 +18,6 @@ SOURCES += \
     displayteam.cpp \
     filteredteams.cpp \
     graph.cpp \
-    graphtraversals.cpp \
     login.cpp \
     main.cpp \
     maintenance.cpp \
@@ -26,8 +25,7 @@ SOURCES += \
     modifysouvenirs.cpp \
     modifystadiums.cpp \
     planvacation.cpp \
-    teamtablemodel.cpp \
-    tripplanner.cpp
+    teamtablemodel.cpp
 
 HEADERS += \
     Souvenir.h \
@@ -37,27 +35,22 @@ HEADERS += \
     displayteam.h \
     filteredteams.h \
     graph.h \
-    graphtraversals.h \
     login.h \
     maintenance.h \
     mainwindow.h \
     modifysouvenirs.h \
     modifystadiums.h \
     planvacation.h \
-    teamtablemodel.h \
-    tripplanner.h
+    teamtablemodel.h
 
 FORMS += \
     allinfo.ui \
     displayinfo.ui \
     displayteam.ui \
     filteredteams.ui \
-    graphtraversals.ui \
     login.ui \
     maintenance.ui \
     mainwindow.ui \
-    planvacation.ui \
-    tripplanner.ui
     modifysouvenirs.ui \
     modifystadiums.ui \
     planvacation.ui
