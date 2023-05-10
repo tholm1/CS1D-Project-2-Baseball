@@ -10,8 +10,6 @@ debug/login.o
 debug/main.o
 debug/maintenance.o
 debug/mainwindow.o
-debug/modifysouvenirs.o
-debug/modifystadiums.o
 debug/planvacation.o
 debug/teamtablemodel.o
 debug/tripplanner.o
@@ -25,7 +23,5 @@ debug/moc_graphtraversals.o
 debug/moc_login.o
 debug/moc_maintenance.o
 debug/moc_mainwindow.o
-debug/moc_modifysouvenirs.o
-debug/moc_modifystadiums.o
 debug/moc_planvacation.o
 debug/moc_tripplanner.o
