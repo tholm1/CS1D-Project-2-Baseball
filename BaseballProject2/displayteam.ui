@@ -82,7 +82,7 @@ background-color: rgb(167, 167, 167);</string>
     <string notr="true">border-image: url(:/image/brown_back.jpg);</string>
    </property>
    <property name="text">
-    <string/>
+    <string>TextLabel</string>
    </property>
   </widget>
   <zorder>background</zorder>
