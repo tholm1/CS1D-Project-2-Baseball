@@ -23,19 +23,25 @@ class TripPlanner : public QDialog
 
 public:
     explicit TripPlanner(QWidget *parent = 0);
-    int calculateShortestPath(const std::string& start, const std::string& end);
+    void populateTeamComboBoxes();
+    void initializeGraph();
     ~TripPlanner();
 
 private slots:
     void on_PushButton_MostEfficientTrip_clicked();
-
     void on_PushButton_BeginTrip_clicked();
+    void on_PushButton_BackToMain_6_clicked();
+    void on_PushButton_CustomMostEfficientTrip_clicked();
+    void on_PushButton_AddTeam_clicked();
+    void on_PushButton_BeginCustomTrip_clicked();
+
+    void on_PushButton_BackToMain_clicked();
 
 private:
     Ui::TripPlanner *ui;
-       dbManager db;
-       Graph *graph;
-       void showTeamDBCombo(QSqlQueryModel *model);
+    dbManager db;
+    Graph *graph;
+    std::vector<std::string> teams;
 };
 
 #endif // TRIPPLANNER_H

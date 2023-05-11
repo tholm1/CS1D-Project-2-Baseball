@@ -24,7 +24,7 @@ class Ui_GraphTraversals
 {
 public:
     QPushButton *back_pushButton;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *Label_GraphTraversals;
     QHBoxLayout *horizontalLayout_2;
@@ -46,13 +46,13 @@ public:
 "text-decoration: underline;\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(167, 167, 167);"));
-        widget = new QWidget(GraphTraversals);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(0, 30, 1041, 111));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(GraphTraversals);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 30, 1041, 111));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        Label_GraphTraversals = new QLabel(widget);
+        Label_GraphTraversals = new QLabel(layoutWidget);
         Label_GraphTraversals->setObjectName(QString::fromUtf8("Label_GraphTraversals"));
         QFont font;
         font.setPointSize(16);
@@ -67,7 +67,7 @@ public:
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        PushButton_CalcDFS = new QPushButton(widget);
+        PushButton_CalcDFS = new QPushButton(layoutWidget);
         PushButton_CalcDFS->setObjectName(QString::fromUtf8("PushButton_CalcDFS"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
@@ -81,7 +81,7 @@ public:
 
         horizontalLayout->addWidget(PushButton_CalcDFS);
 
-        PushButton_CalcBFS = new QPushButton(widget);
+        PushButton_CalcBFS = new QPushButton(layoutWidget);
         PushButton_CalcBFS->setObjectName(QString::fromUtf8("PushButton_CalcBFS"));
         sizePolicy.setHeightForWidth(PushButton_CalcBFS->sizePolicy().hasHeightForWidth());
         PushButton_CalcBFS->setSizePolicy(sizePolicy);
@@ -90,7 +90,7 @@ public:
 
         horizontalLayout->addWidget(PushButton_CalcBFS);
 
-        PushButton_ViewMSTButton = new QPushButton(widget);
+        PushButton_ViewMSTButton = new QPushButton(layoutWidget);
         PushButton_ViewMSTButton->setObjectName(QString::fromUtf8("PushButton_ViewMSTButton"));
         sizePolicy.setHeightForWidth(PushButton_ViewMSTButton->sizePolicy().hasHeightForWidth());
         PushButton_ViewMSTButton->setSizePolicy(sizePolicy);
@@ -102,10 +102,17 @@ public:
 
         horizontalLayout_2->addLayout(horizontalLayout);
 
-        Label_TraversalType = new QLabel(widget);
+        Label_TraversalType = new QLabel(layoutWidget);
         Label_TraversalType->setObjectName(QString::fromUtf8("Label_TraversalType"));
-        Label_TraversalType->setFont(font1);
-        Label_TraversalType->setStyleSheet(QString::fromUtf8(""));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font2.setPointSize(8);
+        font2.setBold(false);
+        font2.setItalic(false);
+        font2.setWeight(50);
+        Label_TraversalType->setFont(font2);
+        Label_TraversalType->setStyleSheet(QString::fromUtf8("font: 8pt \"MS Shell Dlg 2\";\n"
+"color:rgb(0, 0, 0)"));
         Label_TraversalType->setFrameShape(QFrame::Box);
 
         horizontalLayout_2->addWidget(Label_TraversalType);

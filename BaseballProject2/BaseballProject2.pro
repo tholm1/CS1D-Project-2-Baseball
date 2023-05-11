@@ -58,9 +58,6 @@ FORMS += \
     mainwindow.ui \
     planvacation.ui \
     tripplanner.ui
-    modifysouvenirs.ui \
-    modifystadiums.ui \
-    planvacation.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

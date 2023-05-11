@@ -99,6 +99,20 @@ void dbManager::loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, 
 }
 
 
+QSqlQueryModel* dbManager::loadOriginalTeamNames() {
+    QSqlQueryModel *model = new QSqlQueryModel();
+    QSqlQuery query("SELECT DISTINCT \"Originated Stadium\" FROM \"MLB Distances Between Stadiums\"", db);
+    model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* dbManager::loadDestinationTeamNames() {
+    QSqlQueryModel *model = new QSqlQueryModel();
+    QSqlQuery query("SELECT DISTINCT \"Destination Stadium\" FROM \"MLB Distances Between Stadiums\"", db);
+    model->setQuery(query);
+    return model;
+}
+
 /*
  * loadTeamNamesOnly()
  * Using the "select XXX from" query funtion, the name of the college campuses are read in from the database into a QSqlQueryModel.

@@ -9,6 +9,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include <QString>
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -58,10 +59,18 @@ public:
     ~Graph();
     Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const std::vector<std::tuple<std::string, std::string, int>>& edges);
     int shortestPath(const std::string& start, const std::string& end);
+    int shortestPathList(const std::vector<std::string>& teams);
     std::unordered_map<std::string, int> vertexIndexMap;
     void addEdge(const std::string &u, const std::string &v, int w);
     int primMST();
     void setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap);
+    /** \fn GetDistBtwn(QString start, QString end)
+     * Using the SQL query funtion, the distance between the 2 specified campuses.
+     * If a database error occurs, an error warning is printed to the console.
+     * @param string start, string end, the distenct between the start campuses and end campuses
+     * @return double distenct, the distenct between 2 campuses
+     */
+    double getDistanceBetween(std::string start, std::string end);
     //-------------------------------------------------------------------------------
     // Vector to store adjacency list for each vertex
      vector<vector<pair<int, int>>> adjacencyList;
@@ -140,6 +149,7 @@ public:
 
      //implementing a BFS starting at Dallas
      int totalDistance = 0;
+
 };
 
 #endif // GRAPH_H

@@ -32,7 +32,7 @@ background-color: rgb(167, 167, 167);</string>
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -136,11 +136,16 @@ background-color: rgb(167, 167, 167);</string>
        <widget class="QLabel" name="Label_TraversalType">
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>8</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+color:rgb(0, 0, 0)</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>

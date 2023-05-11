@@ -56,6 +56,9 @@ public:
     int rowCount();
     vector<string> loadStadiumNames();
     vector<stadium> loadDistance();
+    //-------------------------------------
+    QSqlQueryModel* loadOriginalTeamNames();
+    QSqlQueryModel* loadDestinationTeamNames();
 };
 
 #endif // DBMANAGER_H

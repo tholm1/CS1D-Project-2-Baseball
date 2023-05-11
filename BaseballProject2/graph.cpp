@@ -1,5 +1,10 @@
 #include "graph.h"
 #include <stdio.h>
+#include<QtSql>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
 
 Graph::Graph(int V)
 {
@@ -7,24 +12,27 @@ Graph::Graph(int V)
     adj = new std::list<Pair>[V];
 }
 
-Graph::Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const std::vector<std::tuple<std::string, std::string, int>>& edges) {
-    this->vertexIndexMap = vertexIndexMap;
-    this->V = vertexIndexMap.size();
-    adj = new std::list<Pair>[V];
-
-    for (const auto& edge : edges) {
-        int u = vertexIndexMap.at(std::get<0>(edge));
-        int v = vertexIndexMap.at(std::get<1>(edge));
-        int w = std::get<2>(edge);
-        adj[u].push_back(std::make_pair(v, w));
-        adj[v].push_back(std::make_pair(u, w));
-    }
-}
-
 Graph::~Graph()
 {
     delete[] adj;
 }
+
+Graph::Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const std::vector<std::tuple<std::string, std::string, int>>& edges)
+{
+    this->V = vertexIndexMap.size();
+    this->adj = new std::list<Pair>[V];
+
+    for (const auto& edge : edges)
+    {
+        int uIndex = vertexIndexMap.at(std::get<0>(edge));
+        int vIndex = vertexIndexMap.at(std::get<1>(edge));
+        int w = std::get<2>(edge);
+        adj[uIndex].push_back(make_pair(vIndex, w));
+        adj[vIndex].push_back(make_pair(uIndex, w));
+    }
+}
+
+
 
 void Graph::addEdge(const std::string &u, const std::string &v, int w)
 {
@@ -77,22 +85,24 @@ int Graph::primMST()
 }
 int Graph::shortestPath(const std::string& start, const std::string& end)
 {
-    int totalDist = 0;
-    int src = vertexIndexMap.at(start);
-    int dest = vertexIndexMap.at(end);
-    priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+    int src = vertexIndexMap[start];
+    int tgt = vertexIndexMap[end];
+
     vector<int> dist(V, INT_MAX);
-    pq.push(make_pair(0, src));
     dist[src] = 0;
+
+    priority_queue< Pair, vector<Pair>, greater<Pair> > pq;
+    pq.push(make_pair(0, src));
 
     while (!pq.empty())
     {
         int u = pq.top().second;
         pq.pop();
-        for (auto i = adj[u].begin(); i != adj[u].end(); ++i)
+        list< pair<int, int> >::iterator it;
+        for (it = adj[u].begin(); it != adj[u].end(); ++it)
         {
-            int v = (*i).first;
-            int weight = (*i).second;
+            int v = (*it).first;
+            int weight = (*it).second;
             if (dist[v] > dist[u] + weight)
             {
                 dist[v] = dist[u] + weight;
@@ -100,9 +110,66 @@ int Graph::shortestPath(const std::string& start, const std::string& end)
             }
         }
     }
+    cout<< dist[tgt];
+    return dist[tgt];
+}
+int Graph::shortestPathList(const std::vector<std::string>& teams)
+{
+    if (teams.empty())
+        return 0;
 
-    totalDist = dist[dest];
-    return totalDist;
+    int src = vertexIndexMap[teams[0]];
+    int tgt = vertexIndexMap[teams.back()];
+
+    vector<int> dist(V, INT_MAX);
+    dist[src] = 0;
+
+    priority_queue< Pair, vector<Pair>, greater<Pair> > pq;
+    pq.push(make_pair(0, src));
+
+    while (!pq.empty())
+    {
+        int u = pq.top().second;
+        pq.pop();
+        list< pair<int, int> >::iterator it;
+        for (it = adj[u].begin(); it != adj[u].end(); ++it)
+        {
+            int v = (*it).first;
+            int weight = (*it).second;
+            if (dist[v] > dist[u] + weight)
+            {
+                dist[v] = dist[u] + weight;
+                pq.push(make_pair(dist[v], v));
+            }
+        }
+    }
+    return dist[tgt];
+}
+
+/*
+ * GetDistBtwn(QString start, QString end)
+ * Using the "select XXX from" query funtion, the distance between the 2 specified campuses.
+ * If a database error occurs, an error warning is printed to the console.
+ */
+double Graph::getDistanceBetween(std::string start, std::string end)
+{
+    double distBtwn = 0;
+
+    QString sStart = QString::fromStdString(start);
+    QString sEnd = QString::fromStdString(end);
+
+    QString sQry = "select \"Distance\" from \"MLB Distances Between Stadiums\" where \"Originated Stadium\" = '" + sStart + "' and \"Destination Stadium\" = '" + sEnd + "';";
+
+    QSqlQuery qry;
+    qry.prepare(sQry);
+    qry.exec();
+
+    if(qry.next())
+    {
+        distBtwn = qry.value(0).toDouble();
+    }
+
+    return distBtwn;
 }
 
 
@@ -110,6 +177,7 @@ void Graph::setVertexIndexMap(const std::unordered_map<std::string, int> &vertex
 {
     this->vertexIndexMap = vertexIndexMap;
 }
+
 //------------------------------------------------------------------------------------------
 Graphs::Graphs(vector<Edge2> &edges, // IN - Edges in the graph
  int num) // IN - number of vertices in the graph
