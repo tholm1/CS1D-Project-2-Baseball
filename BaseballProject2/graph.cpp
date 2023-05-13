@@ -83,7 +83,53 @@ int Graph::primMST()
     }
     return totalDist;
 }
-int Graph::shortestPath(const std::string& start, const std::string& end)
+
+int Graph::primMSTList(std::vector<std::string>& teams) {
+    int totalDist = 0;
+    std::priority_queue<Pair, std::vector<Pair>, std::greater<Pair>> pq;
+    int startingIndex = vertexIndexMap[teams[0]];
+
+    std::vector<int> key(V, std::numeric_limits<int>::max());
+    std::vector<int> parent(V, -1);
+    std::vector<bool> inMST(V, false);
+
+    pq.push(std::make_pair(0, startingIndex));
+    key[startingIndex] = 0;
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+
+        inMST[u] = true;
+
+        for (auto i = adj[u].begin(); i != adj[u].end(); ++i) {
+            int v = (*i).first;
+            int weight = (*i).second;
+
+            if (inMST[v] == false && key[v] > weight) {
+                key[v] = weight;
+                pq.push(std::make_pair(key[v], v));
+                parent[v] = u;
+            }
+        }
+    }
+
+    auto comparator = [&](const std::string& a, const std::string& b) {
+        return key[vertexIndexMap[a]] < key[vertexIndexMap[b]];
+    };
+
+    std::sort(teams.begin() + 1, teams.end(), comparator);
+
+    for (int i = 1; i < V; ++i) {
+        totalDist += key[i];
+    }
+
+    return totalDist;
+}
+
+
+
+int Graph::shortestDistance(const std::string& start, const std::string& end)
 {
     int src = vertexIndexMap[start];
     int tgt = vertexIndexMap[end];
@@ -113,38 +159,61 @@ int Graph::shortestPath(const std::string& start, const std::string& end)
     cout<< dist[tgt];
     return dist[tgt];
 }
-int Graph::shortestPathList(const std::vector<std::string>& teams)
-{
+int Graph::shortestDistanceList(const std::vector<std::string>& teams) {
     if (teams.empty())
         return 0;
 
-    int src = vertexIndexMap[teams[0]];
-    int tgt = vertexIndexMap[teams.back()];
+    int totalDistance = 0;
+    int currentStadium = vertexIndexMap[teams[0]];
 
-    vector<int> dist(V, INT_MAX);
-    dist[src] = 0;
+    for (size_t i = 1; i < teams.size(); ++i) {
+        int closestStadium = -1;
+        int closestDistance = INT_MAX;
 
-    priority_queue< Pair, vector<Pair>, greater<Pair> > pq;
-    pq.push(make_pair(0, src));
+        int targetStadium = vertexIndexMap[teams[i]];
 
-    while (!pq.empty())
-    {
-        int u = pq.top().second;
-        pq.pop();
-        list< pair<int, int> >::iterator it;
-        for (it = adj[u].begin(); it != adj[u].end(); ++it)
-        {
-            int v = (*it).first;
-            int weight = (*it).second;
-            if (dist[v] > dist[u] + weight)
-            {
-                dist[v] = dist[u] + weight;
-                pq.push(make_pair(dist[v], v));
+        std::vector<int> dist(V, INT_MAX);
+        dist[currentStadium] = 0;
+
+        std::priority_queue<Pair, std::vector<Pair>, std::greater<Pair>> pq;
+        pq.push(std::make_pair(0, currentStadium));
+
+        while (!pq.empty()) {
+            int u = pq.top().second;
+            pq.pop();
+
+            for (const auto& pair : adj[u]) {
+                int v = pair.first;
+                int weight = pair.second;
+
+                if (dist[v] > dist[u] + weight) {
+                    dist[v] = dist[u] + weight;
+                    pq.push(std::make_pair(dist[v], v));
+
+                    // Update the closest stadium if a closer one is found
+                    if (v == targetStadium && weight < closestDistance) {
+                        closestStadium = v;
+                        closestDistance = weight;
+                    }
+                }
             }
         }
+
+        if (closestStadium != -1) {
+            totalDistance += closestDistance;
+            currentStadium = closestStadium;
+        }
     }
-    return dist[tgt];
+
+    return totalDistance;
 }
+
+
+
+
+
+
+
 
 /*
  * GetDistBtwn(QString start, QString end)

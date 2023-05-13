@@ -58,12 +58,13 @@ public:
     Graph(int V);
     ~Graph();
     Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const std::vector<std::tuple<std::string, std::string, int>>& edges);
-    int shortestPath(const std::string& start, const std::string& end);
-    int shortestPathList(const std::vector<std::string>& teams);
+    int shortestDistance(const std::string& start, const std::string& end);
+    int shortestDistanceList(const std::vector<std::string>& teams);
     std::unordered_map<std::string, int> vertexIndexMap;
     void addEdge(const std::string &u, const std::string &v, int w);
     int primMST();
     void setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap);
+    int primMSTList(std::vector<std::string>& teams);
     /** \fn GetDistBtwn(QString start, QString end)
      * Using the SQL query funtion, the distance between the 2 specified campuses.
      * If a database error occurs, an error warning is printed to the console.

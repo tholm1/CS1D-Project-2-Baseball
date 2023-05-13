@@ -49,7 +49,6 @@ public:
      * @return teams
      */
     QList<Team> getAllTeams();
-
      void loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, std::vector<std::tuple<std::string, std::string, int>> &edges);
     QSqlDatabase db;
 

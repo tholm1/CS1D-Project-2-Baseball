@@ -112,7 +112,6 @@ QSqlQueryModel* dbManager::loadDestinationTeamNames() {
     model->setQuery(query);
     return model;
 }
-
 /*
  * loadTeamNamesOnly()
  * Using the "select XXX from" query funtion, the name of the college campuses are read in from the database into a QSqlQueryModel.

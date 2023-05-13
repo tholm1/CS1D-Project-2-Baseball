@@ -67,7 +67,7 @@ void TripPlanner::on_PushButton_BeginTrip_clicked()
     std::string end = ui->teams_combo_2->currentText().toStdString();
 
     if (graph) {
-        int distance = graph->shortestPath(start, end);
+        int distance = graph->shortestDistance(start, end);
         QString result = QString("Shortest path distance from %1 to %2: %3")
                          .arg(QString::fromStdString(start), QString::fromStdString(end)).arg(distance);
         ui->Label_FinalTotalDistance->setText(result);
@@ -79,6 +79,12 @@ void TripPlanner::on_PushButton_BeginTrip_clicked()
 void TripPlanner::on_PushButton_BackToMain_6_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
+    // Get the model and clear it
+    QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->listView->model());
+    model->clear();
+
+    // Clear the teams vector
+    teams.clear();
 }
 
 
@@ -109,7 +115,7 @@ void TripPlanner::on_PushButton_AddTeam_clicked()
 void TripPlanner::on_PushButton_BeginCustomTrip_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
-    int distance = graph->shortestPathList(teams);
+    int distance = graph->primMSTList(teams);
     QString result = QString("Shortest path distance from %1").arg(distance);
     ui->Label_FinalTotalDistance->setText(result);
 
@@ -123,4 +129,57 @@ void TripPlanner::on_PushButton_BackToMain_clicked()
     hide();
     plan.exec();
 }
+
+
+void TripPlanner::on_PushButton_BeginCustomTrip_Clear_clicked()
+{
+    // Get the model and clear it
+    QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->listView->model());
+    model->clear();
+
+    // Clear the teams vector
+    teams.clear();
+}
+
+
+void TripPlanner::on_PushButton_CustomTrip_clicked()
+{
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+
+   teams.push_back("Marlins Park");
+   teams.push_back("Angel Stadium");
+   teams.push_back("Busch Stadium");
+   teams.push_back("Chase Field");
+   teams.push_back("Citi Field");
+   teams.push_back("Citizens Bank Park");
+   teams.push_back("Comerica Park");
+   teams.push_back("Coors Field");
+   teams.push_back("Dodger Stadium");
+   teams.push_back("Fenway Park");
+   teams.push_back("Globe Life Park in Arlington");
+   teams.push_back("Great American Ball Park");
+   teams.push_back("Guaranteed Rate Field");
+   teams.push_back("Kauffman Stadium");
+   teams.push_back("Miller Park");
+   teams.push_back("Minute Maid Park");
+   teams.push_back("Nationals Park");
+   teams.push_back("Oakland–Alameda County Coliseum");
+   teams.push_back("Oracle Park");
+   teams.push_back("Oriole Park at Camden Yards");
+   teams.push_back("Petco Park");
+   teams.push_back("PNC Park");
+   teams.push_back("Progressive Field");
+   teams.push_back("Rogers Centre");
+   teams.push_back("Safeco Field");
+   teams.push_back("SunTrust Park");
+   teams.push_back("Target Field");
+   teams.push_back("Tropicana Field");
+   teams.push_back("Wrigley Field");
+   teams.push_back("Yankee Stadium");
+    int distance = graph->shortestDistanceList(teams);
+    QString result = QString("Shortest path from Marlin is %1").arg(distance);
+    ui->Label_FinalTotalDistance->setText(result);
+
+}
+
 

@@ -50,6 +50,7 @@ public:
     QLabel *WelcomeLabel_3;
     QPushButton *PushButton_BackToMain_4;
     QPushButton *PushButton_BeginCustomTrip;
+    QPushButton *PushButton_BeginCustomTrip_Clear;
     QWidget *widget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -214,6 +215,12 @@ public:
         font3.setPointSize(11);
         PushButton_BeginCustomTrip->setFont(font3);
         PushButton_BeginCustomTrip->setStyleSheet(QString::fromUtf8(""));
+        PushButton_BeginCustomTrip_Clear = new QPushButton(CustomOrderTrip_3);
+        PushButton_BeginCustomTrip_Clear->setObjectName(QString::fromUtf8("PushButton_BeginCustomTrip_Clear"));
+        PushButton_BeginCustomTrip_Clear->setGeometry(QRect(680, 210, 289, 41));
+        PushButton_BeginCustomTrip_Clear->setMinimumSize(QSize(121, 41));
+        PushButton_BeginCustomTrip_Clear->setFont(font3);
+        PushButton_BeginCustomTrip_Clear->setStyleSheet(QString::fromUtf8(""));
         widget = new QWidget(CustomOrderTrip_3);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(20, 80, 621, 471));
@@ -319,6 +326,7 @@ public:
         WelcomeLabel_3->setText(QApplication::translate("TripPlanner", "Add the teams you wish to visit to the list then press \"Begin Trip\" to start the trip.", nullptr));
         PushButton_BackToMain_4->setText(QApplication::translate("TripPlanner", "Back", nullptr));
         PushButton_BeginCustomTrip->setText(QApplication::translate("TripPlanner", "Begin Trip", nullptr));
+        PushButton_BeginCustomTrip_Clear->setText(QApplication::translate("TripPlanner", "Clear list to restart", nullptr));
         PushButton_AddTeam->setText(QApplication::translate("TripPlanner", "Add Team", nullptr));
         WelcomeLabel_4->setText(QApplication::translate("TripPlanner", "Buy souvenirs", nullptr));
         Label_TripSummary->setText(QApplication::translate("TripPlanner", "Trip Summary", nullptr));
