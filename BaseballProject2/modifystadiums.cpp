@@ -2,6 +2,9 @@
 #include "ui_modifystadiums.h"
 #include "maintenance.h"
 #include "dbmanager.h"
+#include <QApplication>
+#include <QFileDialog>
+#include <QTextStream>
 
 ModifyStadiums::ModifyStadiums(QWidget *parent) :
     QDialog(parent),
@@ -15,11 +18,6 @@ ModifyStadiums::ModifyStadiums(QWidget *parent) :
     ui->tableView->verticalHeader()->setVisible(false);
 
     // combo box initializations
-    // add combo boxes
-    ui->playingSurfaceAddBox->addItems({"Grass", "AstroTurf GameDay Grass", "AstroTurf GameDay Grass 3D"});
-    ui->leagueAddBox->addItems({"National", "American"});
-    ui->ballparkTypologyAddBox->addItems({"Retro Modern", "Retro Classic", "Jewel Box", "Modern", "Contemporary", "Multipurpose"});
-    ui->roofTypeAddBox->addItems({"Retractable", "Open", "Fixed"});
     // modify combo boxes
     ui->playingSurfaceUpdateBox->addItems({"Grass", "AstroTurf GameDay Grass", "AstroTurf GameDay Grass 3D"});
     ui->leagueUpdateBox->addItems({"National", "American"});
@@ -85,105 +83,127 @@ void ModifyStadiums::on_backBtn_clicked()
 void ModifyStadiums::on_confirmAddBtn_clicked()
 {
 
-    QString addTeamName                 = ui->teamNameAddLine->text();
-    QString addStadiumName              = ui->stadiumNameAddLine->text();
-    int     addSeatingCapacity          = ui->seatingCapacityAddBox->value();
-    QString addCity                     = ui->locationCityAddLine->text();
-    QString addState                    = ui->locationStateAddLine->text();
-    QString addLocation                 = addCity + ", " + addState;
-    QString addPlayingSurface           = ui->playingSurfaceAddBox->currentText();
-    QString addLeague                   = ui->leagueAddBox->currentText();
-    int     addDateOpened               = ui->dateOpenedAddBox->value();
-    int     addDistanceToCenterField    = ui->distanceToCenterFieldAddBox->value();
-    QString addParkTypology             = ui->ballparkTypologyAddBox->currentText();
-    QString addRoofType                 = ui->roofTypeAddBox->currentText();
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "Open Text File", "", "Text Files (*.txt)");
 
 
-    try
-        {
-            QSqlQuery* checkTeamQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-            checkTeamQuery->prepare("SELECT \"Team Name\" FROM \"MLB Teams\" WHERE \"Team Name\" = :checkTeamName");
-            checkTeamQuery->bindValue(":checkTeamName", addTeamName);
-            checkTeamQuery->exec();
-            checkTeamQuery->next();
+    if (!filePath.isEmpty()) {
+            // Open the selected file
+            QFile file(filePath);
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                // Read the file contents into a QTextStream
+                QTextStream in(&file);
+                while (!in.atEnd()) {
+                    QString addTeamName                 = in.readLine();
+                    QString addStadiumName              = in.readLine();
+                    int     addSeatingCapacity          = in.readLine().toInt();
+                    QString addLocation                 = in.readLine();
+                    QString addPlayingSurface           = in.readLine();
+                    QString addLeague                   = in.readLine();
+                    int     addDateOpened               = in.readLine().toInt();
+                    int     addDistanceToCenterField    = in.readLine().toInt();
+                    QString addParkTypology             = in.readLine();
+                    QString addRoofType                 = in.readLine();
 
-            QString teamSearched = checkTeamQuery->value(0).toString();
-            checkTeamQuery->finish();
-            if(teamSearched == addTeamName) // checks for duplicate team name
-            {
-               throw 0;
-            }
+                    // Display the file contents
+                    qDebug() << "File Contents:\n" << addTeamName << Qt::endl << addStadiumName << Qt::endl << addSeatingCapacity
+                             << Qt::endl << addLocation << Qt::endl << addPlayingSurface << Qt::endl << addLeague
+                             << Qt::endl << addDateOpened << Qt::endl << addDistanceToCenterField
+                             << Qt::endl << addParkTypology << Qt::endl << addRoofType;
+                    try
+                           {
+                               QSqlQuery* checkTeamQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+                               checkTeamQuery->prepare("SELECT \"Team Name\" FROM \"MLB Teams\" WHERE \"Team Name\" = :checkTeamName");
+                               checkTeamQuery->bindValue(":checkTeamName", addTeamName);
+                               checkTeamQuery->exec();
+                               checkTeamQuery->next();
 
-            QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-            checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
-            checkStadiumQuery->bindValue(":checkStadiumName", addStadiumName);
-            checkStadiumQuery->exec();
-            checkStadiumQuery->next();
+                               QString teamSearched = checkTeamQuery->value(0).toString();
+                               checkTeamQuery->finish();
+                               if(teamSearched == addTeamName) // checks for duplicate team name
+                               {
+                                  throw 0;
+                               }
 
-            QString stadiumSearched = checkStadiumQuery->value(0).toString();
+                               QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+                               checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
+                               checkStadiumQuery->bindValue(":checkStadiumName", addStadiumName);
+                               checkStadiumQuery->exec();
+                               checkStadiumQuery->next();
 
-            checkStadiumQuery->finish();
+                               QString stadiumSearched = checkStadiumQuery->value(0).toString();
 
-            if(stadiumSearched == addStadiumName) // checks for duplicate stadium name
-            {
-               throw 1;
-            }
+                               checkStadiumQuery->finish();
 
-            QSqlQuery* addQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-            addQuery->prepare("INSERT INTO \"MLB Teams\" ("
-                                  "\"Team Name\", "
-                                  "\"Stadium Name\", "
-                                  "\"Seating Capacity\", "
-                                  "\"Location\", "
-                                  "\"Playing Surface\", "
-                                  "\"League\", "
-                                  "\"Date Opened\", "
-                                  "\"Distance to Center Field\", "
-                                  "\"Ballpark Typology\", "
-                                  "\"Roof Type\""
-                              ") "
-                              "VALUES ("
-                                  ":teamName, "
-                                  ":stadiumName, "
-                                  ":seatingCapacity, "
-                                  ":location, "
-                                  ":playingSurface, "
-                                  ":league, "
-                                  ":dateOpened, "
-                                  ":distanceToCenterField, "
-                                  ":ballParkTypology, "
-                                  ":roofType"
-                              ")");
+                               if(stadiumSearched == addStadiumName) // checks for duplicate stadium name
+                               {
+                                  throw 1;
+                               }
 
-            addQuery->bindValue(":teamName", addTeamName);
-            addQuery->bindValue(":stadiumName", addStadiumName);
-            addQuery->bindValue(":seatingCapacity", addSeatingCapacity);
-            addQuery->bindValue(":location", addLocation);
-            addQuery->bindValue(":playingSurface", addPlayingSurface);
-            addQuery->bindValue(":league", addLeague);
-            addQuery->bindValue(":dateOpened", addDateOpened);
-            addQuery->bindValue(":distanceToCenterField", addDistanceToCenterField);
-            addQuery->bindValue(":ballParkTypology", addParkTypology);
-            addQuery->bindValue(":roofType", addRoofType);
+                               QSqlQuery* addQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+                               addQuery->prepare("INSERT INTO \"MLB Teams\" ("
+                                                     "\"Team Name\", "
+                                                     "\"Stadium Name\", "
+                                                     "\"Seating Capacity\", "
+                                                     "\"Location\", "
+                                                     "\"Playing Surface\", "
+                                                     "\"League\", "
+                                                     "\"Date Opened\", "
+                                                     "\"Distance to Center Field\", "
+                                                     "\"Ballpark Typology\", "
+                                                     "\"Roof Type\""
+                                                 ") "
+                                                 "VALUES ("
+                                                     ":teamName, "
+                                                     ":stadiumName, "
+                                                     ":seatingCapacity, "
+                                                     ":location, "
+                                                     ":playingSurface, "
+                                                     ":league, "
+                                                     ":dateOpened, "
+                                                     ":distanceToCenterField, "
+                                                     ":ballParkTypology, "
+                                                     ":roofType"
+                                                 ")");
 
-            addQuery->exec();
-            updateDataView();
-        }
-        catch(int addUpdateError)
-        {
-            ui->errorLabel->setVisible(true);
+                               addQuery->bindValue(":teamName", addTeamName);
+                               addQuery->bindValue(":stadiumName", addStadiumName);
+                               addQuery->bindValue(":seatingCapacity", addSeatingCapacity);
+                               addQuery->bindValue(":location", addLocation);
+                               addQuery->bindValue(":playingSurface", addPlayingSurface);
+                               addQuery->bindValue(":league", addLeague);
+                               addQuery->bindValue(":dateOpened", addDateOpened);
+                               addQuery->bindValue(":distanceToCenterField", addDistanceToCenterField);
+                               addQuery->bindValue(":ballParkTypology", addParkTypology);
+                               addQuery->bindValue(":roofType", addRoofType);
 
-            if(addUpdateError == 0)
-            {
-                ui->errorLabel->setText("You cannot enter a duplicate team name.");
-                qDebug() << "DUPLICATE TEAM NAME";
-                         //<< Qt::endl; // insert error message
-            }
-            if(addUpdateError == 1)
-            {
-                ui->errorLabel->setText("You cannot enter a duplicate stadium name.");
-                qDebug() << "DUPLICATE STADIUM NAME";
-                         //<< Qt::endl; // insert error message
+                               addQuery->exec();
+                               updateDataView();
+                           }
+                           catch(int addUpdateError)
+                           {
+                               ui->errorLabel->setVisible(true);
+
+                               if(addUpdateError == 0)
+                               {
+                                   ui->errorLabel->setText("You cannot enter a duplicate team name.");
+                                   qDebug() << "DUPLICATE TEAM NAME";
+                                            //<< Qt::endl; // insert error message
+                               }
+                               if(addUpdateError == 1)
+                               {
+                                   ui->errorLabel->setText("You cannot enter a duplicate stadium name.");
+                                   qDebug() << "DUPLICATE STADIUM NAME";
+                                            //<< Qt::endl; // insert error message
+                               }
+                           }
+
+
+                }
+
+                // Close the file
+                file.close();
+            } else {
+                qDebug() << "Failed to open the file:" << file.errorString();
             }
         }
 }
