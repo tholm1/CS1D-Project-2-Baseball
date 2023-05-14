@@ -125,7 +125,7 @@ void GraphTraversals::on_PushButton_CalcBFS_clicked()
         //actual total = 12625 //12810
         QString message = "Total distance for BFS starting at Target Field: "+QString::number(total) + " miles";
         QMessageBox::information(this, "BFS mileage", message);
-        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(total));
+//        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(total));
 
 }
 
