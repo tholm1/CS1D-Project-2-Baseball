@@ -54,11 +54,9 @@ private:
 };
 
 //----------------------------------------------------------------------------------
+
 class Graph
 {
-private:
-    int V;
-    std::list<Pair> *adj;
 public:
     Graph(int V);
     ~Graph();
@@ -149,7 +147,7 @@ private:
     //implementing a BFS starting at Dallas
     int totalDistance = 0;
 
+    Graph();
 };
 
 #endif // GRAPH_H
-

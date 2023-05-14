@@ -13,18 +13,6 @@
 #include <QFile>
 #include <QRegularExpression>
 #include "teamtablemodel.h"
-#include <set>
-#include <unordered_map>
-#include <vector>
-#include <tuple>
-
-using namespace std;
-
-struct stadium{
-    string starting;
-    string ending;
-    int distance;
-};
 
 class dbManager
 {

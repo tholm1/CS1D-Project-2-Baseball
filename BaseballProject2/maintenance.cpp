@@ -1,8 +1,6 @@
 #include "maintenance.h"
 #include "ui_maintenance.h"
 #include "mainwindow.h"
-#include "modifystadiums.h"
-#include "modifysouvenirs.h"
 
 
 maintenance::maintenance(QWidget *parent) :
@@ -20,19 +18,13 @@ maintenance::~maintenance()
 
 void maintenance::on_Add_Delete_Info_pushButton_clicked()
 {
-    ModifyStadiums modStadiums;
-    hide();
-    modStadiums.setModal(true);
-    modStadiums.exec();
+
 }
 
 
 void maintenance::on_modifyInfo_pushButton_clicked()
 {
-    ModifySouvenirs modSouvenirs;
-    hide();
-    modSouvenirs.setModal(true);
-    modSouvenirs.exec();
+
 }
 
 

@@ -6,7 +6,7 @@
 #include <QSqlError>
 #include <QDebug>
 
-Graph::Graph(int V)
+Graph::Graph()
 {
     this->V = V;
     adj = new std::list<Pair>[V];
@@ -336,4 +336,5 @@ void Graphs::DFS_Utility(int current, // Current index
  current = route[temp].first;
  }
  }
+
 }
