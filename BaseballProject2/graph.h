@@ -28,14 +28,18 @@ struct Edge2
  int distance; // Distance between the two cities
  };
 
+typedef pair<int, int> Pair;
+
+
 // City names
 
-const string originNames[] = {"Chase Field", "SunTrust Park", "Oriole Parkat Camden Yards","Fenway Park","Wrigley Field"
+const string originNames[] = {"Chase Field", "SunTrust Park", "Oriole Park at Camden Yards","Fenway Park","Wrigley Field"
                              ,"Guaranteed Rate Field","Great American Ball Park","Progressive Field","Coors Field","Comerica Park"
                              ,"Minute Maid Park","Kauffman Stadium","Angel Stadium","Dodger Stadium","Marlins Park","Miller Park"
-                             ,"Target Field","Citi Field","Yankee Stadium","Oakland-Alameda County Coliseum","Citizens Bank Park"
+                             ,"Target Field","Citi Field","Yankee Stadium","Oakland–Alameda County Coliseum","Citizens Bank Park"
                              ,"PNC Park","Petco Park","Oracle Park","Safeco Field","Busch Stadium","Tropicana Field","Globe Life Park in Arlington"
                              ,"Rogers Centre","Nationals Park"};
+
 
 class Graphs
 {
@@ -48,6 +52,7 @@ private:
  // Recursive functions for DFS with weights
  void DFS_Utility(int current, vector<bool> &visited, vector<Pair> &route, int &dist);
 };
+
 //----------------------------------------------------------------------------------
 class Graph
 {
@@ -64,92 +69,85 @@ public:
     void addEdge(const std::string &u, const std::string &v, int w);
     int primMST();
     void setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap);
-    int primMSTList(std::vector<std::string>& teams);
-    /** \fn GetDistBtwn(QString start, QString end)
-     * Using the SQL query funtion, the distance between the 2 specified campuses.
-     * If a database error occurs, an error warning is printed to the console.
-     * @param string start, string end, the distenct between the start campuses and end campuses
-     * @return double distenct, the distenct between 2 campuses
-     */
-    double getDistanceBetween(std::string start, std::string end);
+    int shortestDistanceList_02(std::vector<std::string>& teams);
     //-------------------------------------------------------------------------------
     // Vector to store adjacency list for each vertex
-     vector<vector<pair<int, int>>> adjacencyList;
+    vector<vector<pair<int, int>>> adjacencyList;
 
-     // Constructor to initialize graph with given edges
-     Graph(vector<Edge> const &edges, int N) {
-         // Resize the adjacency list to N elements of type vector<pair<int, int>>
-         adjacencyList.resize(N);
+    // Constructor to initialize graph with given edges
+    Graph(vector<Edge> const &edges, int N) {
+        // Resize the adjacency list to N elements of type vector<pair<int, int>>
+        adjacencyList.resize(N);
 
-         // Add edges to the graph
-         for (auto &edge : edges) {
-             int source      = edge.source;
-             int destination = edge.destination;
-             int weight      = edge.weight;
+        // Add edges to the graph
+        for (auto &edge : edges) {
+            int source      = edge.source;
+            int destination = edge.destination;
+            int weight      = edge.weight;
 
-             // Add edge to the adjacency list
-             adjacencyList[source].push_back(make_pair(destination, weight));
-         }
+            // Add edge to the adjacency list
+            adjacencyList[source].push_back(make_pair(destination, weight));
+        }
 
-         // Sort the adjacency list of each vertex in ascending order of the weights of the edges
-         for (auto &list : adjacencyList) {
-             sort(list.begin(), list.end(), [](const pair<int, int> &a, const pair<int, int> &b) {
-                 return a.second < b.second;
-             });
-         }
-     }
-     int BFS(int node, const Graph &g) {
-         //vector to store each vertex hat has been visited, the parent of each vertex, and the distance of each vertex
-         vector<bool> visited(N, false);
-         vector<int> parent(N, -1);
-         vector<int> distance(N, 0);
-         queue<int> q;
+        // Sort the adjacency list of each vertex in ascending order of the weights of the edges
+        for (auto &list : adjacencyList) {
+            sort(list.begin(), list.end(), [](const pair<int, int> &a, const pair<int, int> &b) {
+                return a.second < b.second;
+            });
+        }
+    }
+    int BFS(int node, const Graph &g) {
+        //vector to store each vertex hat has been visited, the parent of each vertex, and the distance of each vertex
+        vector<bool> visited(N, false);
+        vector<int> parent(N, -1);
+        vector<int> distance(N, 0);
+        queue<int> q;
 
-         //mark the current node as visited
-         visited[node] = true;
-         q.push(node);
-         const string cityArray[] = {"Chase Field", "SunTrust Park", "Oriole Parkat Camden Yards","Fenway Park","Wrigley Field"
-                                     ,"Guaranteed Rate Field","Great American Ball Park","Progressive Field","Coors Field","Comerica Park"
-                                     ,"Minute Maid Park","Kauffman Stadium","Angel Stadium","Dodger Stadium","Marlins Park","Miller Park"
-                                     ,"Target Field","Citi Field","Yankee Stadium","Oakland-Alameda County Coliseum","Citizens Bank Park"
-                                     ,"PNC Park","Petco Park","Oracle Park","Safeco Field","Busch Stadium","Tropicana Field","Globe Life Park in Arlington"
-                                     ,"Rogers Centre","Nationals Park"};
+        //mark the current node as visited
+        visited[node] = true;
+        q.push(node);
+        const string cityArray[] = {"Chase Field", "SunTrust Park", "Oriole Parkat Camden Yards","Fenway Park","Wrigley Field"
+                                    ,"Guaranteed Rate Field","Great American Ball Park","Progressive Field","Coors Field","Comerica Park"
+                                    ,"Minute Maid Park","Kauffman Stadium","Angel Stadium","Dodger Stadium","Marlins Park","Miller Park"
+                                    ,"Target Field","Citi Field","Yankee Stadium","Oakland-Alameda County Coliseum","Citizens Bank Park"
+                                    ,"PNC Park","Petco Park","Oracle Park","Safeco Field","Busch Stadium","Tropicana Field","Globe Life Park in Arlington"
+                                    ,"Rogers Centre","Nationals Park"};
 
-         while (!q.empty()) {
-             // Dequeue a vertex from the front of the queue and visit it
-             int u = q.front();
-             q.pop();
+        while (!q.empty()) {
+            // Dequeue a vertex from the front of the queue and visit it
+            int u = q.front();
+            q.pop();
 
-             // Traverse all the neighbors of the current vertex
-             for (auto &neighbor : g.adjacencyList[u]) {
-                 int v = neighbor.first;
-                 int weight = neighbor.second;
+            // Traverse all the neighbors of the current vertex
+            for (auto &neighbor : g.adjacencyList[u]) {
+                int v = neighbor.first;
+                int weight = neighbor.second;
 
-                 // Choose the neighbor with the smallest weight as the next vertex to visit
-                 if (!visited[v]) {
-                     // Mark edge as discovery edge
-                     parent[v] = u;
-                     distance[v] = distance[u] + weight;
-                     totalDistance += weight;
-                     cout << "Discovery edge: " << cityArray[u] << " -> " << cityArray[v] << endl;
+                // Choose the neighbor with the smallest weight as the next vertex to visit
+                if (!visited[v]) {
+                    // Mark edge as discovery edge
+                    parent[v] = u;
+                    distance[v] = distance[u] + weight;
+                    totalDistance += weight;
+                    cout << "Discovery edge: " << cityArray[u] << " -> " << cityArray[v] << endl;
 
-                     // Mark the neighbor as visited and enqueue it
-                     visited[v] = true;
-                     q.push(v);
-                 } else if (parent[u] != v && parent[v] != u) {
-                     // Mark edge as cross edge
-                     cout << "Cross edge: " << cityArray[u] << " -> " << cityArray[v] << endl;
-                 }
-             }
-         }
-         return totalDistance;
+                    // Mark the neighbor as visited and enqueue it
+                    visited[v] = true;
+                    q.push(v);
+                } else if (parent[u] != v && parent[v] != u) {
+                    // Mark edge as cross edge
+                    cout << "Cross edge: " << cityArray[u] << " -> " << cityArray[v] << endl;
+                }
+            }
+        }
+        return totalDistance;
 
-     }
-     private:
-     const int N = 30;
+    }
+private:
+    const int N = 30;
 
-     //implementing a BFS starting at Dallas
-     int totalDistance = 0;
+    //implementing a BFS starting at Dallas
+    int totalDistance = 0;
 
 };
 

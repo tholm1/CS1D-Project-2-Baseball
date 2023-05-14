@@ -28,7 +28,7 @@ public:
     QTableView *tableView;
     QPushButton *back_pushButton;
     QLabel *accumulatorLabel;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QRadioButton *noFilter_radioButton;
     QRadioButton *filterByAmericanLeague_radioButton;
@@ -38,68 +38,82 @@ public:
     QRadioButton *filterByDateOpen_radioButton;
     QRadioButton *filterBySeatingCapacity_radioButton;
     QRadioButton *filterByDistancetoCF_radioButton;
+    QPushButton *filterMaxMin;
 
     void setupUi(QDialog *filteredTeams)
     {
         if (filteredTeams->objectName().isEmpty())
             filteredTeams->setObjectName(QString::fromUtf8("filteredTeams"));
-        filteredTeams->resize(1899, 755);
+        filteredTeams->resize(1618, 755);
+        filteredTeams->setStyleSheet(QString::fromUtf8(""));
         tableView = new QTableView(filteredTeams);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(550, 80, 1311, 631));
+        tableView->setGeometry(QRect(400, 80, 1101, 631));
+        tableView->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";\n"
+"color: rgb(0, 101, 101);\n"
+"\n"
+""));
         back_pushButton = new QPushButton(filteredTeams);
         back_pushButton->setObjectName(QString::fromUtf8("back_pushButton"));
         back_pushButton->setGeometry(QRect(0, 0, 80, 22));
         back_pushButton->setStyleSheet(QString::fromUtf8("font: 8pt \"MS Shell Dlg 2\";\n"
-"text-decoration: underline;"));
+"text-decoration: underline;\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgb(167, 167, 167);"));
         accumulatorLabel = new QLabel(filteredTeams);
         accumulatorLabel->setObjectName(QString::fromUtf8("accumulatorLabel"));
-        accumulatorLabel->setGeometry(QRect(550, 30, 1301, 41));
-        widget = new QWidget(filteredTeams);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 80, 541, 631));
-        verticalLayout = new QVBoxLayout(widget);
+        accumulatorLabel->setGeometry(QRect(740, 30, 591, 41));
+        accumulatorLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255)"));
+        layoutWidget = new QWidget(filteredTeams);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 80, 391, 631));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        noFilter_radioButton = new QRadioButton(widget);
+        noFilter_radioButton = new QRadioButton(layoutWidget);
         noFilter_radioButton->setObjectName(QString::fromUtf8("noFilter_radioButton"));
 
         verticalLayout->addWidget(noFilter_radioButton);
 
-        filterByAmericanLeague_radioButton = new QRadioButton(widget);
+        filterByAmericanLeague_radioButton = new QRadioButton(layoutWidget);
         filterByAmericanLeague_radioButton->setObjectName(QString::fromUtf8("filterByAmericanLeague_radioButton"));
 
         verticalLayout->addWidget(filterByAmericanLeague_radioButton);
 
-        filterByNationalLeague_radioButton = new QRadioButton(widget);
+        filterByNationalLeague_radioButton = new QRadioButton(layoutWidget);
         filterByNationalLeague_radioButton->setObjectName(QString::fromUtf8("filterByNationalLeague_radioButton"));
 
         verticalLayout->addWidget(filterByNationalLeague_radioButton);
 
-        filterByTypology_radioButton = new QRadioButton(widget);
+        filterByTypology_radioButton = new QRadioButton(layoutWidget);
         filterByTypology_radioButton->setObjectName(QString::fromUtf8("filterByTypology_radioButton"));
 
         verticalLayout->addWidget(filterByTypology_radioButton);
 
-        filterByOpenRoof_radioButton = new QRadioButton(widget);
+        filterByOpenRoof_radioButton = new QRadioButton(layoutWidget);
         filterByOpenRoof_radioButton->setObjectName(QString::fromUtf8("filterByOpenRoof_radioButton"));
 
         verticalLayout->addWidget(filterByOpenRoof_radioButton);
 
-        filterByDateOpen_radioButton = new QRadioButton(widget);
+        filterByDateOpen_radioButton = new QRadioButton(layoutWidget);
         filterByDateOpen_radioButton->setObjectName(QString::fromUtf8("filterByDateOpen_radioButton"));
 
         verticalLayout->addWidget(filterByDateOpen_radioButton);
 
-        filterBySeatingCapacity_radioButton = new QRadioButton(widget);
+        filterBySeatingCapacity_radioButton = new QRadioButton(layoutWidget);
         filterBySeatingCapacity_radioButton->setObjectName(QString::fromUtf8("filterBySeatingCapacity_radioButton"));
 
         verticalLayout->addWidget(filterBySeatingCapacity_radioButton);
 
-        filterByDistancetoCF_radioButton = new QRadioButton(widget);
+        filterByDistancetoCF_radioButton = new QRadioButton(layoutWidget);
         filterByDistancetoCF_radioButton->setObjectName(QString::fromUtf8("filterByDistancetoCF_radioButton"));
 
         verticalLayout->addWidget(filterByDistancetoCF_radioButton);
+
+        filterMaxMin = new QPushButton(layoutWidget);
+        filterMaxMin->setObjectName(QString::fromUtf8("filterMaxMin"));
+
+        verticalLayout->addWidget(filterMaxMin);
 
 
         retranslateUi(filteredTeams);
@@ -120,6 +134,7 @@ public:
         filterByDateOpen_radioButton->setText(QApplication::translate("filteredTeams", "Display Stadiums by date opened", nullptr));
         filterBySeatingCapacity_radioButton->setText(QApplication::translate("filteredTeams", "Display Stadiums sorted by seating capacity", nullptr));
         filterByDistancetoCF_radioButton->setText(QApplication::translate("filteredTeams", "Display stadiums sorted by distance to center field", nullptr));
+        filterMaxMin->setText(QApplication::translate("filteredTeams", "Max/Min", nullptr));
     } // retranslateUi
 
 };

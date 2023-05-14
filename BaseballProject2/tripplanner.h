@@ -41,6 +41,8 @@ private slots:
 
     void on_PushButton_CustomTrip_clicked();
 
+    void on_PushButton_SouvenirFinishTrip_clicked();
+
 private:
     Ui::TripPlanner *ui;
     dbManager db;

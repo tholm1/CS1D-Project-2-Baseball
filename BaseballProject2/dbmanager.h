@@ -44,6 +44,8 @@ public:
      * @return instance
      */
     static  dbManager* getInstance();
+    QList<Team> getMaxMinDistanceToCF(bool max);
+    Team getTeamByName(QString stadiumName);
     /**
      * @brief getAllTeams returns a QList of all the teams and their corresponding attributes.
      * @return teams

@@ -380,7 +380,7 @@ background-color: rgb(167, 167, 167);</string>
       <string>Clear list to restart</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -449,24 +449,38 @@ background-color: rgb(167, 167, 167);</string>
       <enum>QFrame::Box</enum>
      </property>
      <property name="text">
-      <string>Buy souvenirs</string>
+      <string>What souvenirs would you like to buy?</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QWidget" name="SummaryPage">
-    <widget class="QListView" name="SummaryListView">
+    <widget class="QPushButton" name="PushButton_SouvenirFinishTrip">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>110</y>
-       <width>951</width>
-       <height>461</height>
+       <x>690</x>
+       <y>130</y>
+       <width>289</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>121</width>
+       <height>41</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
+     <property name="text">
+      <string>Finish Trip</string>
+     </property>
     </widget>
+   </widget>
+   <widget class="QWidget" name="SummaryPage">
     <widget class="QLabel" name="Label_TripSummary">
      <property name="geometry">
       <rect>

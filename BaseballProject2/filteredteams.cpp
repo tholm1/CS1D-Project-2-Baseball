@@ -194,3 +194,23 @@ void filteredTeams::on_filterByDistancetoCF_radioButton_clicked()
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 }
 
+
+void filteredTeams::on_filterMaxMin_clicked()
+{
+    QList<Team> filteredTeams;
+    if (ui->filterMaxMin->text() == "Filter by Max") {
+        filteredTeams = dbManager::getInstance()->getMaxMinDistanceToCF(true);
+        ui->filterMaxMin->setText("Filter by Min");
+    } else {
+        filteredTeams = dbManager::getInstance()->getMaxMinDistanceToCF(false);
+        ui->filterMaxMin->setText("Filter by Max");
+    }
+
+    TeamTableModel* model = new TeamTableModel(filteredTeams);
+    this->proxyModel = new QSortFilterProxyModel(this);
+
+    proxyModel->setSourceModel(model);
+    ui->tableView->setModel(proxyModel);
+    ui->tableView->setSortingEnabled(true);
+}
+

@@ -39,6 +39,8 @@ private slots:
 
      void on_filterByDistancetoCF_radioButton_clicked();
 
+     void on_filterMaxMin_clicked();
+
 private:
     Ui::filteredTeams *ui;
     QSortFilterProxyModel* proxyModel;

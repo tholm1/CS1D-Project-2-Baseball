@@ -51,7 +51,7 @@ public:
     QPushButton *PushButton_BackToMain_4;
     QPushButton *PushButton_BeginCustomTrip;
     QPushButton *PushButton_BeginCustomTrip_Clear;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QComboBox *TeamListComboBox;
@@ -59,8 +59,8 @@ public:
     QListView *listView;
     QWidget *SouvenirPage;
     QLabel *WelcomeLabel_4;
+    QPushButton *PushButton_SouvenirFinishTrip;
     QWidget *SummaryPage;
-    QListView *SummaryListView;
     QLabel *Label_TripSummary;
     QPushButton *PushButton_BackToMain_5;
     QLabel *Label_FinalTotalDistance;
@@ -221,22 +221,22 @@ public:
         PushButton_BeginCustomTrip_Clear->setMinimumSize(QSize(121, 41));
         PushButton_BeginCustomTrip_Clear->setFont(font3);
         PushButton_BeginCustomTrip_Clear->setStyleSheet(QString::fromUtf8(""));
-        widget = new QWidget(CustomOrderTrip_3);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(20, 80, 621, 471));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(CustomOrderTrip_3);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 80, 621, 471));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        TeamListComboBox = new QComboBox(widget);
+        TeamListComboBox = new QComboBox(layoutWidget);
         TeamListComboBox->setObjectName(QString::fromUtf8("TeamListComboBox"));
         TeamListComboBox->setFont(font3);
         TeamListComboBox->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(TeamListComboBox);
 
-        PushButton_AddTeam = new QPushButton(widget);
+        PushButton_AddTeam = new QPushButton(layoutWidget);
         PushButton_AddTeam->setObjectName(QString::fromUtf8("PushButton_AddTeam"));
         PushButton_AddTeam->setFont(font3);
         PushButton_AddTeam->setStyleSheet(QString::fromUtf8(""));
@@ -246,7 +246,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        listView = new QListView(widget);
+        listView = new QListView(layoutWidget);
         listView->setObjectName(QString::fromUtf8("listView"));
 
         verticalLayout->addWidget(listView);
@@ -260,13 +260,15 @@ public:
         WelcomeLabel_4->setFont(font2);
         WelcomeLabel_4->setStyleSheet(QString::fromUtf8(""));
         WelcomeLabel_4->setFrameShape(QFrame::Box);
+        PushButton_SouvenirFinishTrip = new QPushButton(SouvenirPage);
+        PushButton_SouvenirFinishTrip->setObjectName(QString::fromUtf8("PushButton_SouvenirFinishTrip"));
+        PushButton_SouvenirFinishTrip->setGeometry(QRect(690, 130, 289, 41));
+        PushButton_SouvenirFinishTrip->setMinimumSize(QSize(121, 41));
+        PushButton_SouvenirFinishTrip->setFont(font3);
+        PushButton_SouvenirFinishTrip->setStyleSheet(QString::fromUtf8(""));
         TripPlannerStackedWidget->addWidget(SouvenirPage);
         SummaryPage = new QWidget();
         SummaryPage->setObjectName(QString::fromUtf8("SummaryPage"));
-        SummaryListView = new QListView(SummaryPage);
-        SummaryListView->setObjectName(QString::fromUtf8("SummaryListView"));
-        SummaryListView->setGeometry(QRect(10, 110, 951, 461));
-        SummaryListView->setStyleSheet(QString::fromUtf8(""));
         Label_TripSummary = new QLabel(SummaryPage);
         Label_TripSummary->setObjectName(QString::fromUtf8("Label_TripSummary"));
         Label_TripSummary->setGeometry(QRect(290, 0, 641, 51));
@@ -328,7 +330,8 @@ public:
         PushButton_BeginCustomTrip->setText(QApplication::translate("TripPlanner", "Begin Trip", nullptr));
         PushButton_BeginCustomTrip_Clear->setText(QApplication::translate("TripPlanner", "Clear list to restart", nullptr));
         PushButton_AddTeam->setText(QApplication::translate("TripPlanner", "Add Team", nullptr));
-        WelcomeLabel_4->setText(QApplication::translate("TripPlanner", "Buy souvenirs", nullptr));
+        WelcomeLabel_4->setText(QApplication::translate("TripPlanner", "What souvenirs would you like to buy?", nullptr));
+        PushButton_SouvenirFinishTrip->setText(QApplication::translate("TripPlanner", "Finish Trip", nullptr));
         Label_TripSummary->setText(QApplication::translate("TripPlanner", "Trip Summary", nullptr));
         PushButton_BackToMain_5->setText(QApplication::translate("TripPlanner", "Back", nullptr));
         Label_FinalTotalDistance->setText(QApplication::translate("TripPlanner", "Total Distance Traveled", nullptr));

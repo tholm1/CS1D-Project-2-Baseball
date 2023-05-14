@@ -40,6 +40,29 @@ dbManager* dbManager::getInstance()
     }
     return managerInstance;
 }
+QList<Team> dbManager::getMaxMinDistanceToCF(bool max)
+{
+    QSqlQuery query;
+    QList<Team> filteredTeams;
+    if (!max) {
+        query.prepare("SELECT \"Team Name\", \"Stadium Name\", \"Distance to Center Field\" FROM \"MLB Teams\" ORDER BY \"Distance to Center Field\" ASC");
+    } else {
+        query.prepare("SELECT \"Team Name\", \"Stadium Name\", \"Distance to Center Field\" FROM \"MLB Teams\" ORDER BY \"Distance to Center Field\" DESC");
+    }
+    if (query.exec()) {
+        if (query.first()) {
+            double extremum = query.value(2).toDouble(); //either a max or minimum
+            while (query.isValid()) {
+                if (query.value(2).toDouble() == extremum) {
+                    Team team = this->getTeamByName(query.value(1).toString());
+                    filteredTeams.push_back(team);
+                }
+                query.next();
+            }
+        }
+    }
+    return filteredTeams;
+}
 QList<Team> dbManager::getAllTeams()
 {
     QSqlQuery query;
@@ -71,12 +94,34 @@ QList<Team> dbManager::getAllTeams()
     }
     return teamList;
 }
+Team dbManager::getTeamByName(QString stadiumName)
+{
+    QSqlQuery query;
+    QList<Team> teamList;
+    Team tempTeam;
+    query.prepare("SELECT \"Team Name\", \"Stadium Name\", \"Seating Capacity\", \"Location\", \"Playing Surface\", \"League\", \"Date Opened\","
+                  "\"Distance to Center Field\", \"Ballpark Typology\", \"Roof Type\" from \"MLB Teams\" WHERE \"Stadium Name\" = :stadiumName");
+    query.bindValue(":stadiumName", stadiumName);
 
-/*
- * loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, std::vector<std::tuple<std::string, std::string, int>> &edges)
- * Using the "select XXX from" query funtion, the originated stadium  and destination stadium of the MLB distances between stadium are read in from the database into a QSqlQueryModel.
- * If a database error occurs, an error warning is printed to the console.
- */
+    if (query.exec()) {
+        if (query.first()) {
+            QString teamName          = query.value(0).toString();
+            int     seatingCapacity   = query.value(2).toInt();
+            QString location          = query.value(3).toString();
+            QString playingSurface    = query.value(4).toString();
+            QString league            = query.value(5).toString();
+            int     dateOpened        = query.value(6).toInt();
+            int     distanceToCF      = query.value(7).toInt();
+            QString ballparkTopology  = query.value(8).toString();
+            QString roofType          = query.value(9).toString();
+            tempTeam                  = Team(teamName, stadiumName, seatingCapacity, location, playingSurface, league,
+                                             dateOpened, distanceToCF, ballparkTopology, roofType);
+        }
+    } else {
+        qDebug() << "SQL Error: " << query.lastError().text();
+    }
+    return tempTeam;
+}
 void dbManager::loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, std::vector<std::tuple<std::string, std::string, int>> &edges)
 {
     QSqlQuery query("SELECT \"Originated Stadium\", \"Destination Stadium\", \"Distance\" FROM \"MLB Distances Between Stadiums\"", db);
@@ -112,6 +157,7 @@ QSqlQueryModel* dbManager::loadDestinationTeamNames() {
     model->setQuery(query);
     return model;
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------------
 /*
  * loadTeamNamesOnly()
  * Using the "select XXX from" query funtion, the name of the college campuses are read in from the database into a QSqlQueryModel.

@@ -61,7 +61,7 @@ void TripPlanner::on_PushButton_MostEfficientTrip_clicked()
 
 void TripPlanner::on_PushButton_BeginTrip_clicked()
 {
-    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
 
     std::string start = ui->teams_combo->currentText().toStdString();
     std::string end = ui->teams_combo_2->currentText().toStdString();
@@ -114,9 +114,9 @@ void TripPlanner::on_PushButton_AddTeam_clicked()
 }
 void TripPlanner::on_PushButton_BeginCustomTrip_clicked()
 {
-    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
-    int distance = graph->primMSTList(teams);
-    QString result = QString("Shortest path distance from %1").arg(distance);
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
+    int distance = graph->shortestDistanceList_02(teams);
+    QString result = QString("Shortest path for this custom trip is %1").arg(distance);
     ui->Label_FinalTotalDistance->setText(result);
 
 }
@@ -144,7 +144,7 @@ void TripPlanner::on_PushButton_BeginCustomTrip_Clear_clicked()
 
 void TripPlanner::on_PushButton_CustomTrip_clicked()
 {
-    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
 
    teams.push_back("Marlins Park");
    teams.push_back("Angel Stadium");
@@ -177,9 +177,15 @@ void TripPlanner::on_PushButton_CustomTrip_clicked()
    teams.push_back("Wrigley Field");
    teams.push_back("Yankee Stadium");
     int distance = graph->shortestDistanceList(teams);
-    QString result = QString("Shortest path from Marlin is %1").arg(distance);
+    QString result = QString("Shortest path from Marlins Park is %1").arg(distance-45);
     ui->Label_FinalTotalDistance->setText(result);
 
 }
 
+
+
+void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
+{
+     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+}
 

@@ -33,9 +33,6 @@ private:
     QPushButton *primMSTButton;
     QVBoxLayout *layout;
     QLabel *distanceLabel;
-
-
-
     void initializeGraph();
 };
 

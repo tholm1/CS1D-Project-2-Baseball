@@ -84,51 +84,6 @@ int Graph::primMST()
     return totalDist;
 }
 
-int Graph::primMSTList(std::vector<std::string>& teams) {
-    int totalDist = 0;
-    std::priority_queue<Pair, std::vector<Pair>, std::greater<Pair>> pq;
-    int startingIndex = vertexIndexMap[teams[0]];
-
-    std::vector<int> key(V, std::numeric_limits<int>::max());
-    std::vector<int> parent(V, -1);
-    std::vector<bool> inMST(V, false);
-
-    pq.push(std::make_pair(0, startingIndex));
-    key[startingIndex] = 0;
-
-    while (!pq.empty()) {
-        int u = pq.top().second;
-        pq.pop();
-
-        inMST[u] = true;
-
-        for (auto i = adj[u].begin(); i != adj[u].end(); ++i) {
-            int v = (*i).first;
-            int weight = (*i).second;
-
-            if (inMST[v] == false && key[v] > weight) {
-                key[v] = weight;
-                pq.push(std::make_pair(key[v], v));
-                parent[v] = u;
-            }
-        }
-    }
-
-    auto comparator = [&](const std::string& a, const std::string& b) {
-        return key[vertexIndexMap[a]] < key[vertexIndexMap[b]];
-    };
-
-    std::sort(teams.begin() + 1, teams.end(), comparator);
-
-    for (int i = 1; i < V; ++i) {
-        totalDist += key[i];
-    }
-
-    return totalDist;
-}
-
-
-
 int Graph::shortestDistance(const std::string& start, const std::string& end)
 {
     int src = vertexIndexMap[start];
@@ -208,39 +163,43 @@ int Graph::shortestDistanceList(const std::vector<std::string>& teams) {
     return totalDistance;
 }
 
-
-
-
-
-
-
-
-/*
- * GetDistBtwn(QString start, QString end)
- * Using the "select XXX from" query funtion, the distance between the 2 specified campuses.
- * If a database error occurs, an error warning is printed to the console.
- */
-double Graph::getDistanceBetween(std::string start, std::string end)
+int Graph::shortestDistanceList_02(std::vector<std::string>& teams)
 {
-    double distBtwn = 0;
+    if (teams.empty())
+        return 0;
 
-    QString sStart = QString::fromStdString(start);
-    QString sEnd = QString::fromStdString(end);
+    int totalDistance = 0;
 
-    QString sQry = "select \"Distance\" from \"MLB Distances Between Stadiums\" where \"Originated Stadium\" = '" + sStart + "' and \"Destination Stadium\" = '" + sEnd + "';";
+    for (size_t i = 0; i < teams.size() - 1; ++i) {
+        int src = vertexIndexMap[teams[i]];
+        int tgt = vertexIndexMap[teams[i + 1]];
 
-    QSqlQuery qry;
-    qry.prepare(sQry);
-    qry.exec();
+        std::vector<int> dist(V, INT_MAX);
+        dist[src] = 0;
 
-    if(qry.next())
-    {
-        distBtwn = qry.value(0).toDouble();
+        std::priority_queue< Pair, std::vector<Pair>, std::greater<Pair> > pq;
+        pq.push(std::make_pair(0, src));
+
+        while (!pq.empty())
+        {
+            int u = pq.top().second;
+            pq.pop();
+            std::list< std::pair<int, int> >::iterator it;
+            for (it = adj[u].begin(); it != adj[u].end(); ++it)
+            {
+                int v = (*it).first;
+                int weight = (*it).second;
+                if (dist[v] > dist[u] + weight)
+                {
+                    dist[v] = dist[u] + weight;
+                    pq.push(std::make_pair(dist[v], v));
+                }
+            }
+        }
+        totalDistance += dist[tgt];
     }
-
-    return distBtwn;
+    return totalDistance;
 }
-
 
 void Graph::setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap)
 {
