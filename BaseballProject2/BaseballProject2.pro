@@ -51,6 +51,7 @@ FORMS += \
     login.ui \
     maintenance.ui \
     mainwindow.ui \
+    tripplanner.ui \
     modifystadiums.ui \
     modifysouvenirs.ui \
     planvacation.ui

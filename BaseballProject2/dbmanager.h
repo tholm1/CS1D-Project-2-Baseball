@@ -32,11 +32,22 @@ public:
      * @return instance
      */
     static  dbManager* getInstance();
+    QList<Team> getMaxMinDistanceToCF(bool max);
+    Team getTeamByName(QString stadiumName);
     /**
      * @brief getAllTeams returns a QList of all the teams and their corresponding attributes.
      * @return teams
      */
     QList<Team> getAllTeams();
+     void loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, std::vector<std::tuple<std::string, std::string, int>> &edges);
+    QSqlDatabase db;
+
+    int rowCount();
+    vector<string> loadStadiumNames();
+    vector<stadium> loadDistance();
+    //-------------------------------------
+    QSqlQueryModel* loadOriginalTeamNames();
+    QSqlQueryModel* loadDestinationTeamNames();
 };
 
 #endif // DBMANAGER_H
