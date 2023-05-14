@@ -22,6 +22,8 @@ SOURCES += \
     main.cpp \
     maintenance.cpp \
     mainwindow.cpp \
+    modifysouvenirs.cpp \
+    modifystadiums.cpp \
     planvacation.cpp \
     teamtablemodel.cpp
 
@@ -36,6 +38,8 @@ HEADERS += \
     login.h \
     maintenance.h \
     mainwindow.h \
+    modifysouvenirs.h \
+    modifystadiums.h \
     planvacation.h \
     teamtablemodel.h
 
@@ -47,8 +51,10 @@ FORMS += \
     login.ui \
     maintenance.ui \
     mainwindow.ui \
-    planvacation.ui \
-    tripplanner.ui
+    tripplanner.ui \
+    modifystadiums.ui \
+    modifysouvenirs.ui \
+    planvacation.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
