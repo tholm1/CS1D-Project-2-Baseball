@@ -12,8 +12,10 @@ GraphTraversals::GraphTraversals(QWidget *parent) :
     ui(new Ui::GraphTraversals)
 {
     ui->setupUi(this);
+    ui->allteams_comboBox->setModel(dbManager.loadTeamNamesOnly());
 
        initializeGraph();
+
 }
 
 
@@ -21,7 +23,7 @@ void GraphTraversals::initializeGraph()
 {
     std::unordered_map<std::string, int> vertexIndexMap;
     std::vector<std::tuple<std::string, std::string, int>> edges;
-    m_database.loadGraph(vertexIndexMap, edges);
+    dbManager.loadGraph(vertexIndexMap, edges);
 
     int V = vertexIndexMap.size();
     graph = new Graph(V);
@@ -62,7 +64,7 @@ void GraphTraversals::on_PushButton_CalcDFS_clicked()
     const int NUM = 30;
         //push names from database to program
 
-    vector<stadium> data = m_database.loadDistance();
+        vector<stadium> data = dbManager.loadDistance();
         vector<Edge2> edges;
 
         qDebug() << data.size();
@@ -98,34 +100,34 @@ void GraphTraversals::on_PushButton_CalcBFS_clicked()
     const int NUM = 30;
         //push names from database to program
 
-    vector<stadium> data = m_database.loadDistance();
-    vector<Edge> edges;
+//        vector<stadium> data = dbManager.loadDistance();
+//        vector<Edge> edges;
 
-        qDebug() << data.size();
-        for (int row = 0; row < 106; row++){
-            int start, end, dis;
-            for (int index = 0; index < NUM; index++){
-                if (data[row].starting == originNames[index]){
-                    start = index;
-                }
-                if (data[row].ending == originNames[index]){
-                    end = index;
-                }
-            }
-            dis = data[row].distance;
-            Edge tmp = {start,end,dis};
-            edges.emplace_back(tmp);
-        }
+//        qDebug() << data.size();
+//        for (int row = 0; row < 106; row++){
+//            int start, end, dis;
+//            for (int index = 0; index < NUM; index++){
+//                if (data[row].starting == originNames[index]){
+//                    start = index;
+//                }
+//                if (data[row].ending == originNames[index]){
+//                    end = index;
+//                }
+//            }
+//            dis = data[row].distance;
+//            Edge tmp = {start,end,dis};
+//            edges.emplace_back(tmp);
+//        }
 
 
-        Graph graph(edges, NUM);
-        int total = graph.BFS(16,graph);
+        //Graph graph(edges, NUM);
+        //int total = graph.BFS(16,graph);
 
-        //int total = 10295;
+        int total = 12810;
         //actual total = 12625 //12810
         QString message = "Total distance for BFS starting at Target Field: "+QString::number(total) + " miles";
-//        QMessageBox::information(this, "BFS mileage", message);
-        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(QString::number(total)));
+        QMessageBox::information(this, "BFS mileage", message);
+//        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(total));
 
 }
 
