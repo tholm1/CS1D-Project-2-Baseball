@@ -29,7 +29,7 @@ private slots:
 private:
     Ui::GraphTraversals *ui;
     Graph *graph;
-    dbManager m_database;
+    dbManager dbManager;
     QPushButton *primMSTButton;
     QVBoxLayout *layout;
     QLabel *distanceLabel;
