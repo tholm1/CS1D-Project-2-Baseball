@@ -19,7 +19,10 @@ public:
 
 private slots:
     void on_search_button_clicked();
-    void on_back_pushButton_clicked();
+
+    void on_mainpage_clicked();
+
+    void on_teams_combo_currentTextChanged(const QString &arg1);
 
 private:
     Ui::Allinfo *ui;

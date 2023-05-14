@@ -67,8 +67,29 @@
            </item>
            <item>
             <widget class="QPushButton" name="confirmAddBtn">
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+color: rgb(0, 170, 255);
+</string>
+             </property>
              <property name="text">
-              <string>Add Stadium with File</string>
+              <string> Upload File</string>
+             </property>
+             <property name="icon">
+              <iconset resource="Resources.qrc">
+               <normaloff>:/icons/feather/upload.svg</normaloff>:/icons/feather/upload.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -602,6 +623,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

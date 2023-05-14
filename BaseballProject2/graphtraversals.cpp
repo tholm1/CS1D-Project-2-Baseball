@@ -21,7 +21,7 @@ void GraphTraversals::initializeGraph()
 {
     std::unordered_map<std::string, int> vertexIndexMap;
     std::vector<std::tuple<std::string, std::string, int>> edges;
-    dbManager.loadGraph(vertexIndexMap, edges);
+    m_database.loadGraph(vertexIndexMap, edges);
 
     int V = vertexIndexMap.size();
     graph = new Graph(V);
@@ -62,7 +62,7 @@ void GraphTraversals::on_PushButton_CalcDFS_clicked()
     const int NUM = 30;
         //push names from database to program
 
-        vector<stadium> data = dbManager.loadDistance();
+    vector<stadium> data = m_database.loadDistance();
         vector<Edge2> edges;
 
         qDebug() << data.size();
@@ -98,8 +98,8 @@ void GraphTraversals::on_PushButton_CalcBFS_clicked()
     const int NUM = 30;
         //push names from database to program
 
-        vector<stadium> data = dbManager.loadDistance();
-        vector<Edge> edges;
+    vector<stadium> data = m_database.loadDistance();
+    vector<Edge> edges;
 
         qDebug() << data.size();
         for (int row = 0; row < 106; row++){
@@ -124,8 +124,8 @@ void GraphTraversals::on_PushButton_CalcBFS_clicked()
         //int total = 10295;
         //actual total = 12625 //12810
         QString message = "Total distance for BFS starting at Target Field: "+QString::number(total) + " miles";
-        QMessageBox::information(this, "BFS mileage", message);
-//        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(total));
+//        QMessageBox::information(this, "BFS mileage", message);
+        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(QString::number(total)));
 
 }
 
