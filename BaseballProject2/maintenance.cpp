@@ -29,7 +29,10 @@ void maintenance::on_Add_Delete_Info_pushButton_clicked()
 
 void maintenance::on_modifyInfo_pushButton_clicked()
 {
-
+    ModifySouvenirs modSouvenirs;
+    hide();
+    modSouvenirs.setModal(true);
+    modSouvenirs.exec();
 }
 
 
