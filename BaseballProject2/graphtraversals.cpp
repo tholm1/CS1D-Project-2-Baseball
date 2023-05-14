@@ -12,8 +12,10 @@ GraphTraversals::GraphTraversals(QWidget *parent) :
     ui(new Ui::GraphTraversals)
 {
     ui->setupUi(this);
+    ui->allteams_comboBox->setModel(dbManager.loadTeamNamesOnly());
 
        initializeGraph();
+
 }
 
 
