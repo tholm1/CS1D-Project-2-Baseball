@@ -4,7 +4,6 @@
 #include <QList>
 #include <QDebug>
 #include <QQueue>
-#include <QRegExp>
 #include <QWidget>
 #include "dbmanager.h"
 #include "graph.h"

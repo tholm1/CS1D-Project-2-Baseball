@@ -19,6 +19,10 @@ private slots:
 
     void on_back_pushButton_clicked();
 
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_6_clicked();
+
 private:
     Ui::planVacation *ui;
 };

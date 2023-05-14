@@ -147,7 +147,8 @@ private:
     //implementing a BFS starting at Dallas
     int totalDistance = 0;
 
-    Graph();
+    int V;
+    std::list<Pair> *adj;
 };
 
 #endif // GRAPH_H

@@ -6,7 +6,7 @@
 #include <QSqlError>
 #include <QDebug>
 
-Graph::Graph()
+Graph::Graph(int V)
 {
     this->V = V;
     adj = new std::list<Pair>[V];

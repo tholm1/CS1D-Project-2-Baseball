@@ -13,6 +13,15 @@
 #include <QFile>
 #include <QRegularExpression>
 #include "teamtablemodel.h"
+#include <vector>
+using namespace std;
+
+
+struct stadium{
+    string starting;
+    string ending;
+    int distance;
+};
 
 class dbManager
 {
@@ -43,7 +52,7 @@ public:
     QSqlDatabase db;
 
     int rowCount();
-    vector<string> loadStadiumNames();
+    std::vector<std::string> loadStadiumNames();
     vector<stadium> loadDistance();
     //-------------------------------------
     QSqlQueryModel* loadOriginalTeamNames();
