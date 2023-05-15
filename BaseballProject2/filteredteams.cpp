@@ -17,7 +17,9 @@ filteredTeams::~filteredTeams()
 {
     delete ui;
 }
-
+/**
+ * @brief Populate the table view with all teams from the database.
+ */
 void filteredTeams::populateTableView()
 {
     this->teamList = dbManager::getInstance()->getAllTeams();

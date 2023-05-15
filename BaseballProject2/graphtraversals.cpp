@@ -18,21 +18,27 @@ GraphTraversals::GraphTraversals(QWidget *parent) :
 
 }
 
-
+/**
+ * @brief Initialize the graph by loading vertex index map and edges from the database.
+ *        Create a new Graph instance and add edges based on the loaded data.
+ */
 void GraphTraversals::initializeGraph()
 {
+    // Load vertex index map and edges from the database
     std::unordered_map<std::string, int> vertexIndexMap;
     std::vector<std::tuple<std::string, std::string, int>> edges;
     dbManager.loadGraph(vertexIndexMap, edges);
 
+    // Create a new Graph instance with the number of vertices
     int V = vertexIndexMap.size();
     graph = new Graph(V);
     graph->setVertexIndexMap(vertexIndexMap);
 
-    for (const auto &edge : edges)
+    // Add edges to the graph based on the loaded data
+    for (const auto& edge : edges)
     {
-        const std::string &u = std::get<0>(edge);
-        const std::string &v = std::get<1>(edge);
+        const std::string& u = std::get<0>(edge);
+        const std::string& v = std::get<1>(edge);
         int w = std::get<2>(edge);
         graph->addEdge(u, v, w);
     }

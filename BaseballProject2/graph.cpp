@@ -6,17 +6,28 @@
 #include <QSqlError>
 #include <QDebug>
 
+/**
+ * @brief Graph constructor with the number of vertices.
+ * @param V The number of vertices in the graph.
+ */
 Graph::Graph(int V)
 {
     this->V = V;
     adj = new std::list<Pair>[V];
 }
 
+/**
+ * @brief Graph destructor.
+ */
 Graph::~Graph()
 {
     delete[] adj;
 }
-
+/**
+ * @brief Graph constructor with vertex index map and edges.
+ * @param vertexIndexMap The map containing vertex names and their corresponding indices.
+ * @param edges The list of edges with source, destination, and weight.
+ */
 Graph::Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const std::vector<std::tuple<std::string, std::string, int>>& edges)
 {
     this->V = vertexIndexMap.size();
@@ -31,9 +42,12 @@ Graph::Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const s
         adj[vIndex].push_back(make_pair(uIndex, w));
     }
 }
-
-
-
+/**
+ * @brief Add an edge between two vertices with a weight.
+ * @param u The source vertex.
+ * @param v The destination vertex.
+ * @param w The weight of the edge.
+ */
 void Graph::addEdge(const std::string &u, const std::string &v, int w)
 {
     int uIndex = vertexIndexMap[u];
@@ -41,7 +55,10 @@ void Graph::addEdge(const std::string &u, const std::string &v, int w)
     adj[uIndex].push_back(std::make_pair(vIndex, w));
     adj[vIndex].push_back(std::make_pair(uIndex, w));
 }
-
+/**
+ * @brief Perform Prim's algorithm to find the minimum spanning tree of the graph.
+ * @return The total distance of the minimum spanning tree.
+ */
 int Graph::primMST()
 {
     int totalDist = 0;
@@ -84,6 +101,12 @@ int Graph::primMST()
     return totalDist;
 }
 
+/**
+ * @brief Find the shortest distance between two vertices using Dijkstra's algorithm.
+ * @param start The starting vertex.
+ * @param end The destination vertex.
+ * @return The shortest distance between the two vertices.
+ */
 int Graph::shortestDistance(const std::string& start, const std::string& end)
 {
     int src = vertexIndexMap[start];
@@ -114,6 +137,11 @@ int Graph::shortestDistance(const std::string& start, const std::string& end)
     cout<< dist[tgt];
     return dist[tgt];
 }
+/**
+ * @brief Calculate the shortest distance for a list of teams in the given order.
+ * @param teams The list of team names.
+ * @return The total distance traveled.
+ */
 int Graph::shortestDistanceList(const std::vector<std::string>& teams) {
     if (teams.empty())
         return 0;
@@ -162,7 +190,11 @@ int Graph::shortestDistanceList(const std::vector<std::string>& teams) {
 
     return totalDistance;
 }
-
+/**
+ * @brief Calculate the shortest distance for a list of teams in the given order.
+ * @param teams The list of team names.
+ * @return The total distance traveled.
+ */
 int Graph::shortestDistanceList_02(std::vector<std::string>& teams)
 {
     if (teams.empty())
@@ -200,6 +232,11 @@ int Graph::shortestDistanceList_02(std::vector<std::string>& teams)
     }
     return totalDistance;
 }
+/**
+ * @brief Sort a list of teams based on their distance to the previous team recursively.
+ * @param teams The list of team names.
+ * @return The total distance traveled.
+ */
 int Graph::recursiveCollegeSort(std::vector<std::string>& teams)
 {
     if (teams.empty())
@@ -236,8 +273,10 @@ int Graph::recursiveCollegeSort(std::vector<std::string>& teams)
     qDebug() << "Total Distance Traveled: " << totalDistance;
     return totalDistance;
 }
-
-
+/**
+ * @brief Set the vertex index map for the graph.
+ * @param vertexIndexMap The map containing vertex names and their corresponding indices.
+ */
 void Graph::setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap)
 {
     this->vertexIndexMap = vertexIndexMap;

@@ -22,7 +22,14 @@ class TripPlanner : public QDialog
 
 public:
     explicit TripPlanner(QWidget *parent = 0);
+    /**
+     * @brief populateTeamComboBoxes Populates the team combo boxes with data.
+     */
     void populateTeamComboBoxes();
+
+    /**
+     * @brief initializeGraph Initializes the graph object.
+     */
     void initializeGraph();
     ~TripPlanner();
 
@@ -51,10 +58,10 @@ private slots:
 
 private:
     Ui::TripPlanner *ui;
-    dbManager db;
-    Graph *graph;
-    std::vector<std::string> teams;
-    std::vector<std::string> sortedTeams;
+    dbManager db; // Database manager object
+    Graph* graph; // Graph object
+    std::vector<std::string> teams; // Vector to store the teams
+    std::vector<std::string> sortedTeams; // Vector to store the sorted teams
 };
 
 #endif // TRIPPLANNER_H
