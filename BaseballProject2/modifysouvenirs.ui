@@ -107,14 +107,43 @@
     <widget class="QPushButton" name="addSouvButton">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>240</y>
+       <x>270</x>
+       <y>210</y>
        <width>161</width>
        <height>32</height>
       </rect>
      </property>
      <property name="text">
       <string>Add Souvenir</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addSouvenirFileButton">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>250</y>
+       <width>161</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add Souvenir Input File</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="errorLabel">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>160</y>
+       <width>8</width>
+       <height>213</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #df4f4a;</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>

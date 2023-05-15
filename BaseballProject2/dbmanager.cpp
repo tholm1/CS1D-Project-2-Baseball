@@ -6,6 +6,7 @@
 #include <QFile>
 #include <iostream>
 #include <QInputDialog>
+#include "Souvenir.h"
 
 dbManager* dbManager::managerInstance = NULL;
 
@@ -13,7 +14,7 @@ dbManager::dbManager()
 {
 
     QSqlDatabase m_database = QSqlDatabase::addDatabase("QSQLITE");
-    m_database.setDatabaseName("../MLBDB2.db");
+    m_database.setDatabaseName("/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/MLBDB2.db");
 
     if(m_database.open())
     {
@@ -237,4 +238,59 @@ vector<stadium> dbManager::loadDistance()
         data.push_back(tmp);
     }
     return data;
+}
+
+void dbManager::createSouvenir(QString teamname, QString item, QString price)
+{
+    // Step 1
+    // Creating an entry into database
+    QSqlQuery qry;
+    qry.prepare("insert into Souvenir(     "
+                "TeamName,                    "
+                "Souvenir,                    "
+                "Price)                       "
+                "values(?,?,?);               "
+                );
+    qry.addBindValue(teamname);
+    qry.addBindValue(item);
+    qry.addBindValue(price);
+
+
+    if(!qry.exec())
+    {
+        qDebug() << "Error adding Souvenir Info";
+    }
+    qry.clear();
+
+    // Step 2
+    // Creating an entry into local memory
+    Souvenir *entry = new Souvenir();
+    entry->setTeam(teamname);
+    entry->setItem(item);
+    entry->setPrice(price);
+
+    this->listOfSouvenirs.append(entry);
+}
+
+bool dbManager::readSouvenirFile()
+{
+    QString file_name = QFileDialog::getOpenFileName(nullptr, "Open Record File",QDir::homePath());
+
+
+    QFile file(file_name);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        return false;
+    }
+    QTextStream in(&file);
+    while (!in.atEnd())
+    {
+        QString teamname = in.readLine();
+        QString item = in.readLine();
+        QString price = in.readLine();
+
+        createSouvenir(teamname,item,price);
+    }
+
+    return true;
 }

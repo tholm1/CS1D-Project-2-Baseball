@@ -25,6 +25,14 @@ private slots:
 
     void on_backButton_clicked();
 
+    void on_addSouvenirFileButton_clicked();
+
+    void showTeamComboBoxAddPage(QSqlQueryModel *model);
+
+    void showTeamComboBoxModifyPage(QSqlQueryModel *model);
+
+    void showTeamComboBoxDeletePage(QSqlQueryModel * model);
+
 private:
     Ui::ModifySouvenirs *ui;
     dbManager database;
