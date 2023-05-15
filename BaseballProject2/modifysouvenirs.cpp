@@ -43,6 +43,8 @@ void ModifySouvenirs::on_addSouvButton_clicked()
     QString teamName = ui->team_comboBox->currentText();
     QString souvName = ui->souvName_lineEdit->text();
     QString souvPrice = ui->souvPrice_lineEdit->text();
+    QString quantity = "0.0";
+
 
     bool check = false;
 
@@ -65,6 +67,7 @@ void ModifySouvenirs::on_addSouvButton_clicked()
     }
 
     data.prepare("INSERT INTO Souvenirs (Team, Souvenir, Price) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"')");
+    data.prepare("INSERT INTO Cart (Team, Souvenir, Price, quantity) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"', '"+quantity+"')");
 
     if(!data.exec())
     {
@@ -184,6 +187,15 @@ void ModifySouvenirs::on_backButton_clicked()
 
 void ModifySouvenirs::on_addSouvenirFileButton_clicked()
 {
+//    bool success = dbManagers->readSouvenirFile();
+//    if(success)
+//    {
+//        QMessageBox::information(this, "Loading...", "Souvenir Info File Has Been Read In"  , QMessageBox::Ok, QMessageBox::NoButton);
+//    }
+//    else
+//    {
+//        QMessageBox::information(this, "Loading...", "Souvenir Info File Has Not Been Read In"  , QMessageBox::Ok, QMessageBox::NoButton);
+//    }
     QString filePath = QFileDialog::getOpenFileName(nullptr, "Open Text File", "", "Text Files (*.txt)");
 
 
@@ -211,24 +223,9 @@ void ModifySouvenirs::on_addSouvenirFileButton_clicked()
 
                     QString teamSearched = checkTeamQuery->value(0).toString();
                     checkTeamQuery->finish();
-                    if(teamSearched == addTeamName) // checks for duplicate team name
-                    {
-                        throw 0;
-                    }
-
-//                    QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-//                    checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
-//                    checkStadiumQuery->bindValue(":checkStadiumName", addStadiumName);
-//                    checkStadiumQuery->exec();
-//                    checkStadiumQuery->next();
-
-//                    QString stadiumSearched = checkStadiumQuery->value(0).toString();
-
-//                    checkStadiumQuery->finish();
-
-//                    if(stadiumSearched == addStadiumName) // checks for duplicate stadium name
+//                    if(teamSearched == addTeamName) // checks for duplicate team name
 //                    {
-//                        throw 1;
+//                        throw 0;
 //                    }
 
                     QSqlQuery* addQuery = new QSqlQuery(dbManager::managerInstance->m_database);
@@ -248,7 +245,6 @@ void ModifySouvenirs::on_addSouvenirFileButton_clicked()
                     addQuery->bindValue(":souvenirPrice", addPrice);
 
                     addQuery->exec();
-                    //updateDataView();
                 }
                 catch(int addUpdateError)
                 {

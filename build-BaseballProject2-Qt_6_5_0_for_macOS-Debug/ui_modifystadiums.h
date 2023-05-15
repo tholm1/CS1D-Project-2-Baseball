@@ -513,7 +513,7 @@ public:
 
         retranslateUi(ModifyStadiums);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(ModifyStadiums);

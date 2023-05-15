@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../BaseballProject2/tripplanner.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #if __has_include(<QtCore/qtmochelpers.h>)
@@ -62,11 +63,14 @@ static constexpr auto qt_meta_stringdata_CLASSTripPlannerENDCLASS = QtMocHelpers
     "showSouvCartTableView",
     "showTotalCost",
     "itemCost",
-    "goToSouvenirShop"
+    "goToSouvenirShop",
+    "on_DFS_clicked",
+    "on_BSF_clicked",
+    "on_MST_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSTripPlannerENDCLASS_t {
-    uint offsetsAndSizes[50];
+    uint offsetsAndSizes[56];
     char stringdata0[12];
     char stringdata1[40];
     char stringdata2[1];
@@ -92,6 +96,9 @@ struct qt_meta_stringdata_CLASSTripPlannerENDCLASS_t {
     char stringdata22[14];
     char stringdata23[9];
     char stringdata24[17];
+    char stringdata25[15];
+    char stringdata26[15];
+    char stringdata27[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSTripPlannerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -121,7 +128,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSTripPlannerENDCLASS_t qt_meta_s
         QT_MOC_LITERAL(615, 21),  // "showSouvCartTableView"
         QT_MOC_LITERAL(637, 13),  // "showTotalCost"
         QT_MOC_LITERAL(651, 8),  // "itemCost"
-        QT_MOC_LITERAL(660, 16)   // "goToSouvenirShop"
+        QT_MOC_LITERAL(660, 16),  // "goToSouvenirShop"
+        QT_MOC_LITERAL(677, 14),  // "on_DFS_clicked"
+        QT_MOC_LITERAL(692, 14),  // "on_BSF_clicked"
+        QT_MOC_LITERAL(707, 14)   // "on_MST_clicked"
     },
     "TripPlanner",
     "on_PushButton_MostEfficientTrip_clicked",
@@ -147,7 +157,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSTripPlannerENDCLASS_t qt_meta_s
     "showSouvCartTableView",
     "showTotalCost",
     "itemCost",
-    "goToSouvenirShop"
+    "goToSouvenirShop",
+    "on_DFS_clicked",
+    "on_BSF_clicked",
+    "on_MST_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -159,7 +172,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTripPlannerENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -167,26 +180,29 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTripPlannerENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  134,    2, 0x08,    1 /* Private */,
-       3,    0,  135,    2, 0x08,    2 /* Private */,
-       4,    0,  136,    2, 0x08,    3 /* Private */,
-       5,    0,  137,    2, 0x08,    4 /* Private */,
-       6,    0,  138,    2, 0x08,    5 /* Private */,
-       7,    0,  139,    2, 0x08,    6 /* Private */,
-       8,    0,  140,    2, 0x08,    7 /* Private */,
-       9,    0,  141,    2, 0x08,    8 /* Private */,
-      10,    0,  142,    2, 0x08,    9 /* Private */,
-      11,    0,  143,    2, 0x08,   10 /* Private */,
-      12,    0,  144,    2, 0x08,   11 /* Private */,
-      13,    0,  145,    2, 0x08,   12 /* Private */,
-      14,    0,  146,    2, 0x08,   13 /* Private */,
-      15,    0,  147,    2, 0x08,   14 /* Private */,
-      16,    0,  148,    2, 0x08,   15 /* Private */,
-      17,    1,  149,    2, 0x08,   16 /* Private */,
-      20,    1,  152,    2, 0x08,   18 /* Private */,
-      21,    1,  155,    2, 0x08,   20 /* Private */,
-      22,    1,  158,    2, 0x08,   22 /* Private */,
-      24,    0,  161,    2, 0x08,   24 /* Private */,
+       1,    0,  152,    2, 0x08,    1 /* Private */,
+       3,    0,  153,    2, 0x08,    2 /* Private */,
+       4,    0,  154,    2, 0x08,    3 /* Private */,
+       5,    0,  155,    2, 0x08,    4 /* Private */,
+       6,    0,  156,    2, 0x08,    5 /* Private */,
+       7,    0,  157,    2, 0x08,    6 /* Private */,
+       8,    0,  158,    2, 0x08,    7 /* Private */,
+       9,    0,  159,    2, 0x08,    8 /* Private */,
+      10,    0,  160,    2, 0x08,    9 /* Private */,
+      11,    0,  161,    2, 0x08,   10 /* Private */,
+      12,    0,  162,    2, 0x08,   11 /* Private */,
+      13,    0,  163,    2, 0x08,   12 /* Private */,
+      14,    0,  164,    2, 0x08,   13 /* Private */,
+      15,    0,  165,    2, 0x08,   14 /* Private */,
+      16,    0,  166,    2, 0x08,   15 /* Private */,
+      17,    1,  167,    2, 0x08,   16 /* Private */,
+      20,    1,  170,    2, 0x08,   18 /* Private */,
+      21,    1,  173,    2, 0x08,   20 /* Private */,
+      22,    1,  176,    2, 0x08,   22 /* Private */,
+      24,    0,  179,    2, 0x08,   24 /* Private */,
+      25,    0,  180,    2, 0x08,   25 /* Private */,
+      26,    0,  181,    2, 0x08,   26 /* Private */,
+      27,    0,  182,    2, 0x08,   27 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -208,6 +224,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTripPlannerENDCLASS[] = {
     QMetaType::Void, 0x80000000 | 18,   19,
     QMetaType::Void, 0x80000000 | 18,   19,
     QMetaType::Void, QMetaType::Double,   23,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -265,6 +284,12 @@ Q_CONSTINIT const QMetaObject TripPlanner::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<double, std::false_type>,
         // method 'goToSouvenirShop'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_DFS_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_BSF_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_MST_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -296,6 +321,9 @@ void TripPlanner::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 17: _t->showSouvCartTableView((*reinterpret_cast< std::add_pointer_t<QSqlQueryModel*>>(_a[1]))); break;
         case 18: _t->showTotalCost((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
         case 19: _t->goToSouvenirShop(); break;
+        case 20: _t->on_DFS_clicked(); break;
+        case 21: _t->on_BSF_clicked(); break;
+        case 22: _t->on_MST_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -345,13 +373,13 @@ int TripPlanner::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 23;
     }
     return _id;
 }

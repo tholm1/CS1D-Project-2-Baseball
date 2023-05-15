@@ -9,6 +9,7 @@
 #include "graph.h"
 #include "mainwindow.h"
 #include <QMessageBox>
+#include <QLabel>
 #include <QStringListModel>
 #include <QAbstractItemView>
 
@@ -90,12 +91,20 @@ private slots:
 
     void goToSouvenirShop();
 
+    void on_DFS_clicked();
+
+    void on_BSF_clicked();
+
+    void on_MST_clicked();
+
 private:
     Ui::TripPlanner *ui;
     dbManager db; // Database manager object
     Graph* graph; // Graph object
     std::vector<std::string> teams; // Vector to store the teams
-    std::vector<std::string> sortedTeams; // Vector to store the sorted teams
+    QPushButton *primMSTButton;
+    //QVBoxLayout *layout;
+    QLabel *distanceLabel;
     double totalCost; // Double to hold the total cost when buying souvenirs
     QString sQry; //QString to display that the item has been added to the cart succesfully
     QStack<SouvenirTableModel> souvenirCart; //Stack to hold the cart

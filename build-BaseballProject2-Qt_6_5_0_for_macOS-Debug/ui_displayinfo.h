@@ -68,7 +68,7 @@ public:
         displayTeams_pushButton->setText(QCoreApplication::translate("displayInfo", "Display Teams", nullptr));
         planVacation_pushButton->setText(QCoreApplication::translate("displayInfo", "Plan a Vacation!", nullptr));
         back_pushButton->setText(QCoreApplication::translate("displayInfo", "Back", nullptr));
-        background->setText(QCoreApplication::translate("displayInfo", "TextLabel", nullptr));
+        background->setText(QString());
     } // retranslateUi
 
 };

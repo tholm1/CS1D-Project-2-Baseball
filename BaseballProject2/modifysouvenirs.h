@@ -36,6 +36,7 @@ private slots:
 private:
     Ui::ModifySouvenirs *ui;
     dbManager database;
+    dbManager *dbManagers;
 };
 
 #endif // MODIFYSOUVENIRS_H

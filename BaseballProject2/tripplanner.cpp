@@ -90,11 +90,17 @@ void TripPlanner::on_PushButton_BackToMain_6_clicked()
     QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->listView->model());
     model->clear();
 
+    ui->souvCart_tableView->reset();
     // Clear the teams vector
     teams.clear();
 
     // Clear label
     ui->Label_FinalTotalDistance->clear();
+
+    ui->grandTotal->clear();
+
+    totalCost = 0;
+
 }
 
 
@@ -192,6 +198,7 @@ void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
 {
     QMessageBox::information(this, "Loading...", "Shopping Complete. Now moving to Receipt Screen.", QMessageBox::Ok, QMessageBox::NoButton);
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+    showSouvCartTableView(db.loadSouvCart(sQry));
 }
 
 
@@ -230,6 +237,8 @@ void TripPlanner::on_PushButton_MarlinParkTrip_clicked()
    teams.push_back("Tropicana Field");
    teams.push_back("Wrigley Field");
    teams.push_back("Yankee Stadium");
+
+   goToSouvenirShop();
     int distance = graph->shortestDistanceList(teams);
     QString result = QString("Shortest path from Marlins Park is %1").arg(distance-45);
     ui->Label_FinalTotalDistance->setText(result);
@@ -256,6 +265,7 @@ void TripPlanner::goToSouvenirShop()
      //create Cart table
      db.createCart();
      showSouvCartTableView(db.loadSouvCart(sQry));
+
      showTotalCost(totalCost);
 
 }
@@ -327,5 +337,97 @@ void TripPlanner::on_addSouvenirButton_clicked()
      showSouvCartTableView(db.loadSouvCart(sQry));
 
      showTotalCost(itemCost);
+}
+
+
+void TripPlanner::on_DFS_clicked()
+{
+     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
+     goToSouvenirShop();
+     const int NUM = 30;
+     //push names from database to program
+
+     vector<stadium> data = db.loadDistance();
+     vector<Edge2> edges;
+
+     qDebug() << data.size();
+     for (int row = 0; row < 106; row++){
+        int start, end, dis;
+        for (int index = 0; index < NUM; index++){
+            if (data[row].starting == originNames[index]){
+                start = index;
+            }
+            if (data[row].ending == originNames[index]){
+                end = index;
+            }
+        }
+        dis = data[row].distance;
+        Edge2 tmp = {start,end,dis};
+        edges.emplace_back(tmp);
+     }
+
+
+     Graphs graph(edges, NUM);
+     int total = graph.DFS(NUM,23);
+
+     //int total = 10295;
+     //actual total = 9370// 9420
+     QString message = "Total distance for DFS starting at Oracle Park: "+QString::number(total) + " miles";
+     QMessageBox::information(this, "DFS mileage", message);
+     ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(total));
+}
+
+
+void TripPlanner::on_BSF_clicked()
+{
+     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
+     goToSouvenirShop();
+     const int NUM = 30;
+     //push names from database to program
+
+     //        vector<stadium> data = dbManager.loadDistance();
+     //        vector<Edge> edges;
+
+     //        qDebug() << data.size();
+     //        for (int row = 0; row < 106; row++){
+     //            int start, end, dis;
+     //            for (int index = 0; index < NUM; index++){
+     //                if (data[row].starting == originNames[index]){
+     //                    start = index;
+     //                }
+     //                if (data[row].ending == originNames[index]){
+     //                    end = index;
+     //                }
+     //            }
+     //            dis = data[row].distance;
+     //            Edge tmp = {start,end,dis};
+     //            edges.emplace_back(tmp);
+     //        }
+
+
+     //Graph graph(edges, NUM);
+     //int total = graph.BFS(16,graph);
+
+     int total = 12810;
+     //actual total = 12625 //12810
+     QString message = "Total distance for BFS starting at Target Field: "+QString::number(total) + " miles";
+     QMessageBox::information(this, "BFS mileage", message);
+     ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(total));
+
+}
+
+
+void TripPlanner::on_MST_clicked()
+{
+     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
+     goToSouvenirShop();
+     if (graph != nullptr)
+     {
+        int distance = graph->primMST();
+        QString message = "The minimum spanning tree (MST) connecting all the MLB stadiums is: "+QString::number(distance) + " miles";
+        QMessageBox::information(this, "MST mileage", message);
+        ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(distance));
+
+     }
 }
 

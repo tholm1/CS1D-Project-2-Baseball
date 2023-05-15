@@ -358,7 +358,7 @@ double dbManager::GetTotalCost(QString teamIn, QString souvIn)
     double total = 0.0;
 
     QString sQry = "select Price as 'Cost' "
-                   "from Souvenirs where Team = '" +teamIn+ "' and Souvenir = '" +souvIn+ "'";
+                   "from Cart where Team = '" +teamIn+ "' and Souvenir = '" +souvIn+ "'";
     QSqlQuery qry;
     qry.prepare(sQry);
     qry.exec();
@@ -374,7 +374,7 @@ QSqlQueryModel* dbManager::loadTeamSouvenirs(QString team)
 {
     QSqlQueryModel* model = new QSqlQueryModel();
 
-    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Souvenirs where Team = '" +team+ "';";
+    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Cart where Team = '" +team+ "';";
     qDebug() << sQry;
     QSqlQuery qry;
     qry.prepare(sQry);
@@ -392,7 +392,7 @@ QSqlQueryModel* dbManager::loadSouvenirNamesOnly()
 {
     QSqlQueryModel* model = new QSqlQueryModel();
 
-    QString sQry = "select \"Souvenir\" as \"Souvenirs\" from \"Souvenirs\" group by \"Souvenir\";";
+    QString sQry = "select \"Souvenir\" as \"Souvenirs\" from \"Cart\" group by \"Souvenir\";";
     QSqlQuery qry;
     qry.prepare(sQry);
 
@@ -404,3 +404,22 @@ QSqlQueryModel* dbManager::loadSouvenirNamesOnly()
     model->setQuery(qry);
     return model;
 }
+
+QSqlQueryModel* dbManager::loadSouvenirQuantityOnly()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QString sQry = "select \"quantity\" as \"quantity\" from \"Cart\" group by \"quantity\";";
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Souvenirs\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}
+
+
