@@ -3,6 +3,7 @@
 #include "displayteam.h"
 #include "planvacation.h"
 #include "mainwindow.h"
+#include "tripplanner.h"
 
 displayInfo::displayInfo(QWidget *parent) :
     QDialog(parent),

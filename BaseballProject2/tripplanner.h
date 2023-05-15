@@ -30,7 +30,6 @@ private slots:
     void on_PushButton_MostEfficientTrip_clicked();
     void on_PushButton_BeginTrip_clicked();
     void on_PushButton_BackToMain_6_clicked();
-    void on_PushButton_CustomMostEfficientTrip_clicked();
     void on_PushButton_AddTeam_clicked();
     void on_PushButton_BeginCustomTrip_clicked();
 
@@ -42,11 +41,20 @@ private slots:
 
     void on_PushButton_SouvenirFinishTrip_clicked();
 
+    void on_PushButton_MarlinParkTrip_clicked();
+
+    void on_PushButton_BeginCustomTrip_2_clicked();
+
+    void on_PushButton_BackToMain_4_clicked();
+
+    void on_PushButton_BackToMain_2_clicked();
+
 private:
     Ui::TripPlanner *ui;
     dbManager db;
     Graph *graph;
     std::vector<std::string> teams;
+    std::vector<std::string> sortedTeams;
 };
 
 #endif // TRIPPLANNER_H

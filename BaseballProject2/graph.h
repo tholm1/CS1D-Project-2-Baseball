@@ -1,6 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include "dbmanager.h"
 #include <vector>
 #include <string>
 #include <unordered_map>
@@ -68,6 +69,7 @@ public:
     int primMST();
     void setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap);
     int shortestDistanceList_02(std::vector<std::string>& teams);
+    int recursiveCollegeSort(std::vector<std::string>& teams);
     //-------------------------------------------------------------------------------
     // Vector to store adjacency list for each vertex
     vector<vector<pair<int, int>>> adjacencyList;
@@ -143,9 +145,9 @@ public:
     }
 private:
     const int N = 30;
-
     //implementing a BFS starting at Dallas
     int totalDistance = 0;
+    dbManager db;
 
     int V;
     std::list<Pair> *adj;

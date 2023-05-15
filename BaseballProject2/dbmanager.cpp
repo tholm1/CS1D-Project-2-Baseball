@@ -16,6 +16,7 @@ dbManager::dbManager()
     QSqlDatabase m_database = QSqlDatabase::addDatabase("QSQLITE");
     m_database.setDatabaseName("/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/MLBDB2.db");
 
+
     if(m_database.open())
     {
         qDebug() << "Database: connection ok";

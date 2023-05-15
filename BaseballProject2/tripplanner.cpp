@@ -85,12 +85,9 @@ void TripPlanner::on_PushButton_BackToMain_6_clicked()
 
     // Clear the teams vector
     teams.clear();
-}
 
-
-void TripPlanner::on_PushButton_CustomMostEfficientTrip_clicked()
-{
-      ui->TripPlannerStackedWidget->setCurrentWidget(ui->CustomOrderTrip_3);
+    // Clear label
+    ui->Label_FinalTotalDistance->clear();
 }
 
 
@@ -112,14 +109,46 @@ void TripPlanner::on_PushButton_AddTeam_clicked()
     // Add the team name to the list of teams
     teams.push_back(teamName.toStdString());
 }
+
+
 void TripPlanner::on_PushButton_BeginCustomTrip_clicked()
 {
+    if (teams.empty()) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, tr("No teams added"),
+                                      tr("No teams have been added. Do you still want to continue?"),
+                                      QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::No) {
+            return;
+        }
+    }
+
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
     int distance = graph->shortestDistanceList_02(teams);
     QString result = QString("Shortest path for this custom trip is %1").arg(distance);
     ui->Label_FinalTotalDistance->setText(result);
-
 }
+
+void TripPlanner::on_PushButton_BeginCustomTrip_2_clicked()
+{
+    if (teams.empty()) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, tr("No teams added"),
+                                      tr("No teams have been added. Do you still want to continue?"),
+                                      QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::No) {
+            return;
+        }
+    }
+
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
+
+    double distanceTraveled = graph->recursiveCollegeSort(teams);
+
+    QString result = QString("The distance after traveling in the most efficient order is %1").arg(distanceTraveled);
+    ui->Label_FinalTotalDistance->setText(result);
+}
+
 
 
 void TripPlanner::on_PushButton_BackToMain_clicked()
@@ -143,6 +172,20 @@ void TripPlanner::on_PushButton_BeginCustomTrip_Clear_clicked()
 
 
 void TripPlanner::on_PushButton_CustomTrip_clicked()
+{
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->CustomTrip);
+}
+
+
+
+void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
+{
+     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+}
+
+
+
+void TripPlanner::on_PushButton_MarlinParkTrip_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
 
@@ -179,13 +222,17 @@ void TripPlanner::on_PushButton_CustomTrip_clicked()
     int distance = graph->shortestDistanceList(teams);
     QString result = QString("Shortest path from Marlins Park is %1").arg(distance-45);
     ui->Label_FinalTotalDistance->setText(result);
-
 }
 
-
-
-void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
+void TripPlanner::on_PushButton_BackToMain_4_clicked()
 {
-     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
 }
+
+
+void TripPlanner::on_PushButton_BackToMain_2_clicked()
+{
+     ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
+}
+
 

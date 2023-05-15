@@ -200,6 +200,43 @@ int Graph::shortestDistanceList_02(std::vector<std::string>& teams)
     }
     return totalDistance;
 }
+int Graph::recursiveCollegeSort(std::vector<std::string>& teams)
+{
+    if (teams.empty())
+        return 0;
+
+    std::string currentTeam = teams[0];
+    teams.erase(teams.begin());
+
+    std::vector<std::string> sortedTeams;
+    sortedTeams.push_back(currentTeam);
+
+    int totalDistance = 0;
+
+    while (!teams.empty()) {
+        std::string closestTeam;
+        int closestDistance = INT_MAX;
+
+        for (const std::string& team : teams) {
+            int distance = shortestDistance(currentTeam, team);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestTeam = team;
+            }
+        }
+
+        if (!closestTeam.empty()) {
+            currentTeam = closestTeam;
+            teams.erase(std::remove(teams.begin(), teams.end(), currentTeam), teams.end());
+            sortedTeams.push_back(currentTeam);
+            totalDistance += closestDistance;
+        }
+    }
+
+    qDebug() << "Total Distance Traveled: " << totalDistance;
+    return totalDistance;
+}
+
 
 void Graph::setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap)
 {

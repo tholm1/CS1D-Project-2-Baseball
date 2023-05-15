@@ -12,6 +12,7 @@
 #include <QList>
 #include <QFile>
 #include <QRegularExpression>
+#include <unordered_map>
 #include "teamtablemodel.h"
 #include "Souvenir.h"
 #include <vector>
