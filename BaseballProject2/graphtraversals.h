@@ -28,11 +28,14 @@ private slots:
 
 private:
     Ui::GraphTraversals *ui;
-    Graph *graph;
-    dbManager dbManager;
+    Graph* graph; // Pointer to the Graph object
+    dbManager dbManager; // Database manager object
     QPushButton *primMSTButton;
     QVBoxLayout *layout;
     QLabel *distanceLabel;
+    /**
+     * @brief initializeGraph Initializes the graph object.
+     */
     void initializeGraph();
 };
 

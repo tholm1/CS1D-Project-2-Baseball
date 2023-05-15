@@ -18,7 +18,11 @@ class filteredTeams : public QDialog
 public:
     explicit filteredTeams(QWidget *parent = nullptr);
     ~filteredTeams();
-     void populateTableView();
+    /**
+     * @brief populateTableView
+     * Populates the table view with the filtered teams based on the selected filter criteria.
+     */
+    void populateTableView();
 
 private slots:
      void on_noFilter_radioButton_clicked();

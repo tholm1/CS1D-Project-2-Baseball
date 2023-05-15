@@ -59,17 +59,77 @@ private:
 class Graph
 {
 public:
-    Graph(int V);
-    ~Graph();
-    Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const std::vector<std::tuple<std::string, std::string, int>>& edges);
-    int shortestDistance(const std::string& start, const std::string& end);
-    int shortestDistanceList(const std::vector<std::string>& teams);
-    std::unordered_map<std::string, int> vertexIndexMap;
-    void addEdge(const std::string &u, const std::string &v, int w);
-    int primMST();
-    void setVertexIndexMap(const std::unordered_map<std::string, int> &vertexIndexMap);
-    int shortestDistanceList_02(std::vector<std::string>& teams);
-    int recursiveCollegeSort(std::vector<std::string>& teams);
+    /**
+         * @brief Graph constructor.
+         * @param V Number of vertices in the graph.
+         */
+        Graph(int V);
+
+        /**
+         * @brief Graph destructor.
+         */
+        ~Graph();
+
+        /**
+         * @brief Graph constructor with vertex and edge information.
+         * @param vertexIndexMap Unordered map mapping vertex names to their indices.
+         * @param edges Vector of tuples representing edges with their weights.
+         */
+        Graph(const std::unordered_map<std::string, int>& vertexIndexMap, const std::vector<std::tuple<std::string, std::string, int>>& edges);
+
+        /**
+         * @brief shortestDistance Computes the shortest distance between two vertices using Dijkstra's algorithm.
+         * @param start Starting vertex name.
+         * @param end Ending vertex name.
+         * @return Shortest distance between the vertices.
+         */
+        int shortestDistance(const std::string& start, const std::string& end);
+
+        /**
+         * @brief shortestDistanceList Computes the shortest distance by traversing a list of vertices in order.
+         * @param teams Vector of team names representing the order of traversal.
+         * @return Total distance traveled.
+         */
+        int shortestDistanceList(const std::vector<std::string>& teams);
+
+        /**
+         * @brief vertexIndexMap Mapping of vertex names to their indices.
+         */
+        std::unordered_map<std::string, int> vertexIndexMap;
+
+        /**
+         * @brief addEdge Adds an edge between two vertices with the given weight.
+         * @param u First vertex name.
+         * @param v Second vertex name.
+         * @param w Edge weight.
+         */
+        void addEdge(const std::string& u, const std::string& v, int w);
+
+        /**
+         * @brief primMST Computes the minimum spanning tree of the graph using Prim's algorithm.
+         * @return Total weight of the minimum spanning tree.
+         */
+        int primMST();
+
+        /**
+         * @brief setVertexIndexMap Sets the vertex index map of the graph.
+         * @param vertexIndexMap Unordered map mapping vertex names to their indices.
+         */
+        void setVertexIndexMap(const std::unordered_map<std::string, int>& vertexIndexMap);
+
+        /**
+         * @brief shortestDistanceList_02 Computes the shortest distance by traversing a list of vertices in order (alternative implementation).
+         * @param teams Vector of team names representing the order of traversal.
+         * @return Total distance traveled.
+         */
+        int shortestDistanceList_02(std::vector<std::string>& teams);
+
+        /**
+         * @brief recursiveCollegeSort Recursively sorts the vector of team names based on the shortest distance between them.
+         * @param teams Vector of team names to be sorted.
+         * @return Total distance traveled.
+         */
+        int recursiveCollegeSort(std::vector<std::string>& teams);
     //-------------------------------------------------------------------------------
     // Vector to store adjacency list for each vertex
     vector<vector<pair<int, int>>> adjacencyList;

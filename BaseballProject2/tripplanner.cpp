@@ -21,6 +21,10 @@ TripPlanner::~TripPlanner()
     delete ui;
     delete graph;
 }
+/**
+ * @brief Initialize the graph by loading vertex index map and edges from the database.
+ *        Create a new Graph instance and add edges based on the loaded data.
+ */
 void TripPlanner::initializeGraph()
 {
     std::unordered_map<std::string, int> vertexIndexMap;
@@ -39,7 +43,9 @@ void TripPlanner::initializeGraph()
         graph->addEdge(u, v, w);
     }
 }
-
+/**
+ * @brief Populate the team combo boxes with the team names loaded from the database.
+ */
 void TripPlanner::populateTeamComboBoxes()
 {
     QSqlQueryModel *model1 = db.loadOriginalTeamNames();
