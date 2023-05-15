@@ -22,6 +22,8 @@ private slots:
 
     void on_maintenance_pushButton_clicked();
 
+    void on_one_team_clicked();
+
 private:
     Ui::MainWindow *ui;
     dbManager m_database;

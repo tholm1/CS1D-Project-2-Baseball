@@ -14,6 +14,7 @@
 #include <QRegularExpression>
 #include <unordered_map>
 #include "teamtablemodel.h"
+#include "Souvenir.h"
 #include <vector>
 using namespace std;
 
@@ -58,6 +59,11 @@ public:
     //-------------------------------------
     QSqlQueryModel* loadOriginalTeamNames();
     QSqlQueryModel* loadDestinationTeamNames();
+
+    bool readSouvenirFile();
+    void createSouvenir(QString teamname ,QString item, QString price);
+
+    QList <Souvenir*>  listOfSouvenirs;
 };
 
 #endif // DBMANAGER_H
