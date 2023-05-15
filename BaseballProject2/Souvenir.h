@@ -15,6 +15,8 @@ public:
      */
     explicit Souvenir(QObject *parent = nullptr);
 
+    //Souvenir(QString teamName, QString souvenirName, double souvenirPrice);
+
     /** \fn item()
      * This function will return the souvenir item determined in the function setItem()
      * @param no formal parameters

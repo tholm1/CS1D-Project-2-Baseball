@@ -104,7 +104,24 @@ public:
     QSqlQueryModel* loadDestinationTeamNames();
 
     bool readSouvenirFile();
+
     void createSouvenir(QString teamname ,QString item, QString price);
+
+    QSqlQueryModel *loadTeamSouvenirs(QString team);
+
+    QSqlQueryModel* loadSouvCart(QString sQry);
+
+    void createCart();
+
+    void deleteCart();
+
+    void updateCartQuantity(QString team, QString souv, int quantity);
+
+    double GetTotalCost(QString teamIn, QString souvIn);
+
+    QSqlQueryModel* loadSouvenirNamesOnly();
+
+    QList<Souvenir> getAllSouvenirs();
 
     QList <Souvenir*>  listOfSouvenirs;
 };

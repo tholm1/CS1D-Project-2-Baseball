@@ -11,10 +11,14 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -33,6 +37,16 @@ public:
     QPushButton *PushButton_CalcBFS;
     QPushButton *PushButton_ViewMSTButton;
     QLabel *Label_TraversalType;
+    QLabel *label;
+    QTableView *souv_tableView;
+    QTableView *souvCart_tableView;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *total;
+    QComboBox *teamSouvenir_comboBox;
+    QSpinBox *quantity_spinBox;
+    QPushButton *addToCartpushButton;
+    QComboBox *allteams_comboBox;
 
     void setupUi(QDialog *GraphTraversals)
     {
@@ -119,6 +133,36 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
+        label = new QLabel(GraphTraversals);
+        label->setObjectName("label");
+        label->setGeometry(QRect(90, 140, 161, 41));
+        souv_tableView = new QTableView(GraphTraversals);
+        souv_tableView->setObjectName("souv_tableView");
+        souv_tableView->setGeometry(QRect(50, 230, 256, 361));
+        souvCart_tableView = new QTableView(GraphTraversals);
+        souvCart_tableView->setObjectName("souvCart_tableView");
+        souvCart_tableView->setGeometry(QRect(430, 231, 256, 361));
+        label_2 = new QLabel(GraphTraversals);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(470, 170, 161, 41));
+        label_3 = new QLabel(GraphTraversals);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(470, 610, 101, 41));
+        total = new QLabel(GraphTraversals);
+        total->setObjectName("total");
+        total->setGeometry(QRect(570, 620, 91, 21));
+        teamSouvenir_comboBox = new QComboBox(GraphTraversals);
+        teamSouvenir_comboBox->setObjectName("teamSouvenir_comboBox");
+        teamSouvenir_comboBox->setGeometry(QRect(50, 600, 191, 32));
+        quantity_spinBox = new QSpinBox(GraphTraversals);
+        quantity_spinBox->setObjectName("quantity_spinBox");
+        quantity_spinBox->setGeometry(QRect(250, 600, 42, 31));
+        addToCartpushButton = new QPushButton(GraphTraversals);
+        addToCartpushButton->setObjectName("addToCartpushButton");
+        addToCartpushButton->setGeometry(QRect(80, 650, 191, 32));
+        allteams_comboBox = new QComboBox(GraphTraversals);
+        allteams_comboBox->setObjectName("allteams_comboBox");
+        allteams_comboBox->setGeometry(QRect(42, 190, 271, 32));
 
         retranslateUi(GraphTraversals);
 
@@ -134,6 +178,11 @@ public:
         PushButton_CalcBFS->setText(QCoreApplication::translate("GraphTraversals", "BFS", nullptr));
         PushButton_ViewMSTButton->setText(QCoreApplication::translate("GraphTraversals", "MST", nullptr));
         Label_TraversalType->setText(QString());
+        label->setText(QCoreApplication::translate("GraphTraversals", "<html><head/><body><p><span style=\" font-size:24pt; font-weight:700; text-decoration: underline;\">Souvenirs Of:</span></p></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("GraphTraversals", "<html><head/><body><p><span style=\" font-size:24pt; font-weight:700; text-decoration: underline;\">Souvenir Cart:</span></p></body></html>", nullptr));
+        label_3->setText(QCoreApplication::translate("GraphTraversals", "<html><head/><body><p><span style=\" font-size:18pt;\">Total Cost:  $</span></p></body></html>", nullptr));
+        total->setText(QCoreApplication::translate("GraphTraversals", "<html><head/><body><p><span style=\" font-size:18pt;\">0.00</span></p></body></html>", nullptr));
+        addToCartpushButton->setText(QCoreApplication::translate("GraphTraversals", "Add to Cart", nullptr));
     } // retranslateUi
 
 };

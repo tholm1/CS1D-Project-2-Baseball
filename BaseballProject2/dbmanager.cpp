@@ -295,3 +295,112 @@ bool dbManager::readSouvenirFile()
 
     return true;
 }
+
+void dbManager::createCart()
+{
+    //cartQry - temporary table
+    QSqlQuery cartQry;
+    cartQry.prepare("create table Cart as SELECT * from Souvenir;");
+
+    if(!cartQry.exec())
+    {
+        qDebug() << "\nError Creating Cart\n";
+    }
+    cartQry.prepare("ALTER table Cart add quantity real default 0;");
+    if(!cartQry.exec())
+    {
+        qDebug() << "\nError Creating Quanitity Column\n";
+    }
+}
+
+void dbManager::deleteCart()
+{
+    //cartQry - temporary table
+    QSqlQuery cartQry;
+    cartQry.prepare("drop table Cart;");
+
+    if(!cartQry.exec())
+    {
+        qDebug() << "\nError dropping Cart\n";
+    }
+}
+
+void dbManager::updateCartQuantity(QString team, QString souv, int quant)
+{
+    //Update quantity
+    QSqlQuery updateQry;
+    QString uQry = "UPDATE Cart SET quantity = quantity+" +QString::number(quant)+ " WHERE Team = '" +team+ "' and Souvenir = '" +souv+ "';";
+    updateQry.prepare(uQry);
+
+    if(!updateQry.exec())
+    {
+        qDebug() << "\nError updating Cart\n";
+    }
+}
+
+QSqlQueryModel* dbManager::loadSouvCart(QString sQry)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Souvenirs\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}
+
+double dbManager::GetTotalCost(QString teamIn, QString souvIn)
+{
+    double total = 0.0;
+
+    QString sQry = "select Price as 'Cost' "
+                   "from Souvenirs where Team = '" +teamIn+ "' and Souvenir = '" +souvIn+ "'";
+    QSqlQuery qry;
+    qry.prepare(sQry);
+    qry.exec();
+
+    if(qry.next())
+    {
+        total = qry.value(0).toDouble();
+    }
+    return total;
+}
+
+QSqlQueryModel* dbManager::loadTeamSouvenirs(QString team)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Souvenirs where Team = '" +team+ "';";
+    qDebug() << sQry;
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Souvenirs\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}
+
+QSqlQueryModel* dbManager::loadSouvenirNamesOnly()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QString sQry = "select \"Souvenir\" as \"Souvenirs\" from \"Souvenirs\" group by \"Souvenir\";";
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Souvenirs\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}

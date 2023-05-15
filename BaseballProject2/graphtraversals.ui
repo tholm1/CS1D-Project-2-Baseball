@@ -171,7 +171,7 @@ color:rgb(0, 0, 0)</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; text-decoration: underline;&quot;&gt;Souvenirs Of:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTableView" name="tableView">
+  <widget class="QTableView" name="souv_tableView">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -181,7 +181,7 @@ color:rgb(0, 0, 0)</string>
     </rect>
    </property>
   </widget>
-  <widget class="QTableView" name="tableView_2">
+  <widget class="QTableView" name="souvCart_tableView">
    <property name="geometry">
     <rect>
      <x>430</x>
@@ -217,7 +217,7 @@ color:rgb(0, 0, 0)</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Total Cost:  $&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="total">
    <property name="geometry">
     <rect>
      <x>570</x>
@@ -240,7 +240,7 @@ color:rgb(0, 0, 0)</string>
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="quantitiy_spinBox">
+  <widget class="QSpinBox" name="quantity_spinBox">
    <property name="geometry">
     <rect>
      <x>250</x>

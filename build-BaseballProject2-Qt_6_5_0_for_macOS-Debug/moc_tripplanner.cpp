@@ -43,29 +43,55 @@ static constexpr auto qt_meta_stringdata_CLASSTripPlannerENDCLASS = QtMocHelpers
     "",
     "on_PushButton_BeginTrip_clicked",
     "on_PushButton_BackToMain_6_clicked",
-    "on_PushButton_CustomMostEfficientTrip_clicked",
     "on_PushButton_AddTeam_clicked",
     "on_PushButton_BeginCustomTrip_clicked",
     "on_PushButton_BackToMain_clicked",
     "on_PushButton_BeginCustomTrip_Clear_clicked",
     "on_PushButton_CustomTrip_clicked",
-    "on_PushButton_SouvenirFinishTrip_clicked"
+    "on_PushButton_SouvenirFinishTrip_clicked",
+    "on_PushButton_MarlinParkTrip_clicked",
+    "on_PushButton_BeginCustomTrip_2_clicked",
+    "on_PushButton_BackToMain_4_clicked",
+    "on_PushButton_BackToMain_2_clicked",
+    "on_team_comboBox_currentIndexChanged",
+    "on_addSouvenirButton_clicked",
+    "showSelectTeamComboBox",
+    "QSqlQueryModel*",
+    "model",
+    "showSouvTableView",
+    "showSouvCartTableView",
+    "showTotalCost",
+    "itemCost",
+    "goToSouvenirShop"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSTripPlannerENDCLASS_t {
-    uint offsetsAndSizes[24];
+    uint offsetsAndSizes[50];
     char stringdata0[12];
     char stringdata1[40];
     char stringdata2[1];
     char stringdata3[32];
     char stringdata4[35];
-    char stringdata5[46];
-    char stringdata6[30];
-    char stringdata7[38];
-    char stringdata8[33];
-    char stringdata9[44];
-    char stringdata10[33];
-    char stringdata11[41];
+    char stringdata5[30];
+    char stringdata6[38];
+    char stringdata7[33];
+    char stringdata8[44];
+    char stringdata9[33];
+    char stringdata10[41];
+    char stringdata11[37];
+    char stringdata12[40];
+    char stringdata13[35];
+    char stringdata14[35];
+    char stringdata15[37];
+    char stringdata16[29];
+    char stringdata17[23];
+    char stringdata18[16];
+    char stringdata19[6];
+    char stringdata20[18];
+    char stringdata21[22];
+    char stringdata22[14];
+    char stringdata23[9];
+    char stringdata24[17];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSTripPlannerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -76,26 +102,52 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSTripPlannerENDCLASS_t qt_meta_s
         QT_MOC_LITERAL(52, 0),  // ""
         QT_MOC_LITERAL(53, 31),  // "on_PushButton_BeginTrip_clicked"
         QT_MOC_LITERAL(85, 34),  // "on_PushButton_BackToMain_6_cl..."
-        QT_MOC_LITERAL(120, 45),  // "on_PushButton_CustomMostEffic..."
-        QT_MOC_LITERAL(166, 29),  // "on_PushButton_AddTeam_clicked"
-        QT_MOC_LITERAL(196, 37),  // "on_PushButton_BeginCustomTrip..."
-        QT_MOC_LITERAL(234, 32),  // "on_PushButton_BackToMain_clicked"
-        QT_MOC_LITERAL(267, 43),  // "on_PushButton_BeginCustomTrip..."
-        QT_MOC_LITERAL(311, 32),  // "on_PushButton_CustomTrip_clicked"
-        QT_MOC_LITERAL(344, 40)   // "on_PushButton_SouvenirFinishT..."
+        QT_MOC_LITERAL(120, 29),  // "on_PushButton_AddTeam_clicked"
+        QT_MOC_LITERAL(150, 37),  // "on_PushButton_BeginCustomTrip..."
+        QT_MOC_LITERAL(188, 32),  // "on_PushButton_BackToMain_clicked"
+        QT_MOC_LITERAL(221, 43),  // "on_PushButton_BeginCustomTrip..."
+        QT_MOC_LITERAL(265, 32),  // "on_PushButton_CustomTrip_clicked"
+        QT_MOC_LITERAL(298, 40),  // "on_PushButton_SouvenirFinishT..."
+        QT_MOC_LITERAL(339, 36),  // "on_PushButton_MarlinParkTrip_..."
+        QT_MOC_LITERAL(376, 39),  // "on_PushButton_BeginCustomTrip..."
+        QT_MOC_LITERAL(416, 34),  // "on_PushButton_BackToMain_4_cl..."
+        QT_MOC_LITERAL(451, 34),  // "on_PushButton_BackToMain_2_cl..."
+        QT_MOC_LITERAL(486, 36),  // "on_team_comboBox_currentIndex..."
+        QT_MOC_LITERAL(523, 28),  // "on_addSouvenirButton_clicked"
+        QT_MOC_LITERAL(552, 22),  // "showSelectTeamComboBox"
+        QT_MOC_LITERAL(575, 15),  // "QSqlQueryModel*"
+        QT_MOC_LITERAL(591, 5),  // "model"
+        QT_MOC_LITERAL(597, 17),  // "showSouvTableView"
+        QT_MOC_LITERAL(615, 21),  // "showSouvCartTableView"
+        QT_MOC_LITERAL(637, 13),  // "showTotalCost"
+        QT_MOC_LITERAL(651, 8),  // "itemCost"
+        QT_MOC_LITERAL(660, 16)   // "goToSouvenirShop"
     },
     "TripPlanner",
     "on_PushButton_MostEfficientTrip_clicked",
     "",
     "on_PushButton_BeginTrip_clicked",
     "on_PushButton_BackToMain_6_clicked",
-    "on_PushButton_CustomMostEfficientTrip_clicked",
     "on_PushButton_AddTeam_clicked",
     "on_PushButton_BeginCustomTrip_clicked",
     "on_PushButton_BackToMain_clicked",
     "on_PushButton_BeginCustomTrip_Clear_clicked",
     "on_PushButton_CustomTrip_clicked",
-    "on_PushButton_SouvenirFinishTrip_clicked"
+    "on_PushButton_SouvenirFinishTrip_clicked",
+    "on_PushButton_MarlinParkTrip_clicked",
+    "on_PushButton_BeginCustomTrip_2_clicked",
+    "on_PushButton_BackToMain_4_clicked",
+    "on_PushButton_BackToMain_2_clicked",
+    "on_team_comboBox_currentIndexChanged",
+    "on_addSouvenirButton_clicked",
+    "showSelectTeamComboBox",
+    "QSqlQueryModel*",
+    "model",
+    "showSouvTableView",
+    "showSouvCartTableView",
+    "showTotalCost",
+    "itemCost",
+    "goToSouvenirShop"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -107,7 +159,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTripPlannerENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -115,16 +167,26 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTripPlannerENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   74,    2, 0x08,    1 /* Private */,
-       3,    0,   75,    2, 0x08,    2 /* Private */,
-       4,    0,   76,    2, 0x08,    3 /* Private */,
-       5,    0,   77,    2, 0x08,    4 /* Private */,
-       6,    0,   78,    2, 0x08,    5 /* Private */,
-       7,    0,   79,    2, 0x08,    6 /* Private */,
-       8,    0,   80,    2, 0x08,    7 /* Private */,
-       9,    0,   81,    2, 0x08,    8 /* Private */,
-      10,    0,   82,    2, 0x08,    9 /* Private */,
-      11,    0,   83,    2, 0x08,   10 /* Private */,
+       1,    0,  134,    2, 0x08,    1 /* Private */,
+       3,    0,  135,    2, 0x08,    2 /* Private */,
+       4,    0,  136,    2, 0x08,    3 /* Private */,
+       5,    0,  137,    2, 0x08,    4 /* Private */,
+       6,    0,  138,    2, 0x08,    5 /* Private */,
+       7,    0,  139,    2, 0x08,    6 /* Private */,
+       8,    0,  140,    2, 0x08,    7 /* Private */,
+       9,    0,  141,    2, 0x08,    8 /* Private */,
+      10,    0,  142,    2, 0x08,    9 /* Private */,
+      11,    0,  143,    2, 0x08,   10 /* Private */,
+      12,    0,  144,    2, 0x08,   11 /* Private */,
+      13,    0,  145,    2, 0x08,   12 /* Private */,
+      14,    0,  146,    2, 0x08,   13 /* Private */,
+      15,    0,  147,    2, 0x08,   14 /* Private */,
+      16,    0,  148,    2, 0x08,   15 /* Private */,
+      17,    1,  149,    2, 0x08,   16 /* Private */,
+      20,    1,  152,    2, 0x08,   18 /* Private */,
+      21,    1,  155,    2, 0x08,   20 /* Private */,
+      22,    1,  158,    2, 0x08,   22 /* Private */,
+      24,    0,  161,    2, 0x08,   24 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -136,6 +198,16 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTripPlannerENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 18,   19,
+    QMetaType::Void, 0x80000000 | 18,   19,
+    QMetaType::Void, 0x80000000 | 18,   19,
+    QMetaType::Void, QMetaType::Double,   23,
     QMetaType::Void,
 
        0        // eod
@@ -156,8 +228,6 @@ Q_CONSTINIT const QMetaObject TripPlanner::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_PushButton_BackToMain_6_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_PushButton_CustomMostEfficientTrip_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_PushButton_AddTeam_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_PushButton_BeginCustomTrip_clicked'
@@ -169,6 +239,32 @@ Q_CONSTINIT const QMetaObject TripPlanner::staticMetaObject = { {
         // method 'on_PushButton_CustomTrip_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_PushButton_SouvenirFinishTrip_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_PushButton_MarlinParkTrip_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_PushButton_BeginCustomTrip_2_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_PushButton_BackToMain_4_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_PushButton_BackToMain_2_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_team_comboBox_currentIndexChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_addSouvenirButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'showSelectTeamComboBox'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QSqlQueryModel *, std::false_type>,
+        // method 'showSouvTableView'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QSqlQueryModel *, std::false_type>,
+        // method 'showSouvCartTableView'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QSqlQueryModel *, std::false_type>,
+        // method 'showTotalCost'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<double, std::false_type>,
+        // method 'goToSouvenirShop'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -183,17 +279,51 @@ void TripPlanner::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 0: _t->on_PushButton_MostEfficientTrip_clicked(); break;
         case 1: _t->on_PushButton_BeginTrip_clicked(); break;
         case 2: _t->on_PushButton_BackToMain_6_clicked(); break;
-        case 3: _t->on_PushButton_CustomMostEfficientTrip_clicked(); break;
-        case 4: _t->on_PushButton_AddTeam_clicked(); break;
-        case 5: _t->on_PushButton_BeginCustomTrip_clicked(); break;
-        case 6: _t->on_PushButton_BackToMain_clicked(); break;
-        case 7: _t->on_PushButton_BeginCustomTrip_Clear_clicked(); break;
-        case 8: _t->on_PushButton_CustomTrip_clicked(); break;
-        case 9: _t->on_PushButton_SouvenirFinishTrip_clicked(); break;
+        case 3: _t->on_PushButton_AddTeam_clicked(); break;
+        case 4: _t->on_PushButton_BeginCustomTrip_clicked(); break;
+        case 5: _t->on_PushButton_BackToMain_clicked(); break;
+        case 6: _t->on_PushButton_BeginCustomTrip_Clear_clicked(); break;
+        case 7: _t->on_PushButton_CustomTrip_clicked(); break;
+        case 8: _t->on_PushButton_SouvenirFinishTrip_clicked(); break;
+        case 9: _t->on_PushButton_MarlinParkTrip_clicked(); break;
+        case 10: _t->on_PushButton_BeginCustomTrip_2_clicked(); break;
+        case 11: _t->on_PushButton_BackToMain_4_clicked(); break;
+        case 12: _t->on_PushButton_BackToMain_2_clicked(); break;
+        case 13: _t->on_team_comboBox_currentIndexChanged(); break;
+        case 14: _t->on_addSouvenirButton_clicked(); break;
+        case 15: _t->showSelectTeamComboBox((*reinterpret_cast< std::add_pointer_t<QSqlQueryModel*>>(_a[1]))); break;
+        case 16: _t->showSouvTableView((*reinterpret_cast< std::add_pointer_t<QSqlQueryModel*>>(_a[1]))); break;
+        case 17: _t->showSouvCartTableView((*reinterpret_cast< std::add_pointer_t<QSqlQueryModel*>>(_a[1]))); break;
+        case 18: _t->showTotalCost((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 19: _t->goToSouvenirShop(); break;
         default: ;
         }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 15:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QSqlQueryModel* >(); break;
+            }
+            break;
+        case 16:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QSqlQueryModel* >(); break;
+            }
+            break;
+        case 17:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QSqlQueryModel* >(); break;
+            }
+            break;
+        }
     }
-    (void)_a;
 }
 
 const QMetaObject *TripPlanner::metaObject() const
@@ -215,13 +345,13 @@ int TripPlanner::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        if (_id < 20)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 20;
     }
     return _id;
 }

@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLabel>
+#include "tripplanner.h"
 
 namespace Ui {
 class GraphTraversals;
@@ -37,6 +38,10 @@ private:
      * @brief initializeGraph Initializes the graph object.
      */
     void initializeGraph();
+    double totalCost; // Double to hold the total cost when buying souvenirs
+    QString sQry; //QString to display that the item has been added to the cart succesfully
+    QStack<SouvenirTableModel> souvenirCart; //Stack to hold the cart
+    QVector<QString> selectedTeams; //Vector to store the teams
 };
 
 #endif // GRAPHTRAVERSALS_H

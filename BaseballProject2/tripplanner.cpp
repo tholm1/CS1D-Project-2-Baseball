@@ -1,6 +1,7 @@
 #include "tripplanner.h"
 #include "ui_tripplanner.h"
 #include <QListView>
+#include <QList>
 #include<QStandardItemModel>
 #include<QStandardItem>
 #include "planvacation.h"
@@ -130,6 +131,7 @@ void TripPlanner::on_PushButton_BeginCustomTrip_clicked()
     }
 
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
+    goToSouvenirShop();
     int distance = graph->shortestDistanceList_02(teams);
     QString result = QString("Shortest path for this custom trip is %1").arg(distance);
     ui->Label_FinalTotalDistance->setText(result);
@@ -148,6 +150,8 @@ void TripPlanner::on_PushButton_BeginCustomTrip_2_clicked()
     }
 
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
+
+    goToSouvenirShop();
 
     double distanceTraveled = graph->recursiveCollegeSort(teams);
 
@@ -186,7 +190,8 @@ void TripPlanner::on_PushButton_CustomTrip_clicked()
 
 void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
 {
-     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
+    QMessageBox::information(this, "Loading...", "Shopping Complete. Now moving to Receipt Screen.", QMessageBox::Ok, QMessageBox::NoButton);
+    ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
 }
 
 
@@ -241,4 +246,86 @@ void TripPlanner::on_PushButton_BackToMain_2_clicked()
      ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
 }
 
+void TripPlanner::goToSouvenirShop()
+{
+     //Go to souvenirShop widget
+     showSouvTableView(db.loadTeamSouvenirs(""));
+     showSelectTeamComboBox(db.loadTeamNamesOnly());
+
+     showSouvTableView(db.loadTeamSouvenirs(ui->team_comboBox->currentText()));
+     //create Cart table
+     db.createCart();
+     showSouvCartTableView(db.loadSouvCart(sQry));
+     showTotalCost(totalCost);
+
+}
+
+void TripPlanner::showSelectTeamComboBox(QSqlQueryModel *model)
+{
+     ui ->team_comboBox->setModel(model);
+}
+
+void TripPlanner::showSouvTableView(QSqlQueryModel *model)
+{
+     ui->souv_tableView->setModel(model);
+     ui->souv_comboBox->setModel(model);
+}
+
+void TripPlanner::showSouvCartTableView(QSqlQueryModel *model)
+{
+     ui->souvCart_tableView->setModel(model);
+}
+
+void TripPlanner::showTotalCost(double itemCost)
+{
+     totalCost += itemCost;
+     QString totalCostStr = QString::number(totalCost, 'f', 2);
+     ui->grandTotal->setText(totalCostStr);
+}
+
+void TripPlanner::on_team_comboBox_currentIndexChanged()
+{
+
+}
+
+
+void TripPlanner::on_addSouvenirButton_clicked()
+{
+     SouvenirTableModel souv;
+     //name and campus
+     QString name, team;
+     name = ui->souv_comboBox->currentText();
+     souv.souvName = name;
+     team = ui->team_comboBox->currentText();
+     souv.teamName = team;
+
+
+     //quantity and item cost
+     int quantity = ui->spinBox->cleanText().toInt();
+     souv.quantity = quantity;
+     double itemCost = db.GetTotalCost(team, name);
+     itemCost = itemCost * quantity;
+     souv.cost = itemCost;
+
+     souvenirCart.push(souv);
+
+     //update Cart table
+     db.updateCartQuantity(team, name, quantity);
+
+     //displays cart in table
+     if(sQry == "")
+     {
+        sQry += "select Team as 'Team', Souvenir as 'Souvenirs', Price as 'Cost', quantity as 'Quantity' "
+                "from Cart where Team = '" +team+ "' and Souvenir = '" +name+ "'";
+     }
+     else
+     {
+        sQry += " union select Team as 'Team', Souvenir as 'Souvenirs', Price as 'Cost', quantity as 'Quantity'"
+                "from Cart where Team = '" +team+ "' and Souvenir = '" +name+ "'";
+     }
+
+     showSouvCartTableView(db.loadSouvCart(sQry));
+
+     showTotalCost(itemCost);
+}
 

@@ -10,6 +10,7 @@
 #define UI_MODIFYSTADIUMS_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
@@ -113,7 +114,7 @@ public:
     {
         if (ModifyStadiums->objectName().isEmpty())
             ModifyStadiums->setObjectName("ModifyStadiums");
-        ModifyStadiums->resize(812, 657);
+        ModifyStadiums->resize(812, 660);
         verticalLayout_2 = new QVBoxLayout(ModifyStadiums);
         verticalLayout_2->setObjectName("verticalLayout_2");
         horizontalLayout = new QHBoxLayout();
@@ -146,6 +147,14 @@ public:
 
         confirmAddBtn = new QPushButton(tab_3);
         confirmAddBtn->setObjectName("confirmAddBtn");
+        confirmAddBtn->setMinimumSize(QSize(150, 100));
+        confirmAddBtn->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";\n"
+"color: rgb(0, 170, 255);\n"
+""));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/feather/upload.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        confirmAddBtn->setIcon(icon);
+        confirmAddBtn->setIconSize(QSize(18, 18));
 
         horizontalLayout_2->addWidget(confirmAddBtn);
 
@@ -514,7 +523,7 @@ public:
     {
         ModifyStadiums->setWindowTitle(QCoreApplication::translate("ModifyStadiums", "Modify Stadiums", nullptr));
         backBtn->setText(QCoreApplication::translate("ModifyStadiums", "Back", nullptr));
-        confirmAddBtn->setText(QCoreApplication::translate("ModifyStadiums", "Add Stadium with File", nullptr));
+        confirmAddBtn->setText(QCoreApplication::translate("ModifyStadiums", " Upload File", nullptr));
         errorLabel->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("ModifyStadiums", "Add Stadium", nullptr));
         teamNameUpdateLabel->setText(QCoreApplication::translate("ModifyStadiums", "Team Name", nullptr));

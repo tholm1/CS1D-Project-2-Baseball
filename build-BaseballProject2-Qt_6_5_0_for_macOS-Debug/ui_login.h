@@ -40,7 +40,6 @@ public:
     QFrame *line_3;
     QSpacerItem *verticalSpacer;
     QPushButton *login_pushButton;
-    QPushButton *pushButton_2;
     QSpacerItem *verticalSpacer_2;
 
     void setupUi(QDialog *login)
@@ -48,6 +47,7 @@ public:
         if (login->objectName().isEmpty())
             login->setObjectName("login");
         login->resize(332, 519);
+        login->setStyleSheet(QString::fromUtf8(""));
         layoutWidget = new QWidget(login);
         layoutWidget->setObjectName("layoutWidget");
         layoutWidget->setGeometry(QRect(0, 0, 334, 520));
@@ -58,7 +58,9 @@ public:
         widget = new QWidget(layoutWidget);
         widget->setObjectName("widget");
         widget->setMaximumSize(QSize(16777215, 16777215));
-        widget->setStyleSheet(QString::fromUtf8(".QWidget{background-color: rgb(0, 0, 127);}\n"
+        widget->setStyleSheet(QString::fromUtf8(".QWidget{\n"
+"border-image:url(:/image/baseball_stadium.jpg);}\n"
+"\n"
 ""));
         verticalLayout_2 = new QVBoxLayout(widget);
         verticalLayout_2->setObjectName("verticalLayout_2");
@@ -69,7 +71,11 @@ public:
         label = new QLabel(widget);
         label->setObjectName("label");
         label->setMinimumSize(QSize(175, 105));
-        label->setStyleSheet(QString::fromUtf8("border-image: url(:/image/baselogo.png);"));
+        label->setStyleSheet(QString::fromUtf8("font: 700 20pt \"Segoe Script\";\n"
+"color: rgb(231, 231, 231);\n"
+"border-radius:20px;\n"
+"background-color:rgba(0,0,0,100);"));
+        label->setAlignment(Qt::AlignCenter);
 
         verticalLayout_3->addWidget(label, 0, Qt::AlignHCenter|Qt::AlignVCenter);
 
@@ -125,7 +131,7 @@ public:
 
         formLayout_2->setWidget(5, QFormLayout::SpanningRole, line_3);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 60, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         formLayout_2->setItem(6, QFormLayout::SpanningRole, verticalSpacer);
 
@@ -150,20 +156,6 @@ public:
 
         formLayout_2->setWidget(7, QFormLayout::SpanningRole, login_pushButton);
 
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setMinimumSize(QSize(0, 60));
-        pushButton_2->setStyleSheet(QString::fromUtf8("color: rgb(231, 231, 231);\n"
-"                                                                font: 17pt \"Verdana\";\n"
-"                                                                border: 2px solid orange;\n"
-"                                                                padding: 5px;\n"
-"                                                                border-radius: 3px;\n"
-"                                                                opacity: 200;\n"
-"                                                            "));
-        pushButton_2->setFlat(false);
-
-        formLayout_2->setWidget(8, QFormLayout::SpanningRole, pushButton_2);
-
 
         verticalLayout_3->addLayout(formLayout_2);
 
@@ -182,7 +174,6 @@ public:
         retranslateUi(login);
 
         login_pushButton->setDefault(false);
-        pushButton_2->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(login);
@@ -191,12 +182,11 @@ public:
     void retranslateUi(QDialog *login)
     {
         login->setWindowTitle(QCoreApplication::translate("login", "Dialog", nullptr));
-        label->setText(QString());
+        label->setText(QCoreApplication::translate("login", "Maintenance", nullptr));
         username_LineEdit->setPlaceholderText(QCoreApplication::translate("login", "USERNAME", nullptr));
         password_LineEdit->setText(QString());
         password_LineEdit->setPlaceholderText(QCoreApplication::translate("login", "PASSWORD", nullptr));
         login_pushButton->setText(QCoreApplication::translate("login", "Sign In", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("login", "Register", nullptr));
     } // retranslateUi
 
 };
