@@ -236,8 +236,8 @@ void ModifySouvenirs::on_addSouvenirFileButton_clicked()
                 //                    {
                 //                        throw 1;
                 //                    }
-                    QString teamSearched = checkTeamQuery->value(0).toString();
-                    checkTeamQuery->finish();
+//                    QString teamSearched = checkTeamQuery->value(0).toString();
+//                    checkTeamQuery->finish();
 //                    if(teamSearched == addTeamName) // checks for duplicate team name
 //                    {
 //                        throw 0;
