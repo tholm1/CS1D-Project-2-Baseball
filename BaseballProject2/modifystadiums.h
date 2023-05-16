@@ -83,6 +83,7 @@ private:
     QByteArray defaultTableState;
     QList<Team> teamList;
     dbManager m_database;
+    QString distanceFilePath;
 };
 
 #endif // MODIFYSTADIUMS_H
