@@ -4,9 +4,8 @@
 #include <QMessageBox>
 #include <QFileDialog>
 
-ModifySouvenirs::ModifySouvenirs(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ModifySouvenirs)
+ModifySouvenirs::ModifySouvenirs(QWidget *parent) : QDialog(parent),
+                                                    ui(new Ui::ModifySouvenirs)
 {
     ui->setupUi(this);
     showTeamComboBoxAddPage(database.loadTeamNamesOnly());
@@ -29,7 +28,7 @@ void ModifySouvenirs::showTeamComboBoxModifyPage(QSqlQueryModel *model)
     ui->team2_comboBox->setModel(model);
 }
 
-void ModifySouvenirs::showTeamComboBoxDeletePage(QSqlQueryModel * model)
+void ModifySouvenirs::showTeamComboBoxDeletePage(QSqlQueryModel *model)
 {
     ui->team3_comboBox->setModel(model);
 }
@@ -48,19 +47,16 @@ void ModifySouvenirs::on_addSouvButton_clicked()
 
     bool check = false;
 
-    for(int i = 0; i < souvPrice.length(); i++)
+    for (int i = 0; i < souvPrice.length(); i++)
     {
-        if(souvPrice[i] != '0' && souvPrice[i] != '1' && souvPrice[i] != '2' && souvPrice[i] != '3'
-            && souvPrice[i] != '4' && souvPrice[i] != '5'
-            && souvPrice[i] != '6' && souvPrice[i] != '7'
-            && souvPrice[i] != '8' && souvPrice[i] != '9' && souvPrice[i] != '.')
+        if (souvPrice[i] != '0' && souvPrice[i] != '1' && souvPrice[i] != '2' && souvPrice[i] != '3' && souvPrice[i] != '4' && souvPrice[i] != '5' && souvPrice[i] != '6' && souvPrice[i] != '7' && souvPrice[i] != '8' && souvPrice[i] != '9' && souvPrice[i] != '.')
         {
             check = true;
             break;
         }
     }
 
-    if(check == true)
+    if (check == true)
     {
         QMessageBox::about(this, "Invalid Input", "There was an invalid input. Please use only Numerals(0-9) and the . ");
         return;
@@ -69,18 +65,15 @@ void ModifySouvenirs::on_addSouvButton_clicked()
     data.prepare("INSERT INTO Souvenirs (Team, Souvenir, Price) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"')");
     data.prepare("INSERT INTO Cart (Team, Souvenir, Price, quantity) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"', '"+quantity+"')");
 
-    if(!data.exec())
+    if (!data.exec())
     {
         QMessageBox::about(this, "Error", "Database not found double check path to database!");
-
     }
     else
     {
         QMessageBox::about(this, "", "The item was added. Double check if an error occured.");
     }
-
 }
-
 
 void ModifySouvenirs::on_modifySouvenirButton_clicked()
 {
@@ -94,22 +87,19 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
 
     bool check = false;
 
-    for(int i = 0; i < souvPrice.length(); i++)
+    for (int i = 0; i < souvPrice.length(); i++)
     {
-        if(souvPrice[i] != '0' && souvPrice[i] != '1' && souvPrice[i] != '2' && souvPrice[i] != '3'
-            && souvPrice[i] != '4' && souvPrice[i] != '5'
-            && souvPrice[i] != '6' && souvPrice[i] != '7'
-            && souvPrice[i] != '8' && souvPrice[i] != '9' && souvPrice[i] != '.')
+        if (souvPrice[i] != '0' && souvPrice[i] != '1' && souvPrice[i] != '2' && souvPrice[i] != '3' && souvPrice[i] != '4' && souvPrice[i] != '5' && souvPrice[i] != '6' && souvPrice[i] != '7' && souvPrice[i] != '8' && souvPrice[i] != '9' && souvPrice[i] != '.')
         {
             check = true;
             break;
         }
     }
 
-    if(check == true)
+    if (check == true)
     {
         QMessageBox::about(this, "Invalid Input", "There was an invalid input. Please use only Numerals(0-9) and the . ");
-        //ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
+        // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
         return;
     }
 
@@ -118,7 +108,7 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
     //qry.prepare("UPDATE Cart SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
     qry.exec();
 
-    if(qry.numRowsAffected() == 0)
+    if (qry.numRowsAffected() == 0)
     {
         QMessageBox::critical(this, tr("error::"), qry.lastError().text());
     }
@@ -127,9 +117,8 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
         QMessageBox::about(this, tr("Edit"), tr("Updated"));
     }
 
-    //ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
+    // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
 }
-
 
 void ModifySouvenirs::on_deleteSouvenir_pushButton_clicked()
 {
@@ -147,24 +136,24 @@ void ModifySouvenirs::on_deleteSouvenir_pushButton_clicked()
     souvCount = data.prepare("SELECT COUNT(Team) FROM Souvenirs");
     data.exec();
 
-    if(data.next())
+    if (data.next())
     {
         souvCount = data.value(0).toInt();
     }
 
-    qry.prepare("DELETE FROM Souvenirs WHERE Team = '"+nameTeam+"' AND Souvenir = '"+nameSouv+"'");
+    qry.prepare("DELETE FROM Souvenirs WHERE Team = '" + nameTeam + "' AND Souvenir = '" + nameSouv + "'");
     qry.exec();
     dataOne.exec();
 
     afterSouvCount = dataTwo.prepare("SELECT COUNT(Team) FROM Souvenirs");
     dataTwo.exec();
 
-    if(dataTwo.next())
+    if (dataTwo.next())
     {
         afterSouvCount = dataTwo.value(0).toInt();
     }
 
-    if(souvCount == afterSouvCount)
+    if (souvCount == afterSouvCount)
     {
         QMessageBox::about(this, "Error", "Value not found double check path to database!");
     }
@@ -172,10 +161,9 @@ void ModifySouvenirs::on_deleteSouvenir_pushButton_clicked()
     {
         QMessageBox::about(this, "", "The item was deleted. Double check if an error occured");
 
-        //ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
+        // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
     }
 }
-
 
 void ModifySouvenirs::on_backButton_clicked()
 {
@@ -184,7 +172,6 @@ void ModifySouvenirs::on_backButton_clicked()
     hide();
     maintenancePage.exec();
 }
-
 
 void ModifySouvenirs::on_addSouvenirFileButton_clicked()
 {
@@ -199,80 +186,108 @@ void ModifySouvenirs::on_addSouvenirFileButton_clicked()
 //    }
     QString filePath = QFileDialog::getOpenFileName(nullptr, "Open Text File", "", "Text Files (*.txt)");
 
-
-    if (!filePath.isEmpty()) {
+    if (!filePath.isEmpty())
+    {
         // Open the selected file
         QFile file(filePath);
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
             // Read the file contents into a QTextStream
             QTextStream in(&file);
-            while (!in.atEnd()) {
-                QString addTeamName                 = in.readLine();
-                QString addSouvenirName             = in.readLine();
-                double  addPrice                    = in.readLine().toDouble();
+            while (!in.atEnd())
+            {
+                QString addTeamName = in.readLine();
+                QString addSouvenirName = in.readLine();
+                double addPrice = in.readLine().toDouble();
 
                 // Display the file contents
-                qDebug() << "File Contents:\n" << addTeamName << Qt::endl << addTeamName << Qt::endl << addSouvenirName
-                         << Qt::endl << addPrice;
-                try
-                {
-                    QSqlQuery* checkTeamQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-                    checkTeamQuery->prepare("SELECT \"Team\" FROM \"Souvenirs\" WHERE \"Team\" = :checkTeamName");
-                    checkTeamQuery->bindValue(":checkTeamName", addTeamName);
-                    checkTeamQuery->exec();
-                    checkTeamQuery->next();
+                qDebug() << "File Contents:\n"
+                         << addTeamName << Qt::endl
+                         << addTeamName << Qt::endl
+                         << addSouvenirName
+                         << Qt::endl
+                         << addPrice;
+                //                try
+                //                {
+                //                    QSqlQuery* checkTeamQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+                //                    checkTeamQuery->prepare("SELECT \"Team\" FROM \"Souvenirs\" WHERE \"Team\" = :checkTeamName");
+                //                    checkTeamQuery->bindValue(":checkTeamName", addTeamName);
+                //                    checkTeamQuery->exec();
+                //                    checkTeamQuery->next();
 
-                    QString teamSearched = checkTeamQuery->value(0).toString();
-                    checkTeamQuery->finish();
+                //                    QString teamSearched = checkTeamQuery->value(0).toString();
+                //                    checkTeamQuery->finish();
+                //                    if(teamSearched == addTeamName) // checks for duplicate team name
+                //                    {
+                //                        throw 0;
+                //                    }
+
+                //                    QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+                //                    checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
+                //                    checkStadiumQuery->bindValue(":checkStadiumName", addStadiumName);
+                //                    checkStadiumQuery->exec();
+                //                    checkStadiumQuery->next();
+
+                //                    QString stadiumSearched = checkStadiumQuery->value(0).toString();
+
+                //                    checkStadiumQuery->finish();
+
+                //                    if(stadiumSearched == addStadiumName) // checks for duplicate stadium name
+                //                    {
+                //                        throw 1;
+                //                    }
+//                    QString teamSearched = checkTeamQuery->value(0).toString();
+//                    checkTeamQuery->finish();
 //                    if(teamSearched == addTeamName) // checks for duplicate team name
 //                    {
 //                        throw 0;
 //                    }
 
-                    QSqlQuery* addQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-                    addQuery->prepare("INSERT INTO \"Souvenirs\" ("
-                                      "\"Team\", "
-                                      "\"Souvenir\", "
-                                      "\"Price\""
-                                      ") "
-                                      "VALUES ("
-                                      ":teamName, "
-                                      ":souvenirName, "
-                                      ":souvenirPrice"
-                                      ")");
+                QSqlQuery *addQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+                addQuery->prepare("INSERT INTO \"Souvenirs\" ("
+                                  "\"Team\", "
+                                  "\"Souvenir\", "
+                                  "\"Price\""
+                                  ") "
+                                  "VALUES ("
+                                  ":teamName, "
+                                  ":souvenirName, "
+                                  ":souvenirPrice"
+                                  ")");
 
-                    addQuery->bindValue(":teamName", addTeamName);
-                    addQuery->bindValue(":souvenirName", addSouvenirName);
-                    addQuery->bindValue(":souvenirPrice", addPrice);
+                addQuery->bindValue(":teamName", addTeamName);
+                addQuery->bindValue(":souvenirName", addSouvenirName);
+                addQuery->bindValue(":souvenirPrice", addPrice);
 
-                    addQuery->exec();
-                }
-                catch(int addUpdateError)
-                {
-                    ui->errorLabel->setVisible(true);
+                addQuery->exec();
+                addQuery->clear();
+                // updateDataView();
+                //                }
+                //                catch(int addUpdateError)
+                //                {
+                //                    ui->errorLabel->setVisible(true);
 
-                    if(addUpdateError == 0)
-                    {
-                        ui->errorLabel->setText("You cannot enter a duplicate souvenir name.");
-                        qDebug() << "DUPLICATE SOUVENIR NAME";
-                            //<< Qt::endl; // insert error message
-                    }
-                    if(addUpdateError == 1)
-                    {
-                        ui->errorLabel->setText("You cannot enter a duplicate souvenir price.");
-                        qDebug() << "DUPLICATE SOUVENIR PRICE";
-                            //<< Qt::endl; // insert error message
-                    }
-                }
-
-
+                //                    if(addUpdateError == 0)
+                //                    {
+                //                        ui->errorLabel->setText("You cannot enter a duplicate souvenir name.");
+                //                        qDebug() << "DUPLICATE SOUVENIR NAME";
+                //                            //<< Qt::endl; // insert error message
+                //                    }
+                //                    if(addUpdateError == 1)
+                //                    {
+                //                        ui->errorLabel->setText("You cannot enter a duplicate souvenir price.");
+                //                        qDebug() << "DUPLICATE SOUVENIR PRICE";
+                //                            //<< Qt::endl; // insert error message
+                //                    }
+                //                }
             }
 
             // Close the file
             file.close();
-        } else {
+        }
+        else
+        {
             qDebug() << "Failed to open the file:" << file.errorString();
         }
     }
 }
-
