@@ -42,6 +42,8 @@ void ModifySouvenirs::on_addSouvButton_clicked()
     QString teamName = ui->team_comboBox->currentText();
     QString souvName = ui->souvName_lineEdit->text();
     QString souvPrice = ui->souvPrice_lineEdit->text();
+    QString quantity = "0.0";
+
 
     bool check = false;
 
@@ -60,7 +62,8 @@ void ModifySouvenirs::on_addSouvButton_clicked()
         return;
     }
 
-    data.prepare("INSERT INTO Souvenirs (Team, Souvenir, Price) VALUES ('" + teamName + "', '" + souvName + "', '" + souvPrice + "')");
+    data.prepare("INSERT INTO Souvenirs (Team, Souvenir, Price) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"')");
+    data.prepare("INSERT INTO Cart (Team, Souvenir, Price, quantity) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"', '"+quantity+"')");
 
     if (!data.exec())
     {
@@ -101,7 +104,8 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
     }
 
     QSqlQuery qry;
-    qry.prepare("UPDATE Souvenirs SET Team = '" + souvTeam + "', Souvenir = '" + souvName + "' , Price = '" + souvPrice + "' WHERE Souvenir = '" + souvName + "' AND Team = '" + souvTeam + "' ");
+    qry.prepare("UPDATE Souvenirs SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
+    //qry.prepare("UPDATE Cart SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
     qry.exec();
 
     if (qry.numRowsAffected() == 0)
@@ -171,6 +175,15 @@ void ModifySouvenirs::on_backButton_clicked()
 
 void ModifySouvenirs::on_addSouvenirFileButton_clicked()
 {
+//    bool success = dbManagers->readSouvenirFile();
+//    if(success)
+//    {
+//        QMessageBox::information(this, "Loading...", "Souvenir Info File Has Been Read In"  , QMessageBox::Ok, QMessageBox::NoButton);
+//    }
+//    else
+//    {
+//        QMessageBox::information(this, "Loading...", "Souvenir Info File Has Not Been Read In"  , QMessageBox::Ok, QMessageBox::NoButton);
+//    }
     QString filePath = QFileDialog::getOpenFileName(nullptr, "Open Text File", "", "Text Files (*.txt)");
 
     if (!filePath.isEmpty())
@@ -223,6 +236,12 @@ void ModifySouvenirs::on_addSouvenirFileButton_clicked()
                 //                    {
                 //                        throw 1;
                 //                    }
+                    QString teamSearched = checkTeamQuery->value(0).toString();
+                    checkTeamQuery->finish();
+//                    if(teamSearched == addTeamName) // checks for duplicate team name
+//                    {
+//                        throw 0;
+//                    }
 
                 QSqlQuery *addQuery = new QSqlQuery(dbManager::managerInstance->m_database);
                 addQuery->prepare("INSERT INTO \"Souvenirs\" ("

@@ -27,10 +27,10 @@ void displayInfo::on_displayTeams_pushButton_clicked()
 
 void displayInfo::on_planVacation_pushButton_clicked()
 {
-    planVacation plan;
-    plan.setModal(true);
+    TripPlanner trip;
+    trip.setModal(true);
     hide();
-    plan.exec();
+    trip.exec();
 }
 
 void displayInfo::on_back_pushButton_clicked()

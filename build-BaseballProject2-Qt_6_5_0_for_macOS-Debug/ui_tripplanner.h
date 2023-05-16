@@ -35,6 +35,10 @@ public:
     QVBoxLayout *verticalLayout_10;
     QLabel *WelcomeLabel;
     QVBoxLayout *verticalLayout_11;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *DFS;
+    QPushButton *BSF;
+    QPushButton *MST;
     QPushButton *PushButton_CustomTrip;
     QPushButton *PushButton_MarlinParkTrip;
     QPushButton *PushButton_MostEfficientTrip;
@@ -80,6 +84,10 @@ public:
     QLabel *Label_TripSummary;
     QLabel *Label_FinalTotalDistance;
     QPushButton *PushButton_BackToMain_6;
+    QLabel *label_4;
+    QLabel *grandTotal_2;
+    QLabel *label_5;
+    QTableView *souvCart_tableView_2;
 
     void setupUi(QDialog *TripPlanner)
     {
@@ -110,6 +118,26 @@ public:
 
         verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setObjectName("verticalLayout_11");
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        DFS = new QPushButton(verticalLayoutWidget_2);
+        DFS->setObjectName("DFS");
+
+        horizontalLayout_2->addWidget(DFS);
+
+        BSF = new QPushButton(verticalLayoutWidget_2);
+        BSF->setObjectName("BSF");
+
+        horizontalLayout_2->addWidget(BSF);
+
+        MST = new QPushButton(verticalLayoutWidget_2);
+        MST->setObjectName("MST");
+
+        horizontalLayout_2->addWidget(MST);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_2);
+
         PushButton_CustomTrip = new QPushButton(verticalLayoutWidget_2);
         PushButton_CustomTrip->setObjectName("PushButton_CustomTrip");
         PushButton_CustomTrip->setMinimumSize(QSize(161, 41));
@@ -346,12 +374,11 @@ public:
         Label_FinalTotalDistance->setGeometry(QRect(80, 60, 811, 41));
         QFont font5;
         font5.setFamilies({QString::fromUtf8("MS Shell Dlg 2")});
-        font5.setPointSize(7);
+        font5.setPointSize(20);
         font5.setBold(false);
         font5.setItalic(false);
         Label_FinalTotalDistance->setFont(font5);
-        Label_FinalTotalDistance->setStyleSheet(QString::fromUtf8("font: 7pt \"MS Shell Dlg 2\";\n"
-"color:rgb(0, 0, 0)"));
+        Label_FinalTotalDistance->setStyleSheet(QString::fromUtf8("font: 20pt \"MS Shell Dlg 2\";"));
         Label_FinalTotalDistance->setFrameShape(QFrame::NoFrame);
         Label_FinalTotalDistance->setAlignment(Qt::AlignCenter);
         PushButton_BackToMain_6 = new QPushButton(SummaryPage);
@@ -359,11 +386,23 @@ public:
         PushButton_BackToMain_6->setGeometry(QRect(10, 10, 101, 21));
         PushButton_BackToMain_6->setFont(font);
         PushButton_BackToMain_6->setStyleSheet(QString::fromUtf8(""));
+        label_4 = new QLabel(SummaryPage);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(370, 110, 241, 51));
+        grandTotal_2 = new QLabel(SummaryPage);
+        grandTotal_2->setObjectName("grandTotal_2");
+        grandTotal_2->setGeometry(QRect(490, 560, 58, 21));
+        label_5 = new QLabel(SummaryPage);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(430, 560, 58, 21));
+        souvCart_tableView_2 = new QTableView(SummaryPage);
+        souvCart_tableView_2->setObjectName("souvCart_tableView_2");
+        souvCart_tableView_2->setGeometry(QRect(380, 160, 231, 391));
         TripPlannerStackedWidget->addWidget(SummaryPage);
 
         retranslateUi(TripPlanner);
 
-        TripPlannerStackedWidget->setCurrentIndex(3);
+        TripPlannerStackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(TripPlanner);
@@ -373,6 +412,9 @@ public:
     {
         TripPlanner->setWindowTitle(QCoreApplication::translate("TripPlanner", "Dialog", nullptr));
         WelcomeLabel->setText(QCoreApplication::translate("TripPlanner", "Plan a Vacation", nullptr));
+        DFS->setText(QCoreApplication::translate("TripPlanner", "DFS", nullptr));
+        BSF->setText(QCoreApplication::translate("TripPlanner", "BSF", nullptr));
+        MST->setText(QCoreApplication::translate("TripPlanner", "MST", nullptr));
         PushButton_CustomTrip->setText(QCoreApplication::translate("TripPlanner", "Custom Trip", nullptr));
         PushButton_MarlinParkTrip->setText(QCoreApplication::translate("TripPlanner", "Marlin Park traversal", nullptr));
         PushButton_MostEfficientTrip->setText(QCoreApplication::translate("TripPlanner", "Shortest path from A to B", nullptr));
@@ -398,6 +440,9 @@ public:
         Label_TripSummary->setText(QCoreApplication::translate("TripPlanner", "Trip Summary", nullptr));
         Label_FinalTotalDistance->setText(QCoreApplication::translate("TripPlanner", "Total Distance Traveled", nullptr));
         PushButton_BackToMain_6->setText(QCoreApplication::translate("TripPlanner", "Back", nullptr));
+        label_4->setText(QCoreApplication::translate("TripPlanner", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt; font-weight:700; text-decoration: underline;\">Souvenir Bought:</span></p></body></html>", nullptr));
+        grandTotal_2->setText(QCoreApplication::translate("TripPlanner", "<html><head/><body><p><span style=\" font-size:18pt;\">0.00</span></p></body></html>", nullptr));
+        label_5->setText(QCoreApplication::translate("TripPlanner", "<html><head/><body><p><span style=\" font-size:18pt;\">Total: $</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

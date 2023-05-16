@@ -24,6 +24,10 @@ private slots:
 
     void on_one_team_clicked();
 
+    void on_filterTeam_clicked();
+
+    void on_DFS_clicked();
+
 private:
     Ui::MainWindow *ui;
     dbManager m_database;

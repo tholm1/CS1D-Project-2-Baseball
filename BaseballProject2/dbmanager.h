@@ -121,6 +121,8 @@ public:
 
     QSqlQueryModel* loadSouvenirNamesOnly();
 
+    QSqlQueryModel* loadSouvenirQuantityOnly();
+
     QList<Souvenir> getAllSouvenirs();
 
     QList <Souvenir*>  listOfSouvenirs;

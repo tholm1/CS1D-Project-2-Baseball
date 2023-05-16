@@ -14,7 +14,7 @@ dbManager::dbManager()
 {
 
     QSqlDatabase m_database = QSqlDatabase::addDatabase("QSQLITE");
-    m_database.setDatabaseName("/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/MLBDB2.db");
+    m_database.setDatabaseName("../MLBDB2.db");
 
 
     if(m_database.open())
@@ -32,6 +32,11 @@ dbManager::~dbManager()
 {
 
 }
+/**
+     * @brief getInstance
+     * Returns a single instance of the database.
+     * @return instance
+     */
 dbManager* dbManager::getInstance()
 {
     if (managerInstance == NULL)
@@ -64,6 +69,11 @@ QList<Team> dbManager::getMaxMinDistanceToCF(bool max)
     }
     return filteredTeams;
 }
+/**
+     * @brief getAllTeams
+     * Returns a QList of all the teams and their corresponding attributes.
+     * @return teams
+     */
 QList<Team> dbManager::getAllTeams()
 {
     QSqlQuery query;
@@ -95,6 +105,12 @@ QList<Team> dbManager::getAllTeams()
     }
     return teamList;
 }
+/**
+     * @brief getTeamByName
+     * This function will retrieve the team by its name.
+     * @param stadiumName
+     * @return Team object
+     */
 Team dbManager::getTeamByName(QString stadiumName)
 {
     QSqlQuery query;
@@ -143,15 +159,22 @@ void dbManager::loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, 
         edges.push_back(std::make_tuple(u, v, w));
     }
 }
-
-
+/**
+     * @brief loadOriginalTeamNames
+     * Loads the original team names from the database into a QSqlQueryModel.
+     * @return pointer to the QSqlQueryModel containing the original team names
+     */
 QSqlQueryModel* dbManager::loadOriginalTeamNames() {
     QSqlQueryModel *model = new QSqlQueryModel();
     QSqlQuery query("SELECT DISTINCT \"Originated Stadium\" FROM \"MLB Distances Between Stadiums\"", db);
     model->setQuery(query);
     return model;
 }
-
+/**
+     * @brief loadDestinationTeamNames
+     * Loads the destination team names from the database into a QSqlQueryModel.
+     * @return pointer to the QSqlQueryModel containing the destination team names
+     */
 QSqlQueryModel* dbManager::loadDestinationTeamNames() {
     QSqlQueryModel *model = new QSqlQueryModel();
     QSqlQuery query("SELECT DISTINCT \"Destination Stadium\" FROM \"MLB Distances Between Stadiums\"", db);
@@ -182,7 +205,11 @@ QSqlQueryModel* dbManager::loadTeamNamesOnly()
     model->setQuery(qry);
     return model;
 }
-
+/**
+     * @brief rowCount
+     * Returns the number of rows in the database.
+     * @return row count
+     */
 int dbManager::rowCount()
 {
     QSqlQuery query("SELECT COUNT(*) FROM \"MLB Teams\"", m_database);
@@ -198,7 +225,11 @@ int dbManager::rowCount()
         }
         return result;
 }
-
+/**
+     * @brief loadStadiumNames
+     * Loads the names of stadiums from the database and returns them in a vector of strings.
+     * @return vector of stadium names
+     */
 vector<string> dbManager::loadStadiumNames()
 {
     QSqlQuery query("SELECT \"Stadium Name\" FROM \"MLB Teams\"", m_database);
@@ -220,7 +251,11 @@ vector<string> dbManager::loadStadiumNames()
         }
         return stadiumNamesVector;
 }
-
+/**
+     * @brief loadDistance
+     * Loads the distances between stadiums from the database and returns them in a vector of stadium objects.
+     * @return vector of stadium objects
+     */
 vector<stadium> dbManager::loadDistance()
 {
     QSqlQuery query("SELECT * FROM \"MLB Distances Between Stadiums\"", m_database);
@@ -358,7 +393,7 @@ double dbManager::GetTotalCost(QString teamIn, QString souvIn)
     double total = 0.0;
 
     QString sQry = "select Price as 'Cost' "
-                   "from Souvenirs where Team = '" +teamIn+ "' and Souvenir = '" +souvIn+ "'";
+                   "from Cart where Team = '" +teamIn+ "' and Souvenir = '" +souvIn+ "'";
     QSqlQuery qry;
     qry.prepare(sQry);
     qry.exec();
@@ -374,7 +409,7 @@ QSqlQueryModel* dbManager::loadTeamSouvenirs(QString team)
 {
     QSqlQueryModel* model = new QSqlQueryModel();
 
-    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Souvenirs where Team = '" +team+ "';";
+    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Cart where Team = '" +team+ "';";
     qDebug() << sQry;
     QSqlQuery qry;
     qry.prepare(sQry);
@@ -392,7 +427,7 @@ QSqlQueryModel* dbManager::loadSouvenirNamesOnly()
 {
     QSqlQueryModel* model = new QSqlQueryModel();
 
-    QString sQry = "select \"Souvenir\" as \"Souvenirs\" from \"Souvenirs\" group by \"Souvenir\";";
+    QString sQry = "select \"Souvenir\" as \"Souvenirs\" from \"Cart\" group by \"Souvenir\";";
     QSqlQuery qry;
     qry.prepare(sQry);
 
@@ -404,3 +439,22 @@ QSqlQueryModel* dbManager::loadSouvenirNamesOnly()
     model->setQuery(qry);
     return model;
 }
+
+QSqlQueryModel* dbManager::loadSouvenirQuantityOnly()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QString sQry = "select \"quantity\" as \"quantity\" from \"Cart\" group by \"quantity\";";
+    QSqlQuery qry;
+    qry.prepare(sQry);
+
+    if(!qry.exec())
+    {
+        qDebug() << "\nError Loading Souvenirs\n";
+    }
+
+    model->setQuery(qry);
+    return model;
+}
+
+
