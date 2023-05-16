@@ -14,7 +14,7 @@ dbManager::dbManager()
 {
 
     QSqlDatabase m_database = QSqlDatabase::addDatabase("QSQLITE");
-    m_database.setDatabaseName("../MLBDB2.db");
+    m_database.setDatabaseName("/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/MLBDB2.db");
 
 
     if(m_database.open())
@@ -335,7 +335,7 @@ void dbManager::createCart()
 {
     //cartQry - temporary table
     QSqlQuery cartQry;
-    cartQry.prepare("create table Cart as SELECT * from Souvenir;");
+    cartQry.prepare("create table Cart as SELECT * from Souvenirs;");
 
     if(!cartQry.exec())
     {
@@ -409,7 +409,7 @@ QSqlQueryModel* dbManager::loadTeamSouvenirs(QString team)
 {
     QSqlQueryModel* model = new QSqlQueryModel();
 
-    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Cart where Team = '" +team+ "';";
+    QString sQry = "select Souvenir as 'Souvenirs', Price as 'Cost($)' from Souvenirs where Team = '" +team+ "';";
     qDebug() << sQry;
     QSqlQuery qry;
     qry.prepare(sQry);

@@ -93,6 +93,8 @@ void TripPlanner::on_PushButton_BackToMain_6_clicked()
     QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->listView->model());
     model->clear();
 
+    db.deleteCart();
+
     ui->souvCart_tableView->reset();
     // Clear the teams vector
     teams.clear();
@@ -295,6 +297,29 @@ void TripPlanner::showTotalCost(double itemCost)
      totalCost += itemCost;
      QString totalCostStr = QString::number(totalCost, 'f', 2);
      ui->grandTotal->setText(totalCostStr);
+}
+
+void TripPlanner::calculateTotal()
+{
+     //initial a double type total
+     double total = 0.0;
+
+     // initial ary
+     QSqlQuery qry;
+
+     //if the statement is true, then run the calculation method
+     if(true)
+     {
+        qry.prepare("select printf(\"%.2f\",sum(cost * quantity)) from Cart;");
+        qry.exec();
+        if(qry.next())
+        {
+            total = qry.value(0).toDouble();
+        }
+     }
+
+     //assign the value to the header
+     this->total = total;
 }
 
 void TripPlanner::on_team_comboBox_currentIndexChanged()

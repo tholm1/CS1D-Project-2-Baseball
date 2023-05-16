@@ -89,6 +89,8 @@ private slots:
 
     void showTotalCost(double itemCost);
 
+    void calculateTotal();
+
     void goToSouvenirShop();
 
     void on_DFS_clicked();
@@ -117,6 +119,7 @@ private:
     QString sQry; //QString to display that the item has been added to the cart succesfully
     QStack<SouvenirTableModel> souvenirCart; //Stack to hold the cart
     QVector<QString> selectedTeams; //Vector to store the teams
+    double total;
 };
 
 #endif // TRIPPLANNER_H
