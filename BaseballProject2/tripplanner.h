@@ -103,6 +103,8 @@ private slots:
 
     void on_filterTeam_clicked();
 
+    void on_TeamListComboBox_activated(int index);
+
 private:
     Ui::TripPlanner *ui;
     dbManager db; // Database manager object

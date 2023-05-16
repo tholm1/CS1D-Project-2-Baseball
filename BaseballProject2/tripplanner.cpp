@@ -56,7 +56,7 @@ void TripPlanner::populateTeamComboBoxes()
     QSqlQueryModel *model2 = db.loadDestinationTeamNames();
     ui->teams_combo->setModel(model1);
     ui->teams_combo_2->setModel(model2);
-    ui->TeamListComboBox->setModel(model2);
+    ui->TeamListComboBox->setModel(model1);
 
 
     // Set the model for the list view
@@ -468,5 +468,11 @@ void TripPlanner::on_filterTeam_clicked()
      info.setModal(true);
      hide();
      info.exec();
+}
+
+
+void TripPlanner::on_TeamListComboBox_activated(int index)
+{
+    // this->populateTeamComboBoxes();
 }
 

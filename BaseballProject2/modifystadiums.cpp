@@ -206,6 +206,63 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
                 qDebug() << "Failed to open the file:" << file.errorString();
             }
         }
+
+    // Add distances between Las Vegas Gamblers and other stadiums
+    // Open the text file
+
+        QSqlQuery* checkDistanceQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+        checkDistanceQuery->prepare("SELECT \"Originated Stadium\" FROM \"MLB Distances Between Stadiums\" WHERE \"Originated Stadium\" = :checkStadium");
+        checkDistanceQuery->bindValue(":checkStadium", "Las Vegas Stadium");
+        checkDistanceQuery->exec();
+        checkDistanceQuery->next();
+
+        QString stadiumSearched = checkDistanceQuery->value(0).toString();
+        checkDistanceQuery->finish();
+        if(stadiumSearched == "Las Vegas Stadium") // checks for duplicate stadium name
+        {
+           return;
+        }
+
+        QFile distanceFile("/Users/pal/repos/CS1D-Project-2-Baseball/Stadium-Expansion/newDistances.txt");
+        if (!distanceFile.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            // Handle the error if the file cannot be opened
+            qDebug() << "Failed to open the file.";
+            return;
+        }
+
+        // Create a QTextStream to read from the file
+        QTextStream in(&distanceFile);
+
+        // Read the file line by line and store each line into the QStringList
+        while (!in.atEnd())
+        {
+            QString team1       = in.readLine();
+            QString team2       = in.readLine();
+            int     distance    = in.readLine().toInt();
+
+            QSqlQuery* distanceQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+            distanceQuery->prepare("INSERT INTO \"MLB Distances Between Stadiums\" ("
+                                  "\"Originated Stadium\", "
+                                  "\"Destination Stadium\", "
+                                  "\"Distance\""
+                              ") "
+                              "VALUES ("
+                                  ":originStadium, "
+                                  ":destinationStadium, "
+                                  ":distance"
+                              ")");
+
+            distanceQuery->bindValue(":originStadium", team1);
+            distanceQuery->bindValue(":destinationStadium", team2);
+            distanceQuery->bindValue(":distance", distance);
+
+            distanceQuery->exec();
+            distanceQuery->clear();
+        }
+
+        // Close the file
+        distanceFile.close();
 }
 
 
