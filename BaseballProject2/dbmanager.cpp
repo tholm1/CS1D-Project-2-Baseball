@@ -32,6 +32,11 @@ dbManager::~dbManager()
 {
 
 }
+/**
+     * @brief getInstance
+     * Returns a single instance of the database.
+     * @return instance
+     */
 dbManager* dbManager::getInstance()
 {
     if (managerInstance == NULL)
@@ -64,6 +69,11 @@ QList<Team> dbManager::getMaxMinDistanceToCF(bool max)
     }
     return filteredTeams;
 }
+/**
+     * @brief getAllTeams
+     * Returns a QList of all the teams and their corresponding attributes.
+     * @return teams
+     */
 QList<Team> dbManager::getAllTeams()
 {
     QSqlQuery query;
@@ -95,6 +105,12 @@ QList<Team> dbManager::getAllTeams()
     }
     return teamList;
 }
+/**
+     * @brief getTeamByName
+     * This function will retrieve the team by its name.
+     * @param stadiumName
+     * @return Team object
+     */
 Team dbManager::getTeamByName(QString stadiumName)
 {
     QSqlQuery query;
@@ -143,15 +159,22 @@ void dbManager::loadGraph(std::unordered_map<std::string, int> &vertexIndexMap, 
         edges.push_back(std::make_tuple(u, v, w));
     }
 }
-
-
+/**
+     * @brief loadOriginalTeamNames
+     * Loads the original team names from the database into a QSqlQueryModel.
+     * @return pointer to the QSqlQueryModel containing the original team names
+     */
 QSqlQueryModel* dbManager::loadOriginalTeamNames() {
     QSqlQueryModel *model = new QSqlQueryModel();
     QSqlQuery query("SELECT DISTINCT \"Originated Stadium\" FROM \"MLB Distances Between Stadiums\"", db);
     model->setQuery(query);
     return model;
 }
-
+/**
+     * @brief loadDestinationTeamNames
+     * Loads the destination team names from the database into a QSqlQueryModel.
+     * @return pointer to the QSqlQueryModel containing the destination team names
+     */
 QSqlQueryModel* dbManager::loadDestinationTeamNames() {
     QSqlQueryModel *model = new QSqlQueryModel();
     QSqlQuery query("SELECT DISTINCT \"Destination Stadium\" FROM \"MLB Distances Between Stadiums\"", db);
@@ -182,7 +205,11 @@ QSqlQueryModel* dbManager::loadTeamNamesOnly()
     model->setQuery(qry);
     return model;
 }
-
+/**
+     * @brief rowCount
+     * Returns the number of rows in the database.
+     * @return row count
+     */
 int dbManager::rowCount()
 {
     QSqlQuery query("SELECT COUNT(*) FROM \"MLB Teams\"", m_database);
@@ -198,7 +225,11 @@ int dbManager::rowCount()
         }
         return result;
 }
-
+/**
+     * @brief loadStadiumNames
+     * Loads the names of stadiums from the database and returns them in a vector of strings.
+     * @return vector of stadium names
+     */
 vector<string> dbManager::loadStadiumNames()
 {
     QSqlQuery query("SELECT \"Stadium Name\" FROM \"MLB Teams\"", m_database);
@@ -220,7 +251,11 @@ vector<string> dbManager::loadStadiumNames()
         }
         return stadiumNamesVector;
 }
-
+/**
+     * @brief loadDistance
+     * Loads the distances between stadiums from the database and returns them in a vector of stadium objects.
+     * @return vector of stadium objects
+     */
 vector<stadium> dbManager::loadDistance()
 {
     QSqlQuery query("SELECT * FROM \"MLB Distances Between Stadiums\"", m_database);

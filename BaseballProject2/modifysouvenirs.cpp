@@ -115,6 +115,7 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
 
     QSqlQuery qry;
     qry.prepare("UPDATE Souvenirs SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
+    //qry.prepare("UPDATE Cart SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
     qry.exec();
 
     if(qry.numRowsAffected() == 0)

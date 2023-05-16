@@ -15,6 +15,7 @@ TripPlanner::TripPlanner(QWidget *parent) :
     initializeGraph();
     this->populateTeamComboBoxes();
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
+    db.deleteCart();
 }
 
 TripPlanner::~TripPlanner()
@@ -278,6 +279,7 @@ void TripPlanner::showSelectTeamComboBox(QSqlQueryModel *model)
 void TripPlanner::showSouvTableView(QSqlQueryModel *model)
 {
      ui->souv_tableView->setModel(model);
+     ui->souvCart_tableView_2->setModel(model);
      ui->souv_comboBox->setModel(model);
 }
 
