@@ -5,7 +5,8 @@
 #include<QStandardItemModel>
 #include<QStandardItem>
 #include "planvacation.h"
-
+#include "allinfo.h"
+#include "filteredteams.h"
 
 TripPlanner::TripPlanner(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +17,7 @@ TripPlanner::TripPlanner(QWidget *parent) :
     this->populateTeamComboBoxes();
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
     db.deleteCart();
+    ui->frame->setVisible(false);
 }
 
 TripPlanner::~TripPlanner()
@@ -431,5 +433,40 @@ void TripPlanner::on_MST_clicked()
         ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(distance));
 
      }
+}
+
+
+void TripPlanner::on_mainpage_clicked()
+{
+     QList<QWidget*> topLevelWidgets = qApp->topLevelWidgets();
+     foreach(QWidget *widget, topLevelWidgets) {
+        QMainWindow *mainWindow = qobject_cast<QMainWindow*>(widget);
+        if (mainWindow) {
+            // Show the main window if it was previously hidden
+            if (!mainWindow->isVisible()) {
+                mainWindow->show();
+            }
+            break;
+        }
+     }
+     hide();
+}
+
+
+void TripPlanner::on_one_team_clicked()
+{
+     Allinfo info;
+     info.setModal(true);
+     hide();
+     info.exec();
+}
+
+
+void TripPlanner::on_filterTeam_clicked()
+{
+     filteredTeams info;
+     info.setModal(true);
+     hide();
+     info.exec();
 }
 

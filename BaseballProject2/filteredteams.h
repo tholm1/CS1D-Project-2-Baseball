@@ -31,8 +31,6 @@ private slots:
 
      void on_filterByNationalLeague_radioButton_clicked();
 
-     void on_back_pushButton_clicked();
-
      void on_filterByTypology_radioButton_clicked();
 
      void on_filterByOpenRoof_radioButton_clicked();
@@ -45,7 +43,13 @@ private slots:
 
      void on_filterMaxMin_clicked();
 
-private:
+     void on_mainpage_clicked();
+
+     void on_one_team_clicked();
+
+     void on_DFS_clicked();
+
+ private:
     Ui::filteredTeams *ui;
     QSortFilterProxyModel* proxyModel;
     QByteArray defaultTableState;

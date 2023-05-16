@@ -3,6 +3,9 @@
 #include "login.h"
 #include "displayinfo.h"
 #include "allinfo.h"
+#include "filteredteams.h"
+#include "tripplanner.h"
+#include "ui_tripplanner.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,10 +23,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_display_pushButton_clicked()
 {
-    displayInfo display;
-    display.setModal(true);
+    TripPlanner info;
+    info.setModal(true);
     hide();
-    display.exec();
+    info.exec();
 }
 
 
@@ -42,5 +45,23 @@ void MainWindow::on_one_team_clicked()
     hide();
     info.exec();
 
+}
+
+
+void MainWindow::on_filterTeam_clicked()
+{
+    filteredTeams info;
+    info.setModal(true);
+    hide();
+    info.exec();
+}
+
+
+void MainWindow::on_DFS_clicked()
+{
+    TripPlanner info;
+    info.setModal(true);
+    hide();
+    info.exec();
 }
 

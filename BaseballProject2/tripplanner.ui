@@ -18,8 +18,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>991</width>
-     <height>631</height>
+     <width>981</width>
+     <height>621</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -151,27 +151,6 @@
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="PushButton_BackToMain">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>101</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>Back</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="DijkstrasSelectionScreen">
     <widget class="QWidget" name="layoutWidget_8">
@@ -259,22 +238,33 @@ background-color: rgb(167, 167, 167);</string>
     <widget class="QPushButton" name="PushButton_BackToMain_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>10</y>
-       <width>101</width>
-       <height>31</height>
+       <x>53</x>
+       <y>15</y>
+       <width>81</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>true</underline>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">border:none;
+font: 10pt &quot;Segoe UI&quot;;
+text-decoration: underline;
+</string>
      </property>
      <property name="text">
       <string>Back</string>
+     </property>
+     <property name="icon">
+      <iconset resource="Resources.qrc">
+       <normaloff>:/icons/feather/chevron-left.svg</normaloff>:/icons/feather/chevron-left.svg</iconset>
      </property>
     </widget>
     <widget class="QLabel" name="WelcomeLabel_2">
@@ -329,26 +319,40 @@ background-color: rgb(167, 167, 167);</string>
      <property name="text">
       <string>Add the teams you wish to visit to the list then press the type of trip you would like to take.</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
     <widget class="QPushButton" name="PushButton_BackToMain_4">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>0</y>
+       <x>53</x>
+       <y>15</y>
        <width>81</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>true</underline>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">border:none;
+font: 10pt &quot;Segoe UI&quot;;
+text-decoration: underline;
+</string>
      </property>
      <property name="text">
       <string>Back</string>
+     </property>
+     <property name="icon">
+      <iconset resource="Resources.qrc">
+       <normaloff>:/icons/feather/chevron-left.svg</normaloff>:/icons/feather/chevron-left.svg</iconset>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
@@ -485,17 +489,25 @@ background-color: rgb(167, 167, 167);</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <family>Segoe Script</family>
+       <pointsize>16</pointsize>
+       <italic>false</italic>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgb(0, 85, 255);
+color: rgb(224, 224, 224);
+font: 700 16pt &quot;Segoe Script&quot;;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
      <property name="text">
       <string>What souvenirs would you like to buy?</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="PushButton_SouvenirFinishTrip">
@@ -702,22 +714,33 @@ background-color: rgb(167, 167, 167);</string>
     <widget class="QPushButton" name="PushButton_BackToMain_6">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>101</width>
+       <x>53</x>
+       <y>15</y>
+       <width>81</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>true</underline>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">border:none;
+font: 10pt &quot;Segoe UI&quot;;
+text-decoration: underline;
+</string>
      </property>
      <property name="text">
       <string>Back</string>
+     </property>
+     <property name="icon">
+      <iconset resource="Resources.qrc">
+       <normaloff>:/icons/feather/chevron-left.svg</normaloff>:/icons/feather/chevron-left.svg</iconset>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -771,7 +794,427 @@ background-color: rgb(167, 167, 167);</string>
     </widget>
    </widget>
   </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>151</width>
+     <height>591</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton:checked {
+	background-color: #4398D8;
+}
+QPushButton:hover{
+	background-color: #85C1E9
+}
+#frame { border: 2px solid black;
+border-radius:20px;
+background-color:rgba(0,0,0,100); }
+
+</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 12pt &quot;Segoe Print&quot;;</string>
+    </property>
+    <property name="text">
+     <string>MENU</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="display_menu">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>90</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Display</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/icons/feather/arrow-right.svg</normaloff>
+      <normalon>:/icons/feather/arrow-down.svg</normalon>:/icons/feather/arrow-right.svg</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="team_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>120</y>
+      <width>131</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="one_team">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>10</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>One Team</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="filterTeam">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>50</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Filter Team</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="Trip_button">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>210</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Trip</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/icons/feather/arrow-right.svg</normaloff>
+      <normalon>:/icons/feather/arrow-down.svg</normalon>:/icons/feather/arrow-right.svg</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>250</y>
+      <width>131</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="DFS_2">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>0</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>DFS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="BFS">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>40</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>BFS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="MST_2">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>80</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>MST</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="startDodger">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>120</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>START -- Dodger</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="startMarlin">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>160</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>START -- Marlins</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="custom">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>200</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>CUSTOM</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="mainpage">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 9pt &quot;Segoe UI&quot;;
+text-align: left;
+border: none;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Home</string>
+    </property>
+    <property name="icon">
+     <iconset resource="Resources.qrc">
+      <normaloff>:/icons/feather/home.svg</normaloff>:/icons/feather/home.svg</iconset>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="back_menu">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-align: left;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/icons/feather/menu.svg</normaloff>:/icons/feather/menu.svg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <zorder>TripPlannerStackedWidget</zorder>
+  <zorder>back_menu</zorder>
+  <zorder>frame</zorder>
  </widget>
- <resources/>
- <connections/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>back_menu</sender>
+   <signal>clicked()</signal>
+   <receiver>frame</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>46</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>153</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>frame</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>144</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>display_menu</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>team_widget</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>80</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Trip_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>widget</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>61</x>
+     <y>233</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>138</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

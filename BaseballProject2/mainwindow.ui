@@ -278,10 +278,10 @@ color: rgb(255, 255, 255);</string>
        <x>9</x>
        <y>250</y>
        <width>131</width>
-       <height>281</height>
+       <height>261</height>
       </rect>
      </property>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="DFS">
       <property name="geometry">
        <rect>
         <x>9</x>
@@ -296,10 +296,10 @@ border: none;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>DFS/BFS/MST</string>
+       <string>DFS</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="BFS">
       <property name="geometry">
        <rect>
         <x>9</x>
@@ -314,10 +314,10 @@ border: none;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>START -- Dodger</string>
+       <string>BFS</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="MST">
       <property name="geometry">
        <rect>
         <x>9</x>
@@ -332,10 +332,10 @@ border: none;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>START -- Marlins</string>
+       <string>MST</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="startDodger">
       <property name="geometry">
        <rect>
         <x>9</x>
@@ -350,10 +350,10 @@ border: none;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>CUSTOM -- Shortest</string>
+       <string>START -- Dodger</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="startMarlin">
       <property name="geometry">
        <rect>
         <x>9</x>
@@ -368,10 +368,10 @@ border: none;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>CUSTOM -- Recursive</string>
+       <string>START -- Marlins</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_9">
+     <widget class="QPushButton" name="custom">
       <property name="geometry">
        <rect>
         <x>9</x>
@@ -386,25 +386,7 @@ border: none;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_10">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>240</y>
-        <width>111</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">text-align: left;
-border: none;
-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
+       <string>CUSTOM</string>
       </property>
      </widget>
     </widget>

@@ -97,6 +97,12 @@ private slots:
 
     void on_MST_clicked();
 
+    void on_mainpage_clicked();
+
+    void on_one_team_clicked();
+
+    void on_filterTeam_clicked();
+
 private:
     Ui::TripPlanner *ui;
     dbManager db; // Database manager object
