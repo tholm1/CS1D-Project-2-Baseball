@@ -6,6 +6,10 @@
 #include <QFileDialog>
 #include <QTextStream>
 
+/**
+ * @brief Constructor for ModifyStadiums
+ * @param parent parent widget of ModifyStadiums
+ */
 ModifyStadiums::ModifyStadiums(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModifyStadiums)
@@ -27,11 +31,17 @@ ModifyStadiums::ModifyStadiums(QWidget *parent) :
     ui->errorLabel->setVisible(false);
 }
 
+/**
+ * @brief Destructor for ModifyStadiums
+ */
 ModifyStadiums::~ModifyStadiums()
 {
     delete ui;
 }
 
+/**
+ * @brief Populates the table view on the modify stadium page to display MLB team names and information.
+ */
 void ModifyStadiums::populateTableView()
 {
     this->teamList = dbManager::getInstance()->getAllTeams();
@@ -49,13 +59,21 @@ void ModifyStadiums::populateTableView()
     ui->tableView->horizontalHeader()->restoreState(this->defaultTableState);
 }
 
+/**
+ * @brief This function updates the MLB team table and combo boxes.
+ *
+ * This function is run anytime after a change is made to the MLB teams
+ * table.
+ */
 void ModifyStadiums::updateDataView() {
     this->populateTableView();
     ui->stadiumDelComboBox->setModel(m_database.loadTeamNamesOnly());
     ui->teamNameUpdateBox->setModel(m_database.loadTeamNamesOnly());
 }
 
-
+/**
+ * @brief This button deletes the selected MLB team and its corresponding information from the MLB Team table.
+ */
 void ModifyStadiums::on_delBtn_clicked()
 {
     QSqlQuery* delQuery = new QSqlQuery(dbManager::managerInstance->m_database);
@@ -70,7 +88,9 @@ void ModifyStadiums::on_delBtn_clicked()
 }
 
 
-
+/**
+ * @brief This button returns the program back to the maintenance window.
+ */
 void ModifyStadiums::on_backBtn_clicked()
 {
     maintenance maintenancePage;
@@ -79,7 +99,11 @@ void ModifyStadiums::on_backBtn_clicked()
     maintenancePage.exec();
 }
 
-
+/**
+ * @brief This button allows the user to add MLB team information from a text file.
+ *
+ * This function will disallow duplicate team names and stadium names from being added to the database.
+ */
 void ModifyStadiums::on_confirmAddBtn_clicked()
 {
 
@@ -265,21 +289,32 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
         distanceFile.close();
 }
 
-
+/**
+ * @brief This signal removes the error message whenever the team name add line is edited.
+ *
+ * @param arg1 Default parameter not used within the function definition.
+ */
 void ModifyStadiums::on_teamNameAddLine_textEdited(const QString &arg1)
 {
     ui->errorLabel->setVisible(false);
     ui->errorLabel->setText("");
 }
 
-
+/**
+ * @brief This signal removes the error message whenever the stadium name add line is edited.
+ *
+ * @param arg1 Default parameter not used within the function definition.
+ */
 void ModifyStadiums::on_stadiumNameAddLine_textEdited(const QString &arg1)
 {
     ui->errorLabel->setVisible(false);
     ui->errorLabel->setText("");
 }
 
-
+/**
+ * @brief This function will update all of the text boxes from the modify stadium page to display the current team information stored for each team.
+ * @param updatedTeamName The team name being udpated by the user selected using the combo box.
+ */
 void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &updatedTeamName)
 {
     // Stadium name data fetch
@@ -423,7 +458,9 @@ void ModifyStadiums::on_teamNameUpdateBox_currentTextChanged(const QString &upda
     fetchQuery->finish();
 }
 
-
+/**
+ * @brief This button implements the updated changes to the team information and updates the database as well.
+ */
 void ModifyStadiums::on_confirmUpdateBtn_clicked()
 {
     QString updateTeamName                 = ui->teamNameUpdateBox->currentText();
