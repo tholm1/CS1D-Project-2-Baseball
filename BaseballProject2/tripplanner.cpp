@@ -94,8 +94,9 @@ void TripPlanner::on_PushButton_BackToMain_6_clicked()
     model->clear();
 
     db.deleteCart();
+    sQry.clear();
 
-    ui->souvCart_tableView->reset();
+    //ui->souvCart_tableView->reset();
     // Clear the teams vector
     teams.clear();
 
@@ -243,10 +244,10 @@ void TripPlanner::on_PushButton_MarlinParkTrip_clicked()
    teams.push_back("Wrigley Field");
    teams.push_back("Yankee Stadium");
 
-   goToSouvenirShop();
     int distance = graph->shortestDistanceList(teams);
     QString result = QString("Shortest path from Marlins Park is %1").arg(distance-45);
     ui->Label_FinalTotalDistance->setText(result);
+    goToSouvenirShop();
 }
 
 void TripPlanner::on_PushButton_BackToMain_4_clicked()
@@ -277,7 +278,7 @@ void TripPlanner::goToSouvenirShop()
 
 void TripPlanner::showSelectTeamComboBox(QSqlQueryModel *model)
 {
-     ui ->team_comboBox->setModel(model);
+     ui->team_comboBox->setModel(model);
 }
 
 void TripPlanner::showSouvTableView(QSqlQueryModel *model)
@@ -290,6 +291,7 @@ void TripPlanner::showSouvTableView(QSqlQueryModel *model)
 void TripPlanner::showSouvCartTableView(QSqlQueryModel *model)
 {
      ui->souvCart_tableView->setModel(model);
+     ui->souvCart_tableView_2->setModel(model);
 }
 
 void TripPlanner::showTotalCost(double itemCost)
@@ -324,7 +326,8 @@ void TripPlanner::calculateTotal()
 
 void TripPlanner::on_team_comboBox_currentIndexChanged()
 {
-
+     QString team = ui->team_comboBox->currentText();
+     showSouvTableView(db.loadTeamSouvenirs(team));
 }
 
 

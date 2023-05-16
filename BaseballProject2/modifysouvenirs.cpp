@@ -63,7 +63,6 @@ void ModifySouvenirs::on_addSouvButton_clicked()
     }
 
     data.prepare("INSERT INTO Souvenirs (Team, Souvenir, Price) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"')");
-    data.prepare("INSERT INTO Cart (Team, Souvenir, Price, quantity) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"', '"+quantity+"')");
 
     if (!data.exec())
     {
@@ -99,13 +98,11 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
     if (check == true)
     {
         QMessageBox::about(this, "Invalid Input", "There was an invalid input. Please use only Numerals(0-9) and the . ");
-        // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
         return;
     }
 
     QSqlQuery qry;
     qry.prepare("UPDATE Souvenirs SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
-    //qry.prepare("UPDATE Cart SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
     qry.exec();
 
     if (qry.numRowsAffected() == 0)
@@ -117,7 +114,6 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
         QMessageBox::about(this, tr("Edit"), tr("Updated"));
     }
 
-    // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
 }
 
 void ModifySouvenirs::on_deleteSouvenir_pushButton_clicked()
@@ -160,8 +156,6 @@ void ModifySouvenirs::on_deleteSouvenir_pushButton_clicked()
     else
     {
         QMessageBox::about(this, "", "The item was deleted. Double check if an error occured");
-
-        // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
     }
 }
 

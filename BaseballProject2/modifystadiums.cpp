@@ -12,7 +12,7 @@ ModifyStadiums::ModifyStadiums(QWidget *parent) :
     ui(new Ui::ModifyStadiums)
 {
     ui->setupUi(this);
-    distanceFilePath = "/Users/pal/repos/CS1D-Project-2-Baseball/Stadium-Expansion/newDistances.txt";
+    distanceFilePath = "/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/Stadium-Expansion/newDistances.txt";
     updateDataView();
     this->defaultTableState = ui->tableView->horizontalHeader()->saveState();
 
