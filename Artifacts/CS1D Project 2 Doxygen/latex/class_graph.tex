@@ -1,0 +1,292 @@
+\hypertarget{class_graph}{}\doxysection{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_af3ff6b295df8bf3bee0bafd7c7d56915}{Graph}} (int V)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_graph}{Graph}} constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a902c5b3eacb66d60752525ab23297a95}\label{class_graph_a902c5b3eacb66d60752525ab23297a95}} 
+\mbox{\hyperlink{class_graph_a902c5b3eacb66d60752525ab23297a95}{$\sim$\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_graph}{Graph}} destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph_a6432c0bbb909cb8983ee3a9e5a2027c9}{Graph}} (const std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \&\mbox{\hyperlink{class_graph_af6a512503626d56fac9b3ba3f67d8726}{vertex\+Index\+Map}}, const std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string, int $>$$>$ \&edges)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_graph}{Graph}} constructor with vertex and edge information. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_af20b418b515ad695397dec3d78782e78}{shortest\+Distance}} (const std\+::string \&start, const std\+::string \&end)
+\begin{DoxyCompactList}\small\item\em shortest\+Distance Computes the shortest distance between two vertices using Dijkstra\textquotesingle{}s algorithm. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_a272a4fad0f587ddd3c1541d16b4ddd40}{shortest\+Distance\+List}} (const std\+::vector$<$ std\+::string $>$ \&teams)
+\begin{DoxyCompactList}\small\item\em shortest\+Distance\+List Computes the shortest distance by traversing a list of vertices in order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a81b35a9b21eb44e217711122475e6ecf}{add\+Edge}} (const std\+::string \&u, const std\+::string \&v, int w)
+\begin{DoxyCompactList}\small\item\em add\+Edge Adds an edge between two vertices with the given weight. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_a77e9b94aaf5ce52d89aa488c02194a35}{prim\+M\+ST}} ()
+\begin{DoxyCompactList}\small\item\em prim\+M\+ST Computes the minimum spanning tree of the graph using Prim\textquotesingle{}s algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_af9b5a364cf7307cdd462541d2b592c0f}{set\+Vertex\+Index\+Map}} (const std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \&\mbox{\hyperlink{class_graph_af6a512503626d56fac9b3ba3f67d8726}{vertex\+Index\+Map}})
+\begin{DoxyCompactList}\small\item\em set\+Vertex\+Index\+Map Sets the vertex index map of the graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_af8d85bb13a8f37f639ad541d56d256cc}{shortest\+Distance\+List\+\_\+02}} (std\+::vector$<$ std\+::string $>$ \&teams)
+\begin{DoxyCompactList}\small\item\em shortest\+Distance\+List\+\_\+02 Computes the shortest distance by traversing a list of vertices in order (alternative implementation). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_a04f366a0e858fa266d8ffb65aab106d4}{recursive\+College\+Sort}} (std\+::vector$<$ std\+::string $>$ \&teams)
+\begin{DoxyCompactList}\small\item\em recursive\+College\+Sort Recursively sorts the vector of team names based on the shortest distance between them. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a45f4d350aaf2ce57cb5a0dbe158640bf}\label{class_graph_a45f4d350aaf2ce57cb5a0dbe158640bf}} 
+{\bfseries Graph} (vector$<$ \mbox{\hyperlink{struct_edge}{Edge}} $>$ const \&edges, int N)
+\item 
+\mbox{\Hypertarget{class_graph_ac74b58cf49ec73027ff4f0a5485b089a}\label{class_graph_ac74b58cf49ec73027ff4f0a5485b089a}} 
+int {\bfseries B\+FS} (int node, const \mbox{\hyperlink{class_graph}{Graph}} \&g)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_af6a512503626d56fac9b3ba3f67d8726}\label{class_graph_af6a512503626d56fac9b3ba3f67d8726}} 
+std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{class_graph_af6a512503626d56fac9b3ba3f67d8726}{vertex\+Index\+Map}}
+\begin{DoxyCompactList}\small\item\em vertex\+Index\+Map Mapping of vertex names to their indices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_af338a810cd6edc570516a62345a11631}\label{class_graph_af338a810cd6edc570516a62345a11631}} 
+vector$<$ vector$<$ pair$<$ int, int $>$ $>$ $>$ {\bfseries adjacency\+List}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a55e12c0fa4ca1977411a32df5706f598}\label{class_graph_a55e12c0fa4ca1977411a32df5706f598}} 
+const int {\bfseries N} = 30
+\item 
+\mbox{\Hypertarget{class_graph_a5a8cd0381352d185be3ae5d33ee91d9f}\label{class_graph_a5a8cd0381352d185be3ae5d33ee91d9f}} 
+int {\bfseries total\+Distance} = 0
+\item 
+\mbox{\Hypertarget{class_graph_a45dc05aa61dfb7975f42d599a81220c7}\label{class_graph_a45dc05aa61dfb7975f42d599a81220c7}} 
+\mbox{\hyperlink{classdb_manager}{db\+Manager}} {\bfseries db}
+\item 
+\mbox{\Hypertarget{class_graph_a2b722f7cfa7a21e4cb5fae488b3d4dcc}\label{class_graph_a2b722f7cfa7a21e4cb5fae488b3d4dcc}} 
+int {\bfseries V}
+\item 
+\mbox{\Hypertarget{class_graph_a19d27e1ee83607781dfb7949597e31d4}\label{class_graph_a19d27e1ee83607781dfb7949597e31d4}} 
+std\+::list$<$ Pair $>$ $\ast$ {\bfseries adj}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_graph_af3ff6b295df8bf3bee0bafd7c7d56915}\label{class_graph_af3ff6b295df8bf3bee0bafd7c7d56915}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{int}]{V }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_graph}{Graph}} constructor. 
+
+\mbox{\hyperlink{class_graph}{Graph}} constructor with the number of vertices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em V} & Number of vertices in the graph.\\
+\hline
+{\em V} & The number of vertices in the graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a6432c0bbb909cb8983ee3a9e5a2027c9}\label{class_graph_a6432c0bbb909cb8983ee3a9e5a2027c9}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{const std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \&}]{vertex\+Index\+Map,  }\item[{const std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string, int $>$$>$ \&}]{edges }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_graph}{Graph}} constructor with vertex and edge information. 
+
+\mbox{\hyperlink{class_graph}{Graph}} constructor with vertex index map and edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Index\+Map} & Unordered map mapping vertex names to their indices. \\
+\hline
+{\em edges} & Vector of tuples representing edges with their weights.\\
+\hline
+{\em vertex\+Index\+Map} & The map containing vertex names and their corresponding indices. \\
+\hline
+{\em edges} & The list of edges with source, destination, and weight. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a81b35a9b21eb44e217711122475e6ecf}\label{class_graph_a81b35a9b21eb44e217711122475e6ecf}} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{u,  }\item[{const std\+::string \&}]{v,  }\item[{int}]{w }\end{DoxyParamCaption})}
+
+
+
+add\+Edge Adds an edge between two vertices with the given weight. 
+
+Add an edge between two vertices with a weight.
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & First vertex name. \\
+\hline
+{\em v} & Second vertex name. \\
+\hline
+{\em w} & \mbox{\hyperlink{struct_edge}{Edge}} weight.\\
+\hline
+{\em u} & The source vertex. \\
+\hline
+{\em v} & The destination vertex. \\
+\hline
+{\em w} & The weight of the edge. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a77e9b94aaf5ce52d89aa488c02194a35}\label{class_graph_a77e9b94aaf5ce52d89aa488c02194a35}} 
+\index{Graph@{Graph}!primMST@{primMST}}
+\index{primMST@{primMST}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{primMST()}{primMST()}}
+{\footnotesize\ttfamily int Graph\+::prim\+M\+ST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prim\+M\+ST Computes the minimum spanning tree of the graph using Prim\textquotesingle{}s algorithm. 
+
+Perform Prim\textquotesingle{}s algorithm to find the minimum spanning tree of the graph.
+
+\begin{DoxyReturn}{Returns}
+Total weight of the minimum spanning tree.
+
+The total distance of the minimum spanning tree. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a04f366a0e858fa266d8ffb65aab106d4}\label{class_graph_a04f366a0e858fa266d8ffb65aab106d4}} 
+\index{Graph@{Graph}!recursiveCollegeSort@{recursiveCollegeSort}}
+\index{recursiveCollegeSort@{recursiveCollegeSort}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{recursiveCollegeSort()}{recursiveCollegeSort()}}
+{\footnotesize\ttfamily int Graph\+::recursive\+College\+Sort (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{teams }\end{DoxyParamCaption})}
+
+
+
+recursive\+College\+Sort Recursively sorts the vector of team names based on the shortest distance between them. 
+
+Sort a list of teams based on their distance to the previous team recursively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em teams} & Vector of team names to be sorted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total distance traveled.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em teams} & The list of team names. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total distance traveled. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_af9b5a364cf7307cdd462541d2b592c0f}\label{class_graph_af9b5a364cf7307cdd462541d2b592c0f}} 
+\index{Graph@{Graph}!setVertexIndexMap@{setVertexIndexMap}}
+\index{setVertexIndexMap@{setVertexIndexMap}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{setVertexIndexMap()}{setVertexIndexMap()}}
+{\footnotesize\ttfamily void Graph\+::set\+Vertex\+Index\+Map (\begin{DoxyParamCaption}\item[{const std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \&}]{vertex\+Index\+Map }\end{DoxyParamCaption})}
+
+
+
+set\+Vertex\+Index\+Map Sets the vertex index map of the graph. 
+
+Set the vertex index map for the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Index\+Map} & Unordered map mapping vertex names to their indices.\\
+\hline
+{\em vertex\+Index\+Map} & The map containing vertex names and their corresponding indices. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_af20b418b515ad695397dec3d78782e78}\label{class_graph_af20b418b515ad695397dec3d78782e78}} 
+\index{Graph@{Graph}!shortestDistance@{shortestDistance}}
+\index{shortestDistance@{shortestDistance}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{shortestDistance()}{shortestDistance()}}
+{\footnotesize\ttfamily int Graph\+::shortest\+Distance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{start,  }\item[{const std\+::string \&}]{end }\end{DoxyParamCaption})}
+
+
+
+shortest\+Distance Computes the shortest distance between two vertices using Dijkstra\textquotesingle{}s algorithm. 
+
+Find the shortest distance between two vertices using Dijkstra\textquotesingle{}s algorithm.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Starting vertex name. \\
+\hline
+{\em end} & Ending vertex name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shortest distance between the vertices.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The starting vertex. \\
+\hline
+{\em end} & The destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The shortest distance between the two vertices. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a272a4fad0f587ddd3c1541d16b4ddd40}\label{class_graph_a272a4fad0f587ddd3c1541d16b4ddd40}} 
+\index{Graph@{Graph}!shortestDistanceList@{shortestDistanceList}}
+\index{shortestDistanceList@{shortestDistanceList}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{shortestDistanceList()}{shortestDistanceList()}}
+{\footnotesize\ttfamily int Graph\+::shortest\+Distance\+List (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{teams }\end{DoxyParamCaption})}
+
+
+
+shortest\+Distance\+List Computes the shortest distance by traversing a list of vertices in order. 
+
+Calculate the shortest distance for a list of teams in the given order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em teams} & Vector of team names representing the order of traversal. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total distance traveled.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em teams} & The list of team names. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total distance traveled. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_af8d85bb13a8f37f639ad541d56d256cc}\label{class_graph_af8d85bb13a8f37f639ad541d56d256cc}} 
+\index{Graph@{Graph}!shortestDistanceList\_02@{shortestDistanceList\_02}}
+\index{shortestDistanceList\_02@{shortestDistanceList\_02}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{shortestDistanceList\_02()}{shortestDistanceList\_02()}}
+{\footnotesize\ttfamily int Graph\+::shortest\+Distance\+List\+\_\+02 (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{teams }\end{DoxyParamCaption})}
+
+
+
+shortest\+Distance\+List\+\_\+02 Computes the shortest distance by traversing a list of vertices in order (alternative implementation). 
+
+Calculate the shortest distance for a list of teams in the given order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em teams} & Vector of team names representing the order of traversal. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total distance traveled.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em teams} & The list of team names. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total distance traveled. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/trevorholm/\+Documents/\+C\+S1\+D/\+Github/\+C\+S1\+D-\/\+Project-\/2-\/\+Baseball/\+Baseball\+Project2/graph.\+h\item 
+/\+Users/trevorholm/\+Documents/\+C\+S1\+D/\+Github/\+C\+S1\+D-\/\+Project-\/2-\/\+Baseball/\+Baseball\+Project2/graph.\+cpp\end{DoxyCompactItemize}

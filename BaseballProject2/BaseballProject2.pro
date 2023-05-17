@@ -24,10 +24,8 @@ SOURCES += \
     mainwindow.cpp \
     modifysouvenirs.cpp \
     modifystadiums.cpp \
-    planvacation.cpp \
     teamtablemodel.cpp \
-    tripplanner.cpp \
-    graphtraversals.cpp
+    tripplanner.cpp
 
 
 HEADERS += \
@@ -43,10 +41,8 @@ HEADERS += \
     mainwindow.h \
     modifysouvenirs.h \
     modifystadiums.h \
-    planvacation.h \
     teamtablemodel.h \
-    tripplanner.h \
-    graphtraversals.h
+    tripplanner.h
 
 FORMS += \
     allinfo.ui \
@@ -59,7 +55,6 @@ FORMS += \
     tripplanner.ui \
     modifystadiums.ui \
     modifysouvenirs.ui \
-    planvacation.ui \
     graphtraversals.ui
 
 # Default rules for deployment.

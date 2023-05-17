@@ -1,7 +1,6 @@
 #include "displayinfo.h"
 #include "ui_displayinfo.h"
 #include "displayteam.h"
-#include "planvacation.h"
 #include "mainwindow.h"
 #include "tripplanner.h"
 

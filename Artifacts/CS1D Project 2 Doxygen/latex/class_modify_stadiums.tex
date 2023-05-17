@@ -1,0 +1,145 @@
+\hypertarget{class_modify_stadiums}{}\doxysection{Modify\+Stadiums Class Reference}
+\label{class_modify_stadiums}\index{ModifyStadiums@{ModifyStadiums}}
+Inheritance diagram for Modify\+Stadiums\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_modify_stadiums}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_modify_stadiums_a1697a961222c814a7b83fb259f8be551}{Modify\+Stadiums}} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{class_modify_stadiums}{Modify\+Stadiums}} widget. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_modify_stadiums_a02db4a629ed13ec1fc184683519555a2}\label{class_modify_stadiums_a02db4a629ed13ec1fc184683519555a2}} 
+\mbox{\hyperlink{class_modify_stadiums_a02db4a629ed13ec1fc184683519555a2}{$\sim$\+Modify\+Stadiums}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_modify_stadiums}{Modify\+Stadiums}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_modify_stadiums_acb9f11e37ce71c4b6bb88d82dcdbfb8f}\label{class_modify_stadiums_acb9f11e37ce71c4b6bb88d82dcdbfb8f}} 
+void \mbox{\hyperlink{class_modify_stadiums_acb9f11e37ce71c4b6bb88d82dcdbfb8f}{populate\+Table\+View}} ()
+\begin{DoxyCompactList}\small\item\em Populates the table widget with the team and stadium list from the database. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_modify_stadiums_a3de460d3ac56daaa78d2c646523d8d06}\label{class_modify_stadiums_a3de460d3ac56daaa78d2c646523d8d06}} 
+void \mbox{\hyperlink{class_modify_stadiums_a3de460d3ac56daaa78d2c646523d8d06}{update\+Data\+View}} ()
+\begin{DoxyCompactList}\small\item\em Updates the table widget and any combo boxes whenever changes are made to the database to ensure they accurately reflect the current state of the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_modify_stadiums_a0a6088ee2b53e0185bbf3da09fa06d5b}\label{class_modify_stadiums_a0a6088ee2b53e0185bbf3da09fa06d5b}} 
+void \mbox{\hyperlink{class_modify_stadiums_a0a6088ee2b53e0185bbf3da09fa06d5b}{on\+\_\+del\+Btn\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em This button deletes the selected M\+LB team and its corresponding information from the M\+LB \mbox{\hyperlink{struct_team}{Team}} table. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_modify_stadiums_a1e3bcc4c9f3105277aca50720c12062c}\label{class_modify_stadiums_a1e3bcc4c9f3105277aca50720c12062c}} 
+void \mbox{\hyperlink{class_modify_stadiums_a1e3bcc4c9f3105277aca50720c12062c}{on\+\_\+back\+Btn\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em This button returns the program back to the maintenance window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_modify_stadiums_aa015577b55a001566754be2513a16f36}{on\+\_\+confirm\+Add\+Btn\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em This button allows the user to add M\+LB team information from a text file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_modify_stadiums_aac8f801779a3412c891b5cb194e9d964}{on\+\_\+team\+Name\+Add\+Line\+\_\+text\+Edited}} (const Q\+String \&arg1)
+\begin{DoxyCompactList}\small\item\em This signal removes the error message whenever the team name add line is edited. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_modify_stadiums_af88814960a3eb34642e388331a5b7a1e}{on\+\_\+stadium\+Name\+Add\+Line\+\_\+text\+Edited}} (const Q\+String \&arg1)
+\begin{DoxyCompactList}\small\item\em This signal removes the error message whenever the stadium name add line is edited. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_modify_stadiums_a5974a0418d617e50dda393dad468942f}{on\+\_\+team\+Name\+Update\+Box\+\_\+current\+Text\+Changed}} (const Q\+String \&updated\+Team\+Name)
+\begin{DoxyCompactList}\small\item\em This function will update all of the text boxes from the modify stadium page to display the current team information stored for each team. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_modify_stadiums_acf8e51399bf05b5ab6ed1f38a2a0a03a}\label{class_modify_stadiums_acf8e51399bf05b5ab6ed1f38a2a0a03a}} 
+void \mbox{\hyperlink{class_modify_stadiums_acf8e51399bf05b5ab6ed1f38a2a0a03a}{on\+\_\+confirm\+Update\+Btn\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em This button implements the updated changes to the team information and updates the database as well. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_modify_stadiums_a749bbc249d7f9ef5e33a5beb00c5aaad}\label{class_modify_stadiums_a749bbc249d7f9ef5e33a5beb00c5aaad}} 
+\mbox{\hyperlink{class_ui_1_1_modify_stadiums}{Ui\+::\+Modify\+Stadiums}} $\ast$ {\bfseries ui}
+\item 
+\mbox{\Hypertarget{class_modify_stadiums_a53d4e6b79a3981814327a232a6fdec1c}\label{class_modify_stadiums_a53d4e6b79a3981814327a232a6fdec1c}} 
+Q\+Sort\+Filter\+Proxy\+Model $\ast$ {\bfseries proxy\+Model}
+\item 
+\mbox{\Hypertarget{class_modify_stadiums_a40a9853a676fc1d26ea2a6f98c8030fb}\label{class_modify_stadiums_a40a9853a676fc1d26ea2a6f98c8030fb}} 
+Q\+Byte\+Array {\bfseries default\+Table\+State}
+\item 
+\mbox{\Hypertarget{class_modify_stadiums_a41fb65c62eedb9d0dedfd8278a71f59e}\label{class_modify_stadiums_a41fb65c62eedb9d0dedfd8278a71f59e}} 
+Q\+List$<$ \mbox{\hyperlink{struct_team}{Team}} $>$ {\bfseries team\+List}
+\item 
+\mbox{\Hypertarget{class_modify_stadiums_a931870fb417e1fe8bf65d9b3f6c96de7}\label{class_modify_stadiums_a931870fb417e1fe8bf65d9b3f6c96de7}} 
+\mbox{\hyperlink{classdb_manager}{db\+Manager}} {\bfseries m\+\_\+database}
+\item 
+\mbox{\Hypertarget{class_modify_stadiums_a0080e625a9d9693bd06ffef0ce03d045}\label{class_modify_stadiums_a0080e625a9d9693bd06ffef0ce03d045}} 
+Q\+String {\bfseries distance\+File\+Path}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_modify_stadiums_a1697a961222c814a7b83fb259f8be551}\label{class_modify_stadiums_a1697a961222c814a7b83fb259f8be551}} 
+\index{ModifyStadiums@{ModifyStadiums}!ModifyStadiums@{ModifyStadiums}}
+\index{ModifyStadiums@{ModifyStadiums}!ModifyStadiums@{ModifyStadiums}}
+\doxysubsubsection{\texorpdfstring{ModifyStadiums()}{ModifyStadiums()}}
+{\footnotesize\ttfamily Modify\+Stadiums\+::\+Modify\+Stadiums (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \mbox{\hyperlink{class_modify_stadiums}{Modify\+Stadiums}} widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \mbox{[}in\mbox{]} parent widget \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_modify_stadiums_aa015577b55a001566754be2513a16f36}\label{class_modify_stadiums_aa015577b55a001566754be2513a16f36}} 
+\index{ModifyStadiums@{ModifyStadiums}!on\_confirmAddBtn\_clicked@{on\_confirmAddBtn\_clicked}}
+\index{on\_confirmAddBtn\_clicked@{on\_confirmAddBtn\_clicked}!ModifyStadiums@{ModifyStadiums}}
+\doxysubsubsection{\texorpdfstring{on\_confirmAddBtn\_clicked}{on\_confirmAddBtn\_clicked}}
+{\footnotesize\ttfamily void Modify\+Stadiums\+::on\+\_\+confirm\+Add\+Btn\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+This button allows the user to add M\+LB team information from a text file. 
+
+This function will disallow duplicate team names and stadium names from being added to the database. \mbox{\Hypertarget{class_modify_stadiums_af88814960a3eb34642e388331a5b7a1e}\label{class_modify_stadiums_af88814960a3eb34642e388331a5b7a1e}} 
+\index{ModifyStadiums@{ModifyStadiums}!on\_stadiumNameAddLine\_textEdited@{on\_stadiumNameAddLine\_textEdited}}
+\index{on\_stadiumNameAddLine\_textEdited@{on\_stadiumNameAddLine\_textEdited}!ModifyStadiums@{ModifyStadiums}}
+\doxysubsubsection{\texorpdfstring{on\_stadiumNameAddLine\_textEdited}{on\_stadiumNameAddLine\_textEdited}}
+{\footnotesize\ttfamily void Modify\+Stadiums\+::on\+\_\+stadium\+Name\+Add\+Line\+\_\+text\+Edited (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+This signal removes the error message whenever the stadium name add line is edited. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg1} & Default parameter not used within the function definition. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_modify_stadiums_aac8f801779a3412c891b5cb194e9d964}\label{class_modify_stadiums_aac8f801779a3412c891b5cb194e9d964}} 
+\index{ModifyStadiums@{ModifyStadiums}!on\_teamNameAddLine\_textEdited@{on\_teamNameAddLine\_textEdited}}
+\index{on\_teamNameAddLine\_textEdited@{on\_teamNameAddLine\_textEdited}!ModifyStadiums@{ModifyStadiums}}
+\doxysubsubsection{\texorpdfstring{on\_teamNameAddLine\_textEdited}{on\_teamNameAddLine\_textEdited}}
+{\footnotesize\ttfamily void Modify\+Stadiums\+::on\+\_\+team\+Name\+Add\+Line\+\_\+text\+Edited (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+This signal removes the error message whenever the team name add line is edited. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg1} & Default parameter not used within the function definition. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_modify_stadiums_a5974a0418d617e50dda393dad468942f}\label{class_modify_stadiums_a5974a0418d617e50dda393dad468942f}} 
+\index{ModifyStadiums@{ModifyStadiums}!on\_teamNameUpdateBox\_currentTextChanged@{on\_teamNameUpdateBox\_currentTextChanged}}
+\index{on\_teamNameUpdateBox\_currentTextChanged@{on\_teamNameUpdateBox\_currentTextChanged}!ModifyStadiums@{ModifyStadiums}}
+\doxysubsubsection{\texorpdfstring{on\_teamNameUpdateBox\_currentTextChanged}{on\_teamNameUpdateBox\_currentTextChanged}}
+{\footnotesize\ttfamily void Modify\+Stadiums\+::on\+\_\+team\+Name\+Update\+Box\+\_\+current\+Text\+Changed (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{updated\+Team\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+This function will update all of the text boxes from the modify stadium page to display the current team information stored for each team. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em updated\+Team\+Name} & The team name being udpated by the user selected using the combo box. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/trevorholm/\+Documents/\+C\+S1\+D/\+Github/\+C\+S1\+D-\/\+Project-\/2-\/\+Baseball/\+Baseball\+Project2/modifystadiums.\+h\item 
+/\+Users/trevorholm/\+Documents/\+C\+S1\+D/\+Github/\+C\+S1\+D-\/\+Project-\/2-\/\+Baseball/\+Baseball\+Project2/modifystadiums.\+cpp\end{DoxyCompactItemize}

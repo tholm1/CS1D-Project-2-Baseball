@@ -1,0 +1,395 @@
+\hypertarget{classdb_manager}{}\doxysection{db\+Manager Class Reference}
+\label{classdb_manager}\index{dbManager@{dbManager}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdb_manager_a0a4c9dc595841e6b115c500d14e88e22}\label{classdb_manager_a0a4c9dc595841e6b115c500d14e88e22}} 
+\mbox{\hyperlink{classdb_manager_a0a4c9dc595841e6b115c500d14e88e22}{db\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classdb_manager}{db\+Manager}}. \end{DoxyCompactList}\item 
+Q\+Sql\+Query\+Model $\ast$ \mbox{\hyperlink{classdb_manager_a70b4217b42b3b2869e4fdb5ca0816708}{load\+Team\+Names\+Only}} ()
+\begin{DoxyCompactList}\small\item\em load\+Team\+Names\+Only Using the S\+QL query function, only the name of the college campuses are read from the database into a Q\+Sql\+Query\+Model. If a database error occurs, an error warning is printed to the console. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{struct_team}{Team}} $>$ \mbox{\hyperlink{classdb_manager_ad53013e015211d02fe229376fa813c7e}{get\+Max\+Min\+Distance\+To\+CF}} (bool max)
+\begin{DoxyCompactList}\small\item\em Connects to the S\+QL database and obtains the farthest distance away from center field. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_team}{Team}} \mbox{\hyperlink{classdb_manager_a225e71c4783d24fdf91ae8ffa502921b}{get\+Team\+By\+Name}} (Q\+String stadium\+Name)
+\begin{DoxyCompactList}\small\item\em get\+Team\+By\+Name This function will retrieve the team by its name. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{struct_team}{Team}} $>$ \mbox{\hyperlink{classdb_manager_a5d53e01b3f2ad93da5e22c186da619ec}{get\+All\+Teams}} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Teams Returns a Q\+List of all the teams and their corresponding attributes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdb_manager_adf2c03abc5cf08fd6a82de9fecc7eaaf}{load\+Graph}} (std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \&vertex\+Index\+Map, std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string, int $>$$>$ \&edges)
+\begin{DoxyCompactList}\small\item\em Loads the graph with all the distances between the stadiums from the database. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classdb_manager_af14c737df2e892926cd5db8b03a298e7}{row\+Count}} ()
+\begin{DoxyCompactList}\small\item\em row\+Count Returns the number of rows in the database. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classdb_manager_afdbc706c74488a2277901e62a09acb01}{load\+Stadium\+Names}} ()
+\begin{DoxyCompactList}\small\item\em load\+Stadium\+Names Loads the names of stadiums from the database and returns them in a vector of strings. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{structstadium}{stadium}} $>$ \mbox{\hyperlink{classdb_manager_ae353deed2e0dfbda799aee691689fab5}{load\+Distance}} ()
+\begin{DoxyCompactList}\small\item\em load\+Distance Loads the distances between stadiums from the database and returns them in a vector of stadium objects. \end{DoxyCompactList}\item 
+Q\+Sql\+Query\+Model $\ast$ \mbox{\hyperlink{classdb_manager_aba58b81c2f0c2e3eec0e5c7bffacf548}{load\+Original\+Team\+Names}} ()
+\begin{DoxyCompactList}\small\item\em load\+Original\+Team\+Names Loads the original team names from the database into a Q\+Sql\+Query\+Model. \end{DoxyCompactList}\item 
+Q\+Sql\+Query\+Model $\ast$ \mbox{\hyperlink{classdb_manager_a27bc70fce37def3921a9b20c1f832769}{load\+Destination\+Team\+Names}} ()
+\begin{DoxyCompactList}\small\item\em load\+Destination\+Team\+Names Loads the destination team names from the database into a Q\+Sql\+Query\+Model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classdb_manager_a42869c33b78833f7a4472c0b161ee8d0}{read\+Souvenir\+File}} ()
+\begin{DoxyCompactList}\small\item\em Reads souvenirs from a text file and outputs them to the S\+QL database so that they can be used to purchase those souvenirs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdb_manager_a3d5ef7879705eb8b677751243200a1d6}{create\+Souvenir}} (Q\+String teamname, Q\+String item, Q\+String price)
+\begin{DoxyCompactList}\small\item\em Creates a souvenir from the souvenirs provided in the \mbox{\hyperlink{classdb_manager_a42869c33b78833f7a4472c0b161ee8d0}{read\+Souvenir\+File()}} function. \end{DoxyCompactList}\item 
+Q\+Sql\+Query\+Model $\ast$ \mbox{\hyperlink{classdb_manager_a6dafe17a40e111fe7ab657d6cd0d7ed1}{load\+Team\+Souvenirs}} (Q\+String team)
+\begin{DoxyCompactList}\small\item\em Loads. \end{DoxyCompactList}\item 
+Q\+Sql\+Query\+Model $\ast$ \mbox{\hyperlink{classdb_manager_a0d31c44bb2708a04839079f92e939aae}{load\+Souv\+Cart}} (Q\+String s\+Qry)
+\begin{DoxyCompactList}\small\item\em Loads the souvenir cart for the souvenir shop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdb_manager_afa36ba7fd16bb6b97b297770356f8e83}\label{classdb_manager_afa36ba7fd16bb6b97b297770356f8e83}} 
+void \mbox{\hyperlink{classdb_manager_afa36ba7fd16bb6b97b297770356f8e83}{create\+Cart}} ()
+\begin{DoxyCompactList}\small\item\em Creates a cart table in the S\+QL database to hold the souvenirs purchased and the quantity for the user to see later. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdb_manager_ae48e9e58a4228d2409bb5cf90c80c189}\label{classdb_manager_ae48e9e58a4228d2409bb5cf90c80c189}} 
+void \mbox{\hyperlink{classdb_manager_ae48e9e58a4228d2409bb5cf90c80c189}{delete\+Cart}} ()
+\begin{DoxyCompactList}\small\item\em This function deletes the cart that was created when the souvenir shop is left and resets for the next trip. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdb_manager_a146cc59731ed13eb77bb0116a85a22c6}{update\+Cart\+Quantity}} (Q\+String team, Q\+String souv, int quantity)
+\begin{DoxyCompactList}\small\item\em update\+Cart\+Quantity \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classdb_manager_a95513d26cb43a595b322744c29b295d8}{Get\+Total\+Cost}} (Q\+String team\+In, Q\+String souv\+In)
+\begin{DoxyCompactList}\small\item\em Gets the total cost from the souvenirs the user purchased from the S\+QL database. \end{DoxyCompactList}\item 
+Q\+Sql\+Query\+Model $\ast$ \mbox{\hyperlink{classdb_manager_a762830afa6f1ee932da6403244f026fd}{load\+Souvenir\+Names\+Only}} ()
+\begin{DoxyCompactList}\small\item\em Loads all of the souvenir names from the S\+QL database. \end{DoxyCompactList}\item 
+Q\+Sql\+Query\+Model $\ast$ \mbox{\hyperlink{classdb_manager_ae0c1ff7a26826e4843db646787933c35}{load\+Souvenir\+Quantity\+Only}} ()
+\begin{DoxyCompactList}\small\item\em Loads the quantity of sovuenirs purchased through the amount in the spin box. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{class_souvenir}{Souvenir}} $>$ \mbox{\hyperlink{classdb_manager_af020c87f0c43e83d3a8ec9bc5e4ea064}{get\+All\+Souvenirs}} ()
+\begin{DoxyCompactList}\small\item\em Gets all of the souvenirs from the S\+QL database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classdb_manager}{db\+Manager}} $\ast$ \mbox{\hyperlink{classdb_manager_a0b96aeab4f66563db74711be1dfc1edb}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em get\+Instance Returns a single instance of the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdb_manager_a1359fd9fa4e33c530a51a1470bfd2cc1}\label{classdb_manager_a1359fd9fa4e33c530a51a1470bfd2cc1}} 
+Q\+Sql\+Database {\bfseries m\+\_\+database}
+\item 
+\mbox{\Hypertarget{classdb_manager_abba5db1cd85ae1ba9fe34fb32225685b}\label{classdb_manager_abba5db1cd85ae1ba9fe34fb32225685b}} 
+Q\+Sql\+Database {\bfseries db}
+\item 
+\mbox{\Hypertarget{classdb_manager_af73c2b5877dbd5ccd244b7c5523b9b3d}\label{classdb_manager_af73c2b5877dbd5ccd244b7c5523b9b3d}} 
+Q\+List$<$ \mbox{\hyperlink{class_souvenir}{Souvenir}} $\ast$ $>$ {\bfseries list\+Of\+Souvenirs}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classdb_manager}{db\+Manager}} $\ast$ \mbox{\hyperlink{classdb_manager_a804c74b8cca4f7c858552d177ea3683f}{manager\+Instance}} = N\+U\+LL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdb_manager_a3d5ef7879705eb8b677751243200a1d6}\label{classdb_manager_a3d5ef7879705eb8b677751243200a1d6}} 
+\index{dbManager@{dbManager}!createSouvenir@{createSouvenir}}
+\index{createSouvenir@{createSouvenir}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{createSouvenir()}{createSouvenir()}}
+{\footnotesize\ttfamily void db\+Manager\+::create\+Souvenir (\begin{DoxyParamCaption}\item[{Q\+String}]{teamname,  }\item[{Q\+String}]{item,  }\item[{Q\+String}]{price }\end{DoxyParamCaption})}
+
+
+
+Creates a souvenir from the souvenirs provided in the \mbox{\hyperlink{classdb_manager_a42869c33b78833f7a4472c0b161ee8d0}{read\+Souvenir\+File()}} function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em teamname} & \\
+\hline
+{\em item} & \\
+\hline
+{\em price} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdb_manager_af020c87f0c43e83d3a8ec9bc5e4ea064}\label{classdb_manager_af020c87f0c43e83d3a8ec9bc5e4ea064}} 
+\index{dbManager@{dbManager}!getAllSouvenirs@{getAllSouvenirs}}
+\index{getAllSouvenirs@{getAllSouvenirs}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{getAllSouvenirs()}{getAllSouvenirs()}}
+{\footnotesize\ttfamily Q\+List$<$\mbox{\hyperlink{class_souvenir}{Souvenir}}$>$ db\+Manager\+::get\+All\+Souvenirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets all of the souvenirs from the S\+QL database. 
+
+\begin{DoxyReturn}{Returns}
+A Q\+List of all the souvenirs from the database 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a5d53e01b3f2ad93da5e22c186da619ec}\label{classdb_manager_a5d53e01b3f2ad93da5e22c186da619ec}} 
+\index{dbManager@{dbManager}!getAllTeams@{getAllTeams}}
+\index{getAllTeams@{getAllTeams}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{getAllTeams()}{getAllTeams()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{struct_team}{Team}} $>$ db\+Manager\+::get\+All\+Teams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Teams Returns a Q\+List of all the teams and their corresponding attributes. 
+
+\begin{DoxyReturn}{Returns}
+teams 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a0b96aeab4f66563db74711be1dfc1edb}\label{classdb_manager_a0b96aeab4f66563db74711be1dfc1edb}} 
+\index{dbManager@{dbManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdb_manager}{db\+Manager}} $\ast$ db\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get\+Instance Returns a single instance of the database. 
+
+\begin{DoxyReturn}{Returns}
+instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_ad53013e015211d02fe229376fa813c7e}\label{classdb_manager_ad53013e015211d02fe229376fa813c7e}} 
+\index{dbManager@{dbManager}!getMaxMinDistanceToCF@{getMaxMinDistanceToCF}}
+\index{getMaxMinDistanceToCF@{getMaxMinDistanceToCF}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{getMaxMinDistanceToCF()}{getMaxMinDistanceToCF()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{struct_team}{Team}} $>$ db\+Manager\+::get\+Max\+Min\+Distance\+To\+CF (\begin{DoxyParamCaption}\item[{bool}]{max }\end{DoxyParamCaption})}
+
+
+
+Connects to the S\+QL database and obtains the farthest distance away from center field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The highest value to center field 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a225e71c4783d24fdf91ae8ffa502921b}\label{classdb_manager_a225e71c4783d24fdf91ae8ffa502921b}} 
+\index{dbManager@{dbManager}!getTeamByName@{getTeamByName}}
+\index{getTeamByName@{getTeamByName}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{getTeamByName()}{getTeamByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_team}{Team}} db\+Manager\+::get\+Team\+By\+Name (\begin{DoxyParamCaption}\item[{Q\+String}]{stadium\+Name }\end{DoxyParamCaption})}
+
+
+
+get\+Team\+By\+Name This function will retrieve the team by its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stadium\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_team}{Team}} object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a95513d26cb43a595b322744c29b295d8}\label{classdb_manager_a95513d26cb43a595b322744c29b295d8}} 
+\index{dbManager@{dbManager}!GetTotalCost@{GetTotalCost}}
+\index{GetTotalCost@{GetTotalCost}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{GetTotalCost()}{GetTotalCost()}}
+{\footnotesize\ttfamily double db\+Manager\+::\+Get\+Total\+Cost (\begin{DoxyParamCaption}\item[{Q\+String}]{team\+In,  }\item[{Q\+String}]{souv\+In }\end{DoxyParamCaption})}
+
+
+
+Gets the total cost from the souvenirs the user purchased from the S\+QL database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em team\+In} & \\
+\hline
+{\em souv\+In} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total cost that will be displayed as a label in the souvenir shop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a27bc70fce37def3921a9b20c1f832769}\label{classdb_manager_a27bc70fce37def3921a9b20c1f832769}} 
+\index{dbManager@{dbManager}!loadDestinationTeamNames@{loadDestinationTeamNames}}
+\index{loadDestinationTeamNames@{loadDestinationTeamNames}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadDestinationTeamNames()}{loadDestinationTeamNames()}}
+{\footnotesize\ttfamily Q\+Sql\+Query\+Model $\ast$ db\+Manager\+::load\+Destination\+Team\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+load\+Destination\+Team\+Names Loads the destination team names from the database into a Q\+Sql\+Query\+Model. 
+
+\begin{DoxyReturn}{Returns}
+pointer to the Q\+Sql\+Query\+Model containing the destination team names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_ae353deed2e0dfbda799aee691689fab5}\label{classdb_manager_ae353deed2e0dfbda799aee691689fab5}} 
+\index{dbManager@{dbManager}!loadDistance@{loadDistance}}
+\index{loadDistance@{loadDistance}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadDistance()}{loadDistance()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{structstadium}{stadium}} $>$ db\+Manager\+::load\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+load\+Distance Loads the distances between stadiums from the database and returns them in a vector of stadium objects. 
+
+\begin{DoxyReturn}{Returns}
+vector of stadium objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_adf2c03abc5cf08fd6a82de9fecc7eaaf}\label{classdb_manager_adf2c03abc5cf08fd6a82de9fecc7eaaf}} 
+\index{dbManager@{dbManager}!loadGraph@{loadGraph}}
+\index{loadGraph@{loadGraph}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadGraph()}{loadGraph()}}
+{\footnotesize\ttfamily void db\+Manager\+::load\+Graph (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \&}]{vertex\+Index\+Map,  }\item[{std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string, int $>$$>$ \&}]{edges }\end{DoxyParamCaption})}
+
+
+
+Loads the graph with all the distances between the stadiums from the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Index\+Map} & \\
+\hline
+{\em edges} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdb_manager_aba58b81c2f0c2e3eec0e5c7bffacf548}\label{classdb_manager_aba58b81c2f0c2e3eec0e5c7bffacf548}} 
+\index{dbManager@{dbManager}!loadOriginalTeamNames@{loadOriginalTeamNames}}
+\index{loadOriginalTeamNames@{loadOriginalTeamNames}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadOriginalTeamNames()}{loadOriginalTeamNames()}}
+{\footnotesize\ttfamily Q\+Sql\+Query\+Model $\ast$ db\+Manager\+::load\+Original\+Team\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+load\+Original\+Team\+Names Loads the original team names from the database into a Q\+Sql\+Query\+Model. 
+
+\begin{DoxyReturn}{Returns}
+pointer to the Q\+Sql\+Query\+Model containing the original team names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a0d31c44bb2708a04839079f92e939aae}\label{classdb_manager_a0d31c44bb2708a04839079f92e939aae}} 
+\index{dbManager@{dbManager}!loadSouvCart@{loadSouvCart}}
+\index{loadSouvCart@{loadSouvCart}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadSouvCart()}{loadSouvCart()}}
+{\footnotesize\ttfamily Q\+Sql\+Query\+Model $\ast$ db\+Manager\+::load\+Souv\+Cart (\begin{DoxyParamCaption}\item[{Q\+String}]{s\+Qry }\end{DoxyParamCaption})}
+
+
+
+Loads the souvenir cart for the souvenir shop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s\+Qry} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Model with the souvenir cart 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a762830afa6f1ee932da6403244f026fd}\label{classdb_manager_a762830afa6f1ee932da6403244f026fd}} 
+\index{dbManager@{dbManager}!loadSouvenirNamesOnly@{loadSouvenirNamesOnly}}
+\index{loadSouvenirNamesOnly@{loadSouvenirNamesOnly}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadSouvenirNamesOnly()}{loadSouvenirNamesOnly()}}
+{\footnotesize\ttfamily Q\+Sql\+Query\+Model $\ast$ db\+Manager\+::load\+Souvenir\+Names\+Only (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads all of the souvenir names from the S\+QL database. 
+
+\begin{DoxyReturn}{Returns}
+Model with all of the souvenir names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_ae0c1ff7a26826e4843db646787933c35}\label{classdb_manager_ae0c1ff7a26826e4843db646787933c35}} 
+\index{dbManager@{dbManager}!loadSouvenirQuantityOnly@{loadSouvenirQuantityOnly}}
+\index{loadSouvenirQuantityOnly@{loadSouvenirQuantityOnly}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadSouvenirQuantityOnly()}{loadSouvenirQuantityOnly()}}
+{\footnotesize\ttfamily Q\+Sql\+Query\+Model $\ast$ db\+Manager\+::load\+Souvenir\+Quantity\+Only (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the quantity of sovuenirs purchased through the amount in the spin box. 
+
+\begin{DoxyReturn}{Returns}
+the quantity of souvenirs the user purchased 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_afdbc706c74488a2277901e62a09acb01}\label{classdb_manager_afdbc706c74488a2277901e62a09acb01}} 
+\index{dbManager@{dbManager}!loadStadiumNames@{loadStadiumNames}}
+\index{loadStadiumNames@{loadStadiumNames}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadStadiumNames()}{loadStadiumNames()}}
+{\footnotesize\ttfamily vector$<$ string $>$ db\+Manager\+::load\+Stadium\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+load\+Stadium\+Names Loads the names of stadiums from the database and returns them in a vector of strings. 
+
+\begin{DoxyReturn}{Returns}
+vector of stadium names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a70b4217b42b3b2869e4fdb5ca0816708}\label{classdb_manager_a70b4217b42b3b2869e4fdb5ca0816708}} 
+\index{dbManager@{dbManager}!loadTeamNamesOnly@{loadTeamNamesOnly}}
+\index{loadTeamNamesOnly@{loadTeamNamesOnly}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadTeamNamesOnly()}{loadTeamNamesOnly()}}
+{\footnotesize\ttfamily Q\+Sql\+Query\+Model $\ast$ db\+Manager\+::load\+Team\+Names\+Only (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+load\+Team\+Names\+Only Using the S\+QL query function, only the name of the college campuses are read from the database into a Q\+Sql\+Query\+Model. If a database error occurs, an error warning is printed to the console. 
+
+\begin{DoxyReturn}{Returns}
+pointer model, the name of the campus in the form of S\+QL database 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a6dafe17a40e111fe7ab657d6cd0d7ed1}\label{classdb_manager_a6dafe17a40e111fe7ab657d6cd0d7ed1}} 
+\index{dbManager@{dbManager}!loadTeamSouvenirs@{loadTeamSouvenirs}}
+\index{loadTeamSouvenirs@{loadTeamSouvenirs}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{loadTeamSouvenirs()}{loadTeamSouvenirs()}}
+{\footnotesize\ttfamily Q\+Sql\+Query\+Model $\ast$ db\+Manager\+::load\+Team\+Souvenirs (\begin{DoxyParamCaption}\item[{Q\+String}]{team }\end{DoxyParamCaption})}
+
+
+
+Loads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em team} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Model with all of the souvenirs for a specific team 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a42869c33b78833f7a4472c0b161ee8d0}\label{classdb_manager_a42869c33b78833f7a4472c0b161ee8d0}} 
+\index{dbManager@{dbManager}!readSouvenirFile@{readSouvenirFile}}
+\index{readSouvenirFile@{readSouvenirFile}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{readSouvenirFile()}{readSouvenirFile()}}
+{\footnotesize\ttfamily bool db\+Manager\+::read\+Souvenir\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads souvenirs from a text file and outputs them to the S\+QL database so that they can be used to purchase those souvenirs. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_af14c737df2e892926cd5db8b03a298e7}\label{classdb_manager_af14c737df2e892926cd5db8b03a298e7}} 
+\index{dbManager@{dbManager}!rowCount@{rowCount}}
+\index{rowCount@{rowCount}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{rowCount()}{rowCount()}}
+{\footnotesize\ttfamily int db\+Manager\+::row\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+row\+Count Returns the number of rows in the database. 
+
+\begin{DoxyReturn}{Returns}
+row count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdb_manager_a146cc59731ed13eb77bb0116a85a22c6}\label{classdb_manager_a146cc59731ed13eb77bb0116a85a22c6}} 
+\index{dbManager@{dbManager}!updateCartQuantity@{updateCartQuantity}}
+\index{updateCartQuantity@{updateCartQuantity}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{updateCartQuantity()}{updateCartQuantity()}}
+{\footnotesize\ttfamily void db\+Manager\+::update\+Cart\+Quantity (\begin{DoxyParamCaption}\item[{Q\+String}]{team,  }\item[{Q\+String}]{souv,  }\item[{int}]{quantity }\end{DoxyParamCaption})}
+
+
+
+update\+Cart\+Quantity 
+
+
+\begin{DoxyParams}{Parameters}
+{\em team} & \\
+\hline
+{\em souv} & \\
+\hline
+{\em quantity} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdb_manager_a804c74b8cca4f7c858552d177ea3683f}\label{classdb_manager_a804c74b8cca4f7c858552d177ea3683f}} 
+\index{dbManager@{dbManager}!managerInstance@{managerInstance}}
+\index{managerInstance@{managerInstance}!dbManager@{dbManager}}
+\doxysubsubsection{\texorpdfstring{managerInstance}{managerInstance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdb_manager}{db\+Manager}} $\ast$ db\+Manager\+::manager\+Instance = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}}
+
+Static pointer to a single instance of the database. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/trevorholm/\+Documents/\+C\+S1\+D/\+Github/\+C\+S1\+D-\/\+Project-\/2-\/\+Baseball/\+Baseball\+Project2/dbmanager.\+h\item 
+/\+Users/trevorholm/\+Documents/\+C\+S1\+D/\+Github/\+C\+S1\+D-\/\+Project-\/2-\/\+Baseball/\+Baseball\+Project2/dbmanager.\+cpp\end{DoxyCompactItemize}
