@@ -64,11 +64,17 @@ void TripPlanner::populateTeamComboBoxes()
     ui->listView->setModel(teamModel);
 }
 
+/**
+ * @brief Calculates the most efficient trip when you click the button
+*/
 void TripPlanner::on_PushButton_MostEfficientTrip_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->DijkstrasSelectionScreen);
 }
 
+/**
+* @brief Starts the trip when clicked
+*/
 void TripPlanner::on_PushButton_BeginTrip_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
@@ -85,7 +91,9 @@ void TripPlanner::on_PushButton_BeginTrip_clicked()
 }
 
 
-
+/**
+ * @brief Brings you back to the main menu whenever when you click this button
+ */
 void TripPlanner::on_PushButton_BackToMain_6_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
@@ -110,6 +118,9 @@ void TripPlanner::on_PushButton_BackToMain_6_clicked()
 }
 
 
+/**
+ * @brief Adds team to the custom trip
+ */
 void TripPlanner::on_PushButton_AddTeam_clicked()
 {
     QString teamName = ui->TeamListComboBox->currentText();
@@ -129,7 +140,9 @@ void TripPlanner::on_PushButton_AddTeam_clicked()
     teams.push_back(teamName.toStdString());
 }
 
-
+/**
+ * @brief Begins the trip for the shortest path
+ */
 void TripPlanner::on_PushButton_BeginCustomTrip_clicked()
 {
     if (teams.empty()) {
@@ -149,6 +162,10 @@ void TripPlanner::on_PushButton_BeginCustomTrip_clicked()
     ui->Label_FinalTotalDistance->setText(result);
 }
 
+/**
+ * @brief This button will calculate the most efficient order of the stadiums
+ *        the user chooses
+ */
 void TripPlanner::on_PushButton_BeginCustomTrip_2_clicked()
 {
     if (teams.empty()) {
@@ -172,7 +189,9 @@ void TripPlanner::on_PushButton_BeginCustomTrip_2_clicked()
 }
 
 
-
+/**
+ * @brief Lets the user go back to main
+ */
 void TripPlanner::on_PushButton_BackToMain_clicked()
 {
     planVacation plan;
@@ -181,7 +200,9 @@ void TripPlanner::on_PushButton_BackToMain_clicked()
     plan.exec();
 }
 
-
+/**
+ * @brief This function will clear the teams in the Custom trip
+ */
 void TripPlanner::on_PushButton_BeginCustomTrip_Clear_clicked()
 {
     // Get the model and clear it
@@ -192,14 +213,19 @@ void TripPlanner::on_PushButton_BeginCustomTrip_Clear_clicked()
     teams.clear();
 }
 
-
+/**
+ * @brief This button will bring you to the custom trip menu
+ */
 void TripPlanner::on_PushButton_CustomTrip_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->CustomTrip);
 }
 
 
-
+/**
+ * @brief Button that brings the user to the Summary page that shows
+ *        the total distance and the souvenirs purchased
+ */
 void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
 {
     QMessageBox::information(this, "Loading...", "Shopping Complete. Now moving to Receipt Screen.", QMessageBox::Ok, QMessageBox::NoButton);
@@ -209,12 +235,14 @@ void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
     ui->grandTotal_2->setText(totalCostStr);
 }
 
-
-
+/**
+ * @brief This button will bring you to the Marlin Park trip
+ */
 void TripPlanner::on_PushButton_MarlinParkTrip_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
 
+   //Pushes back all of the teams for the combo box
    teams.push_back("Marlins Park");
    teams.push_back("Angel Stadium");
    teams.push_back("Busch Stadium");
@@ -252,17 +280,29 @@ void TripPlanner::on_PushButton_MarlinParkTrip_clicked()
     goToSouvenirShop();
 }
 
+/**
+ * @brief Button that allows the user to go back to the main menu with all the
+ *        trips
+ */
 void TripPlanner::on_PushButton_BackToMain_4_clicked()
 {
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
 }
 
-
+/**
+ * @brief Button that allows the user to go back to the main menu with all the
+ *        trips
+ */
 void TripPlanner::on_PushButton_BackToMain_2_clicked()
 {
      ui->TripPlannerStackedWidget->setCurrentWidget(ui->MainMenu);
 }
 
+/**
+ * @brief This function changes the stacked widget to
+ *        go to the souvenir shop and displays the souvenirs
+ *        of each team and allows the user to buy souvenirs
+ */
 void TripPlanner::goToSouvenirShop()
 {
      //Go to souvenirShop widget
@@ -278,11 +318,21 @@ void TripPlanner::goToSouvenirShop()
 
 }
 
+/**
+ * @brief Displays the teams from the database in the combo box when called
+ *        This is for the Souvenir page.
+ * @param model
+ */
 void TripPlanner::showSelectTeamComboBox(QSqlQueryModel *model)
 {
      ui->team_comboBox->setModel(model);
 }
 
+/**
+ * @brief Displays the souvenirs from the database and outputs them
+ *        in the souvenir shop
+ * @param model
+ */
 void TripPlanner::showSouvTableView(QSqlQueryModel *model)
 {
      ui->souv_tableView->setModel(model);
@@ -290,12 +340,22 @@ void TripPlanner::showSouvTableView(QSqlQueryModel *model)
      ui->souv_comboBox->setModel(model);
 }
 
+/**
+ * @brief Displays the souvenirs the user purchased in this table
+ *        view.
+ * @param model
+ */
 void TripPlanner::showSouvCartTableView(QSqlQueryModel *model)
 {
      ui->souvCart_tableView->setModel(model);
      ui->souvCart_tableView_2->setModel(model);
 }
 
+/**
+ * @brief Displays the total cost for the sovuvenirs purchased and
+ *        dispalys the total cost to a label
+ * @param itemCost
+ */
 void TripPlanner::showTotalCost(double itemCost)
 {
      totalCost += itemCost;
@@ -303,6 +363,10 @@ void TripPlanner::showTotalCost(double itemCost)
      ui->grandTotal->setText(totalCostStr);
 }
 
+/**
+ * @brief Calculates the total from the souvenirs purchased from the
+ *        souvenir shop by using the database values.
+ */
 void TripPlanner::calculateTotal()
 {
      //initial a double type total
@@ -326,13 +390,20 @@ void TripPlanner::calculateTotal()
      this->total = total;
 }
 
+/**
+ * @brief This function changes the stacked widget to
+ *        go to the souvenir shop and displays the souvenirs
+ *        of each team and allows the user to buy souvenirs
+ */
 void TripPlanner::on_team_comboBox_currentIndexChanged()
 {
      QString team = ui->team_comboBox->currentText();
      showSouvTableView(db.loadTeamSouvenirs(team));
 }
 
-
+/**
+ * @brief Function that adds souvenir to the shopping cart
+ */
 void TripPlanner::on_addSouvenirButton_clicked()
 {
      SouvenirTableModel souv;
@@ -373,7 +444,10 @@ void TripPlanner::on_addSouvenirButton_clicked()
      showTotalCost(itemCost);
 }
 
-
+/**
+ * @brief Calculates the DFS trip and displays the trip and order
+ *        in the menu
+ */
 void TripPlanner::on_DFS_clicked()
 {
      ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
@@ -411,7 +485,10 @@ void TripPlanner::on_DFS_clicked()
      ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(total));
 }
 
-
+/**
+ * @brief Calculates the BFS trip and displays the trip and order
+ *        in the menu
+ */
 void TripPlanner::on_BSF_clicked()
 {
      ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
@@ -450,7 +527,10 @@ void TripPlanner::on_BSF_clicked()
 
 }
 
-
+/**
+ * @brief Calculates the MST trip and displays the trip and order
+ *        in the menu
+ */
 void TripPlanner::on_MST_clicked()
 {
      ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
@@ -465,7 +545,10 @@ void TripPlanner::on_MST_clicked()
      }
 }
 
-
+/**
+ * @brief Menu button that allows the user to back to the mainpage
+ *        by clicking on the button
+ */
 void TripPlanner::on_mainpage_clicked()
 {
      QList<QWidget*> topLevelWidgets = qApp->topLevelWidgets();
@@ -482,7 +565,10 @@ void TripPlanner::on_mainpage_clicked()
      hide();
 }
 
-
+/**
+ * @brief Menu button that allows the user to go to the filter
+ *        for one team and display all of their info
+ */
 void TripPlanner::on_one_team_clicked()
 {
      Allinfo info;
@@ -491,7 +577,10 @@ void TripPlanner::on_one_team_clicked()
      info.exec();
 }
 
-
+/**
+ * @brief Menu button that allows the user to go to the filter
+ *        for all of the teams
+ */
 void TripPlanner::on_filterTeam_clicked()
 {
      filteredTeams info;
@@ -500,7 +589,10 @@ void TripPlanner::on_filterTeam_clicked()
      info.exec();
 }
 
-
+/**
+ * @brief on_TeamListComboBox_activated
+ * @param index
+ */
 void TripPlanner::on_TeamListComboBox_activated(int index)
 {
     // this->populateTeamComboBoxes();

@@ -156,7 +156,8 @@ private slots:
     void showSouvCartTableView(QSqlQueryModel *model);
 
     /**
-     * @brief showTotalCost
+     * @brief Displays the total cost for the sovuvenirs purchased and
+     *        dispalys the total cost to a label
      * @param itemCost
      */
     void showTotalCost(double itemCost);
