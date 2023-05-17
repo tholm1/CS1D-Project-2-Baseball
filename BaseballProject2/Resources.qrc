@@ -5,6 +5,7 @@
         <file>brown_back.jpg</file>
         <file>take_me_out.png</file>
         <file>brown2.png</file>
+        <file>blue_back.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file>feather/activity.svg</file>

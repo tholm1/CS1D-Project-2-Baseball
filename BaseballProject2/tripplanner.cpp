@@ -80,7 +80,7 @@ void TripPlanner::on_PushButton_BeginTrip_clicked()
         int distance = graph->shortestDistance(start, end);
         QString result = QString("Shortest path distance from %1 to %2: %3")
                          .arg(QString::fromStdString(start), QString::fromStdString(end)).arg(distance);
-        ui->Label_FinalTotalDistance->setText(result);
+        ui->Label_FinalTotalDistance->setText(QString::number(distance));
     }
 }
 
@@ -165,7 +165,7 @@ void TripPlanner::on_PushButton_BeginCustomTrip_2_clicked()
     double distanceTraveled = graph->recursiveCollegeSort(teams);
 
     QString result = QString("The distance after traveling in the most efficient order is %1").arg(distanceTraveled);
-    ui->Label_FinalTotalDistance->setText(result);
+    ui->Label_FinalTotalDistance->setText(QString::number(distanceTraveled));
 }
 
 
@@ -244,7 +244,7 @@ void TripPlanner::on_PushButton_MarlinParkTrip_clicked()
    goToSouvenirShop();
     int distance = graph->shortestDistanceList(teams);
     QString result = QString("Shortest path from Marlins Park is %1").arg(distance-45);
-    ui->Label_FinalTotalDistance->setText(result);
+    ui->Label_FinalTotalDistance->setText(QString::number(distance-45));
 }
 
 void TripPlanner::on_PushButton_BackToMain_4_clicked()
@@ -378,7 +378,7 @@ void TripPlanner::on_DFS_clicked()
      //actual total = 9370// 9420
      QString message = "Total distance for DFS starting at Oracle Park: "+QString::number(total) + " miles";
      QMessageBox::information(this, "DFS mileage", message);
-     ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(total));
+     ui->Label_FinalTotalDistance->setText(QString::number(total));
 }
 
 
@@ -416,7 +416,7 @@ void TripPlanner::on_BSF_clicked()
      //actual total = 12625 //12810
      QString message = "Total distance for BFS starting at Target Field: "+QString::number(total) + " miles";
      QMessageBox::information(this, "BFS mileage", message);
-     ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(total));
+     ui->Label_FinalTotalDistance->setText(QString::number(total));
 
 }
 
@@ -430,7 +430,7 @@ void TripPlanner::on_MST_clicked()
         int distance = graph->primMST();
         QString message = "The minimum spanning tree (MST) connecting all the MLB stadiums is: "+QString::number(distance) + " miles";
         QMessageBox::information(this, "MST mileage", message);
-        ui->Label_FinalTotalDistance->setText(QString("Total Distance: %1").arg(distance));
+        ui->Label_FinalTotalDistance->setText(QString::number(distance));
 
      }
 }
