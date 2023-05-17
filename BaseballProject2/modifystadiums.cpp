@@ -446,18 +446,18 @@ void ModifyStadiums::on_confirmUpdateBtn_clicked()
         {
 
 
-            QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-            checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
-            checkStadiumQuery->bindValue(":checkStadiumName", updateStadiumName);
-            checkStadiumQuery->exec();
-            checkStadiumQuery->next();
+//            QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+//            checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
+//            checkStadiumQuery->bindValue(":checkStadiumName", updateStadiumName);
+//            checkStadiumQuery->exec();
+//            checkStadiumQuery->next();
 
-            QString stadiumSearched = checkStadiumQuery->value(0).toString();
-            checkStadiumQuery->finish();
-            if(stadiumSearched == updateStadiumName) // checks for duplicate stadium name
-            {
-               throw 1;
-            }
+//            QString stadiumSearched = checkStadiumQuery->value(0).toString();
+//            checkStadiumQuery->finish();
+//            if(stadiumSearched == updateStadiumName) // checks for duplicate stadium name
+//            {
+//               throw 1;
+//            }
 
             QSqlQuery* updateQuery = new QSqlQuery(dbManager::managerInstance->m_database);
             updateQuery->prepare(   "UPDATE \"MLB Teams\" "

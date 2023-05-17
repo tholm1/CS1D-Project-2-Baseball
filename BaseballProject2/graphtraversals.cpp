@@ -106,34 +106,34 @@ void GraphTraversals::on_PushButton_CalcBFS_clicked()
     const int NUM = 30;
         //push names from database to program
 
-//        vector<stadium> data = dbManager.loadDistance();
-//        vector<Edge> edges;
+        vector<stadium> data = dbManager.loadDistance();
+        vector<Edge> edges;
 
-//        qDebug() << data.size();
-//        for (int row = 0; row < 106; row++){
-//            int start, end, dis;
-//            for (int index = 0; index < NUM; index++){
-//                if (data[row].starting == originNames[index]){
-//                    start = index;
-//                }
-//                if (data[row].ending == originNames[index]){
-//                    end = index;
-//                }
-//            }
-//            dis = data[row].distance;
-//            Edge tmp = {start,end,dis};
-//            edges.emplace_back(tmp);
-//        }
+        qDebug() << data.size();
+        for (int row = 0; row < 106; row++){
+            int start, end, dis;
+            for (int index = 0; index < NUM; index++){
+                if (data[row].starting == originNames[index]){
+                    start = index;
+                }
+                if (data[row].ending == originNames[index]){
+                    end = index;
+                }
+            }
+            dis = data[row].distance;
+            Edge tmp = {start,end,dis};
+            edges.emplace_back(tmp);
+        }
 
 
-        //Graph graph(edges, NUM);
-        //int total = graph.BFS(16,graph);
+        Graph graph(edges, NUM);
+        int total = graph.BFS(16,graph);
 
-        int total = 12810;
+        //int total = 12810;
         //actual total = 12625 //12810
         QString message = "Total distance for BFS starting at Target Field: "+QString::number(total) + " miles";
         QMessageBox::information(this, "BFS mileage", message);
-//        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(total));
+        ui->Label_TraversalType->setText(QString("Total Distance: %1").arg(total));
 
 }
 
