@@ -217,6 +217,12 @@ private slots:
      */
     void on_TeamListComboBox_activated(int index);
 
+    void on_linkgit_clicked();
+
+    void on_thumbs_up_clicked();
+
+    void on_thumbs_down_clicked();
+
 private:
     Ui::TripPlanner *ui;
     /**

@@ -7,6 +7,8 @@
 #include "planvacation.h"
 #include "allinfo.h"
 #include "filteredteams.h"
+#include <QUrl>
+#include <QDesktopServices>
 
 TripPlanner::TripPlanner(QWidget *parent) :
     QDialog(parent),
@@ -600,5 +602,29 @@ void TripPlanner::on_filterTeam_clicked()
 void TripPlanner::on_TeamListComboBox_activated(int index)
 {
     // this->populateTeamComboBoxes();
+}
+
+
+void TripPlanner::on_linkgit_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/tholm1/CS1D-Project-2-Baseball", QUrl::TolerantMode));
+}
+
+
+void TripPlanner::on_thumbs_up_clicked()
+{
+    QMessageBox::information(this, "Thank you", "We appreciate your like to our program.\nWe will keep up the good work! :)");
+}
+
+
+void TripPlanner::on_thumbs_down_clicked()
+{
+    QMessageBox::StandardButton reply = QMessageBox::question(this,"Sorry:(","We are sorry to hear your experience\nWould you like to give us another chance?",
+                                                              QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes){
+        return;
+    } else {
+        on_thumbs_down_clicked();
+    }
 }
 
