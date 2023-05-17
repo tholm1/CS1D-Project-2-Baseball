@@ -205,6 +205,8 @@ void TripPlanner::on_PushButton_SouvenirFinishTrip_clicked()
     QMessageBox::information(this, "Loading...", "Shopping Complete. Now moving to Receipt Screen.", QMessageBox::Ok, QMessageBox::NoButton);
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SummaryPage);
     showSouvCartTableView(db.loadSouvCart(sQry));
+    QString totalCostStr = QString::number(totalCost, 'f', 2);
+    ui->grandTotal_2->setText(totalCostStr);
 }
 
 

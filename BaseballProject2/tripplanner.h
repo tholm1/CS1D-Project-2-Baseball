@@ -17,6 +17,9 @@ namespace Ui {
 class TripPlanner;
 }
 
+/**
+ * @brief Souvenir struct to hold all souvenirs to be called later
+ */
 struct SouvenirTableModel
 {
     SouvenirTableModel() {}

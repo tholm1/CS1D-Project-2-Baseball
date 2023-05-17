@@ -18,7 +18,9 @@
 #include <vector>
 using namespace std;
 
-
+/**
+ * @brief Struct for each stadium to hold the starting, end point, and the distances
+ */
 struct stadium{
     string starting;
     string ending;
@@ -28,9 +30,14 @@ struct stadium{
 class dbManager
 {
 public:
+    /**
+     * @brief Constructor for dbManager
+     */
     dbManager();
     ~dbManager();
+
     static dbManager* managerInstance; /**< Static pointer to a single instance of the database. */
+
     QSqlDatabase m_database;
 
     /**
@@ -48,6 +55,12 @@ public:
      */
     static dbManager* getInstance();
 
+    /**
+     * @brief Connects to the SQL database and obtains the farthest
+     *        distance away from center field
+     * @param max
+     * @return The highest value to center field
+     */
     QList<Team> getMaxMinDistanceToCF(bool max);
 
     /**
@@ -65,6 +78,12 @@ public:
      */
     QList<Team> getAllTeams();
 
+    /**
+     * @brief Loads the graph with all the distances between the stadiums
+     *        from the database.
+     * @param vertexIndexMap
+     * @param edges
+     */
     void loadGraph(std::unordered_map<std::string, int>& vertexIndexMap, std::vector<std::tuple<std::string, std::string, int>>& edges);
 
     QSqlDatabase db;
@@ -103,26 +122,83 @@ public:
      */
     QSqlQueryModel* loadDestinationTeamNames();
 
+    /**
+     * @brief Reads souvenirs from a text file and outputs them to the
+     *        SQL database so that they can be used to purchase those souvenirs
+     * @return
+     */
     bool readSouvenirFile();
 
+    /**
+     * @brief Creates a souvenir from the souvenirs provided in the
+     *        readSouvenirFile() function
+     * @param teamname
+     * @param item
+     * @param price
+     */
     void createSouvenir(QString teamname ,QString item, QString price);
 
+    /**
+     * @brief Loads
+     * @param team
+     * @return Model with all of the souvenirs for a specific team
+     */
     QSqlQueryModel *loadTeamSouvenirs(QString team);
 
+    /**
+     * @brief Loads the souvenir cart for the souvenir shop
+     * @param sQry
+     * @return Model with the souvenir cart
+     */
     QSqlQueryModel* loadSouvCart(QString sQry);
 
+    /**
+     * @brief Creates a cart table in the SQL database to hold the
+     *        souvenirs purchased and the quantity for the user to
+     *        see later.
+     */
     void createCart();
 
+    /**
+     * @brief This function deletes the cart that was created when
+     *        the souvenir shop is left and resets for the next trip
+     */
     void deleteCart();
 
+    /**
+     * @brief updateCartQuantity
+     * @param team
+     * @param souv
+     * @param quantity
+     */
     void updateCartQuantity(QString team, QString souv, int quantity);
 
+    /**
+     * @brief Gets the total cost from the souvenirs the user purchased
+     *        from the SQL database
+     * @param teamIn
+     * @param souvIn
+     * @return The total cost that will be displayed as a label in the souvenir shop
+     */
     double GetTotalCost(QString teamIn, QString souvIn);
 
+    /**
+     * @brief Loads all of the souvenir names from the SQL database
+     * @return Model with all of the souvenir names
+     */
     QSqlQueryModel* loadSouvenirNamesOnly();
 
+    /**
+     * @brief Loads the quantity of sovuenirs purchased through the amount
+     *        in the spin box.
+     * @return the quantity of souvenirs the user purchased
+     */
     QSqlQueryModel* loadSouvenirQuantityOnly();
 
+    /**
+     * @brief Gets all of the souvenirs from the SQL database
+     * @return A QList of all the souvenirs from the database
+     */
     QList<Souvenir> getAllSouvenirs();
 
     QList <Souvenir*>  listOfSouvenirs;
