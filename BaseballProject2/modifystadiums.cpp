@@ -6,12 +6,13 @@
 #include <QFileDialog>
 #include <QTextStream>
 
+
 ModifyStadiums::ModifyStadiums(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModifyStadiums)
 {
     ui->setupUi(this);
-
+    distanceFilePath = "/Users/trevorholm/Documents/CS1D/Github/CS1D-Project-2-Baseball/Stadium-Expansion/newDistances.txt";
     updateDataView();
     this->defaultTableState = ui->tableView->horizontalHeader()->saveState();
 
@@ -27,10 +28,12 @@ ModifyStadiums::ModifyStadiums(QWidget *parent) :
     ui->errorLabel->setVisible(false);
 }
 
+
 ModifyStadiums::~ModifyStadiums()
 {
     delete ui;
 }
+
 
 void ModifyStadiums::populateTableView()
 {
@@ -206,6 +209,63 @@ void ModifyStadiums::on_confirmAddBtn_clicked()
                 qDebug() << "Failed to open the file:" << file.errorString();
             }
         }
+
+    // Add distances between Las Vegas Gamblers and other stadiums
+    // Open the text file
+
+        QSqlQuery* checkDistanceQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+        checkDistanceQuery->prepare("SELECT \"Originated Stadium\" FROM \"MLB Distances Between Stadiums\" WHERE \"Originated Stadium\" = :checkStadium");
+        checkDistanceQuery->bindValue(":checkStadium", "Las Vegas Stadium");
+        checkDistanceQuery->exec();
+        checkDistanceQuery->next();
+
+        QString stadiumSearched = checkDistanceQuery->value(0).toString();
+        checkDistanceQuery->finish();
+        if(stadiumSearched == "Las Vegas Stadium") // checks for duplicate stadium name
+        {
+           return;
+        }
+
+        QFile distanceFile(distanceFilePath);
+        if (!distanceFile.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            // Handle the error if the file cannot be opened
+            qDebug() << "Failed to open the file.";
+            return;
+        }
+
+        // Create a QTextStream to read from the file
+        QTextStream in(&distanceFile);
+
+        // Read the file line by line and store each line into the QStringList
+        while (!in.atEnd())
+        {
+            QString team1       = in.readLine();
+            QString team2       = in.readLine();
+            int     distance    = in.readLine().toInt();
+
+            QSqlQuery* distanceQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+            distanceQuery->prepare("INSERT INTO \"MLB Distances Between Stadiums\" ("
+                                  "\"Originated Stadium\", "
+                                  "\"Destination Stadium\", "
+                                  "\"Distance\""
+                              ") "
+                              "VALUES ("
+                                  ":originStadium, "
+                                  ":destinationStadium, "
+                                  ":distance"
+                              ")");
+
+            distanceQuery->bindValue(":originStadium", team1);
+            distanceQuery->bindValue(":destinationStadium", team2);
+            distanceQuery->bindValue(":distance", distance);
+
+            distanceQuery->exec();
+            distanceQuery->clear();
+        }
+
+        // Close the file
+        distanceFile.close();
 }
 
 
@@ -386,18 +446,18 @@ void ModifyStadiums::on_confirmUpdateBtn_clicked()
         {
 
 
-            QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
-            checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
-            checkStadiumQuery->bindValue(":checkStadiumName", updateStadiumName);
-            checkStadiumQuery->exec();
-            checkStadiumQuery->next();
+//            QSqlQuery* checkStadiumQuery = new QSqlQuery(dbManager::managerInstance->m_database);
+//            checkStadiumQuery->prepare("SELECT \"Stadium Name\" FROM \"MLB Teams\" WHERE \"Stadium Name\" = :checkStadiumName");
+//            checkStadiumQuery->bindValue(":checkStadiumName", updateStadiumName);
+//            checkStadiumQuery->exec();
+//            checkStadiumQuery->next();
 
-            QString stadiumSearched = checkStadiumQuery->value(0).toString();
-            checkStadiumQuery->finish();
-            if(stadiumSearched == updateStadiumName) // checks for duplicate stadium name
-            {
-               throw 1;
-            }
+//            QString stadiumSearched = checkStadiumQuery->value(0).toString();
+//            checkStadiumQuery->finish();
+//            if(stadiumSearched == updateStadiumName) // checks for duplicate stadium name
+//            {
+//               throw 1;
+//            }
 
             QSqlQuery* updateQuery = new QSqlQuery(dbManager::managerInstance->m_database);
             updateQuery->prepare(   "UPDATE \"MLB Teams\" "

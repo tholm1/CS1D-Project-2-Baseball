@@ -4,6 +4,10 @@
 #include <QMessageBox>
 #include <QFileDialog>
 
+/**
+ * @brief Constructor for the ModifySouvenirs widget
+ * @param parent [in] parent widget
+ */
 ModifySouvenirs::ModifySouvenirs(QWidget *parent) : QDialog(parent),
                                                     ui(new Ui::ModifySouvenirs)
 {
@@ -13,26 +17,51 @@ ModifySouvenirs::ModifySouvenirs(QWidget *parent) : QDialog(parent),
     showTeamComboBoxDeletePage(database.loadTeamNamesOnly());
 }
 
+/**
+ * @brief Destructor for ModifyStadiums
+ */
 ModifySouvenirs::~ModifySouvenirs()
 {
     delete ui;
 }
 
+/**
+ * @brief This function takes the teams from the database and
+ *        displays them to the combo box so that the user can
+ *        add a souvenir to their team
+ * @param model
+ */
 void ModifySouvenirs::showTeamComboBoxAddPage(QSqlQueryModel *model)
 {
     ui->team_comboBox->setModel(model);
 }
 
+/**
+ * @brief This function takes the teams from the database and
+ *        displays them to the combo box so that the user can
+ *        modify a souvenir to their team
+ * @param model
+ */
 void ModifySouvenirs::showTeamComboBoxModifyPage(QSqlQueryModel *model)
 {
     ui->team2_comboBox->setModel(model);
 }
 
+/**
+ * @brief This function takes the teams from the database and
+ *        displays them to the combo box so that the user can
+ *        delete a souvenir to their team
+ * @param model
+ */
 void ModifySouvenirs::showTeamComboBoxDeletePage(QSqlQueryModel *model)
 {
     ui->team3_comboBox->setModel(model);
 }
 
+/**
+ * @brief This button allows the user to add a souvenir to a specific
+ *        team by reading the line edits and adds it to the database
+ */
 void ModifySouvenirs::on_addSouvButton_clicked()
 {
     QSqlQuery data;
@@ -63,7 +92,6 @@ void ModifySouvenirs::on_addSouvButton_clicked()
     }
 
     data.prepare("INSERT INTO Souvenirs (Team, Souvenir, Price) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"')");
-    data.prepare("INSERT INTO Cart (Team, Souvenir, Price, quantity) VALUES ('"+teamName+"', '"+souvName+"', '"+souvPrice+"', '"+quantity+"')");
 
     if (!data.exec())
     {
@@ -75,6 +103,9 @@ void ModifySouvenirs::on_addSouvButton_clicked()
     }
 }
 
+/**
+ * @brief This button allows the user to modify the price
+ */
 void ModifySouvenirs::on_modifySouvenirButton_clicked()
 {
     QString souvTeam;
@@ -99,13 +130,11 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
     if (check == true)
     {
         QMessageBox::about(this, "Invalid Input", "There was an invalid input. Please use only Numerals(0-9) and the . ");
-        // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
         return;
     }
 
     QSqlQuery qry;
     qry.prepare("UPDATE Souvenirs SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
-    //qry.prepare("UPDATE Cart SET Team = '"+souvTeam+"', Souvenir = '"+souvName+"' , Price = '"+souvPrice+"' WHERE Souvenir = '"+souvName+"' AND Team = '"+souvTeam+"' ");
     qry.exec();
 
     if (qry.numRowsAffected() == 0)
@@ -117,9 +146,11 @@ void ModifySouvenirs::on_modifySouvenirButton_clicked()
         QMessageBox::about(this, tr("Edit"), tr("Updated"));
     }
 
-    // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
 }
 
+/**
+ * @brief Deletes a souvenir from a team from the database
+ */
 void ModifySouvenirs::on_deleteSouvenir_pushButton_clicked()
 {
     int souvCount = 0;
@@ -160,11 +191,12 @@ void ModifySouvenirs::on_deleteSouvenir_pushButton_clicked()
     else
     {
         QMessageBox::about(this, "", "The item was deleted. Double check if an error occured");
-
-        // ui->stackedWidget->setCurrentWidget(ui->adminHomePage);
     }
 }
 
+/**
+ * @brief Back button to let the user go back to the previous screen
+ */
 void ModifySouvenirs::on_backButton_clicked()
 {
     maintenance maintenancePage;
@@ -173,6 +205,10 @@ void ModifySouvenirs::on_backButton_clicked()
     maintenancePage.exec();
 }
 
+/**
+ * @brief This button lets the user use a file that holds data
+ *        for souvenirs and add it through that means
+ */
 void ModifySouvenirs::on_addSouvenirFileButton_clicked()
 {
 //    bool success = dbManagers->readSouvenirFile();
