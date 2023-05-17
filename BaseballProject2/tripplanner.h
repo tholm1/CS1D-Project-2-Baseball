@@ -51,64 +51,173 @@ public:
     ~TripPlanner();
 
 private slots:
+    /**
+     * @brief Calculates the most efficient trip when you click the button
+     */
     void on_PushButton_MostEfficientTrip_clicked();
 
+    /**
+     * @brief Starts the trip when clicked
+     */
     void on_PushButton_BeginTrip_clicked();
 
+    /**
+     * @brief Brings you back to the main menu whenever when you click this button
+     */
     void on_PushButton_BackToMain_6_clicked();
 
+    /**
+     * @brief Adds team to the custom trip
+     */
     void on_PushButton_AddTeam_clicked();
 
+    /**
+     * @brief Begins the trip for the shortest path
+     */
     void on_PushButton_BeginCustomTrip_clicked();
 
+    /**
+     * @brief Lets the user go back to main
+     */
     void on_PushButton_BackToMain_clicked();
 
+    /**
+     * @brief This function will clear the teams in the Custom trip
+     */
     void on_PushButton_BeginCustomTrip_Clear_clicked();
 
+    /**
+     * @brief This button will bring you to the custom trip menu
+     */
     void on_PushButton_CustomTrip_clicked();
 
+    /**
+     * @brief Button that brings the user to the Summary page that shows
+     *        the total distance and the souvenirs purchased
+     */
     void on_PushButton_SouvenirFinishTrip_clicked();
 
+    /**
+     * @brief This button will bring you to the Marlin Park trip
+     */
     void on_PushButton_MarlinParkTrip_clicked();
 
+    /**
+     * @brief This button will calculate the most efficient order of the stadiums
+     *        the user chooses
+     */
     void on_PushButton_BeginCustomTrip_2_clicked();
 
+    /**
+     * @brief Button that allows the user to go back to the main menu with all the
+     *        trips
+     */
     void on_PushButton_BackToMain_4_clicked();
 
+    /**
+     * @brief Button that allows the user to go back to the main menu with all the
+     *        trips
+     */
     void on_PushButton_BackToMain_2_clicked();
 
+    /**
+     * @brief Combo box that holds the teams for the selected trip and updates
+     *        info based on the team
+     */
     void on_team_comboBox_currentIndexChanged();
 
+    /**
+     * @brief Function that adds souvenir to the shopping cart
+     */
     void on_addSouvenirButton_clicked();
 
+    /**
+     * @brief Displays the teams from the database in the combo box when called
+     *        This is for the Souvenir page.
+     * @param model
+     */
     void showSelectTeamComboBox(QSqlQueryModel *model);
 
+    /**
+     * @brief Displays the souvenirs from the database and outputs them
+     *        in the souvenir shop
+     * @param model
+     */
     void showSouvTableView(QSqlQueryModel *model);
 
+    /**
+     * @brief Displays the souvenirs the user purchased in this table
+     *        view.
+     * @param model
+     */
     void showSouvCartTableView(QSqlQueryModel *model);
 
+    /**
+     * @brief showTotalCost
+     * @param itemCost
+     */
     void showTotalCost(double itemCost);
 
+    /**
+     * @brief Calculates the total from the souvenirs purchased from the
+     *        souvenir shop by using the database values.
+     */
     void calculateTotal();
 
+    /**
+     * @brief This function changes the stacked widget to
+     *        go to the souvenir shop and displays the souvenirs
+     *        of each team and allows the user to buy souvenirs
+     */
     void goToSouvenirShop();
 
+    /**
+     * @brief Calculates the DFS trip and displays the trip and order
+     *        in the menu
+     */
     void on_DFS_clicked();
 
+    /**
+     * @brief Calculates the BFS trip and displays the trip and order
+     *        in the menu
+     */
     void on_BSF_clicked();
 
+    /**
+     * @brief Calculates the MST trip and displays the trip and order
+     *        in the menu
+     */
     void on_MST_clicked();
 
+    /**
+     * @brief Menu button that allows the user to back to the mainpage
+     *        by clicking on the button
+     */
     void on_mainpage_clicked();
 
+    /**
+     * @brief Menu button that allows the user to go to the filter
+     *        for one team and display all of their info
+     */
     void on_one_team_clicked();
 
+    /**
+     * @brief Menu button that allows the user to go to the filter
+     *        for all of the teams
+     */
     void on_filterTeam_clicked();
 
+    /**
+     * @brief on_TeamListComboBox_activated
+     * @param index
+     */
     void on_TeamListComboBox_activated(int index);
 
 private:
     Ui::TripPlanner *ui;
+    /**
+     * @brief db
+     */
     dbManager db; // Database manager object
     Graph* graph; // Graph object
     std::vector<std::string> teams; // Vector to store the teams
