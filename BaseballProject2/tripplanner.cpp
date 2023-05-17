@@ -84,9 +84,12 @@ void TripPlanner::on_PushButton_BeginTrip_clicked()
 
     if (graph) {
         int distance = graph->shortestDistance(start, end);
-        QString result = QString("Shortest path distance from %1 to %2: %3")
+        QString result = QString("Shortest Path from %1 to %2: %3 miles")
                          .arg(QString::fromStdString(start), QString::fromStdString(end)).arg(distance);
-        ui->Label_FinalTotalDistance->setText(QString::number(distance));
+        ui->Label_FinalTotalDistance_2->setText(result);
+        QString result_2 = QString("%1 miles").arg(distance);
+        ui->Label_FinalTotalDistance->setText(result_2);
+        goToSouvenirShop();
     }
 }
 
@@ -158,7 +161,7 @@ void TripPlanner::on_PushButton_BeginCustomTrip_clicked()
     ui->TripPlannerStackedWidget->setCurrentWidget(ui->SouvenirPage);
     goToSouvenirShop();
     int distance = graph->shortestDistanceList_02(teams);
-    QString result = QString("Shortest path for this custom trip is %1").arg(distance);
+    QString result = QString("%1 miles").arg(distance);
     ui->Label_FinalTotalDistance->setText(result);
 }
 
@@ -184,8 +187,8 @@ void TripPlanner::on_PushButton_BeginCustomTrip_2_clicked()
 
     double distanceTraveled = graph->recursiveCollegeSort(teams);
 
-    QString result = QString("The distance after traveling in the most efficient order is %1").arg(distanceTraveled);
-    ui->Label_FinalTotalDistance->setText(QString::number(distanceTraveled));
+    //QString result = QString("The distance after traveling in the most efficient order is %1").arg(distanceTraveled);
+    ui->Label_FinalTotalDistance->setNum(distanceTraveled);
 }
 
 
@@ -275,7 +278,7 @@ void TripPlanner::on_PushButton_MarlinParkTrip_clicked()
    teams.push_back("Yankee Stadium");
 
     int distance = graph->shortestDistanceList(teams);
-    QString result = QString("Shortest path from Marlins Park is %1").arg(distance-45);
+    QString result = QString("%1 miles").arg(distance-45);
     ui->Label_FinalTotalDistance->setText(result);
     goToSouvenirShop();
 

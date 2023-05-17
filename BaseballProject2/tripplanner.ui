@@ -715,9 +715,9 @@ font: 700 12pt &quot;Segoe UI&quot;;</string>
     <widget class="QLabel" name="Label_FinalTotalDistance">
      <property name="geometry">
       <rect>
-       <x>760</x>
-       <y>360</y>
-       <width>181</width>
+       <x>690</x>
+       <y>430</y>
+       <width>211</width>
        <height>41</height>
       </rect>
      </property>
@@ -777,11 +777,14 @@ text-decoration: underline;
     <widget class="QLabel" name="grandTotal_2">
      <property name="geometry">
       <rect>
-       <x>880</x>
+       <x>780</x>
        <y>500</y>
        <width>71</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt;</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;0.00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -792,7 +795,7 @@ text-decoration: underline;
       <rect>
        <x>60</x>
        <y>130</y>
-       <width>261</width>
+       <width>451</width>
        <height>481</height>
       </rect>
      </property>
@@ -800,14 +803,14 @@ text-decoration: underline;
     <widget class="QLabel" name="souvenirsTitle_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>100</x>
        <y>60</y>
        <width>331</width>
        <height>81</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Souvenirs Cart&lt;/span&gt;&lt;img src=&quot;:/icons/feather/shopping-cart.svg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Souvenirs Cart   &lt;/span&gt;&lt;img src=&quot;:/icons/feather/shopping-cart.svg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_20">
@@ -921,19 +924,6 @@ background-color: rgb(255, 255, 255);</string>
       </property>
      </item>
     </widget>
-    <widget class="QLabel" name="label_19">
-     <property name="geometry">
-      <rect>
-       <x>940</x>
-       <y>430</y>
-       <width>41</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;MI&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="costLabel_3">
      <property name="geometry">
       <rect>
@@ -960,6 +950,36 @@ background-color: rgb(255, 255, 255);</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:696;&quot;&gt;Receipt Page&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+    <widget class="QLabel" name="Label_FinalTotalDistance_2">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>400</y>
+       <width>371</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
     <zorder>listWidget_2</zorder>
     <zorder>PushButton_BackToMain_6</zorder>
     <zorder>grandTotal_2</zorder>
@@ -967,9 +987,9 @@ background-color: rgb(255, 255, 255);</string>
     <zorder>souvenirsTitle_2</zorder>
     <zorder>label_20</zorder>
     <zorder>Label_FinalTotalDistance</zorder>
-    <zorder>label_19</zorder>
     <zorder>costLabel_3</zorder>
     <zorder>label_17</zorder>
+    <zorder>Label_FinalTotalDistance_2</zorder>
    </widget>
   </widget>
   <widget class="QFrame" name="frame">
